@@ -1,0 +1,255 @@
+% Notas de aula — Capítulo 11: Circulação Geral
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap11/}}
+
+\title{Capítulo 11 --- Circulação Geral\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:motor}--\S\ref{sec:hadley} (o desequilíbrio
+radiativo, o transporte exigido, célula de Hadley e jato subtropical).
+\emph{Aula 2:} \S\ref{sec:termico}--\S\ref{sec:rossby} (vento térmico,
+jato polar, ondas de Rossby, os cinturões de pressão).
+
+\section{O motor: aquecimento diferencial}\label{sec:motor}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~11 --- Circulação Geral}\\[2pt]
+trópicos: absorvem $>$ emitem \qquad polos: emitem $>$ absorvem\\
+nenhuma latitude esquenta para sempre $\Rightarrow$ atmosfera $+$
+oceanos \textbf{transportam} o excesso\\[2pt]
+a área entre as duas curvas ($Q_{abs}$ e $OLR$) \emph{é} a meteorologia.
+\end{noquadro}
+
+\quadro{Desenhar os dois perfis por latitude: insolação absorvida (pico
+no equador \javimos{2}{insolação}) e OLR quase plana. Perguntar: por que
+a OLR é tão plana? (Porque a circulação já espalhou a energia — o
+gráfico observado é o \emph{resultado} do transporte.)}
+
+Este capítulo cobra as promessas de meia dúzia de capítulos: o
+desequilíbrio veio do Cap.~2 \javimos{2}{balanço radiativo}; as
+ferramentas de vento, do Cap.~10 \javimos{10}{geostrofia e gradiente};
+a espessura proporcional à temperatura, do Cap.~1
+\javimos{1}{hipsométrica} — e ela será a chave do vento térmico.
+
+\begin{formadif}[o transporte exigido]
+Em regime estacionário, o transporte meridional através da latitude
+$\phi$ é a integral do desequilíbrio ao sul (HS) daquela latitude:
+\[ T(\phi) = \int_{-90°}^{\phi} \bigl[Q_{abs}(\phi') - OLR(\phi')\bigr]\,
+   2\pi R^2\cos\phi'\,d\phi'. \]
+O teste de consistência é $T(90°) = 0$ — o planeta fecha o balanço
+(T1).
+\end{formadif}
+
+\begin{noquadro}[o número para levar]
+pico de $\sim$5--6\,PW perto de $35°$\\
+($\sim$4\,PW na atmosfera, o resto no oceano)\\[2pt]
+1\,PW $= 10^{15}$\,W $\simeq$ 70 vezes o consumo elétrico da humanidade
+\end{noquadro}
+
+Cálculo completo no Caso~1 do notebook; o N1 mostra que pôr gelo
+(albedo alto) nos polos \emph{aumenta} o transporte exigido — um gostinho
+da retroalimentação do gelo \veremos{21}{feedback de albedo}.
+
+\section{Célula de Hadley e o jato subtropical}\label{sec:hadley}
+
+\quadro{Desenhar a célula em corte meridional: sobe na ZCIT, escoa em
+altitude, desce nos subtrópicos ($\sim30°$), retorna como alísios.
+Marcar as nuvens na subida e o deserto na descida.}
+
+O jeito mais direto de transportar calor: uma célula de convecção
+gigante. Sobe no equador (ar quente e úmido \javimos{5}{convecção
+profunda}), desce nos subtrópicos. Mas por que ela para em $30°$ e não
+vai até o polo?
+
+\begin{formadif}[momento angular fabrica o jato]
+Anel de ar em repouso no equador tem momento angular $\Omega R^2$.
+Levado a $\phi$ conservando
+$M = (\Omega R\cos\phi + u)R\cos\phi$:
+\[ u(\phi) = \Omega R\,\frac{\sin^2\phi}{\cos\phi}
+\quad\Rightarrow\quad u(30°) = 134\ \mathrm{m/s}. \]
+Observa-se $\sim$40\,m/s: turbilhões (os ciclones do Cap.~13!) roubam o
+excesso. Ainda assim, o \textbf{jato subtropical} vive em $\sim$30°, a
+12\,km — a célula de Hadley \emph{precisa} terminar onde o jato que ela
+mesma fabrica se torna instável (T2).
+\end{formadif}
+
+\begin{noquadro}[o mapa-múndi climático em uma célula]
+ramo que sobe (ZCIT): chuva diária equatorial \hfill
+\javimos{7}{ITCZ no mapa de chuva}\\
+ramo que desce ($30°$): Saara, Atacama, Kalahari — e as altas
+semifixas do Atlântico/Pacífico Sul\\
+ramo de retorno $+$ Coriolis \javimos{10}{Coriolis}: alísios de SE
+(HS) / NE (HN)
+\end{noquadro}
+
+\section{Vento térmico: o jato polar}\label{sec:termico}
+
+\quadro{Anunciar: ``a dedução mais elegante do curso — duas equações
+que vocês já sabem, uma derivada, e sai o jato''. Fazer com calma.}
+
+\begin{formadif}[relação do vento térmico]
+Derivando o vento geostrófico \javimos{10}{geostrofia} na vertical e
+usando hidrostática $+$ gás ideal \javimos{1}{as duas leis}:
+\[ \frac{\partial u_g}{\partial z} = -\frac{g}{f\,T}\,
+   \frac{\partial T}{\partial y}. \]
+Leitura física via hipsométrica \javimos{1}{camada quente $=$ espessa}:
+as superfícies de pressão se inclinam cada vez mais com a altura sobre a
+zona de contraste — e inclinação de isóbara é vento.
+\end{formadif}
+
+\begin{noquadro}[a frase para decorar]
+onde há contraste meridional de $T$, o vento de oeste \textbf{cresce
+com a altura}\\
+contraste concentrado (zona baroclínica) $\Rightarrow$ \textbf{jato
+polar} na tropopausa, em cima da frente polar
+\veremos{12}{frente polar}
+\end{noquadro}
+
+\begin{exemplo}[quanto jato dá o contraste?]
+$\partial T/\partial y = -5$\,K por 1000\,km,
+$f = -1{,}0\times10^{-4}$\,s$^{-1}$ ($45°$S), da superfície a 10\,km:
+\[ \Delta u_g = \frac{g}{|f|\,T}
+\left|\frac{\partial T}{\partial y}\right|\Delta z
+ = \frac{9{,}8\times(5\times10^{-6})\times10^{4}}{10^{-4}\times260}
+ \simeq 19\ \mathrm{m/s}. \]
+Com contrastes de inverno e camadas mais profundas: os 40--80\,m/s
+observados. \emph{Verificação no Caso~4 do notebook com perfil
+realista.}
+\end{exemplo}
+
+Inverno: contraste maior $\Rightarrow$ jato mais forte e mais baixo em
+latitude — por isso as tempestades de inverno
+\veremos{13}{trilhas de tempestades}, e por isso a turbulência de céu
+claro mora nas bordas do jato \javimos{5}{Richardson e CAT}.
+
+\section{Ondas de Rossby}\label{sec:rossby}
+
+\begin{noquadro}[vocabulário de vorticidade (Stull \S11.9)]
+relativa $\zeta = \partial v/\partial x - \partial u/\partial y$
+(o giro local) \quad planetária $f$ \quad absoluta $\zeta + f$\\
+\textbf{potencial}: $(\zeta + f)/\Delta z$ — conservada seguindo o
+escoamento adiabático:\\
+coluna que estica gira mais; que achata, menos
+\veremos{13}{esticamento e PV}
+\end{noquadro}
+
+\quadro{Desenhar cadeia de parcelas deslocada para o sul num planeta com
+$\beta$: a vorticidade relativa muda para compensar $f$, o giro empurra
+as vizinhas, a cadeia ondula e o padrão anda para oeste.}
+
+\begin{formadif}[a restauração $\beta$]
+Conservação de vorticidade absoluta $\zeta + f$ num deslocamento
+meridional gera oscilação com dispersão (onda barotrópica):
+\[ c = U - \frac{\beta}{k^2},\qquad
+   \beta = \frac{df}{dy} = \frac{2\Omega\cos\phi}{R}. \]
+A ``mola'' aqui não é o empuxo \javimos{5}{Brunt--Väisälä} — é a
+variação de $f$ com a latitude: o planeta redondo é o meio elástico.
+\end{formadif}
+
+\begin{noquadro}[ler a dispersão]
+ondas longas ($k$ pequeno): andam para \textbf{oeste} contra o jato\\
+onda \emph{estacionária}: $\lambda_s = 2\pi\sqrt{U/\beta} \sim 6000$\,km
+($U = 15$\,m/s)\\[2pt]
+$\Rightarrow$ $\sim$4--5 meandros dando a volta no HS — confira em
+qualquer carta de 50\,kPa \javimos{9}{cartas de altitude}
+\end{noquadro}
+
+As cristas e cavados dessas ondas são as altas e baixas móveis do dia a
+dia \veremos{13}{ciclones e cavados}; quando a onda amplifica e
+``quebra'', vêm os bloqueios e as ondas de calor/frio persistentes
+\veremos{21}{extremos e bloqueios}. Dispersão e onda estacionária no
+Caso~3 do notebook.
+
+\section{O retrato completo}
+
+\begin{noquadro}[os cinturões, de equador a polo]
+\begin{tabular}{lll}
+ZCIT ($\sim$0--10°) & convergência dos alísios & chuva diária \\
+subtropical ($\sim$30°) & subsidência de Hadley & desertos, altas
+semifixas \\
+lat.\ médias (40--60°) & baroclinia $+$ Rossby & ciclones em fila \\
+polar & subsidência fria & altas rasas \\
+\end{tabular}
+\end{noquadro}
+
+Oceano: transporte de Ekman \javimos{10}{Ekman} $+$ rotacional do vento
+médio $\Rightarrow$ giros subtropicais e correntes de contorno oeste
+(Brasil, Golfo) — o outro caminhão de energia, com $\sim$1--2\,PW.
+
+\textbf{Monções}: onde um continente tropical esquenta mais que o
+oceano vizinho, forma-se uma baixa térmica sazonal que \emph{inverte}
+os ventos entre verão e inverno — uma brisa marítima
+\veremos{17}{brisas} em escala continental (Índia, oeste da África;
+na América do Sul, o ``sistema de monção'' de verão que alimenta a
+ZCAS). É a maior exceção regional ao retrato zonal dos cinturões.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ Q_{abs} - OLR \;\to\; T(\phi)\ (\sim5\,\mathrm{PW}) \;\to\;
+   \text{Hadley},\ u = \Omega R\tfrac{\sin^2\phi}{\cos\phi} \]
+\[ \frac{\partial u_g}{\partial z} =
+-\frac{g}{fT}\frac{\partial T}{\partial y}\ \text{(jato)}
+   \qquad c = U - \frac{\beta}{k^2}\ \text{(Rossby)} \]
+\end{noquadro}
+
+Daqui em diante o curso desce de escala: as massas de ar e frentes que
+vivem nesses cinturões \veremos{12}{massas de ar e frentes}, os ciclones
+que nascem da baroclinia \veremos{13}{ciclones extratropicais} e a
+previsão numérica que integra tudo \veremos{20}{NWP}.
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap11\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Escreva o balanço de energia por faixa de latitude e mostre que
+        o transporte exigido é a integral do desequilíbrio; explique por
+        que $T(90°) = 0$ é o teste de consistência do cálculo.
+  \item Derive $u(\phi) = \Omega R\sin^2\phi/\cos\phi$ por conservação
+        de momento angular e avalie em $10°, 20°, 30°$; discuta por que
+        a célula de Hadley não pode ir além de $\sim$30°.
+  \item Deduza a relação do vento térmico a partir de geostrofia $+$
+        hidrostática ($+$ gás ideal) e mostre que no HS o jato fica a
+        \emph{oeste} com ar frio ao sul.
+  \item Pela conservação de $\zeta + f$, mostre que uma cadeia de
+        parcelas deslocada meridionalmente oscila e propaga para oeste;
+        obtenha $c = U - \beta/k^2$ (argumento heurístico basta).
+  \item Estime o comprimento de onda estacionário para $U = 10, 15,
+        25$\,m/s em $50°$S e conecte com o número de ondas planetárias
+        observado ($\sim$4--5).
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item No Caso~1, adicione albedo alto ($A = 0{,}6$) além de $\pm70°$
+        (gelo) e recalcule o transporte exigido; compare o pico.
+  \item Com o EBM do \texttt{climlab} (Caso~2), varra a difusividade $D$
+        e trace a posição da linha do gelo e o gradiente equador--polo
+        contra $D$; interprete os limites $D\to0$ e $D\to\infty$.
+  \item Trace $c(k)$ de Rossby para vários $U$ e ache numericamente o
+        $k$ estacionário; verifique contra a fórmula do T5.
+  \item Com o perfil zonal-médio de $T(y, z)$ fornecido no notebook,
+        integre o vento térmico da superfície a 12\,km e localize o
+        jato; compare inverno × verão.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

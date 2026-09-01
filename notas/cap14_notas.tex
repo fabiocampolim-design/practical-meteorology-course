@@ -1,0 +1,217 @@
+% Notas de aula — Capítulo 14: Fundamentos de Tempestades
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap14/}}
+
+\title{Capítulo 14 --- Fundamentos de Tempestades\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:ingred}--\S\ref{sec:cape} (ingredientes, CAPE,
+CIN, gatilhos).
+\emph{Aula 2:} \S\ref{sec:tipos}--\S\ref{sec:piscina} (cisalhamento e
+tipos, supercélulas, piscina fria e auto-propagação).
+
+\section{Os quatro ingredientes}\label{sec:ingred}
+
+\begin{noquadro}[abertura --- a receita]
+\textbf{Cap.~14 --- Tempestades (Cumulonimbus)}\\[2pt]
+1. \textbf{umidade} (combustível: $r$ alto na camada de mistura)\\
+2. \textbf{instabilidade} (CAPE: a energia armada, Cap.~5)\\
+3. \textbf{gatilho} (algo que vença o CIN: frente, brisa, montanha)\\
+4. \textbf{cisalhamento} (organiza: decide célula única × supercélula)
+\end{noquadro}
+
+Tudo já foi construído: o combustível é o $F_E$ acumulado do dia
+\javimos{3}{razão de Bowen} e o vapor do Cap.~4 \javimos{4}{razão de
+mistura}; a instabilidade condicional é o estado ``armado''
+\javimos{5}{instabilidade condicional}; os gatilhos são as convergências
+dos Caps.~10--12 \javimos{12}{frentes e linha seca}; a organização vem
+do perfil de vento \javimos{11}{cisalhamento do jato}. Aqui a máquina
+inteira funciona junta — e rápido: uma célula vive $\sim$30--60\,min.
+
+\section{CAPE e CIN: o orçamento de energia}\label{sec:cape}
+
+\quadro{Desenhar o Skew-$T$ com a trajetória da parcela: CIN como a
+área negativa (a tampa) e CAPE como a área positiva LFC$\to$EL. Marcar
+LCL, LFC, EL — três siglas que precisam virar reflexo.}
+
+\begin{formalivro}[a energia disponível]
+\[ \mathrm{CAPE} = \int_{LFC}^{EL} g\,
+\frac{T_{v,p} - T_{v,e}}{T_{v,e}}\,dz
+\qquad
+\mathrm{CIN} = \int_{sfc}^{LFC}(\ldots) < 0. \]
+Regra de leitura: CAPE $<$ 500 fraca; 500--1500 moderada; $>$ 2500
+J/kg severa. O Caso~1 calcula tudo com o MetPy numa sondagem
+pré-tempestade.
+\end{formalivro}
+
+\begin{formadif}[da energia à velocidade (T1)]
+Trabalho--energia com o empuxo \javimos{5}{empuxo}:
+\[ w_{max} = \sqrt{2\,\mathrm{CAPE}}
+\quad(\text{observado: } \approx w_{max}/2). \]
+CAPE $= 2000$\,J/kg $\Rightarrow$ $w_{max} = 63$\,m/s teórico,
+$\sim$30\,m/s real — o pedágio é entranhamento \javimos{6}{mistura que
+evapora}, peso da água \javimos{1}{$T_v$ com $r_L$} e perturbação de
+pressão (T3, N2).
+\end{formadif}
+
+\begin{noquadro}[o papel do CIN]
+CIN pequeno demais: convecção pipoca cedo, dispersa, fraca\\
+CIN moderado (10--50\,J/kg): acumula CAPE o dia todo e \textbf{explode
+à tarde} (N1)\\
+CIN grande demais: nada acontece (dia ``abafado e frustrante'')
+\end{noquadro}
+
+A tampa costuma ser a inversão de subsidência
+\javimos{5}{inversões} — e o gatilho precisa de levantamento
+suficiente para furá-la: frente \javimos{12}{levantamento frontal},
+linha seca, brisa marítima, montanha \veremos{17}{circulações
+regionais}, ou a frente de rajada de outra tempestade
+(\S\ref{sec:piscina}).
+
+\section{Cisalhamento organiza: os três tipos}\label{sec:tipos}
+
+\quadro{Desenhar os três hodógrafos lado a lado (Caso~3) e o esquema de
+cada tempestade embaixo. No HS a curvatura útil é ANTI-horária com a
+altura.}
+
+\begin{noquadro}[a régua do cisalhamento 0--6\,km]
+$<10$\,m/s: \textbf{célula única} — pulso de 30\,min, chuva mata o
+updraft\\
+10--20\,m/s: \textbf{multicélula} — trem de células, cada rajada
+dispara a próxima\\
+$>20$\,m/s e hodógrafo curvo: \textbf{supercélula} — updraft
+inclinado, rotativo, horas de vida
+\end{noquadro}
+
+Por que o cisalhamento ajuda? Ele inclina o updraft e separa a chuva
+da corrente ascendente — a tempestade não se afoga na própria
+precipitação. E o cisalhamento curvo é convertido em \emph{rotação} do
+updraft (o mesociclone \veremos{15}{tornados}): a helicidade do
+ambiente vira giro da tempestade (N3). O número de Richardson
+volumétrico $\mathrm{BRN} = \mathrm{CAPE}/(\tfrac12\Delta U^2)$
+resume a competição (T5): supercélulas vivem em BRN $\sim$10--50.
+
+\begin{noquadro}[dicionário dos índices operacionais (Stull \S14.7)]
+LI (Lifted Index): $T_{amb} - T_{parcela}$ em 500\,hPa — um ``CAPE de
+um nível'' (LI $< -4$: severo)\\
+K e Total Totals: combinações de $T$ e $T_d$ por níveis — umidade
+média incluída\\
+SRH, EHI, SCP/STP: os compostos modernos de helicidade $\times$ CAPE\\[2pt]
+todos são aproximações da mesma área do Skew-$T$: quem sabe CAPE/CIN
+lê qualquer boletim.
+\end{noquadro}
+
+\section{A supercélula em corte}\label{sec:super}
+
+\begin{itemize}
+  \item \textbf{Updraft} inclinado e rotativo ($\sim$20--40\,m/s):
+        sustenta granizo \veremos{15}{granizo}.
+  \item \textbf{Bigorna} na tropopausa \javimos{5}{a tampa global} com
+        \emph{overshooting top} onde o updraft fura por inércia.
+  \item \textbf{Downdrafts} dianteiro (FFD) e traseiro (RFD) — o RFD
+        participa da tornadogênese \veremos{15}{tornadogênese}.
+  \item No radar: eco em gancho, região de eco fraco (WER) —
+        assinaturas do Cap.~8 \javimos{8}{Doppler e refletividade}.
+\end{itemize}
+
+\section{A piscina fria e a auto-propagação}\label{sec:piscina}
+
+\quadro{Desenhar o downdraft desabando, a piscina fria se espalhando e
+a frente de rajada erguendo o ar quente vizinho — a tempestade
+plantando a filha.}
+
+\begin{formadif}[corrente de densidade (T4; Caso~4)]
+Chuva evaporando no ar sub-nuvem \javimos{4}{bulbo úmido} fabrica ar
+frio que desaba e se espalha:
+\[ c \simeq \sqrt{2\,g\,H\,\frac{\Delta\theta_v}{\theta_v}}
+\;\sim\; 15\text{--}25\ \mathrm{m/s}
+\quad(\Delta\theta_v = 5\,\mathrm{K},\ H = 1\,\mathrm{km}). \]
+A frente de rajada é gatilho da célula seguinte (multicélulas) e, em
+linha, sustenta as \textbf{linhas de instabilidade}; o equilíbrio
+RKW $c/\Delta u \approx 1$ entre piscina e cisalhamento raso decide a
+longevidade (N4).
+\end{formadif}
+
+\begin{noquadro}[o ciclo de vida em três atos]
+cumulus (só updraft) $\to$ maduro (up $+$ down coexistem, chuva forte)
+$\to$ dissipante (só downdraft)\\[2pt]
+$\sim$30--60\,min por célula; o \emph{sistema} pode viver horas
+passando o bastão pela frente de rajada.
+\end{noquadro}
+
+Sistemas maiores: linhas de instabilidade pré-frontais, complexos
+convectivos de mesoescala (MCC — comuns no norte da Argentina/sul do
+Brasil, entre os mais intensos do mundo), e a convecção que alimenta a
+ZCIT \javimos{11}{ZCIT}.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \text{umidade} + \text{CAPE} + \text{gatilho} + \text{cisalhamento} \]
+\[ w_{max} = \sqrt{2\,\mathrm{CAPE}} \qquad
+\mathrm{BRN} = \frac{\mathrm{CAPE}}{\tfrac12\Delta U^2} \qquad
+c = \sqrt{2gH\,\Delta\theta_v/\theta_v} \]
+célula única $\to$ multicélula $\to$ supercélula, conforme o hodógrafo
+\end{noquadro}
+
+Os perigos que essa máquina produz — granizo, rajadas, tornados,
+relâmpagos — são o próximo capítulo \veremos{15}{riscos severos}.
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap14\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Deduza $w_{max} = \sqrt{2\,\mathrm{CAPE}}$ pelo teorema
+        trabalho--energia aplicado ao empuxo, explicitando as
+        hipóteses (sem entranhamento, sem carga de água, sem
+        perturbação de pressão).
+  \item Para um perfil de excesso térmico triangular ($\Delta T_{max}$
+        no meio da camada LFC--EL de profundidade $D$), mostre que
+        $\mathrm{CAPE} \simeq g\,\Delta T_{max}\,D/(2\bar T)$ e avalie
+        para $\Delta T_{max} = 4$\,K, $D = 10$\,km.
+  \item Mostre que com entranhamento de fração $\mu$ por metro o
+        excesso de empuxo decai como $e^{-\mu z}$ e discuta por que
+        torres largas realizam mais CAPE que estreitas.
+  \item Deduza a velocidade da corrente de densidade
+        $c = k\sqrt{g'H}$ (Bernoulli no referencial da frente) e
+        avalie para $\Delta\theta_v = 5$\,K, $H = 1$\,km.
+  \item Defina o BRN e classifique os regimes convectivos para
+        (CAPE, $\Delta U$) $=$ (2000, 8), (2000, 18), (2000, 35) e
+        (800, 18) (J/kg, m/s).
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Aqueça a superfície da sondagem do Caso~1 de $+1$ em $+1$\,K e
+        trace CAPE e CIN; em que aquecimento a tampa estoura?
+  \item Integre o updraft com entranhamento
+        ($dw/dz = (B - \mu w^2)/w$, $\mu = 0{,}5/H_{ent}$) e compare
+        $w_{max}$ com $\sqrt{2\mathrm{CAPE}}$ para $H_{ent}$ de 2 a
+        20\,km.
+  \item Calcule a helicidade relativa à tempestade (0--3\,km) para os
+        três hodógrafos do Caso~3 e associe ao risco de supercélula.
+  \item Mapeie $c/\Delta u$ (RKW) no plano
+        ($\Delta\theta_v$, $\Delta u$) e marque a faixa ótima para
+        linhas de instabilidade duradouras.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

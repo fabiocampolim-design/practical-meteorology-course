@@ -1,0 +1,191 @@
+% Slides — Capítulo 19: Dispersão de Poluentes
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap19/}}
+
+\title[Cap. 19 --- Dispersão]{Capítulo 19 --- Dispersão de Poluentes}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{A pluma e a estabilidade}
+
+\begin{frame}{O problema em um desenho}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Fonte $Q$, vento $U$, turbulência espalhando: qual o $C$
+            em cada lugar?
+      \item A resposta é 100\% meteorologia: o Cap.~18 com uma
+            chaminé dentro.
+      \item Subida da pluma (empuxo $+$ momento) soma-se à altura
+            física.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_19_1.jpg}{0.5\textheight}{Fig.~19.1 --- pluma,
+      linha central e espalhamento}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{As três plumas da estabilidade}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item \alert{Looping} (tarde instável): golfadas no chão.
+      \item \alert{Coning} (neutro): o cone de livro.
+      \item \alert{Fanning} (noite estável): fita fina que viaja —
+            até a fumigação da manhã (N2).
+      \item O perfil de $\theta_v$ do Cap.~5 esculpe a fumaça.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_19_2.jpg}{0.52\textheight}{Fig.~19.2 ---
+      fanning, coning, looping e suas anisotropias}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{A pluma gaussiana}
+
+\begin{frame}{A equação do calor disfarçada}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$C = \dfrac{Q}{2\pi U\sigma_y\sigma_z}
+      e^{-y^2/2\sigma_y^2}\!\left[e^{-\frac{(z-H)^2}{2\sigma_z^2}}
+      + e^{-\frac{(z+H)^2}{2\sigma_z^2}}\right]$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Advecção-difusão com $t = x/U$ (T1).
+      \item O 2º termo: \alert{fonte-imagem} — o método das imagens
+            da eletrostática (T2); no solo, $C$ dobra.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_19_5b.jpg}{0.48\textheight}{Fig.~19.5 --- o
+      perfil gaussiano transversal da pluma}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Os $\sigma$s crescem com a distância}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Curvas de Pasquill--Gifford: $\sigma_y(x)$, $\sigma_z(x)$
+            por classe de estabilidade (A--F).
+      \item Perto da fonte: crescimento $\sim$linear (regime
+            balístico de Taylor, T5).
+      \item Longe: $\propto\sqrt{x}$ (difusivo).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_19_6c.jpg}{0.52\textheight}{Fig.~19.6 ---
+      $\sigma_y$ e $\sigma_z$ vs.\ distância (log--log)}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{No solo: o pico na distância crítica}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{máximo onde $\sigma_z = H/\sqrt2$;\quad
+      $C_{max} \propto 1/H^2$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Zero perto, pico, decaimento (T3; N1).
+      \item Dobrar a chaminé: 1/4 do pico — mas cai mais LONGE: a
+            política que exportou chuva ácida.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_19_6e.jpg}{0.44\textheight}{Fig.~19.6 ---
+      isolinhas de concentração no solo}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Na camada convectiva: o mergulho das térmicas}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Na ML da tarde as descidas largas trazem a pluma ao chão
+            perto da fonte — o padrão de looping quantificado.
+      \item Dispersão em coordenadas $z/z_i$: o Cap.~18 fornece a
+            régua.
+      \item É o regime dos modelos regulatórios modernos (AERMOD).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_19_8b.jpg}{0.5\textheight}{Fig.~19.8 ---
+      dispersão na camada de mistura convectiva}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{A caixa da cidade e o passeio aleatório}
+
+\begin{frame}{O modelo de caixa e os episódios}
+  \eqdestaque{$z_i\dfrac{dC}{dt} = Q_A - \dfrac{Uz_i}{W}C
+    \quad\Rightarrow\quad C_{eq} = \dfrac{Q_AW}{U\,z_i}$}
+  \vspace{0.5em}
+  \begin{itemize}
+    \item $Uz_i$ $=$ \alert{fator de ventilação}: a vazão de ar limpo
+          da cidade (T4; Caso~3).
+    \item Inverno estagnado (inversão baixa $+$ calmaria): mesma
+          emissão, 3--4$\times$ mais concentração — os episódios de
+          junho--agosto de SP são meteorologia.
+    \item O máximo noturno vem DEPOIS do rush: a caixa encolhe à
+          noite (N3; Cap.~18).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Einstein na chaminé: o passeio aleatório}
+  \eqdestaque{$\sigma_z^2 = \sigma_w^2t^2$ ($t \ll T_L$)\quad
+    $\to$\quad $\sigma_z^2 = 2Kt$, $K = \sigma_w^2T_L$
+    ($t \gg T_L$)}
+  \vspace{0.5em}
+  \begin{itemize}
+    \item Cada bocado de fumaça é uma partícula browniana com a
+          turbulência no papel das moléculas (T5; Caso~4).
+    \item O cotovelo de Taylor (1921): balístico $\to$ difusivo em
+          $t \sim T_L$.
+    \item AERMOD/CALPUFF: exatamente este passeio aleatório em escala
+          industrial.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$C = \tfrac{Q}{2\pi U\sigma_y\sigma_z}e^{\cdots}$
+    ($+$ imagem) \quad $C_{max}\propto 1/H^2$ \quad
+    $C_{eq} = \tfrac{Q_AW}{Uz_i}$ \quad $K = \sigma_w^2T_L$}
+  \vspace{0.6em}
+  Equação do calor, método das imagens, balanço de caixa e movimento
+  browniano — quatro métodos de física resolvendo um problema com
+  consequência social imediata.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~19}
+  \texttt{notebooks/cap19\_poluentes.ipynb}
+  \begin{enumerate}
+    \item Pluma gaussiana: campo e pico no solo.
+    \item Looping / coning / fanning.
+    \item A caixa da cidade em três ventilações.
+    \item Langevin: balístico $\to$ difusivo.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook. Sugestão: sobrepor dados CETESB do último inverno ao
+  Caso~3.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

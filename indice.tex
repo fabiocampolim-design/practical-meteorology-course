@@ -1,0 +1,129 @@
+% Índice geral do curso — Meteorologia Prática
+\documentclass[11pt]{article}
+\usepackage{comum/preambulo}
+
+\title{Meteorologia Prática\\
+{\large Índice Geral do Curso --- baseado em R.~Stull,
+\emph{Practical Meteorology} v1.02b (CC BY-NC-SA 4.0)}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\section*{Visão geral}
+
+Curso de graduação em física da atmosfera para estudantes com cálculo:
+\textbf{22 capítulos} acompanhando o livro de Stull $+$ \textbf{1
+módulo extra} (mudança climática), organizados como uma sequência de
+\textbf{dois semestres} (I: Caps.~1--11; II: Caps.~12--23; ver
+\texttt{guia\_do\_professor/cronograma.pdf}). Cada lei física aparece
+em \emph{duas formas} — a algébrica do livro e a diferencial — e cada
+capítulo fecha com um laboratório numérico em Python.
+
+\newtcolorbox{caixaindice}{colback=corquadro!6,colframe=corquadro,
+  title={Cada capítulo NN tem cinco peças},
+  fonttitle=\bfseries\small,before skip=8pt,after skip=8pt}
+\begin{caixaindice}
+\begin{tabular}{@{}lp{0.52\linewidth}@{}}
+\texttt{notas/capNN\_notas.pdf} & roteiro de quadro-negro (caixas
+verdes $=$ o que escrever)\\
+\texttt{slides/capNN\_slides.pdf} & apoio visual com as figuras do
+livro\\
+\texttt{guia\_do\_professor/guia.pdf} & seção do capítulo: ritmo,
+armadilhas, demonstrações\\
+\texttt{notebooks/capNN\_$\langle$tema$\rangle$.ipynb} & 4 casos
+numéricos $+$ células N1--N4 do aluno\\
+\texttt{notebooks/capNN\_solucoes.ipynb} & \emph{professor}: T1--T5
+(com \texttt{sympy}) e N1--N4 resolvidos\\
+\end{tabular}\\[3pt]
+Lista impressa do capítulo: página correspondente de
+\texttt{listas/listas\_exercicios.pdf}.
+\end{caixaindice}
+
+\section*{Os capítulos}
+
+\begin{center}
+\begin{tabular}{cllc}
+\hline
+Cap. & Título & Notebook (tema) & Sem. \\
+\hline
+1 & Fundamentos da Atmosfera & \texttt{fundamentos} & I \\
+2 & Radiação Solar e Infravermelha & \texttt{radiacao} & I \\
+3 & Termodinâmica da Atmosfera & \texttt{termodinamica} & I \\
+4 & Vapor d'Água & \texttt{vapor} & I \\
+5 & Estabilidade Atmosférica & \texttt{estabilidade} & I \\
+6 & Nuvens & \texttt{nuvens} & I \\
+7 & Processos de Precipitação & \texttt{precipitacao} & I \\
+8 & Satélites e Radar & \texttt{sensoriamento} & I \\
+9 & Boletins Meteorológicos e Análise de Cartas & \texttt{cartas} & I \\
+10 & Forças Atmosféricas e Ventos & \texttt{ventos} & I \\
+11 & Circulação Geral & \texttt{circulacao} & I \\
+\hline
+12 & Massas de Ar e Frentes & \texttt{frentes} & II \\
+13 & Ciclones Extratropicais & \texttt{ciclones} & II \\
+14 & Fundamentos de Tempestades & \texttt{tempestades} & II \\
+15 & Perigos de Tempestades & \texttt{perigos} & II \\
+16 & Ciclones Tropicais & \texttt{furacoes} & II \\
+17 & Ventos Regionais & \texttt{ventosregionais} & II \\
+18 & Camada Limite Atmosférica & \texttt{camadalimite} & II \\
+19 & Dispersão de Poluentes & \texttt{poluentes} & II \\
+20 & Previsão Numérica do Tempo & \texttt{previsao} & II \\
+21 & Processos Climáticos Naturais & \texttt{clima} & II \\
+22 & Óptica Atmosférica & \texttt{optica} & II \\
+23 & Mudança Climática \emph{(módulo extra)} & \texttt{mudanca} & II \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Materiais transversais}
+
+\begin{itemize}
+  \item \texttt{guia\_do\_professor/guia.pdf} --- o guia completo
+        (47\,pp): uma seção por capítulo, com objetivos,
+        pré-requisitos a reativar, armadilhas conceituais,
+        demonstrações de baixo custo, uso dos notebooks em aula e
+        pares T$\leftrightarrow$N.
+  \item \texttt{guia\_do\_professor/cronograma.pdf} --- cronograma
+        dos dois semestres (15 semanas cada), provas, entregas,
+        avaliação sugerida e trilha compacta opcional.
+  \item \texttt{listas/listas\_exercicios.pdf} --- 23 listas (uma
+        página por capítulo, impressão avulsa); \emph{gerado} das
+        notas por \texttt{ferramentas/gera\_listas.py}.
+  \item \texttt{environment.yml} --- ambiente conda \texttt{meteo}
+        (MetPy, climlab, ambiance, pyrcel, tcpyPI, Py-ART, Satpy,
+        sympy).
+  \item \texttt{comum/} --- preâmbulo LaTeX e tema Beamer comuns;
+        \texttt{comum/estilo\_meteo.py} dá o estilo gráfico dos
+        notebooks.
+\end{itemize}
+
+\section*{Para começar}
+
+\begin{enumerate}
+  \item \textbf{Professor}: leia a seção do capítulo no guia
+        $\to$ prepare com as notas (as caixas verdes são o quadro)
+        $\to$ projete os slides $\to$ rode os casos do notebook nos
+        momentos sugeridos $\to$ libere a lista ao fechar o capítulo.
+  \item \textbf{Aluno}: notas como texto-base em português $+$ o
+        capítulo correspondente do Stull; notebook do capítulo para
+        os casos e os exercícios N.
+  \item \textbf{Ambiente}: \texttt{conda env create -f
+        environment.yml}, depois \texttt{conda activate meteo} e
+        \texttt{jupyter lab}.
+  \item \textbf{Compilar LaTeX}: \texttt{pdflatex} (2$\times$) na
+        pasta do próprio arquivo.
+\end{enumerate}
+
+\section*{Licença e atribuição}
+
+Todo o material é derivado de R.~Stull, \emph{Practical Meteorology:
+An Algebra-based Survey of Atmospheric Science} (UBC, v1.02b),
+licenciado \textbf{CC BY-NC-SA 4.0} — e herda a mesma licença: uso
+não comercial, com atribuição, compartilhado sob os mesmos termos.
+Exceção: a Fig.~7.13 do livro (cristais de neve, © K.~Libbrecht,
+``used with permission'') \emph{não} está incluída e não deve ser
+redistribuída.
+
+\end{document}

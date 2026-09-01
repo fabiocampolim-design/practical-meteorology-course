@@ -1,0 +1,102 @@
+% Guia do professor — Capítulo 10: Forças e Ventos
+\section{Capítulo 10 --- Forças Atmosféricas e Ventos}
+
+\subsection*{Visão geral e ritmo}
+
+A porta de entrada da dinâmica: Coriolis, equilíbrio geostrófico, vento
+gradiente, atrito/Ekman e continuidade — terminando na frase que organiza a
+sinótica: \emph{baixas convergem e chovem; altas divergem e abrem}.
+\textbf{Ritmo: 2 aulas de 2\,h.} Para físicos, é o capítulo mais
+confortável do curso — aproveite para ir fundo nas deduções.
+
+\begin{itemize}
+  \item \textbf{Aula 1} — forças, Coriolis (com a desmistificação da pia),
+        círculos inerciais, dedução geostrófica completa, Buys-Ballot,
+        régua na carta. Casos~1--2 (15\,min).
+  \item \textbf{Aula 2} — vento gradiente (quadrática no quadro), 3 forças
+        com atrito e o desenho convergência/divergência, Ekman,
+        continuidade e $w$. Casos~3--4 (15\,min).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item escrever a equação do movimento horizontal e a escala de cada
+        termo;
+  \item deduzir o vento geostrófico e usá-lo como régua de carta
+        (Buys-Ballot no HS);
+  \item explicar sub/supergeostrofia em baixas/altas e o regime
+        ciclostrófico;
+  \item desenhar o equilíbrio de 3 forças e concluir
+        convergência$\to$subida em baixas;
+  \item derivar/verificar a espiral de Ekman e estimar $w$ por
+        continuidade.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Referenciais não inerciais e força centrífuga/Coriolis (mecânica);
+gradiente e divergência (cálculo vetorial); hidrostática (Cap.~1) para a
+versão em coordenadas de pressão (mencionar, não exigir).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{A pia}: Coriolis em escala de pia é $10^{-7}$ da força
+        real; medir com o T1 (escala de tempo).
+  \item \textbf{HS × HN}: todo desenho de livro americano gira ao
+        contrário aqui; treinar Buys-Ballot no HS até virar reflexo.
+  \item \textbf{``Coriolis faz o vento''}: Coriolis só \emph{desvia}; quem
+        empurra é a PGF.
+  \item \textbf{Geostrofia como lei}: é equilíbrio assintótico; perto do
+        equador, em curvas fechadas e na CL ele falha — e as falhas são o
+        conteúdo dos Caps.~11--16.
+  \item \textbf{Sinal de $f$}: erros de sinal no HS são epidêmicos em
+        listas; cobrar o desenho junto com a conta.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Globo girante (ou cadeira giratória) + bolinha rolada: o desvio aparente
+ao filmar do referencial girante. Vídeo clássico do carrossel do MIT
+fecha a discussão da pia.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~10)}
+
+Aquecimento: $f$ em várias latitudes; $U_g$ de cartas dadas; período
+inercial. Aprofundamento: vento gradiente em baixas/altas; ângulo de
+cruzamento com atrito. Síntese: ``por que o centro de uma alta é sempre de
+ventos fracos?'' (T3 responde).
+\emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap10\_ventos.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & Círculos inerciais e cicloides & Aula 1, após Coriolis \\
+2 & Geostrófico × gradiente na baixa sintética & Aula 1/2, após dedução \\
+3 & Ekman: analítica × numérica & Aula 2, após atrito \\
+4 & Convergência $\to$ mapa de $w$ & fim da Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~4 é o fecho conceitual: o mapa de $w$ da baixa sintética É o mapa
+de nuvens que os alunos verão nas imagens de satélite do Cap.~13.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 (inerciais, equador, teto das altas, ângulo de
+cruzamento, verificação de Ekman + transporte) e N1--N4. Soluções em
+\texttt{cap10\_solucoes.ipynb} (\emph{não distribuir}): T3 e T5 com
+\texttt{sympy}. Pares: T1$\leftrightarrow$N1, T5$\leftrightarrow$N3.
+
+\subsection*{Conexões com o resto do curso}
+
+Isóbaras$\to$vento fecha o Cap.~9; convergência$\to w$ abre os
+Caps.~12--13; Ekman e cruzamento $\to$ camada limite (Cap.~18) e furacões
+(Cap.~16); ciclostrófico $\to$ tornados (Cap.~15); geostrofia em altitude
+$\to$ vento térmico (Cap.~11).

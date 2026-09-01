@@ -1,0 +1,101 @@
+% Guia do professor — Capítulo 19: Dispersão de Poluentes
+\section{Capítulo 19 --- Dispersão de Poluentes}
+
+\subsection*{Visão geral e ritmo}
+
+O Cap.~18 aplicado a um problema com consequência social imediata.
+Para físicos é um banquete de métodos: equação do calor, método das
+imagens, balanço de caixa e movimento browniano — cada um resolvendo
+um pedaço do problema regulatório. \textbf{Ritmo: 2 aulas de 2\,h
+(cabe em 1 aula $+$ estudo dirigido se o semestre apertar).}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — pluma gaussiana (dedução + imagens),
+        máximo no solo e o $1/H^2$, as três plumas da estabilidade
+        (Casos~1--2).
+  \item \textbf{Aula 2} — modelo de caixa e episódios (Caso~3),
+        fumigação, passeio aleatório e Taylor (Caso~4).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item deduzir a pluma gaussiana e aplicar a fonte-imagem;
+  \item localizar e escalar o máximo de concentração no solo;
+  \item associar forma de pluma a estabilidade e hora do dia;
+  \item usar o modelo de caixa e o fator de ventilação para explicar
+        episódios;
+  \item conectar passeio aleatório, teorema de Taylor e difusividade
+        turbulenta.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+CLA completa (Cap.~18: $z_i$, estabilidade, TKE, $T_L$); perfis e
+inversões (Cap.~5); método das imagens (eletrostática!); equação do
+calor; ventilação anticiclônica (Cap.~12).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Chaminé alta resolve''}: reduz o pico local
+        ($1/H^2$) e EXPORTA o problema — gancho histórico da chuva
+        ácida.
+  \item \textbf{``Episódio $=$ mais emissão''}: os episódios de
+        inverno são queda do fator de ventilação com emissão igual —
+        o Caso~3 desfaz o mito.
+  \item \textbf{Pluma estável ``comportada''}: o fanning é uma bomba
+        armada esperando a fumigação da manhã.
+  \item \textbf{Gaussiana como lei exata}: vale para terreno plano,
+        estacionário, sem química; é o LEGO básico dos modelos, não
+        o edifício.
+  \item \textbf{Máximo noturno de poluição atribuído ao tráfego}: o
+        rush é às 18\,h; o pico de C é mais tarde porque a caixa
+        encolhe (N3).
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Incenso em sala: perto do teto (estável, estratificado) vira fanning;
+sobre um aquecedor, looping — as três plumas por R\$\,5. Dados
+CETESB do último inverno: sobrepor série de MP$_{10}$ com $U$ e
+discutir o fator de ventilação.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~19)}
+
+Aquecimento: $C$ no solo para fontes dadas; classes de Pasquill.
+Aprofundamento: $x_{max}$, caixa com números reais. Síntese: ``por
+que os piores episódios de SP são em julho, se se dirige o ano
+todo?''. \emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap19\_poluentes.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & pluma gaussiana: campo e pico no solo & Aula 1 \\
+2 & looping/coning/fanning & Aula 1 \\
+3 & caixa da cidade: 3 ventilações & Aula 2 \\
+4 & Langevin: balístico $\to$ difusivo & Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~4 fecha o arco ``física estatística na atmosfera'' começado no
+Cap.~18 — Einstein 1905 com turbulência no lugar de moléculas.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap19\_solucoes.ipynb}
+(\emph{não distribuir}): T3 com \texttt{sympy}; N2 (fumigação) e N3
+(máximo noturno) são os de maior rendimento conceitual. Pares:
+T3$\leftrightarrow$N1, T4$\leftrightarrow$N3, T5$\leftrightarrow$N4.
+
+\subsection*{Conexões com o resto do curso}
+
+CLA e turbulência (Cap.~18, essencial); estabilidade (Cap.~5);
+inversões e anticiclones (Caps.~5, 12); brisas redistribuindo poluição
+(Cap.~17); deposição e nuvens (Caps.~6--7); química do ozônio e clima
+(Cap.~21); os mesmos esquemas de advecção nos modelos (Cap.~20).

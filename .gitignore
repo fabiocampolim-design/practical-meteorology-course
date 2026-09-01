@@ -1,0 +1,35 @@
+# Operations metadata (also in ~/.gitignore_global on the author's machine)
+.project-class
+.remember/
+.githubify-rules
+.githubify-extra-scrub
+.githubify-scrub-allow
+.githubify-tool-consumer
+.claude/settings.local.json
+
+# The source book (R. Stull, Practical Meteorology) is not redistributed here:
+# download it from https://www.eoas.ubc.ca/books/Practical_Meteorology/ into book/.
+# extracted/ is the pdf-extract working output of that book (also never shipped).
+book/
+extracted/
+# page slices of the book made by ferramentas/slice.py (input to the extractor)
+ferramentas/cap[0-9][0-9]*.pdf
+# figure crops pulled out of notebooks by ferramentas/extract_plots.py
+ferramentas/*_plot[0-9][0-9].png
+
+# LaTeX build products (the compiled PDFs are tracked on purpose)
+*.aux
+*.log
+*.out
+*.toc
+*.nav
+*.snm
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

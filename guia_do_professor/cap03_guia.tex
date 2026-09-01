@@ -1,0 +1,107 @@
+% Guia do professor — Capítulo 3: Termodinâmica da Atmosfera
+\section{Capítulo 3 --- Termodinâmica da Atmosfera}
+
+\subsection*{Visão geral e ritmo}
+
+O capítulo transforma a 1ª lei da termodinâmica em quatro ferramentas:
+gradiente adiabático seco, temperatura potencial, balanço euleriano de
+calor e balanço de superfície. \textbf{Ritmo sugerido: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — calores específicos e latente, 1ª lei na forma
+        meteorológica, $\Gamma_d$, temperatura potencial (com o exemplo
+        föhn). Fechar com o Caso~1 (10\,min).
+  \item \textbf{Aula 2} — derivada material e advecção, balanço euleriano,
+        balanço de superfície e Bowen. Fechar com Casos~2--3 (15--20\,min;
+        o Caso~3 merece a projeção mais longa).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item aplicar $\delta q = c_p dT - \alpha dP$ e explicar fisicamente cada
+        termo;
+  \item deduzir $\Gamma_d = g/c_p$ e distingui-lo do gradiente ambiental;
+  \item calcular $\theta$, justificar sua conservação e usá-la para comparar
+        parcelas de níveis diferentes;
+  \item escrever o balanço euleriano, estimar advecção com números reais e
+        entender a derivada material;
+  \item repartir $F^*$ em $F_H$, $F_E$, $F_G$ via razão de Bowen e prever o
+        caráter do ciclo diurno de uma superfície.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+1ª lei na forma $dU = \delta Q - PdV$ (física básica); hidrostática e gás
+ideal do Cap.~1 (usados nas duas deduções centrais); regra da cadeia em
+várias variáveis (derivada material). Alunos de física têm tudo — o novo é
+o \emph{vocabulário} meteorológico.
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Esfria porque lá em cima é frio''}: a parcela esfria por
+        \emph{expansão}, não por contato. É a confusão número 1 do capítulo.
+  \item \textbf{$\Gamma_d$ vs.\ gradiente ambiental}: 9{,}8 é o que a
+        parcela faz; 6{,}5 é a média do que a sondagem mostra. Confundi-los
+        inviabiliza o Cap.~5.
+  \item \textbf{$\theta$ como ``temperatura exótica''}: insistir que é só um
+        rótulo conservado — comparar com energia mecânica em queda livre.
+  \item \textbf{Sinal da advecção}: vento soprando \emph{do} quente
+        \emph{para} o frio dá $-U\,\partial T/\partial x > 0$ (aquece).
+        Fazer o desenho do gradiente com setas antes da fórmula.
+  \item \textbf{Bowen como propriedade fixa}: $\beta$ depende da umidade
+        disponível — o mesmo solo seco ou molhado muda $\beta$ por ordem de
+        magnitude.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Borrifador de álcool no termômetro (ou no dorso da mão): queda imediata de
+vários graus — calor latente em ação. Alternativa: bomba manual de encher
+pneu aquece ao comprimir (adiabática no sentido oposto).
+
+\subsection*{Problemas sugeridos do livro (seção de exercícios do Cap.~3)}
+
+Aquecimento: conversões de calor/temperatura, cálculo de $\theta$ para
+vários níveis, advecção com vento e gradiente dados. Aprofundamento:
+problemas de balanço de superfície com Bowen; síntese: ``o que aconteceria
+se $L_v$ da água fosse 10× menor?''. \emph{Confira a numeração na sua cópia
+(v1.02b) antes de publicar a lista.}
+
+\subsection*{Uso do notebook \texttt{cap03\_termodinamica.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & Parcela adiabática (EDO); conservação de $\theta$ & fim da Aula 1 \\
+2 & Ciclo diurno: balanço de superfície com Bowen & Aula 2, após Bowen \\
+3 & Advecção 1D (EDP, esquema \emph{upwind}) & Aula 2, após advecção \\
+4 & $\theta$ da sondagem real; camada de mistura & Aula 2 ou tarefa \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~3 é o momento didático mais rico: é a primeira EDP integrada no
+curso (``previsão de verdade''), e a difusão numérica visível abre a
+conversa sobre por que modelos operacionais usam esquemas sofisticados
+(Cap.~20).
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 ($\Gamma_d$ terrestre e marciano, dedução de $\theta$,
+$\theta$--entropia, solução geral da advecção, partição de Bowen) e N1--N4
+(células reservadas no notebook). Soluções em
+\texttt{cap03\_solucoes.ipynb} (\emph{não distribuir}): T2--T4 com
+verificação simbólica \texttt{sympy}; N3 quantifica a difusão numérica do
+\emph{upwind}. Pares teoria--numérica: T2$\leftrightarrow$N1 e
+T4$\leftrightarrow$N3.
+
+\subsection*{Conexões com o resto do curso}
+
+$\Gamma_d$ e $\theta$ $\to$ estabilidade e diagramas termodinâmicos
+(Cap.~5); calor latente $\to$ umidade (Cap.~4) e tempestades (Cap.~14);
+advecção $\to$ frentes (Cap.~12) e NWP (Cap.~20); balanço de superfície
+$\to$ camada limite (Cap.~18).

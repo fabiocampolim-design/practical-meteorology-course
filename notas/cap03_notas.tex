@@ -1,0 +1,329 @@
+% Notas de aula — Capítulo 3: Termodinâmica da Atmosfera
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap03/}}
+
+\title{Capítulo 3 --- Termodinâmica da Atmosfera\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:primeira}--\S\ref{sec:theta} (1ª lei, processos
+adiabáticos, temperatura potencial).
+\emph{Aula 2:} \S\ref{sec:euler}--\S\ref{sec:superficie} (balanço euleriano
+de calor, balanço de superfície, razão de Bowen).
+
+\section{Calor e energia interna}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~3 --- Termodinâmica}\\[2pt]
+``Calor não é substância; é energia em trânsito.''\\[2pt]
+O ar armazena energia interna ($\propto T$) e troca por três vias:\\
+radiação \quad $|$ \quad condução/turbulência \quad $|$ \quad calor latente
+\end{noquadro}
+
+A via radiativa acabamos de quantificar \javimos{2}{balanço radiativo};
+a turbulenta será o coração da camada limite \veremos{18}{fluxos
+turbulentos}; a latente depende da água e domina os trópicos
+\veremos{4}{calor latente} \veremos{7}{precipitação}. Hoje montamos a
+contabilidade que une as três: a primeira lei aplicada ao ar.
+
+\begin{formalivro}[calores específicos]
+\[ C_p = 1004\ \mathrm{J\,kg^{-1}K^{-1}}\ (\text{pressão const.}),\quad
+   C_v = 717\ \mathrm{J\,kg^{-1}K^{-1}}\ (\text{volume const.}),\quad
+   C_p = C_v + \Re_d. \]
+\end{formalivro}
+
+Por que $C_p > C_v$? A pressão constante, parte do calor vira trabalho de
+expansão — é a mesma diferença $\Re_d$ da lei dos gases
+\javimos{1}{lei dos gases}. Na atmosfera quase tudo acontece ``a pressão
+imposta pelo ambiente'', então $C_p$ é o calor específico do dia a dia.
+
+\begin{noquadro}[a água como bateria térmica]
+$L_v = 2{,}5\times10^{6}$\,J/kg\\[2pt]
+evaporar 1\,g de água ``rouba'' o calor que esquentaria
+\textbf{2{,}5\,kg de ar} em 1\,K.
+\end{noquadro}
+
+Esse número gigante é o motivo de o suor funcionar, de a maritimidade
+amaciar climas — e de uma tempestade tropical ser uma máquina movida a
+vapor \veremos{16}{ciclones tropicais}.
+
+\section{Primeira lei da termodinâmica}\label{sec:primeira}
+
+\quadro{Deduzir a partir de $dU = \delta q\,m - P\,dV$; chegar na forma
+por unidade de massa do livro. Desenhar o pistão (Fig.~3.2 do livro): calor
+entra, parte esquenta o gás, parte empurra o pistão.}
+
+\begin{formadif}[forma diferencial]
+Por unidade de massa, com volume específico $\alpha = 1/\rho$:
+\[ \delta q = c_v\,dT + P\,d\alpha
+ \;\;\overset{P\alpha = \Re_d T}{=}\;\; c_p\,dT - \alpha\,dP. \]
+A segunda forma é a útil em meteorologia: pressão — não volume — é a
+coordenada natural de quem sobe e desce na atmosfera
+\javimos{1}{perfil de pressão}.
+\end{formadif}
+
+\begin{formalivro}[Stull eq.~3.2d]
+\[ \Delta q = C_p\,\Delta T - \frac{1}{\rho}\,\Delta P. \]
+Aquecer o ar ($\Delta q$) vai parte para esquentar ($C_p\Delta T$), parte
+para trabalho de expansão ($-\Delta P/\rho$).
+\end{formalivro}
+
+\section{Processos adiabáticos e gradiente adiabático seco}\label{sec:adiab}
+
+\quadro{Pergunta à turma ANTES de deduzir: por que uma parcela que sobe
+esfria, se ninguém tirou calor dela? (Deixar responderem; a resposta certa
+é ``ela paga o trabalho de expansão com energia interna''.)}
+
+Uma parcela que sobe encontra pressão menor \javimos{1}{$P(z)$
+exponencial}, expande e faz trabalho contra o ambiente — esfria \emph{sem
+trocar calor}. O ar é péssimo condutor: subidas de minutos a horas são
+adiabáticas em excelente aproximação \javimos{1}{terminologia de
+processos}.
+
+\begin{formadif}[dedução do gradiente adiabático seco]
+Adiabático: $\delta q = 0 \Rightarrow c_p\,dT = \alpha\,dP$. Com a
+hidrostática $dP = -\rho g\,dz$ \javimos{1}{equilíbrio hidrostático}:
+\[ c_p\,dT = -g\,dz
+\quad\Longrightarrow\quad
+\boxed{\ \frac{dT}{dz}\bigg|_{ad} = -\frac{g}{c_p} \equiv -\Gamma_d\ } \]
+\end{formadif}
+
+\begin{formalivro}[Stull eq.~3.14]
+\[ \Gamma_d = \frac{g}{C_p} = 9{,}8\ \mathrm{K\,km^{-1}}
+\qquad \text{(gradiente adiabático seco)}. \]
+\end{formalivro}
+
+\begin{noquadro}[não confundir os dois gradientes]
+$\Gamma_d = 9{,}8$\,K/km: o que a \emph{parcela} faz ao subir
+(física, fixo)\\
+$\gamma \simeq 6{,}5$\,K/km: o que a \emph{sondagem} mostra
+(ambiente, varia dia a dia)\\[2pt]
+comparar os dois $=$ estabilidade $\to$ Cap.~5
+\end{noquadro}
+
+Essa distinção parcela/ambiente é o erro conceitual mais comum do curso —
+vale dez minutos de aula. A comparação decide se o ar afunda de volta
+(estável) ou dispara para cima (instável) \veremos{5}{estabilidade
+estática}; quando a parcela satura, o $\Gamma$ dela muda
+\veremos{4}{saturação} \veremos{5}{gradiente adiabático úmido}.
+
+\section{Temperatura potencial}\label{sec:theta}
+
+\quadro{Motivar: ``queremos um termômetro que não mude só porque a parcela
+subiu''. Deduzir $\theta$ no quadro a partir da mesma linha adiabática.}
+
+\begin{formadif}[dedução]
+De $c_p\,dT = \alpha\,dP = \Re_d T\,dP/P$:
+\[ \frac{dT}{T} = \frac{\Re_d}{c_p}\frac{dP}{P}
+\;\Longrightarrow\;
+T\,P^{-\Re_d/c_p} = \text{const ao longo da adiabática}. \]
+Definindo a constante pela pressão de referência $P_0 = 100$\,kPa:
+\end{formadif}
+
+\begin{formalivro}[Stull eq.~3.12]
+\[ \boxed{\ \theta = T\left(\frac{P_0}{P}\right)^{\Re_d/C_p}\ },
+\qquad \frac{\Re_d}{C_p} = 0{,}28571. \]
+$\theta$ = temperatura que a parcela teria se trazida adiabaticamente a
+100\,kPa. \textbf{Conservada} em processos adiabáticos secos.
+\end{formalivro}
+
+\begin{noquadro}[por que $\theta$ vale ouro]
+$T$ muda só de subir; $\theta$ não: é a \emph{etiqueta} da parcela.\\
+comparar ar de alturas diferentes $\Rightarrow$ comparar $\theta$, nunca
+$T$.\\
+aproximação de bolso: $\theta \simeq T + (9{,}8\ \mathrm{K/km})\,z$.
+\end{noquadro}
+
+\begin{exemplo}[ar de altitude que desce a serra]
+Ar a $P = 70$\,kPa e $T = 5\,°$C (278\,K) desce adiabaticamente até
+$P = 100$\,kPa (litoral):
+\[ \theta = 278\times(100/70)^{0{,}2857} = 278\times1{,}107 = 308\ \mathrm{K}
+ = 35\,°\mathrm{C}. \]
+O mesmo ar que estava a $5\,°$C chega \emph{quente e seco} ao nível do
+mar — mecanismo dos ventos tipo föhn \veremos{17}{ventos de montanha}.
+\emph{Verificação: $\Gamma_d\Delta z \simeq 9{,}8\times3 \simeq 29$\,K
+$\Rightarrow 278+29=307$\,K, consistente.}
+\end{exemplo}
+
+Conexão com a física: $\theta$ é a entropia disfarçada —
+$ds = c_p\,d\ln\theta$ (exercício T3). Superfícies isentrópicas
+($\theta$ const) são as trilhas naturais do escoamento: o ar viaja por
+elas, e as cartas isentrópicas exploram isso \veremos{12}{análise
+isentrópica}. Nos diagramas termodinâmicos, as adiabáticas secas são as
+linhas de $\theta$ constante \veremos{5}{diagramas termodinâmicos}. Para
+ar úmido usa-se $\theta_v$ (com a correção virtual \javimos{1}{temperatura
+virtual}).
+
+\section{Balanço euleriano de calor}\label{sec:euler}
+
+\quadro{Desenhar um cubo FIXO no espaço com vento atravessando; setas de
+entrada/saída de calor. Contraste com a parcela que viaja (Lagrange):
+duas janelas para a mesma física.}
+
+Num ponto fixo (visão \emph{euleriana} — a da estação meteorológica e a
+do modelo numérico), a temperatura muda por advecção, radiação,
+turbulência e calor latente:
+
+\begin{formadif}[derivada material]
+A ponte entre parcela (Lagrange) e ponto fixo (Euler) é a regra da cadeia:
+\[ \frac{DT}{Dt} = \frac{\partial T}{\partial t}
+ + u\frac{\partial T}{\partial x} + v\frac{\partial T}{\partial y}
+ + w\frac{\partial T}{\partial z}
+\;\Longrightarrow\;
+\frac{\partial T}{\partial t} = -\,\vec{U}\cdot\nabla T + \text{fontes}. \]
+O termo $-\vec U\cdot\nabla T$ é a \textbf{advecção}: vento soprando de
+região quente esquenta o ponto. Esta mesma estrutura reaparecerá para
+umidade \veremos{4}{balanço de umidade}, momento \veremos{10}{equações do
+movimento} e qualquer traçador \veremos{19}{dispersão de poluentes}.
+\end{formadif}
+
+\begin{formalivro}[Stull eq.~3.51, simplificada]
+\[ \frac{\Delta T}{\Delta t} \simeq
+ \underbrace{-\,U\frac{\Delta T}{\Delta x}}_{\text{advecção}}
+ \;-\; \underbrace{\frac{1}{\rho C_p}\frac{\Delta F_z}{\Delta z}}_{\substack{\text{divergência de fluxo}\\ \text{(rad.\ + turb.)}}}
+ \;+\; \underbrace{\frac{L_v}{C_p}\frac{\Delta r_{cond}}{\Delta t}}_{\text{calor latente}}. \]
+\end{formalivro}
+
+\begin{noquadro}[exemplo de advecção --- fazer a conta]
+vento $U = 10$\,m/s, gradiente $5$\,K$/100$\,km:\\[2pt]
+$\partial T/\partial t = -U\,\partial T/\partial x
+ = 10\times\dfrac{5}{10^5}$\,K/s $= 5\times10^{-4}$\,K/s
+ $\simeq \mathbf{1{,}8}$\,\textbf{K/h}
+\end{noquadro}
+
+É a frente fria chegando \veremos{12}{frentes}: quedas de 10\,K em poucas
+horas são advecção quase pura. A simulação do Caso~3 do notebook faz essa
+frente viajar — e mostra a difusão numérica que os esquemas de advecção
+dos modelos precisam domar \veremos{20}{esquemas numéricos}.
+
+\section{Balanço de calor na superfície}\label{sec:superficie}
+
+\quadro{Desenhar a superfície com as 4 setas: $F^*$ (radiação líquida,
+já conhecida), $F_H$ (sensível), $F_E$ (latente), $F_G$ (solo). Perguntar:
+para onde vai a energia do Sol ao meio-dia?}
+
+\begin{formalivro}[Stull eq.~3.52]
+\[ F^{*} = F_H + F_E + F_G, \]
+com a \textbf{razão de Bowen} $\beta = F_H/F_E$: deserto $\beta\sim5$;
+gramado $\sim0{,}5$; floresta tropical $\sim0{,}2$; oceano $\sim0{,}1$.
+\end{formalivro}
+
+\begin{noquadro}[mesma entrada, climas opostos]
+$F^*$ igual, partições diferentes:\\
+deserto: $F^* \to F_H$ \ (ar seco e MUITO quente: tardes de 45\,°C)\\
+floresta: $F^* \to F_E$ \ (evapora: ameno e úmido; a chuva de Manaus)\\[2pt]
+razão de Bowen $\beta = F_H/F_E$ é o ``caráter'' da superfície.
+\end{noquadro}
+
+O $F^*$ vem do capítulo anterior \javimos{2}{radiação líquida}; a partição
+em $F_H$ vs.\ $F_E$ decide a profundidade da camada limite convectiva
+\veremos{18}{camada limite convectiva} e o combustível disponível para
+tempestades ($F_E$ carrega vapor que vira CAPE)
+\veremos{14}{tempestades}. Simulação do ciclo diurno no Caso~2 do
+notebook; o exercício T5 compara deserto e floresta.
+
+Fluxo sensível pela fórmula de transferência (\emph{bulk}):
+$F_H = \rho C_p\,C_H\,M\,(\theta_{sfc} - \theta_{ar})$, com
+$C_H \sim 2\times10^{-3}$ e $M$ o vento — note que já é $\theta$, não $T$,
+que entra \javimos{3}{temperatura potencial, \S\ref{sec:theta}}. A mesma
+forma \emph{bulk} dará a evaporação \veremos{4}{fórmula bulk da
+evaporação} e o atrito \veremos{18}{arrasto na superfície}.
+
+\section{Temperaturas aparentes e sensores}
+
+O corpo humano não mede $T$: mede \emph{fluxo de calor} — e vento e
+umidade o alteram (Stull \S3.7).
+
+\begin{formalivro}[índice de resfriamento pelo vento (wind chill)]
+\[ T_{wc} = 13{,}12 + 0{,}6215\,T - 11{,}37\,M^{0{,}16}
+ + 0{,}3965\,T\,M^{0{,}16}, \]
+com $T$ em °C e $M$ em km/h (vento a 10\,m; fórmula JAG/TI usada
+pelo Stull). O vento aumenta o coeficiente de troca da fórmula
+\emph{bulk} \javimos{3}{$F_H$ bulk} e ``rouba'' calor mais rápido —
+$0\,°$C com 50\,km/h sente-se como $-8\,°$C.
+\end{formalivro}
+
+No calor, o análogo é o índice de calor/humidex: umidade alta trava a
+evaporação do suor — o $T_w$ do próximo capítulo é o limite físico
+\veremos{4}{bulbo úmido}. \textbf{Sensores de $T$} (Stull \S3.8):
+termômetros de líquido, termopares, termistores e resistências de
+platina (padrão das estações automáticas) — todos exigem abrigo
+ventilado (o erro clássico é medir radiação, não temperatura
+\javimos{2}{balanço radiativo do sensor}).
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \delta q = c_p dT - \alpha dP \;\to\; \Gamma_d = \frac{g}{c_p}
+ \;\to\; \theta = T\Big(\frac{P_0}{P}\Big)^{0{,}286} \]
+\[ \frac{\partial T}{\partial t} = -\vec U\cdot\nabla T + \cdots
+ \qquad F^* = F_H + F_E + F_G \]
+\end{noquadro}
+
+A 1ª lei vira: régua de parcela ($\Gamma_d$), etiqueta conservada
+($\theta$), equação de previsão (euleriana — o embrião do Cap.~20) e
+contabilidade de superfície (Bowen). O próximo capítulo acrescenta o
+ingrediente que falta — a água e seu calor latente
+\veremos{4}{vapor d'água}.
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Complementam a seção de exercícios do livro. Soluções (professor) em
+\texttt{cap03\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Deduza $\Gamma_d = g/c_p$ a partir da 1ª lei e da hidrostática, e
+        explique por que $\Gamma_d$ não depende da altura (nesta
+        aproximação). Calcule $\Gamma_d$ em Marte
+        ($g = 3{,}7$\,m/s$^2$, $c_p^{CO_2} = 845$\,J\,kg$^{-1}$K$^{-1}$).
+  \item Integre $c_p\,dT/T = \Re_d\,dP/P$ e obtenha
+        $\theta = T(P_0/P)^{\Re_d/c_p}$; mostre que
+        $\theta \simeq T + \Gamma_d z$ para pequenas excursões verticais.
+  \item Mostre que $ds = c_p\,d\ln\theta$, isto é, que superfícies
+        isentrópicas são superfícies de $\theta$ constante — e conclua que
+        processos adiabáticos reversíveis conservam $\theta$.
+  \item Advecção pura: para
+        $\partial T/\partial t = -U\,\partial T/\partial x$ com $U$
+        constante, verifique que $T(x,t) = f(x-Ut)$ é solução para
+        qualquer perfil $f$ — a forma viaja sem se deformar.
+  \item Numa tarde com $F^* = 500$\,W/m$^2$ e $F_G = 50$\,W/m$^2$, compare
+        $F_H$ e $F_E$ para $\beta = 5$ (deserto) e $\beta = 0{,}2$
+        (floresta), e estime quanta água a floresta evapora por hora e
+        por m$^2$.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Integre a subida adiabática de uma parcela como EDO
+        ($dT/dz = -g/c_p$) e verifique que $\theta$ calculada com a
+        fórmula exata permanece constante ao longo da trajetória (compare
+        também com $\theta \simeq T+\Gamma_d z$).
+  \item No modelo de ciclo diurno do Caso~2, compare uma superfície
+        ``continental'' (capacidade térmica baixa) com uma ``oceânica''
+        (alta): amplitude e defasagem do máximo de temperatura.
+  \item Repita o experimento de advecção do Caso~3 com esquema
+        \emph{upwind} em resoluções $\Delta x$ diferentes e quantifique a
+        difusão numérica (largura da frente após 24\,h vs.\ resolução).
+  \item Calcule $\theta$ e $\theta_v$ da sondagem do Cap.~1 com o MetPy e
+        identifique a camada de mistura (onde $\theta \approx$ constante)
+        e as camadas estáveis.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

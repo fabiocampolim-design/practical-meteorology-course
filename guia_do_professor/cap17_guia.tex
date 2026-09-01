@@ -1,0 +1,99 @@
+% Guia do professor — Capítulo 17: Ventos Regionais
+\section{Capítulo 17 --- Ventos Regionais}
+
+\subsection*{Visão geral e ritmo}
+
+O capítulo da geografia local: brisas, vales, catabáticos, ondas de
+montanha e a hidráulica de sotavento. Fisicamente delicioso — teorema
+de circulação, oscilador $N$, água rasa e Froude — e imediatamente
+reconhecível pela turma (Santos, serra do Mar, vale do Paraíba).
+\textbf{Ritmo: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — Bjerknes e a brisa (com o hodógrafo do
+        Caso~1), terral, ventos de vale/encosta, catabáticos até a
+        Antártida (Caso~2).
+  \item \textbf{Aula 2} — ondas de montanha e Scorer (Caso~3), föhn
+        completo, água rasa/Froude e vendavais (Caso~4), gap winds.
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item explicar a brisa pelo teorema de circulação e prever seu giro
+        diurno no HS;
+  \item calcular a velocidade de equilíbrio catabática;
+  \item usar o parâmetro de Scorer para classificar ondas
+        (propagante/evanescente/aprisionada) e obter $\lambda_z$;
+  \item calcular o aquecimento föhn com remoção de chuva;
+  \item usar o número de Froude para prever bloqueio, travessia e
+        vendaval de sotavento.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Bowen e contraste terra--mar (Cap.~3); resfriamento radiativo noturno
+(Caps.~2, 6); $N$ e estabilidade (Cap.~5); $\theta$ e föhn (Cap.~3);
+nuvens de onda (Cap.~6); Coriolis (Cap.~10).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Brisa é o ar indo do frio pro quente''}: embaixo
+        sim, mas é um CIRCUITO — sem o ramo de retorno em altitude
+        não fecha; o teorema de Bjerknes resolve.
+  \item \textbf{Giro da brisa}: no HS o vetor gira anti-horário ao
+        longo do dia (espelho do HN).
+  \item \textbf{Lenticular como nuvem que anda}: está PARADA sobre a
+        crista com vento forte através — ótimo choque conceitual.
+  \item \textbf{Föhn como ``compressão''}: o ar não é comprimido como
+        pistão; desce pelo $\Gamma_d$ porque a chuva removeu água e
+        $L_v$ a barlavento (T5 fecha a conta).
+  \item \textbf{Vendaval de sotavento como ``vento que despenca''}: é
+        transição hidráulica (Fr), não queda livre — a analogia da
+        pia é a ponte certa.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+A pia da cozinha: jato supercrítico + salto hidráulico em anel —
+todos já viram, ninguém tinha nomeado. Tanque com água e obstáculo
+(régua) puxado a velocidades diferentes: os três regimes de Froude
+aparecem. Vídeos: lenticulares em timelapse; Bora em Trieste.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~17)}
+
+Aquecimento: $u_{eq}$ catabático com números dados; $\lambda_z$ de
+ondas. Aprofundamento: föhn com LCL dado; Froude de camadas dadas.
+Síntese: ``desenhe o dia de ventos de uma cidade costeira com serra
+atrás (Santos!): brisa, terral, catabático e onda no mesmo ciclo''.
+\emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap17\_ventosregionais.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & brisa: EDO com Coriolis + hodógrafo diurno & Aula 1 \\
+2 & catabático: EDO e $u_{eq}(\alpha, \Delta\theta)$ & Aula 1 \\
+3 & ondas de montanha lineares (morro-sino) & Aula 2 \\
+4 & água rasa sobre a serra: regimes de Froude & Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap17\_solucoes.ipynb}
+(\emph{não distribuir}): T2 com \texttt{sympy}; N1 responde quando a
+brisa perde do vento sinótico; N4 constrói o mapa de regimes. Pares:
+T2$\leftrightarrow$N2, T3$\leftrightarrow$N3, T4$\leftrightarrow$N4.
+
+\subsection*{Conexões com o resto do curso}
+
+Circuitos térmicos e Bowen (Cap.~3); $N$ como mola (Cap.~5);
+lenticulares e rotores (Cap.~6); brisa como gatilho de convecção
+(Cap.~14); catabático e piscina fria noturna (Cap.~18); arrasto de
+onda nos modelos (Cap.~20); brisas e ilha de calor urbana (Cap.~19).

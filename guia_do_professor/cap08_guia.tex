@@ -1,0 +1,94 @@
+% Guia do professor — Capítulo 8: Satélites e Radar
+\section{Capítulo 8 --- Satélites e Radar}
+
+\subsection*{Visão geral e ritmo}
+
+O Cap.~2 vestido de operacional: órbitas por Newton, funções peso como
+coração da sondagem por satélite, e o radar do $D^6$ ao dilema do Doppler.
+\textbf{Ritmo sugerido: 2 aulas de 2\,h} (1 aula e meia se necessário,
+cortando detalhes de imagem).
+
+\begin{itemize}
+  \item \textbf{Aula 1} — órbitas (dedução geoestacionária no quadro),
+        funções peso (a dedução central), canais Vis/IV/vapor com imagens
+        do dia. Casos~1--2 (15\,min).
+  \item \textbf{Aula 2} — radar: equação, $Z$, $Z$--$R$ e armadilhas;
+        Doppler e aliasing. Casos~3--4 (15\,min).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item deduzir a altitude geoestacionária e comparar geo × polar;
+  \item explicar a função peso e por que o pico está em $\tau = 1$;
+  \item interpretar os canais visível, IV e vapor d'água (e combinações);
+  \item converter dBZ em chuva com consciência das incertezas;
+  \item explicar o dilema do Doppler e reconhecer aliasing.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Gravitação circular (física 1); Planck/Stefan--Boltzmann e Beer (Cap.~2);
+Marshall--Palmer e o $D^6$ (Cap.~7); atmosfera padrão para converter
+temperatura de topo em altura (Cap.~1).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Satélite vê a superfície''}: no IV ele vê o nível de
+        $\tau\simeq1$ do canal — que pode ser vapor a 8\,km.
+  \item \textbf{IV de cirrus fino}: semitransparente mistura chão quente e
+        nuvem fria — a altura inferida sai baixa demais (T3).
+  \item \textbf{dBZ como chuva exata}: $Z$--$R$ é estatística; a
+        propagação de $\pm3$\,dB (T5) cura a fé.
+  \item \textbf{Doppler mede só a componente radial}: vento perpendicular
+        ao feixe é invisível.
+  \item \textbf{Aliasing}: velocidades ``impossíveis'' coladas a um jato
+        forte costumam ser dobras, não fenômenos.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Imagens em tempo real (GOES-East no site da NOAA/CPTEC) nos três canais da
+mesma cena — classificar nuvens ao vivo com a tabela da aula. Doppler:
+vídeo de radar do Redemet/simulação de aliasing do notebook.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~8)}
+
+Aquecimento: períodos orbitais; conversões dBZ$\leftrightarrow$$R$; alturas
+de topo pelo IV. Aprofundamento: funções peso para perfis dados; $V_{max}$
+e $R_{max}$ para PRFs reais. Síntese: ``por que não existe um único radar
+perfeito?'' (dilema + atenuação + custo).
+\emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap08\_sensoriamento.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & Órbitas: $T(z)$, cobertura & Aula 1, após Kepler \\
+2 & Funções peso: sondador de 6 canais & Aula 1, após dedução \\
+3 & $Z$--$R$: inversão e incerteza & Aula 2, após radar \\
+4 & Aliasing Doppler e dealias & fim da Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+Projeto opcional para equipes: ler um volume real de radar com
+\texttt{Py-ART} (instalado no ambiente) ou uma cena de satélite com
+\texttt{Satpy} — ambos têm tutoriais oficiais excelentes.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap08\_solucoes.ipynb}
+(\emph{não distribuir}); T2 com \texttt{sympy} (máximo da função peso),
+N4 com o dealias por continuidade e seus modos de falha.
+Pares: T2$\leftrightarrow$N2, T4$\leftrightarrow$N4.
+
+\subsection*{Conexões com o resto do curso}
+
+Beer/Planck $\to$ Cap.~2; $D^6$/M--P $\to$ Cap.~7; imagens e cartas $\to$
+Cap.~9; mesociclone no Doppler $\to$ Cap.~15; assimilação de radiâncias
+$\to$ Cap.~20.

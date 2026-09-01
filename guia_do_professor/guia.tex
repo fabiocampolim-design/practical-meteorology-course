@@ -1,0 +1,98 @@
+% Guia do Professor — Meteorologia Prática
+% Baseado em R. Stull, Practical Meteorology (CC BY-NC-SA 4.0)
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+
+\title{Guia do Professor\\ {\large Meteorologia Prática ---
+curso baseado em R.~Stull, \emph{Practical Meteorology}}}
+\author{}
+\date{Versão de trabalho}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\section*{Sobre este guia}
+
+Este guia acompanha, capítulo a capítulo, o livro-texto
+\emph{Practical Meteorology: An Algebra-based Survey of Atmospheric Science}
+(R.~Stull, UBC, v1.02b, CC BY-NC-SA 4.0). Para cada capítulo há:
+objetivos de aprendizagem, pré-requisitos, ritmo sugerido, armadilhas
+conceituais comuns, sugestões de problemas do livro, e o roteiro de uso do
+notebook de simulação em aula.
+
+\paragraph{Filosofia do curso.} O livro é deliberadamente algébrico; nosso
+público é de estudantes de física com cálculo. As notas de aula mostram
+\emph{as duas formas} de cada lei — a algébrica do livro (para leitura e
+provas com consulta ao livro) e a diferencial (para conexão com mecânica dos
+fluidos e termodinâmica). Os notebooks fecham o ciclo: cada equação central
+é verificada numericamente contra dados ou contra a atmosfera padrão.
+
+\paragraph{Estrutura de cada capítulo do curso.}
+\begin{itemize}
+  \item \texttt{notas/capNN\_notas.tex} — roteiro de quadro-negro (o que
+        escrever, em que ordem, com deduções completas);
+  \item \texttt{slides/capNN\_slides.tex} — apoio visual (figuras do livro,
+        tabelas, sínteses); o quadro carrega as deduções, os slides carregam
+        as imagens;
+  \item \texttt{notebooks/capNN\_*.ipynb} — 2 a 4 casos numéricos por
+        capítulo, para demonstração em aula e exploração pelos alunos;
+  \item este guia — a ``regência'' de tudo.
+\end{itemize}
+
+\paragraph{Ambiente computacional.} \texttt{conda env create -f
+environment.yml} cria o ambiente \texttt{meteo} com MetPy, climlab,
+ambiance, pyrcel, tcpyPI, Py-ART e Satpy. Os notebooks declaram no topo os
+pacotes que usam.
+
+\bigskip
+\hrule
+\bigskip
+
+\input{cap01_guia}
+\clearpage
+\input{cap02_guia}
+\clearpage
+\input{cap03_guia}
+\clearpage
+\input{cap04_guia}
+\clearpage
+\input{cap05_guia}
+\clearpage
+\input{cap06_guia}
+\clearpage
+\input{cap07_guia}
+\clearpage
+\input{cap08_guia}
+\clearpage
+\input{cap09_guia}
+\clearpage
+\input{cap10_guia}
+\clearpage
+\input{cap11_guia}
+\clearpage
+\input{cap12_guia}
+\clearpage
+\input{cap13_guia}
+\clearpage
+\input{cap14_guia}
+\clearpage
+\input{cap15_guia}
+\clearpage
+\input{cap16_guia}
+\clearpage
+\input{cap17_guia}
+\clearpage
+\input{cap18_guia}
+\clearpage
+\input{cap19_guia}
+\clearpage
+\input{cap20_guia}
+\clearpage
+\input{cap21_guia}
+\clearpage
+\input{cap22_guia}
+\clearpage
+\input{cap23_guia}
+
+\end{document}

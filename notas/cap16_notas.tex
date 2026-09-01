@@ -1,0 +1,183 @@
+% Notas de aula — Capítulo 16: Ciclones Tropicais
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap16/}}
+
+\title{Capítulo 16 --- Ciclones Tropicais\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:anatomia}--\S\ref{sec:carnot} (anatomia,
+condições de gênese, a máquina de Carnot).
+\emph{Aula 2:} \S\ref{sec:dinamica}--\S\ref{sec:perigos} (dinâmica
+radial, trajetórias, maré de tempestade e o caso Catarina).
+
+\section{Um motor diferente de tudo que vimos}\label{sec:anatomia}
+
+\begin{noquadro}[abertura --- contraste com o Cap.~13]
+\textbf{Cap.~16 --- Ciclones Tropicais}\\[2pt]
+\begin{tabular}{lll}
+ & extratropical (Cap.~13) & tropical (hoje)\\
+energia & baroclinia ($\Delta T$ horizontal) & calor latente do
+oceano\\
+núcleo & frio & \textbf{quente}\\
+frentes & sim & não\\
+vento máx.\ & altitude (jato) & \textbf{superfície} (parede do olho)\\
+\end{tabular}
+\end{noquadro}
+
+Anatomia: olho de 20--50\,km (subsidência, céu claro, calmaria),
+\textbf{parede do olho} (o anel de Cb com os ventos máximos), bandas
+espirais de chuva, e o escoamento anticiclônico de saída na tropopausa
+\javimos{5}{a tampa}. Tudo axissimétrico — sem as frentes do mundo
+extratropical \javimos{12}{frentes}.
+
+\begin{noquadro}[condições de gênese (a lista clássica)]
+1. TSM $\ge 26{,}5\,°$C numa camada de $\ge$50\,m\\
+2. distância do equador $\gtrsim 5°$ (precisa de $f$!
+\javimos{10}{Coriolis})\\
+3. cisalhamento vertical FRACO ($< 10$\,m/s) — o contrário do Cap.~14!\\
+4. umidade na média troposfera $+$ perturbação inicial (onda de leste)
+\end{noquadro}
+
+Essa lista explica o mapa das trajetórias — e por que o Atlântico Sul
+quase não tem furacões (cisalhamento alto $+$ TSM marginal): o
+Catarina (2004) foi a exceção instrutiva.
+
+\section{A máquina de Carnot}\label{sec:carnot}
+
+\quadro{Desenhar o ciclo no corte do furacão: entrada isotérmica junto
+ao mar (pega calor), subida adiabática úmida na parede, saída
+isotérmica no topo frio, descida na periferia. É um diagrama de
+Carnot desenhado no céu.}
+
+\begin{formadif}[intensidade potencial (T1; Casos~1 e 3)]
+Motor entre $T_s$ (mar) e $T_{out}$ (topo da bigorna):
+\[ v_{max}^2 = \frac{C_k}{C_d}\,
+\frac{T_s - T_{out}}{T_{out}}\,\Delta k, \]
+com $\Delta k$ o déficit de entalpia ar--mar. O fator
+$(T_s{-}T_{out})/T_{out} \simeq 0{,}5$ supera o Carnot clássico porque
+o calor dissipado pelo atrito é reciclado. O limiar dos 26{,}5\,°C é
+Clausius--Clapeyron \javimos{4}{7\%/K}: $\Delta k$ explode com a TSM.
+\end{formadif}
+
+\begin{noquadro}[WISHE --- a realimentação]
+vento forte $\to$ mais evaporação (fórmula bulk!
+\javimos{3}{fluxos bulk}) $\to$ mais calor latente na parede $\to$
+núcleo mais quente $\to$ pressão mais baixa
+\javimos{1}{hipsométrica} $\to$ vento mais forte\\[2pt]
+teto: a intensidade potencial (MPI) — calculada de verdade com o
+\texttt{tcpyPI} no Caso~3
+\end{noquadro}
+
+O núcleo quente sustenta a baixa hidrostaticamente:
+$\Delta T = 10$\,K em 10\,km $\Rightarrow$ $\Delta P \sim 40$\,hPa
+(T3). Ciclones tropicais são \emph{os} sistemas de núcleo quente; os
+do Cap.~13, de núcleo frio — a distinção aparece limpa nos cortes de
+satélite \javimos{8}{sondagem por micro-ondas}.
+
+\section{Dinâmica radial: Holland e o vento gradiente}
+\label{sec:dinamica}
+
+\begin{formadif}[perfil de Holland (T2; Caso~2)]
+\[ P(r) = P_c + \Delta P\,e^{-(R_w/r)^B},\qquad
+v(r) = \sqrt{\frac{r}{\rho}\frac{dP}{dr} + \Big(\frac{fr}{2}\Big)^2}
+- \frac{|f|r}{2}. \]
+Vento máximo na parede ($r \simeq R_w$); dentro do olho o vento
+desaba — é o vento gradiente do Cap.~10 \javimos{10}{vento gradiente}
+levado ao limite ($V^2/R$ dominando).
+\end{formadif}
+
+Trajetórias: alísios empurram para oeste \javimos{11}{alísios}; a
+deriva beta (os \emph{beta gyres} — parentes das ondas de Rossby
+\javimos{11}{$\beta$}) soma 1--3\,m/s para oeste e para o polo; nas
+latitudes médias os oestes capturam e o sistema recurva (T5). Ao
+tocar terra: sem oceano, o motor desliga em $\sim$1 dia — mas a chuva
+continua.
+
+\section{Perigos: a água mata mais que o vento}\label{sec:perigos}
+
+\quadro{Ranking no quadro, perguntando antes à turma qual mata mais:
+1º maré de tempestade, 2º chuva/enchentes, 3º vento, 4º tornados
+embutidos.}
+
+\begin{formadif}[maré de tempestade (T4; Caso~4)]
+Vento empilha o mar contra a costa; no equilíbrio:
+\[ \frac{d\eta}{dx} = \frac{\tau}{\rho_{agua}\,g\,h(x)},\qquad
+\tau = \rho_{ar}C_D V^2, \]
+mais o barômetro invertido ($\sim$1\,cm/hPa — T4). Plataforma rasa e
+larga amplifica: 50\,m/s dão $\sim$8\,m de surge em plataforma rasa
+(N4) — a física por trás de Katrina e Bangladesh.
+\end{formadif}
+
+Escala Saffir--Simpson (CT1--CT5 por vento máximo): lembrar que dano
+$\propto v^3$ (potência do vento) e a chuva não escala com a
+categoria — sistemas lentos e fracos podem ser os mais mortais
+(Harvey). Num clima $+2$\,K, a MPI sobe poucos \%/K, mas chuva
+($+7$\%/K) e nível do mar compõem o risco \veremos{21}{ciclones no
+clima futuro} (N3).
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ v_{max}^2 = \frac{C_k}{C_d}\frac{T_s - T_{out}}{T_{out}}\Delta k
+\qquad P(r) = P_c + \Delta P e^{-(R_w/r)^B} \]
+\[ \frac{d\eta}{dx} = \frac{\tau}{\rho g h} \qquad
+\text{gênese: TSM} \ge 26{,}5\,°\mathrm{C},\ |\phi| \gtrsim 5°,\
+\text{cisalhamento fraco} \]
+núcleo quente, motor de Carnot, morte em terra — e a água mata mais
+que o vento
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap16\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Compare a eficiência de Carnot clássica $(T_s-T_{out})/T_s$
+        com o fator de Emanuel $(T_s-T_{out})/T_{out}$ para
+        $T_s = 300$\,K, $T_{out} = 200$\,K, e explique fisicamente a
+        diferença (reciclagem do calor dissipado).
+  \item Do perfil de Holland, obtenha o vento ciclostrófico
+        $v^2 = (r/\rho)\,dP/dr$ e mostre que o máximo fica em
+        $r \approx R_w$.
+  \item Use a equação hipsométrica para estimar a queda de pressão à
+        superfície produzida por um núcleo 10\,K mais quente numa
+        camada de 10\,km.
+  \item Mostre que o barômetro invertido dá
+        $d\eta/dP = 1/(\rho_{agua}g) \approx 1$\,cm/hPa e calcule a
+        contribuição para um CT5 ($\Delta P = 90$\,hPa).
+  \item Explique a deriva beta: por que um vórtice intenso num planeta
+        com $\beta$ migra para oeste e para o polo mesmo sem
+        escoamento médio?
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Mapeie a MPI no plano (TSM, $T_{out}$); quanto vale esfriar o
+        topo em 5\,K vs.\ aquecer o mar em 1\,K?
+  \item Ajuste ($P_c$, $R_w$, $B$) de Holland para vento máximo de
+        60\,m/s em 25\,km e classifique o furacão.
+  \item Com o \texttt{tcpyPI}, aqueça sondagem e TSM em $+2$\,K e
+        calcule a intensificação em \%/K.
+  \item Varra largura e profundidade da plataforma no modelo de surge
+        e mapeie a elevação na costa para $V = 50$\,m/s.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

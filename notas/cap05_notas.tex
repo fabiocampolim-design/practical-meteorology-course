@@ -1,0 +1,299 @@
+% Notas de aula — Capítulo 5: Estabilidade Atmosférica
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap05/}}
+
+\title{Capítulo 5 --- Estabilidade Atmosférica\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:diagramas}--\S\ref{sec:bv} (diagramas
+termodinâmicos, método da parcela, empuxo e frequência de Brunt--Väisälä).
+\emph{Aula 2:} \S\ref{sec:estatica}--\S\ref{sec:tropo} (estabilidade
+estática local e \emph{não local}, número de Richardson, turbulência,
+tropopausa e camada de mistura).
+
+\section{A pergunta do capítulo}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~5 --- Estabilidade}\\[2pt]
+``Se eu der um empurrão vertical numa parcela de ar, ela\\
+\hspace*{2em}\textbf{volta}\quad(estável),\qquad
+\textbf{fica}\quad(neutra),\qquad ou
+\textbf{dispara}\quad(instável)?''
+\end{noquadro}
+
+Toda a convecção — do cumulus de bom tempo à supercélula
+\veremos{14}{tempestades} — é a resposta da atmosfera a esta pergunta.
+As peças já estão prontas: a régua da parcela seca
+\javimos{3}{$\Gamma_d$ e $\theta$}, a régua úmida via calor latente
+\javimos{4}{Clausius--Clapeyron e LCL} e o juiz, que é a densidade via
+temperatura virtual \javimos{1}{temperatura virtual}. Hoje montamos o
+tabuleiro onde tudo isso se joga — o diagrama termodinâmico — e as três
+ferramentas: empuxo, $N$ e $Ri$.
+
+\section{Diagramas termodinâmicos}\label{sec:diagramas}
+
+\quadro{Construir no quadro um diagrama $T$ vs.\ $\ln P$ (emagrama
+simplificado) com as famílias de linhas, UMA de cada vez, na ordem da
+caixa abaixo. Não apresentar o Skew-$T$ pronto: construí-lo.}
+
+\begin{noquadro}[as cinco famílias de réguas]
+1. isóbaras (horizontais) e isotermas\\
+2. adiabáticas secas: $\theta$ const \hfill (subida sem nuvem, Cap.~3)\\
+3. isoumas: $r_s$ const \hfill (leitura de $T_d$ e LCL, Cap.~4)\\
+4. adiabáticas úmidas: $\theta_w$/$\theta_e$ const \hfill (subida DENTRO
+da nuvem)\\[2pt]
+adiabática úmida é mais suave que a seca: condensação devolve $L_v$
+$\Rightarrow$ $\Gamma_s \simeq 4$--$7$\,K/km $< 9{,}8$\,K/km.
+\end{noquadro}
+
+Por que $\Gamma_s$ varia? Porque a quantidade de vapor que condensa por
+metro de subida depende de quanto vapor há — muito nos trópicos baixos
+(lá $\Gamma_s\simeq4$\,K/km), quase nada no alto e frio da troposfera
+(onde $\Gamma_s \to \Gamma_d$). A adiabática úmida é a régua central da
+convecção profunda \veremos{14}{CAPE e tempestades}.
+
+Variantes (emagrama, Skew-$T$, Stüve, tefigrama, $\theta$--$z$) são o
+mesmo conteúdo com eixos deformados; usaremos o \textbf{Skew-$T$
+log-$P$} (padrão operacional; o MetPy o desenha — Caso~1 do notebook,
+onde vocês constroem as famílias do zero). A inclinação das isotermas do
+Skew-$T$ existe para abrir o ângulo entre isotermas e adiabáticas — a
+sondagem ``deita'' e fica legível.
+
+\quadro{No diagrama do quadro, traçar uma sondagem idealizada e a
+trajetória de uma parcela de superfície: seca até o LCL
+\javimos{4}{regra de Normand}, úmida acima. Marcar visualmente as áreas
+entre parcela e ambiente — elas serão CAPE/CIN no Cap.~14.}
+
+\section{Método da parcela e empuxo}\label{sec:parcela}
+
+Estratégia: levantar (mentalmente) uma parcela e compará-la ao ambiente
+em cada nível. Quem decide é a densidade — via temperatura virtual.
+
+\begin{formadif}[empuxo de Arquimedes por unidade de massa]
+Parcela de densidade $\rho_p$ imersa em ambiente $\rho_e$, mesma pressão
+local:
+\[ \frac{F}{m} = g\,\frac{\rho_e - \rho_p}{\rho_p}
+ = g\,\frac{T_{v,p} - T_{v,e}}{T_{v,e}}, \]
+usando $\rho = P/(\Re_d T_v)$ \javimos{1}{lei dos gases}.
+\end{formadif}
+
+\begin{formalivro}[Stull eq.~5.2]
+\[ \frac{F}{m} = |g|\,\frac{T_{v,p} - T_{v,e}}{T_{v,e}}
+\qquad\text{(para cima se a parcela for mais quente/leve).} \]
+\end{formalivro}
+
+\begin{noquadro}[por que $T_v$ e não $T$]
+vapor alivia ($+0{,}61r$), gotículas pesam ($-r_L$)
+\javimos{1}{temperatura virtual}\\
+1\,g/kg de água líquida em suspensão $\simeq$ $-0{,}3$\,K de empuxo
+(\emph{liquid loading}, T1)\\
+diferenças de 1--3\,K decidem tudo — a correção virtual é da mesma ordem!
+\end{noquadro}
+
+\begin{exemplo}[empuxo típico de termal]
+Parcela $2$\,K mais quente que o ambiente ($T_{v,e} = 300$\,K):
+$F/m = 9{,}8\times2/300 = 0{,}065$\,m/s$^2$. Parece pouco — mas agindo
+por 1\,km de subida dá
+$w = \sqrt{2\times0{,}065\times1000} \simeq 11$\,m/s.
+\emph{Verificação: velocidade de um bom termal de planador; é também a
+conta que fará o $w_{max} = \sqrt{2\,\mathrm{CAPE}}$ do Cap.~14.}
+\end{exemplo}
+
+\section{Oscilação de empuxo: Brunt--Väisälä}\label{sec:bv}
+
+\quadro{Deduzir a EDO no quadro — anunciar antes: ``há um oscilador
+harmônico escondido na atmosfera''. Desenhar a analogia da mola
+(Fig.~5.13c do livro).}
+
+\begin{formadif}[dedução]
+Desloque uma parcela de $z'$ num ambiente estável. A parcela segue a
+adiabática ($T_{v,p}$ cai com $\Gamma_d$), o ambiente tem gradiente
+próprio. A diferença de $T_v$ cresce linearmente com $z'$:
+\[ \ddot{z}' = \frac{F}{m} = -\underbrace{\frac{|g|}{T_{v,e}}
+   \left(\frac{\Delta T_{v,e}}{\Delta z} + \Gamma_d\right)}_{\equiv\,N^2}\,z'
+\quad\Longrightarrow\quad z'(t) = z'_0\cos(Nt). \]
+Movimento harmônico simples com frequência $N$ — a atmosfera estável é
+uma mola.
+\end{formadif}
+
+\begin{formalivro}[Stull eq.~5.4, forma com $\theta_v$]
+\[ N^2 = \frac{|g|}{\theta_v}\,\frac{\Delta\theta_v}{\Delta z}, \qquad
+   P_{BV} = \frac{2\pi}{N}\ \ \text{(período de Brunt--Väisälä)}. \]
+\end{formalivro}
+
+\begin{noquadro}[números para levar]
+troposfera típica: $N \simeq 0{,}01$\,s$^{-1}$, $P_{BV} \simeq 10$\,min\\
+estratosfera: $N \simeq 0{,}02$\,s$^{-1}$ (4$\times$ mais ``dura'')\\
+camada de mistura: $N^2 \simeq 0$ (neutra — sem mola)
+\end{noquadro}
+
+Consequências visíveis: ondas de montanha e suas nuvens lenticulares
+\veremos{17}{ondas de montanha}, faixas regulares de nuvens (espaçamento
+$\sim U\,P_{BV}$), ondulações em camadas de estrato. Como $N^2 \propto
+\Delta\theta_v/\Delta z$, o perfil de $\theta_v$ da sondagem
+\javimos{3}{$\theta$ na sondagem} vira um mapa de rigidez da atmosfera.
+Simulação no Caso~2 do notebook (com amortecimento no N1).
+
+\section{Estabilidade estática: local e não local}\label{sec:estatica}
+
+\quadro{Desenhar dois perfis de $\theta_v$: um crescendo suavemente
+(estável) e um com camada superadiabática na superfície + inversão em
+cima. A discussão inteira desta seção acontece sobre esses dois
+desenhos.}
+
+\begin{noquadro}[critério local (o ingênuo)]
+$\dfrac{\Delta\theta_v}{\Delta z} > 0$: estável \qquad $= 0$: neutro
+\qquad $< 0$: instável
+\end{noquadro}
+
+\textbf{Armadilha que o Stull enfatiza}: o critério local falha! Uma
+camada com $\Delta\theta_v/\Delta z \ge 0$ pode estar \emph{dentro} de
+uma zona de convecção se uma parcela quente vinda da superfície a
+atravessa. Estabilidade é propriedade de \emph{trajetórias}, não de
+gradientes pontuais.
+
+\begin{formalivro}[estabilidade não local, método do Stull \S5.6.1]
+Procedimento: (1) levante/afunde parcelas de todos os níveis;
+(2) uma camada é \textbf{instável não local} se qualquer parcela
+deslocada adiabaticamente a atravessa (do nível de origem ao nível de
+repouso); (3) o que sobra é estável ou neutro pelo critério local.
+\end{formalivro}
+
+\begin{exemplo}[tarde convectiva]
+Perfil: $\theta_v$ cai 2\,K nos primeiros 100\,m (superadiabático),
+depois constante até 1{,}5\,km, depois cresce. Critério local diria
+``neutro'' na camada intermediária; o não local diz \textbf{instável até
+$\sim$1{,}5\,km}: parcelas da superfície quente sobem até lá. É a camada
+de mistura da tarde \veremos{18}{camada de mistura}. Implementação no
+Caso~3 do notebook.
+\end{exemplo}
+
+As cinco classes do livro (Fig.~5.15): absolutamente estável
+($\gamma < \Gamma_s$), saturada neutra, condicionalmente instável
+($\Gamma_s < \gamma < \Gamma_d$ — estável se seca, instável se
+saturada!), seca neutra e absolutamente instável. A condicional é o caso
+mais comum dos trópicos — a atmosfera fica ``armada'' esperando um
+gatilho de levantamento \veremos{14}{disparo de tempestades}.
+
+\section{Estabilidade dinâmica: número de Richardson}\label{sec:ri}
+
+\quadro{Pergunta à turma: ar estaticamente estável pode virar
+turbulento? (Sim — se o cisalhamento vencer a mola.)}
+
+\begin{formadif}[competição de energias]
+Cisalhamento extrai energia cinética do escoamento médio à taxa
+$\propto (\Delta U/\Delta z)^2$; a estratificação consome energia à taxa
+$\propto N^2$. A razão é o número de Richardson:
+\[ Ri = \frac{N^2}{\left(\dfrac{\Delta U}{\Delta z}\right)^2
+ + \left(\dfrac{\Delta V}{\Delta z}\right)^2}. \]
+\end{formadif}
+
+\begin{formalivro}[critério, Stull \S5.6.3]
+\[ Ri < Ri_c = 0{,}25 \ \Rightarrow\ \text{dinamicamente instável
+(turbulência)}. \]
+Laminar só se estaticamente estável \emph{e} $Ri > 1$ (histerese entre
+0{,}25 e 1).
+\end{formalivro}
+
+\begin{noquadro}[onde isso morde]
+turbulência de céu claro (CAT): cisalhamento do jato $+$ $Ri<0{,}25$
+\hfill \veremos{11}{corrente de jato}\\
+ondas de Kelvin--Helmholtz: as nuvens ``onda do mar'' — a instabilidade
+fotografável\\
+camada limite noturna: estável mas cisalhada — turbulência intermitente
+\hfill \veremos{18}{camada estável}
+\end{noquadro}
+
+Caso~4 do notebook calcula $Ri(z)$ para a sondagem do curso; o exercício
+T4 faz a conta do jato.
+
+\section{Tropopausa e camada de mistura no perfil}\label{sec:tropo}
+
+Aplicações dos critérios ao dia a dia da análise de sondagens
+\veremos{9}{análise operacional}:
+\begin{itemize}
+  \item \textbf{Tropopausa}: forte salto de estabilidade ($N^2$ dobra);
+        definição WMO: gradiente $\le 2$\,K/km. É a tampa global da
+        convecção — as bigornas se espalham nela
+        \veremos{14}{bigorna de cumulonimbus}.
+  \item \textbf{Camada de mistura}: $\theta_v \approx$ constante da
+        superfície até $z_i$ (critério do excesso de 0{,}5\,K —
+        exercício N4 do Cap.~3) \javimos{3}{perfis de $\theta$}.
+  \item \textbf{Inversões}: $T$ crescendo com $z$ — tampas que seguram
+        poluição \veremos{19}{dispersão de poluentes} e represam energia
+        convectiva até o rompimento explosivo
+        \veremos{14}{inibição convectiva}.
+\end{itemize}
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \frac{F}{m} = |g|\frac{T_{v,p}-T_{v,e}}{T_{v,e}}
+\;\to\; N^2 = \frac{|g|}{\theta_v}\frac{\Delta\theta_v}{\Delta z}
+\;\to\; \text{estática (não local!)}
+\;\to\; Ri \lessgtr 0{,}25 \]
+empuxo: volta ou dispara \quad $N$: com que ritmo volta \quad
+$Ri$: o cisalhamento bagunça mesmo quando voltaria
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap05\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Deduza $F/m = |g|(T_{v,p}-T_{v,e})/T_{v,e}$ a partir do empuxo de
+        Arquimedes e da lei dos gases; mostre que 1\,g/kg de água líquida
+        em suspensão equivale a $\sim$0{,}3\,K de esfriamento
+        (\emph{liquid loading}).
+  \item Linearize o empuxo para deslocamento $z'$ pequeno e obtenha
+        $\ddot z' = -N^2 z'$ com
+        $N^2 = (|g|/T_{v,e})(\Delta T_{v,e}/\Delta z + \Gamma_d)$; mostre
+        a equivalência com a forma em $\theta_v$.
+  \item Calcule $N$ e $P_{BV}$ para: (a) troposfera padrão
+        ($\Gamma = 6{,}5$\,K/km); (b) estratosfera isotérmica; (c) camada
+        de mistura neutra. Interprete o caso (c).
+  \item Um jato tem $\Delta U = 20$\,m/s em $\Delta z = 500$\,m numa
+        camada com $N^2 = 4\times10^{-4}$\,s$^{-2}$. Calcule $Ri$, decida
+        se há CAT e ache o cisalhamento crítico para $Ri_c = 0{,}25$.
+  \item Construa um perfil de $\theta_v$ em que o critério local erre a
+        classificação de pelo menos duas camadas em relação ao não local,
+        e explique o erro em termos de trajetórias de parcelas.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Integre $\ddot z' = -N^2 z'$ com \texttt{solve\_ivp} para a
+        troposfera padrão, verifique o período contra $2\pi/N$ e adicione
+        amortecimento (arrasto linear) para estimar quantas oscilações
+        uma parcela real executa.
+  \item Construa do zero (NumPy) um mini-diagrama termodinâmico
+        $T$--$\ln P$ com adiabáticas secas e isoumas, e trace nele a
+        sondagem tropical do curso com a trajetória da parcela de
+        superfície até o LCL.
+  \item Aplique o algoritmo de estabilidade não local a um perfil de
+        tarde convectiva (fornecido) e compare com a classificação local
+        camada a camada.
+  \item Com o perfil de vento fornecido, calcule $Ri(z)$ para a sondagem
+        do curso e marque as camadas com risco de turbulência; teste o
+        efeito de dobrar o cisalhamento.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

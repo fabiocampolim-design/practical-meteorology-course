@@ -1,0 +1,230 @@
+% Slides — Capítulo 13: Ciclones Extratropicais
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap13/}}
+
+\title[Cap. 13 --- Ciclones Extratropicais]{Capítulo 13 --- Ciclones
+Extratropicais}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{O ciclo de vida norueguês}
+
+\begin{frame}{Da ondulação à oclusão}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item Nasce como onda numa frente (Cap.~12), amadurece com setor
+            quente, oclui e morre: 5--8 dias.
+      \item No HS tudo gira \alert{horário} em torno da baixa.
+      \item A ``vírgula'' de nuvens é a assinatura de satélite
+            (Cap.~8).
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_13_3b.jpg}{0.44\textheight}{Fig.~13.3 --- ciclone
+      jovem: onda frontal com setor quente}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_13_3d.jpg}{0.44\textheight}{Fig.~13.3 --- maduro
+      e ocluindo: a espiral fecha}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Um caso real em duas cartas}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item Altitude (50\,kPa): cavado com o ``X'' da vorticidade.
+      \item Superfície: a baixa fica \alert{a leste} do cavado — um
+            quarto de onda.
+      \item Essa defasagem vertical é a geometria que faz o sistema
+            crescer (Eady).
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_13_10a.jpg}{0.44\textheight}{Fig.~13.10 ---
+      alturas de 50\,kPa: o cavado}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_13_10bc.jpg}{0.44\textheight}{Fig.~13.10 ---
+      pressão à superfície: a baixa defasada}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Vorticidade: a moeda do ciclone}
+
+\begin{frame}{Como se fabrica giro}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \eqdestaque{$\dfrac{D(\zeta+f)}{Dt} \simeq -(\zeta+f)\,
+      \nabla\!\cdot\vec U_h$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item \alert{Esticamento}: convergência encolhe a coluna e ela
+            gira mais rápido (bailarina).
+      \item Advecção, inclinação e $\beta$ completam o orçamento.
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_13_22.jpg}{0.42\textheight}{Fig.~13.22 ---
+      levantamento $+$ rotação: a coluna esticada}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_13_23a.jpg}{0.42\textheight}{Fig.~13.23 ---
+      esticamento da coluna pela convergência}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A zona de sucção: leste do cavado}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Advecção de vorticidade máxima a leste do cavado $=$
+            divergência em altitude $=$ levantamento embaixo.
+      \item O ciclone de superfície nasce e viaja com essa zona
+            (Caso~1 do notebook).
+      \item Regra de bolso de toda carta de 50\,kPa (Cap.~9).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_13_25.jpg}{0.52\textheight}{Fig.~13.25 ---
+      velocidade vertical: o levantamento a leste do cavado}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Instabilidade baroclínica}
+
+\begin{frame}{Por que existem ciclones: Eady}
+  \eqdestaque{$\sigma_{max} \simeq 0{,}31\dfrac{|f|}{N}
+    \dfrac{\partial U}{\partial z}$,\qquad
+    $\lambda_{max} \simeq 3{,}9\,\dfrac{NH}{|f|} \simeq 4000$\,km}
+  \vspace{0.5em}
+  \begin{itemize}
+    \item A zona baroclínica guarda energia potencial; a troca
+          quente-sobe/frio-desce a libera.
+    \item Cisalhamento $=$ vento térmico (Cap.~11); $NH/|f|$ $=$ raio
+          de deformação de Rossby (T2).
+    \item e-dobra de 1--2 dias no inverno: a temporada de ciclones
+          (N2) — e o tamanho certo dos sistemas das cartas.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Spin-up e tendência de pressão}
+
+\begin{frame}{A coluna que exporta massa}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \eqdestaque{$\partial_t P_{sfc} = -g\!\int\!
+      \nabla\cdot(\rho\vec U)\,dz$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Divergência em altitude $>$ convergência embaixo $=$
+            pressão caindo.
+      \item Calor latente da chuva acelera (bombas úmidas, T3).
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_13_43a.jpg}{0.42\textheight}{Fig.~13.43 --- sai
+      mais em cima do que entra embaixo: a baixa cava}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_13_46.jpg}{0.42\textheight}{Fig.~13.46 ---
+      divergência do jato $+$ bombeamento de Ekman}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Jet streak: os quatro quadrantes}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Entrada acelera, saída freia: vento ageostrófico
+            transversal $v_{ag} = (1/f)DU/Dt$ (T4).
+      \item HS: divergência em altitude na \alert{entrada polar} e na
+            \alert{saída equatorial} — os berços de ciclogênese.
+      \item Simulação no Caso~4 do notebook.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_13_32a.jpg}{0.52\textheight}{Fig.~13.32 ---
+      circulações ageostróficas nos quadrantes do streak}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Autodesenvolvimento e bombas}
+
+\begin{frame}{O ciclone que cava a própria intensificação}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Advecção quente à frente amplifica a crista a leste
+            $\to$ afia o cavado $\to$ mais advecção de vorticidade
+            sobre a baixa $\to$ \ldots
+      \item Realimentação positiva $=$ \alert{autodesenvolvimento}.
+      \item Com oceano quente e muita umidade: \alert{bomba}
+            ($\ge 24$\,hPa/24\,h $\times \sin\phi/\sin60°$, T5) — as
+            ciclogêneses explosivas do Prata.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_13_49.jpg}{0.5\textheight}{Fig.~13.49 ---
+      advecções construindo crista e cavado: o laço do
+      autodesenvolvimento}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Spin-up e morte: a EDO do ciclone}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \eqdestaque{$\dfrac{d\zeta}{dt} = -(f+\zeta)D -
+      \dfrac{\zeta}{\tau_E}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Esticamento explosivo × freio de Ekman
+            ($\tau_E \sim$ 2--4 dias).
+      \item Altitude desliga $\Rightarrow$ Ekman mata em $\tau_E$
+            (N3): vida total 5--8 dias.
+      \item Caso~3 do notebook integra o ciclo completo.
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_13_6d.jpg}{0.42\textheight}{Fig.~13.6 --- o
+      bombeamento da camada limite enchendo a baixa por baixo}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{baroclinia $\xrightarrow{\text{Eady}}$ onda
+    $\xrightarrow{\text{adv.\ vort.\ + streak}}$ divergência em cima
+    $\xrightarrow{-(f+\zeta)D}$ spin-up $\to$ oclusão}
+  \vspace{0.6em}
+  O ciclone é a máquina que faz o transporte do Cap.~11 usando a
+  energia da zona baroclínica — nasce da onda, vive da altitude e
+  morre pelo atrito.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~13}
+  \texttt{notebooks/cap13\_ciclones.ipynb}
+  \begin{enumerate}
+    \item Vorticidade e advecção numa onda de 500\,hPa.
+    \item Taxa de Eady e o tamanho dos ciclones.
+    \item EDO de spin-up com e sem Ekman.
+    \item Os quadrantes do jet streak.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

@@ -1,0 +1,223 @@
+% Slides — Capítulo 16: Ciclones Tropicais
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap16/}}
+
+\title[Cap. 16 --- Ciclones Tropicais]{Capítulo 16 --- Ciclones
+Tropicais}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Anatomia e gênese}
+
+\begin{frame}{Outro animal: o núcleo quente}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item Olho (subsidência, calmaria), \alert{parede} (os ventos
+            máximos), bandas espirais, saída anticiclônica no topo.
+      \item Axissimétrico, sem frentes: o anti-Cap.~13.
+      \item Vento máximo na SUPERFÍCIE — não no jato.
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_16_1b.jpg}{0.44\textheight}{Fig.~16.1 --- o
+      disco e o olho vistos do satélite}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_16_5.jpg}{0.44\textheight}{Fig.~16.5 --- corte
+      idealizado: bandas, parede, olho}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Onde nascem: as condições de gênese}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item TSM $\ge 26{,}5\,°$C em $\ge$50\,m de profundidade.
+      \item $|\phi| \gtrsim 5°$: precisa de $f$ (Cap.~10).
+      \item Cisalhamento FRACO (o contrário do Cap.~14!) $+$ umidade
+            média $+$ semente (onda de leste).
+      \item Atlântico Sul: cisalhamento alto $+$ TSM marginal —
+            Catarina (2004) foi a exceção instrutiva.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_16_7.jpg}{0.5\textheight}{Fig.~16.7 ---
+      trajetórias por bacia: o mapa das condições}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{A máquina de Carnot}
+
+\begin{frame}{O ciclo desenhado no céu}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$v_{max}^2 = \dfrac{C_k}{C_d}\,
+      \dfrac{T_s - T_{out}}{T_{out}}\,\Delta k$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Entrada isotérmica no mar, subida úmida na parede, saída
+            fria no topo: Carnot (T1).
+      \item O limiar dos 26{,}5\,°C é Clausius--Clapeyron (Cap.~4).
+      \item WISHE: vento $\to$ evaporação $\to$ núcleo quente $\to$
+            vento.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_16_30b.jpg}{0.54\textheight}{Fig.~16.30 --- o
+      ciclo in-up-out no emagrama: um motor térmico}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O núcleo quente sustenta a baixa}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Anomalia de $+$10\,K concentrada no olho/parede.
+      \item Hipsométrica (Cap.~1): coluna quente $=$ leve $\Rightarrow$
+            $\Delta P \sim 40$--100\,hPa (T3).
+      \item Contraste com o Cap.~13: lá núcleo FRIO, baixa que
+            \emph{cresce} com a altura; aqui o oposto.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_16_28.jpg}{0.54\textheight}{Fig.~16.28 --- a
+      anomalia quente em corte: o coração do furacão}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Perfis radiais: Holland e o \texttt{tcpyPI}}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item $P(r) = P_c + \Delta P e^{-(R_w/r)^B}$; vento gradiente
+            máximo na parede (T2; Caso~2).
+      \item Modelo × observações (Anita, Kate): a física simples
+            acerta o perfil.
+      \item MPI de sondagem real: Caso~3 (\texttt{tcpyPI}).
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_16_31.jpg}{0.44\textheight}{Fig.~16.31 ---
+      $\Delta P(r)$: modelo vs.\ furacões reais}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_16_33.jpg}{0.44\textheight}{Fig.~16.33 ---
+      $M(r)$: calmaria, pico na parede, decaimento}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Movimento}
+
+\begin{frame}{Trajetórias: alísios, beta e recurvamento}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Fase tropical: alísios empurram para oeste (Cap.~11).
+      \item Deriva beta: 1--3\,m/s para oeste E para o polo (T5).
+      \item Nas latitudes médias os oestes capturam: o ``C'' clássico.
+      \item Assimetria de translação: quadrantes fortes/fracos
+            (Fig.~16.35b — no HS, à esquerda do deslocamento).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_16_21a.jpg}{0.5\textheight}{Fig.~16.21 --- as
+      altas subtropicais dirigindo as trajetórias}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Perigos: a água mata mais}
+
+\begin{frame}{Maré de tempestade}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \eqdestaque{$\dfrac{d\eta}{dx} = \dfrac{\tau}{\rho_{agua}gh}$,
+      \quad $\tau = \rho_{ar}C_DV^2$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Vento empilha o mar $+$ barômetro invertido
+            ($\sim$1\,cm/hPa, T4).
+      \item Plataforma rasa e larga amplifica (Caso~4; N4).
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_16_43a.jpg}{0.42\textheight}{Fig.~16.43 ---
+      transporte de Ekman empilhando água na costa}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_16_47.jpg}{0.42\textheight}{Fig.~16.47 ---
+      surge $+$ maré $+$ ondas: o nível total}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O caso Katrina em um mapa}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Surge de 3--8\,m no quadrante forte, canalizado pelo
+            delta raso.
+      \item Ranking de letalidade: 1º água (surge $+$ chuva), 2º
+            vento, 3º tornados embutidos.
+      \item Chuva não escala com a categoria: sistemas lentos e
+            fracos podem ser os piores.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_16_41.jpg}{0.52\textheight}{Fig.~16.41 --- a
+      maré de tempestade do Katrina (2005)}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Temporada e clima futuro}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Pico no fim do verão: o oceano é lento para aquecer
+            (Cap.~3!).
+      \item $+2$\,K: MPI sobe poucos \%/K (N3), mas chuva
+            ($+7$\%/K, Cap.~4) e nível do mar compõem o risco
+            (Cap.~22).
+      \item Em terra o motor desliga em $\sim$1 dia — a chuva não.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_16_40.jpg}{0.5\textheight}{Fig.~16.40 --- a
+      temporada de furacões do Atlântico}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$v_{max}^2 = \tfrac{C_k}{C_d}\tfrac{T_s-T_{out}}{T_{out}}
+    \Delta k$;\quad $P(r)$ de Holland;\quad
+    $d\eta/dx = \tau/\rho gh$;\quad gênese: 26,5\,°C, $|\phi|>5°$,
+    shear fraco}
+  \vspace{0.6em}
+  Núcleo quente, motor de Carnot, dirigido pelos alísios, morto em
+  terra — e a água como o perigo número um.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~16}
+  \texttt{notebooks/cap16\_furacoes.ipynb}
+  \begin{enumerate}
+    \item Carnot $+$ Clausius--Clapeyron: MPI(TSM).
+    \item Holland: $P(r)$ e $v(r)$ por categoria.
+    \item \texttt{tcpyPI}: intensidade potencial de sondagem real.
+    \item Maré de tempestade: plataforma rasa × profunda.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

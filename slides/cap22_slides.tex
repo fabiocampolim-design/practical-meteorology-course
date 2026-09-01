@@ -1,0 +1,213 @@
+% Slides — Capítulo 22: Óptica Atmosférica
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap22/}}
+
+\title[Cap. 22 --- Óptica Atmosférica]{Capítulo 22 --- Óptica
+Atmosférica}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Arco-íris}
+
+\begin{frame}{O caminho do raio na gota}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item Refração $\to$ UMA reflexão interna $\to$ refração:
+            desvio $D = 180° + 2\theta_i - 4\theta_r$.
+      \item O \alert{mínimo} de $D$ concentra os raios (cáustica):
+            $\cos^2\theta_i = (n^2-1)/3$ (T1).
+      \item Exige gotas grandes (chuva, Cap.~7).
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_22_11a.jpg}{0.4\textheight}{Fig.~22.11 --- o
+      raio dentro da gota}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_22_13a.jpg}{0.4\textheight}{Fig.~22.13 ---
+      ângulo de saída vs.\ parâmetro de impacto: o extremo}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{42°, as cores e a banda de Alexandre}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Vermelho fora ($42{,}4°$), violeta dentro ($40{,}7°$):
+            a dispersão $n(\lambda)$ abre $\sim$1,8° (N1).
+      \item Secundário a $\sim$51°, cores invertidas; entre os dois,
+            a \alert{banda escura de Alexandre}.
+      \item Cada observador tem o SEU cone de 42° — não há pé do
+            arco.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_22_15a.jpg}{0.5\textheight}{Fig.~22.15 ---
+      primário, secundário e a banda escura}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Halos e parélios}
+
+\begin{frame}{O prisma de gelo}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \eqdestaque{$\delta_{min} = 2\arcsin\!\big(n\sin\tfrac{A}{2}\big)
+      - A = 21{,}8°$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Hexágono $=$ prisma de 60°, $n = 1{,}31$ (T2).
+      \item Cristais ao acaso acumulam no mínimo raso: o anel de
+            22° (Caso~2).
+      \item Escuro por dentro; borda interna avermelhada (N2).
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_22_17.jpg}{0.4\textheight}{Fig.~22.17 ---
+      colunas, placas e pirâmides de gelo}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_22_29b.jpg}{0.4\textheight}{Fig.~22.29 --- o
+      halo de 22° no céu}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A família completa — e o que ela anuncia}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Parélios (sun dogs): placas horizontais, à altura do
+            Sol; pilar de luz: reflexo nas bases.
+      \item Halo de 46°, arcos tangentes e circunzenital: faces de
+            90° e orientações especiais.
+      \item Tudo $=$ \alert{cirrus} (Cap.~6): halo hoje, frente
+            quente amanhã (Cap.~12).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_22_16.jpg}{0.52\textheight}{Fig.~22.16 --- halo,
+      parélios, arco tangente e circunzenital num só céu}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{As cores do céu}
+
+\begin{frame}{Rayleigh: o dipolo que prefere o azul}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$\sigma \propto \lambda^{-4}$:\quad
+      azul espalha $4{,}4\times$ mais que vermelho}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Molécula $\ll\lambda$ $=$ dipolo forçado; potência
+            $\propto\omega^4$ (T3).
+      \item Céu $=$ luz espalhada; poente $=$ luz transmitida por
+            massa de ar $1/\sin\Psi$ (Beer, Cap.~2; Caso~3).
+      \item Nuvens brancas: gotas $\gg\lambda$ (Mie) espalham tudo.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_22_47a.jpg}{0.46\textheight}{Fig.~22.47 --- o
+      azul espalhado pelo caminho deixa o disco vermelho}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Coroa, glória e polarização}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Coroa em volta da Lua: \alert{difração} em gotículas —
+            anéis menores para gotas maiores (N do Cap.~7 ao
+            contrário!).
+      \item Céu polarizado a 90° do Sol: o dipolo não irradia no
+            próprio eixo (T5) — teste com óculos polarizados.
+      \item Poentes vulcânicos roxos: aerossol estratosférico
+            (Cap.~21; N3).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_22_49aa.jpg}{0.48\textheight}{Fig.~22.49 --- a
+      coroa de difração em nuvem fina}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Refração e miragens}
+
+\begin{frame}{O raio que curva}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$\dfrac{d^2z}{dx^2} = \dfrac{1}{n}\dfrac{dn}{dz}$,
+      \qquad $R = \dfrac{n}{|dn/dz|}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item $n$ segue a densidade (Cap.~1): ar quente $=$ $n$ menor.
+      \item Asfalto: raio curva para CIMA — o ``lago'' é céu
+            (miragem inferior; Caso~4).
+      \item $dT/dz = +0{,}11$\,K/m: o raio acompanha a Terra (T4).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_22_52.jpg}{0.46\textheight}{Fig.~22.52 --- o
+      raio curvando no gradiente térmico}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Fata Morgana e o flash verde}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item Mar frio sob inversão (Cap.~5): miragem superior,
+            looming, castelos empilhados (N4).
+      \item Refração padrão achata o Sol poente e adianta o nascer
+            em $\sim$2\,min.
+      \item O último gomo dispersa: \alert{flash verde}.
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_22_53b.jpg}{0.42\textheight}{Fig.~22.53 --- Fata
+      Morgana: objetos reais e suas imagens}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_22_53a.jpg}{0.42\textheight}{Fig.~22.53 --- o
+      pôr do sol deformado e o flash verde}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo — e do curso}
+  \eqdestaque{$\cos^2\theta_i = \tfrac{n^2-1}{3}$ (42°) \quad
+    $\delta_{min}$ (22°) \quad $\sigma\propto\lambda^{-4}$ \quad
+    $\tfrac{d^2z}{dx^2} = \tfrac{1}{n}\tfrac{dn}{dz}$}
+  \vspace{0.6em}
+  Olhar o céu e LER: gotas (arco), cristais (halo), perfis de
+  temperatura (miragens), aerossol (poentes) — o curso inteiro cabe
+  num pôr do sol.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~22}
+  \texttt{notebooks/cap22\_optica.ipynb}
+  \begin{enumerate}
+    \item Arco-íris: traçado de raios $+$ Monte Carlo dos 42°.
+    \item Halo de 22°: histograma de cristais ao acaso.
+    \item Rayleigh $+$ Beer: céu azul, poente vermelho.
+    \item Miragens: raios integrados em $n(z)$.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook. Demonstração: laser no aquário com gradiente de açúcar —
+  miragem de bancada.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

@@ -1,0 +1,102 @@
+% Guia do professor — Capítulo 13: Ciclones Extratropicais
+\section{Capítulo 13 --- Ciclones Extratropicais}
+
+\subsection*{Visão geral e ritmo}
+
+O capítulo mais dinâmico do curso: aqui a turma de física finalmente vê
+mecânica dos fluidos geofísica de verdade (vorticidade, instabilidade,
+realimentação). O fio narrativo: o ciclone é a máquina que faz o
+transporte do Cap.~11, usando a energia da baroclinia via os mecanismos
+do Cap.~10. \textbf{Ritmo: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — ciclo de vida norueguês (4 desenhos), equação
+        da vorticidade com foco no esticamento, advecção de vorticidade
+        na onda (Caso~1), Eady e o porquê dos 4000\,km (Caso~2).
+  \item \textbf{Aula 2} — EDO de spin-up (Caso~3), tendência de
+        pressão, jet streaks (Caso~4), autodesenvolvimento e bombas.
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item narrar o ciclo de vida norueguês com os tempos certos (dias);
+  \item usar o termo de esticamento para explicar spin-up e spin-down;
+  \item estimar taxa de crescimento e tamanho de ciclones com Eady;
+  \item localizar regiões de ciclogênese por advecção de vorticidade e
+        quadrantes de jet streak (com os sinais do HS);
+  \item explicar a queda de pressão como exportação de massa da coluna.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Vorticidade e continuidade (Cap.~10); vento térmico e Rossby (Cap.~11);
+frentes e oclusão (Cap.~12); $N$ (Cap.~5); peso da coluna (Cap.~1).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{Sinais no HS}: $\zeta$ ciclônica é NEGATIVA (mesmo
+        sinal de $f$); giro horário. Fixar a convenção cedo e desenhar
+        tudo com o sul para baixo — importar figuras do HN sem espelhar
+        é a maior fonte de confusão.
+  \item \textbf{``A baixa suga o ar''}: a causalidade é da altitude
+        para baixo — divergência em cima exporta massa, a pressão cai,
+        e a convergência de superfície é a \emph{resposta}.
+  \item \textbf{Ciclone = frente}: a frente é a estrutura; o ciclone é
+        o modo instável que a usa. Eady não precisa de frente pronta.
+  \item \textbf{Confundir advecção de vorticidade com vorticidade}: o
+        ciclone de superfície fica sob o máximo de \emph{advecção} (a
+        leste do cavado), não sob o cavado.
+  \item \textbf{Esquecer o calor latente}: bombas são úmidas; a chuva
+        frontal aquece a coluna e acelera a queda de pressão (T3).
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Balde girante com dreno central: abrir o dreno (convergência) e ver o
+giro se intensificar — esticamento ao vivo. Cartas reais: pegar a
+última ciclogênese do Atlântico Sul (GFS/GDAS em 500\,hPa +
+superfície) e apontar cavado, advecção, streak e o ciclone na
+superfície um quarto de onda a leste.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~13)}
+
+Aquecimento: identificação de estágios do ciclo de vida em cartas;
+esticamento com números dados. Aprofundamento: tendência de pressão por
+camadas; quadrantes de streak para casos dados. Síntese: ``por que não
+há ciclones extratropicais nos trópicos?'' (sem baroclinia nem $f$
+suficiente). \emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap13\_ciclones.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & $\zeta$ e advecção numa onda de 500\,hPa & Aula 1, após vorticidade \\
+2 & taxa de Eady e $\lambda_{max}$ & Aula 1, fecho \\
+3 & EDO de spin-up com/sem Ekman & Aula 2, abertura \\
+4 & quadrantes do jet streak & Aula 2, após streaks \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~3 é a ``previsão numérica em miniatura'' do capítulo: uma EDO
+não linear que captura nascimento, teto e morte do ciclone.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap13\_solucoes.ipynb}
+(\emph{não distribuir}): T1 verificado com \texttt{sympy}; N2 prevê a
+temporada de ciclones do Atlântico Sul; N3 dá o ciclo de vida completo.
+Pares: T1$\leftrightarrow$N1, T2$\leftrightarrow$N2,
+T4$\leftrightarrow$N4.
+
+\subsection*{Conexões com o resto do curso}
+
+Transporte de energia (Cap.~11); frentes como estrutura (Cap.~12);
+levantamento e nuvens estratiformes (Caps.~6, 10); calor latente
+(Caps.~4, 7); o setor quente instável dispara os Caps.~14--15; a
+previsão dessas ondas é o teste clássico dos modelos (Cap.~20).

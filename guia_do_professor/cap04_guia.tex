@@ -1,0 +1,106 @@
+% Guia do professor — Capítulo 4: Vapor d'Água
+\section{Capítulo 4 --- Vapor d'Água}
+
+\subsection*{Visão geral e ritmo}
+
+O dicionário quantitativo da umidade: Clausius--Clapeyron, as sete
+variáveis de umidade, LCL, bulbo úmido, água precipitável e o balanço de
+água. \textbf{Ritmo sugerido: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — motivação, dedução e integração de
+        Clausius--Clapeyron, a curva $e_s(T)$, o zoológico de variáveis
+        (com o exemplo de São Paulo). Fechar com Casos~1--2 (15\,min).
+  \item \textbf{Aula 2} — LCL (com dedução da regra dos 125\,m/°C), bulbo
+        úmido e limite fisiológico, água precipitável, balanço de água.
+        Fechar com Casos~3--4 (10\,min).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item deduzir e integrar Clausius--Clapeyron; explicar a regra dos
+        7\,\%/K e suas consequências climáticas;
+  \item converter fluentemente entre $e$, $r$, $q$, $\rho_v$, UR, $T_d$,
+        $T_w$ e saber qual usar em cada problema;
+  \item explicar por que $r$ é conservada e UR não presta para comparar
+        massas de ar;
+  \item calcular o LCL pela regra e pelo método exato; ler a base do
+        cumulus como higrômetro;
+  \item calcular água precipitável de uma sondagem e montar o balanço
+        euleriano de água.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Gás ideal por espécie (pressões parciais, Cap.~1); $\Gamma_d$ e conservação
+de $\theta$ (Cap.~3); potencial de Gibbs é citado mas a dedução de
+Clausius--Clapeyron pode ser dada ``por decreto'' com a EDO como ponto de
+partida — físicos aceitam bem.
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Ar quente segura mais água''}: linguagem de esponja
+        esconde a física — é a \emph{pressão de equilíbrio} $e_s(T)$ que
+        cresce; o ar não ``segura'' nada. Vale corrigir explicitamente.
+  \item \textbf{UR como medida absoluta}: 90\,\% de UR no inverno pode ser
+        menos vapor que 40\,\% no verão. O exemplo numérico cura.
+  \item \textbf{$T_d$ vs.\ $T_w$}: alunos trocam; fixar
+        $T_d \le T_w \le T$ com o caso saturado degenerando tudo.
+  \item \textbf{Fator $\varepsilon$}: esquecem o 0,622 e erram $r$ por
+        60\,\%; lembrar a origem molecular (18/29).
+  \item \textbf{LCL para ar não aquecido pela superfície}: a regra dos
+        125\,m/°C usa $T$ e $T_d$ \emph{da parcela que sobe}; para
+        estratiforme o levantamento é outro (Cap.~5).
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Psicrômetro artesanal: dois termômetros idênticos, gaze molhada num deles,
+abanar 1 minuto. Medir $T$ e $T_w$, calcular $r$ e UR em sala com a equação
+psicrométrica (é o exercício N2 ao vivo). Alternativa: lata gelada suando —
+a película é o orvalho, a temperatura da lata no início da condensação
+$\approx T_d$ do ar da sala.
+
+\subsection*{Problemas sugeridos do livro (seção de exercícios do Cap.~4)}
+
+Aquecimento: cálculo de $e_s$ para várias $T$; conversões $e \to r \to$ UR;
+$T_d$ e LCL. Aprofundamento: bulbo úmido e psicrômetro; água precipitável
+de perfis dados. Síntese: ``por que o deserto tem a maior amplitude térmica
+diária?'' (liga UR, $I\!\downarrow$ do Cap.~2 e Bowen do Cap.~3).
+\emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap04\_vapor.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & EDO de Clausius--Clapeyron × fórmula × MetPy; gelo × líquido & Aula 1, após CC \\
+2 & Carta psicrométrica $r$--$T$ com curvas de UR & Aula 1, após variáveis \\
+3 & LCL exato × regra; base de nuvem ao longo do dia & Aula 2, após LCL \\
+4 & Água precipitável; escala de 7\,\%/K & fim da Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+O painel gelo × líquido do Caso~1 planta a semente do processo de Bergeron
+(Cap.~7); o Caso~4 fecha com a conexão climática (chuvas extremas).
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 (integração de CC com $L_v$ variável, regra dos 7\,\%/K,
+dedução de $r(\varepsilon)$, dedução da regra do LCL, água precipitável
+analítica) e N1--N4 (células no notebook). Soluções em
+\texttt{cap04\_solucoes.ipynb} (\emph{não distribuir}): T1 e T4 com
+\texttt{sympy}, N2 com \texttt{brentq} validado contra o MetPy.
+Pares teoria--numérica: T1$\leftrightarrow$N1 e T2$\leftrightarrow$N4.
+
+\subsection*{Conexões com o resto do curso}
+
+$e_s$ sobre gelo × líquido $\to$ Bergeron (Cap.~7); LCL $\to$ base de nuvem
+e diagramas (Caps.~5--6); $r$ conservada + $\theta$ $\to$ diagramas
+termodinâmicos (Cap.~5); água precipitável $\to$ rios atmosféricos e chuvas
+extremas (Caps.~13, 21); balanço de água $\to$ ciclo hidrológico (Cap.~21).

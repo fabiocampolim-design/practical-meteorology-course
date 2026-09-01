@@ -1,0 +1,212 @@
+% Notas de aula — Capítulo 17: Ventos Regionais
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap17/}}
+
+\title{Capítulo 17 --- Ventos Regionais\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:termicos}--\S\ref{sec:cat} (circulações
+térmicas: brisas, vales e catabáticos).
+\emph{Aula 2:} \S\ref{sec:ondas}--\S\ref{sec:hidra} (ondas de montanha,
+föhn, dinâmica de água rasa e vendavais).
+
+\section{O tempo feito em casa}\label{sec:termicos}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~17 --- Ventos Regionais}\\[2pt]
+entre a escala sinótica (Caps.~12--13) e a turbulência (Cap.~18):\\
+os ventos que a \emph{geografia local} fabrica\\[2pt]
+duas famílias: \textbf{térmicos} (contraste de aquecimento) e
+\textbf{dinâmicos} (montanha no caminho)
+\end{noquadro}
+
+Quando a forçante sinótica está fraca (dias de alta
+\javimos{12}{anticiclones}), a geografia assume: mar/terra, encosta,
+vale e serra criam seus próprios ventos. É a meteorologia que se
+\emph{sente} morando em Santos, Campos do Jordão ou no vale do
+Paraíba.
+
+\subsection{Brisa marítima}
+
+\quadro{Desenhar o circuito vertical costa--mar com o solenoide:
+colunas de densidades diferentes $\Rightarrow$ o circuito gira.
+Anunciar: ``é um teorema de circulação, não um truque''.}
+
+\begin{formadif}[teorema de Bjerknes (T1; Caso~1)]
+\[ \frac{d\Gamma}{dt} = -\oint\frac{dP}{\rho} \neq 0
+\quad\text{quando isóbaras cruzam isopicnas.} \]
+Terra $\sim$5\,K mais quente de dia \javimos{3}{Bowen} monta uma
+brisa de 3--7\,m/s em 1--2\,h, freada pelo atrito. A frente de brisa
+avança terra adentro (10--50\,km) como mini-frente fria
+\javimos{12}{frentes} — e dispara a convecção da tarde
+\javimos{14}{gatilhos}.
+\end{formadif}
+
+\begin{noquadro}[a rotação da brisa]
+Coriolis gira o vetor brisa ao longo do dia: no HS,
+\textbf{anti-horário}\\
+noite: terral (terra esfria mais rápido) — o espelho fraco da brisa\\
+hodógrafo diurno completo no Caso~1
+\end{noquadro}
+
+\subsection{Ventos de vale e encosta}
+
+Dia: anabático (encosta aquecida puxa ar para cima) $+$ vento de vale
+subindo o eixo. Noite: catabático $+$ vento de montanha descendo. O
+acoplamento com a camada de inversão noturna
+\javimos{5}{inversões} faz as ``piscinas frias'' de vale — as geadas
+de fundo de vale do café paulista.
+
+\section{Catabáticos}\label{sec:cat}
+
+\begin{formadif}[o equilíbrio na encosta (T2; Caso~2)]
+\[ \frac{du}{dt} = g\,\frac{\Delta\theta}{\theta}\sin\alpha
+- \frac{C_D}{h}u^2
+\quad\Rightarrow\quad
+u_{eq} = \sqrt{\frac{g\,h\,\Delta\theta\sin\alpha}{C_D\,\theta}}. \]
+Serra à noite: 2--5\,m/s. Antártida (inversão de 20\,K, camada de
+300\,m, mil km de pista): 20--50\,m/s — os ventos médios mais fortes
+do planeta (N2), com Coriolis desviando o escoamento encosta abaixo.
+\end{formadif}
+
+O motor é o resfriamento radiativo noturno
+\javimos{2}{balanço noturno} — o mesmo do nevoeiro
+\javimos{6}{nevoeiro de radiação}, agora num plano inclinado.
+
+\section{Ondas de montanha}\label{sec:ondas}
+
+\quadro{Retomar a mola de Brunt--Väisälä do Cap.~5: a serra é o
+martelo que toca a mola. Desenhar as linhas de corrente ondulando e
+as cristas inclinando contra o vento com a altura.}
+
+\begin{formadif}[Scorer e a propagação (T3; Caso~3)]
+\[ \frac{d^2\hat\delta}{dz^2} + (\ell^2 - k^2)\hat\delta = 0,
+\qquad \ell^2 = \frac{N^2}{U^2} - \frac{U''}{U}. \]
+Montanha larga ($k<\ell$): onda propaga para cima,
+$\lambda_z = 2\pi U/N \sim 7$\,km. $\ell^2$ caindo com a altura:
+ondas \emph{aprisionadas} de sotavento — o trem de lenticulares
+\javimos{6}{nuvens de onda} com espaçamento $2\pi U/N$ horizontal.
+\end{formadif}
+
+\begin{noquadro}[o que as ondas fazem]
+lenticulares paradas no céu com vento forte (parecem OVNIs; são
+cristas)\\
+rotores embaixo das cristas: perigo de aviação\\
+quebra de onda em altitude: CAT \javimos{5}{Richardson} e o arrasto
+de ondas que os modelos precisam parametrizar
+\veremos{20}{parametrização orográfica}
+\end{noquadro}
+
+\subsection{Föhn}
+
+Sobe úmido (chove na serra), desce seco pelo $\Gamma_d$ inteiro: chega
+mais quente e seco do outro lado (T5) — já deduzido com $\theta$
+\javimos{3}{föhn} e agora com o mecanismo completo: a chuva de
+barlavento \emph{remove} o $L_v$ do sistema.
+
+\section{Água rasa sobre a serra: Froude}\label{sec:hidra}
+
+\quadro{Analogia da pia: o jato central liso (supercrítico) e o anel
+turbulento (salto hidráulico). A camada fria sob inversão é a
+``água''; a serra, o obstáculo.}
+
+\begin{formadif}[regimes de Froude (T4; Caso~4)]
+\[ Fr = \frac{U}{\sqrt{g'h}},\qquad g' = g\frac{\Delta\theta}{\theta}. \]
+$Fr<1$: sobe engrossando (subcrítico); $Fr>1$: afina e acelera
+(supercrítico); transição crítica no topo $\Rightarrow$ a camada
+\textbf{despenca} supercrítica na descida e fecha num salto
+hidráulico. É a física da Bora, dos \emph{windstorms} de Boulder e
+das rajadas de sotavento de serra (N4).
+\end{formadif}
+
+Ventos de desfiladeiro (\emph{gap winds}): a mesma camada rasa
+espremida num corredor acelera por Bernoulli — Ponta da Serra do Mar,
+estreito de Gibraltar, Tehuantepec. Primo litorâneo: o \textbf{jato
+costeiro de barreira} (Stull \S17.6) — ar estável bloqueado por uma
+serra ($Fr < 1$!) é desviado e acelera paralelo à costa.
+
+\section{O vento como recurso}\label{sec:eolica}
+
+\begin{formalivro}[estatística e potência (Stull \S\S17.1--17.2)]
+A frequência de velocidades num sítio segue bem a distribuição de
+\textbf{Weibull},
+$f(M) \propto (M/M_0)^{\alpha-1}e^{-(M/M_0)^\alpha}$; a rosa dos
+ventos dá as direções. A potência disponível é
+$\tfrac12\rho A M^3$ — o \emph{cubo} do vento! — e uma turbina extrai
+no máximo a fração de \textbf{Betz}, $16/27 \approx 59\%$; na
+prática, a curva real tem \emph{cut-in}, potência nominal e
+\emph{cut-out}.
+\end{formalivro}
+
+O $M^3$ é o motivo de o perfil logarítmico decidir a altura da torre
+\veremos{18}{perfil log e N2} e de os catabáticos/brisas/jatos deste
+capítulo valerem dinheiro. Dentro de florestas e cidades
+(\emph{canopy flows}, Stull \S17.11), o perfil log vale só acima da
+copa, deslocado de uma altura $d$; dentro dela o vento decai
+exponencialmente — relevante para dispersão sob dossel
+\veremos{19}{dispersão}.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \frac{d\Gamma}{dt} = -\oint\frac{dP}{\rho}\ \text{(brisas)} \qquad
+u_{eq} = \sqrt{\tfrac{gh\Delta\theta\sin\alpha}{C_D\theta}}\
+\text{(catabático)} \]
+\[ \lambda_z = \frac{2\pi U}{N}\ \text{(ondas)} \qquad
+Fr = \frac{U}{\sqrt{g'h}}\ \text{(vendavais de sotavento)} \]
+térmicos de dia, catabáticos de noite, ondas e saltos onde há serra
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap17\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Enuncie o teorema de circulação de Bjerknes e estime a taxa de
+        geração de circulação do circuito costa--mar para
+        $\Delta T = 5$\,K numa coluna de 1\,km.
+  \item Deduza a velocidade de equilíbrio catabática e avalie para uma
+        encosta de serra (2°, 5\,K, 50\,m) e para a Antártida
+        (0{,}6°, 20\,K, 300\,m).
+  \item Apresente o parâmetro de Scorer e as condições de onda
+        propagante, evanescente e aprisionada; calcule $\lambda_z$
+        para $U = 12$\,m/s, $N = 0{,}011$\,s$^{-1}$.
+  \item Defina o número de Froude da camada rasa e explique a
+        sequência subcrítico $\to$ crítico no topo $\to$ supercrítico
+        na descida $\to$ salto hidráulico.
+  \item Calcule o aquecimento föhn para ar que sobe com LCL a 1\,km,
+        cruza serra de 3\,km chovendo, e desce seco do outro lado
+        ($T_0 = 20\,°$C).
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Varra a forçante térmica da brisa e adicione vento sinótico
+        oposto; a partir de que oposição a brisa não entra?
+  \item Reproduza um catabático antártico e compare com os
+        20--50\,m/s de Cape Denison.
+  \item Meça $\lambda_z$ das ondas simuladas contra $2\pi U/N$ e ache
+        os $U$ de ressonância na troposfera.
+  \item Mapeie os regimes de Froude no plano ($Fr$, $h_m/h_0$) e
+        marque a região de vendaval de sotavento.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

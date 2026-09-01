@@ -1,0 +1,215 @@
+% Slides — Capítulo 21: Processos Climáticos Naturais
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap21/}}
+
+\title[Cap. 21 --- Clima Natural]{Capítulo 21 --- Processos Climáticos
+Naturais}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Feedbacks}
+
+\begin{frame}{O clima como amplificador realimentado}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$\Delta T = \dfrac{\lambda_0\,\Delta F}{1 - f}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item O diagrama de blocos da eletrônica, com o planeta no
+            papel do circuito (T1).
+      \item $\lambda_0 = 1/4\varepsilon\sigma T^3$: a resposta de
+            Planck, $\sim$1,2\,K por 2$\times$CO$_2$ (T2).
+      \item Vapor ($+$, Clausius--Clapeyron!), gelo ($+$), nuvens
+            (incerto).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_21_18e.jpg}{0.46\textheight}{Fig.~21.18 --- o
+      laço de realimentação do sistema climático}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Gelo-albedo: dois climas para o mesmo Sol}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Frio $\to$ gelo $\to$ albedo $\to$ mais frio: feedback
+            positivo $\Rightarrow$ múltiplos equilíbrios (Caso~1).
+      \item Ramo quente (nós) e ramo bola-de-neve, com histerese.
+      \item O Neoproterozoico visitou o outro ramo — e saiu pelo
+            CO$_2$ vulcânico (N1).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_21_21.jpg}{0.52\textheight}{Fig.~21.21 --- a
+      curva em S: limites frio e quente vs.\ insolação}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Forçantes naturais}
+
+\begin{frame}{Milankovitch: o metrônomo orbital}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item Excentricidade ($\sim$100\,ka), obliquidade (41\,ka),
+            precessão (23/19\,ka).
+      \item O gatilho: insolação de verão em 65°N (a neve sobrevive
+            ao verão?) — T3; Caso~2.
+      \item O gelo lento retifica o metrônomo: a serra de 100\,ka
+            (N2).
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_21_10.jpg}{0.42\textheight}{Fig.~21.10 ---
+      precessão e estações na órbita}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_21_3.jpg}{0.42\textheight}{Fig.~21.3 --- o
+      registro paleoclimático}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Vulcões e Sol}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Erupções explosivas põem sulfato na estratosfera:
+            $-0{,}5$\,K por 1--2 anos (Pinatubo) — os aerossóis do
+            Cap.~7 em escala planetária.
+      \item Ciclo solar de 11 anos: $\pm$0,1\% de $S_0$ — pequeno
+            comparado ao resto.
+      \item São as réguas naturais da atribuição (Cap.~22).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_21_17b.jpg}{0.48\textheight}{Fig.~21.17 --- a
+      transmissão solar despencando após cada grande erupção}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Daisyworld}
+
+\begin{frame}{O planeta que se regula sem querer}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item Margaridas pretas prosperam com Sol fraco (aquecem);
+            brancas com Sol forte (esfriam).
+      \item Sem intenção: seleção $+$ acoplamento $=$ feedback
+            NEGATIVO emergente (T4; Caso~3).
+      \item Diversidade amplia o platô regulado (N3).
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_21_22b.jpg}{0.42\textheight}{Fig.~21.22 --- o
+      planeta das margaridas}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_21_24b.jpg}{0.42\textheight}{Fig.~21.24 ---
+      cobertura e temperatura vs.\ luminosidade}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{O clima presente}
+
+\begin{frame}{Köppen: a circulação geral carimbada no chão}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item A tropical (ZCIT) $\cdot$ B seco (subsidência de Hadley)
+            $\cdot$ C temperado (frentes) $\cdot$ D continental
+            $\cdot$ E polar.
+      \item O mapa climático É o mapa dos cinturões do Cap.~11.
+      \item Hierarquia de modelos: EBM 0-D $\to$ EBM meridional
+            (\texttt{climlab}) $\to$ GCMs (o Cap.~20 rodado por
+            séculos).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_21_25.jpg}{0.52\textheight}{Fig.~21.25 ---
+      classificação de Köppen: as letras seguem a circulação}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{ENSO e a variabilidade interna}
+
+\begin{frame}{Walker, alísios e o gangorra do Pacífico}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item Normal: alísios empilham água quente no oeste;
+            ressurgência fria no leste (Cap.~11).
+      \item El Niño: alísios fraquejam, a piscina quente desliza para
+            leste, a convecção vai junto.
+      \item Bjerknes: feedback positivo acoplado oceano--atmosfera.
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_21_28a.jpg}{0.42\textheight}{Fig.~21.28 --- La
+      Niña: a Walker turbinada}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_21_28c.jpg}{0.42\textheight}{Fig.~21.28 --- El
+      Niño: a convecção migra para leste}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O oscilador de recarga}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$\dot T = aT + bh$,\quad $\dot h = -cT - dh$
+      \ $\Rightarrow$\ 3--5 anos}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Carga e descarga do conteúdo de calor: oscilação
+            irregular excitada pelo ruído do tempo (T5; Caso~4; N4).
+      \item Brasil: seca no N/NE e chuva no S em anos de El Niño.
+      \item Previsibilidade CLIMÁTICA de meses apesar do caos
+            (Cap.~20): o oceano lento é a memória.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_21_27.jpg}{0.5\textheight}{Fig.~21.27 --- os
+      índices do ENSO oscilando pelas décadas}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$\Delta T = \tfrac{\lambda_0\Delta F}{1-f}$ \quad
+    gelo-albedo: 2 equilíbrios \quad $Q_{65N}$(órbita) \quad
+    $\dot T = aT + bh$}
+  \vspace{0.6em}
+  Feedbacks $+$ escalas lentas $+$ forçantes externas $=$ um clima que
+  varia sozinho — a régua contra a qual o Cap.~22 mede a perturbação
+  humana.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~21}
+  \texttt{notebooks/cap21\_clima.ipynb}
+  \begin{enumerate}
+    \item Bifurcação gelo-albedo (bola de neve).
+    \item Milankovitch e a insolação de 65°N.
+    \item Daisyworld completo.
+    \item O oscilador de recarga do ENSO.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook. Os quatro casos são papers clássicos em miniatura —
+  Budyko, Milankovitch, Watson--Lovelock, Jin.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

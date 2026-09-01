@@ -1,0 +1,227 @@
+% Slides — Capítulo 4: Vapor d'Água
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap04/}}
+
+\title[Cap. 4 --- Vapor d'Água]{Capítulo 4 --- Vapor d'Água}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Clausius--Clapeyron}
+
+\begin{frame}{A curva que comanda o tempo}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$\dfrac{de_s}{dT} = \dfrac{L_v\,e_s}{\Re_v T^2}
+      \;\Rightarrow\; e_s$ dobra a cada $\sim$10\,K}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Saturação $=$ equilíbrio evaporação × condensação; depende
+            \alert{só de $T$}.
+      \item $\sim 7\%$/K: a taxa das chuvas extremas do futuro
+            (Cap.~21).
+      \item Trópicos: 3--4$\times$ mais vapor que latitudes médias.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_04_1.jpg}{0.55\textheight}{Fig.~4.1 --- $e_s(T)$:
+      saturado, subsaturado e supersaturado}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Duas curvas abaixo de zero: água × gelo}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Água super-resfriada existe até $\sim-40\,°$C; sobre gelo,
+            $e_s$ é \alert{menor} (o gelo prende mais).
+      \item Um ar pode estar subsaturado p/ água e supersaturado p/
+            gelo \alert{ao mesmo tempo}.
+      \item Essa fresta alimenta o processo de Bergeron — o motor da
+            chuva fria (Cap.~7).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_04_2.jpg}{0.55\textheight}{Fig.~4.2 --- diferença
+      de $e_s$ sobre água líquida e sobre gelo}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Teoria × fórmulas empíricas}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Integração com $L_v$ constante $\approx$ Tetens $\approx$
+            dados, de $-40$ a $+40\,°$C.
+      \item No notebook (Caso~1): EDO integrada numericamente vs.\
+            MetPy — erro $<1\%$.
+      \item $L_v(T)$ variável: correção pequena (N1).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_04_5a.jpg}{0.55\textheight}{Fig.~4.5 ---
+      Clausius--Clapeyron vs.\ fórmula de Tetens (escala log)}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Variáveis de umidade}
+
+\begin{frame}{O zoológico e suas perguntas-guia}
+  \centering
+  \begin{tabular}{lll}
+    \hline
+    $e$ & pressão de vapor & quanto vapor (kPa)? \\
+    $r = \varepsilon e/(P-e)$ & razão de mistura & g/kg de ar seco?
+    \ \alert{conservada!} \\
+    UR $= 100\,e/e_s$ & umidade relativa & perto da saturação? \\
+    $T_d$ & ponto de orvalho & esfriar quanto para saturar? \\
+    $T_w$ & bulbo úmido & evaporação esfria até onde? \\
+    \hline
+  \end{tabular}
+  \vspace{0.6em}
+  \begin{itemize}
+    \item $(\theta, r)$: a impressão digital de uma massa de ar
+          (Cap.~12).
+    \item UR é a \alert{pior} para comparar massas de ar: depende de $T$
+          (Sibéria 100\,\% é mais seca que o Saara).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Razão de mistura no diagrama}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$r = \dfrac{0{,}622\,e}{P-e}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item $r$ cresce exponencialmente com $T_d$ — mesma curva de
+            Clausius--Clapeyron.
+      \item Exemplo SP: $T=28\,°$C, $T_d=22\,°$C, $P=93$\,kPa
+            $\Rightarrow r = 18$\,g/kg, UR $= 70\%$.
+      \item No diagrama termodinâmico: as \alert{iso-umidades}
+            (isohumes).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_04_5b.jpg}{0.55\textheight}{Fig.~4.5 --- $r(T)$
+      com as faixas de umidade relativa}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{LCL e bulbo úmido}
+
+\begin{frame}{Onde nasce a nuvem: o LCL}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$z_{LCL} = 0{,}125\ \mathrm{km/°C}\times(T - T_d)$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item $T$ cai a 9{,}8\,K/km; $T_d$ a $\sim$1{,}8\,K/km; cruzam-se
+            a 8\,K/km.
+      \item Base plana dos cumulus $=$ LCL: \alert{medir umidade
+            olhando pela janela}.
+      \item $T=30$, $T_d=20\,°$C $\Rightarrow$ base a 1{,}25\,km.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_04_6.jpg}{0.55\textheight}{Fig.~4.6 --- regra de
+      Normand no diagrama: adiabática seca por $T$, isohume por $T_d$}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Bulbo úmido: o termômetro que evapora}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \eqdestaque{$r = r_s(T_w) - \gamma\,(T-T_w)$,\quad
+      $\gamma = C_p/L_v \simeq 0{,}40$\,g\,kg$^{-1}$K$^{-1}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Dois termômetros baratos $\Rightarrow$ $r$ e UR
+            (psicrômetro; N2 resolve com \texttt{brentq}).
+      \item $T_d \le T_w \le T$.
+      \item $T_w$ decide chuva × neve (Cap.~7) e o limite fisiológico
+            de calor úmido ($T_w \gtrsim 35\,°$C).
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_04_5c.jpg}{0.5\textheight}{Fig.~4.5 --- carta
+      psicrométrica: depressão do bulbo úmido}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Água na coluna e balanço}
+
+\begin{frame}{Água precipitável}
+  \eqdestaque{$W = \dfrac{1}{\rho_{liq}\,g}\displaystyle\int_0^{P_{sfc}}
+    r\,dP$\quad [mm de água líquida]}
+  \vspace{0.5em}
+  \begin{itemize}
+    \item Polar: $\sim5$\,mm \quad subtropical: 20--30\,mm \quad
+          tropical: 50--70\,mm.
+    \item Chuva de 80\,mm $>$ $W$ local: tempestade \alert{importa}
+          vapor por convergência (Cap.~14).
+    \item Rios atmosféricos: mais água que o Amazonas (Cap.~13).
+    \item GPS mede $W$ pelo atraso úmido do sinal (Cap.~8).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Balanço de água e o ciclo fechado}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \eqdestaque{$\dfrac{\Delta r_T}{\Delta t} =
+      -U\dfrac{\Delta r_T}{\Delta x} - \dfrac{\Delta F_z}{\Delta z}
+      + \text{fontes} - \text{sumid.}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Mesmo cubo euleriano do Cap.~3, agora para $r_T = r + r_L +
+            r_i$.
+      \item Evaporação \emph{bulk}: $F_{water} = C_E M
+            (q_{sfc}-q_{ar})$.
+      \item Ciclo: $F^*$ (Cap.~2) $\to$ Bowen (Cap.~3) $\to$ LCL (hoje)
+            $\to$ nuvem cresce? (Cap.~5).
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_04_12a.jpg}{0.5\textheight}{Fig.~4.12 --- umidade
+      na camada limite: fluxos de superfície e entranhamento no topo}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$\dfrac{de_s}{dT} = \dfrac{L_ve_s}{\Re_vT^2} \;\to\;
+    e_s(T) \;\to\; r = \dfrac{\varepsilon e}{P-e} \;\to\;
+    z_{LCL} = 0{,}125(T-T_d) \;\to\; W$}
+  \vspace{0.6em}
+  Uma exponencial ($e_s$ dobra a cada 10\,K), uma variável conservada
+  ($r$), uma altura de nuvem (LCL) e uma coluna d'água ($W$): o
+  dicionário completo da umidade.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~4}
+  \texttt{notebooks/cap04\_vapor.ipynb}
+  \begin{enumerate}
+    \item Clausius--Clapeyron: EDO vs.\ fórmula vs.\ MetPy.
+    \item O zoológico de variáveis numa sondagem real.
+    \item LCL: regra dos 125\,m/°C vs.\ cálculo exato.
+    \item Água precipitável da sondagem tropical.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

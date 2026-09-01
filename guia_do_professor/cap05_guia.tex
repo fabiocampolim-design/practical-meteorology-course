@@ -1,0 +1,115 @@
+% Guia do professor — Capítulo 5: Estabilidade Atmosférica
+\section{Capítulo 5 --- Estabilidade Atmosférica}
+
+\subsection*{Visão geral e ritmo}
+
+O capítulo-síntese da primeira metade do curso: Caps.~1--4 se encontram nos
+diagramas termodinâmicos e no método da parcela. Empuxo, Brunt--Väisälä,
+estabilidade estática (com o método \emph{não local} que é marca registrada
+do Stull) e número de Richardson. \textbf{Ritmo sugerido: 2 aulas de 2\,h}
+(o capítulo é longo no livro; estas notas destilam o essencial).
+
+\begin{itemize}
+  \item \textbf{Aula 1} — diagramas termodinâmicos (construção passo a
+        passo no quadro), método da parcela, empuxo, dedução do oscilador
+        de Brunt--Väisälä. Fechar com Casos~1--2 (15\,min).
+  \item \textbf{Aula 2} — estabilidade local × não local (o coração
+        pedagógico da aula), Richardson e turbulência, leitura de perfis
+        (tropopausa, camada de mistura, inversões). Casos~3--4 (15\,min).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item ler e usar um Skew-$T$: adiabáticas secas/úmidas, isoumas, LCL,
+        trajetória de parcela;
+  \item calcular o empuxo via temperatura virtual e estimar velocidades de
+        termais;
+  \item deduzir $N^2$ e interpretar o período de Brunt--Väisälä em
+        fenômenos visíveis;
+  \item aplicar o método não local e explicar por que o critério local
+        falha;
+  \item calcular $Ri$ e prever turbulência de céu claro;
+  \item identificar tropopausa, camada de mistura e inversões num perfil.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+$T_v$ (Cap.~1), $\theta$ e $\Gamma_d$ (Cap.~3), LCL e $r_s$ (Cap.~4),
+oscilador harmônico (física básica — os alunos vão sorrir ao reencontrá-lo
+na atmosfera).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Gradiente ambiental $6{,}5 <$ adiabático $9{,}8$ $\Rightarrow$
+        sempre estável''}: verdade para o ar \emph{não saturado} em média —
+        mas o método da parcela compara com a \emph{adiabática úmida} acima
+        do LCL, e a instabilidade condicional aparece. Preparar bem: é a
+        ponte para o Cap.~14.
+  \item \textbf{Estabilidade só pelo gradiente local}: a armadilha central;
+        o exemplo da tarde convectiva desfaz.
+  \item \textbf{Confundir $N$ com frequência de oscilação visível}: nuvens
+        em faixa têm espaçamento espacial $U\cdot P_{BV}$; a conversão
+        tempo$\to$espaço confunde.
+  \item \textbf{$Ri$ como critério simétrico}: a transição
+        laminar$\to$turbulento ($Ri<0{,}25$) e a volta ($Ri>1$) não
+        coincidem — histerese.
+  \item \textbf{Esquecer $T_v$ no empuxo}: em ar úmido tropical o erro
+        chega a alguns décimos de K — exatamente a ordem do empuxo de um
+        termal.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Garrafa PET com água + azeite (ou água quente colorida embaixo de fria):
+oscilações de interface ilustram Brunt--Väisälä; agitar mostra a transição
+para turbulência (Richardson qualitativo). Vídeo de ondas de
+Kelvin--Helmholtz em nuvens fecha a Aula 2 com aplauso.
+\textbf{Material de apoio}: o \S5.11 do livro traz diagramas
+termodinâmicos em página inteira (emagrama, Skew-$T$, tefigrama etc.)
+prontos para imprimir — distribuir cópias para o trabalho manual em
+sala e nas provas com consulta.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~5)}
+
+Aquecimento: uso do diagrama termodinâmico (plotar sondagem, achar LCL);
+cálculo de $N$ e período; classificação de estabilidade de perfis dados.
+Aprofundamento: método não local em perfis com inversão; $Ri$ com
+cisalhamento realista. Síntese: ``por que o topo da camada de mistura
+coincide com a base das nuvens em dias de bom tempo?''.
+\emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap05\_estabilidade.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & Diagrama do zero + Skew-$T$ com parcela e área de empuxo & Aula 1, após diagramas \\
+2 & Oscilador de Brunt--Väisälä (EDO + amortecimento) & Aula 1, após $N^2$ \\
+3 & Estabilidade não local implementada & Aula 2, após o método \\
+4 & Perfil de $Ri$ e camadas de CAT & Aula 2, após Richardson \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~1 tem intenção dupla: desmistificar o diagrama (construindo-o) e
+plantar o CAPE (área sombreada) para o Cap.~14. O Caso~3 é a implementação
+fiel do algoritmo do livro — raro em qualquer curso.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 (empuxo com \emph{liquid loading}, dedução de $N^2$,
+períodos por camada, CAT no jato, contraexemplo local × não local) e
+N1--N4. Soluções em \texttt{cap05\_solucoes.ipynb} (\emph{não distribuir}):
+T2 com \texttt{sympy} (solução do oscilador), N1 com amortecimento, N3 com
+o algoritmo comentado linha a linha. Pares: T2$\leftrightarrow$N1,
+T5$\leftrightarrow$N3.
+
+\subsection*{Conexões com o resto do curso}
+
+Diagramas + parcela $\to$ CAPE e tempestades (Cap.~14); não local $\to$
+camada limite (Cap.~18); inversões $\to$ dispersão de poluentes (Cap.~19);
+$N$ $\to$ ondas de montanha (Cap.~17); $Ri$ $\to$ turbulência e aviação.

@@ -1,0 +1,191 @@
+% Notas de aula — Capítulo 22: Óptica Atmosférica
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap22/}}
+
+\title{Capítulo 22 --- Óptica Atmosférica\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:arco}--\S\ref{sec:halo} (arco-íris e halos —
+gotas e cristais como instrumentos ópticos).
+\emph{Aula 2:} \S\ref{sec:ceu}--\S\ref{sec:miragem} (espalhamento, as
+cores do céu, refração e miragens).
+
+\section{O capítulo-sobremesa}\label{sec:intro}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~22 --- Óptica Atmosférica}\\[2pt]
+o céu é um laboratório de óptica: cada fenômeno luminoso é um
+\emph{diagnóstico}\\
+arco-íris $=$ gotas grandes \quad halo $=$ cristais de gelo (cirrus!)
+\quad miragem $=$ perfil de $T$\\[2pt]
+ferramentas: Snell, dispersão, espalhamento, e a velha
+Clausius--Clapeyron das gotas do Cap.~7
+\end{noquadro}
+
+Fechamento perfeito do curso para físicos: só óptica de graduação
+aplicada às partículas que os Caps.~4--7 construíram. E cada fenômeno
+\emph{informa}: halo anuncia cirrus da frente quente que chega
+\javimos{12}{nuvens frontais adiantadas}; o tamanho das gotas decide
+se há arco ou glória \javimos{7}{distribuição de tamanhos}.
+
+\section{Arco-íris}\label{sec:arco}
+
+\quadro{Desenhar a gota com o raio: refração, UMA reflexão interna,
+refração — e definir o desvio $D$. Anunciar a pergunta: por que 42°?}
+
+\begin{formadif}[a cáustica dos 42° (T1; Caso~1)]
+\[ D = 180° + 2\theta_i - 4\theta_r,\qquad
+\sin\theta_i = n\sin\theta_r. \]
+$dD/d\theta_i = 0$ em $\cos^2\theta_i = (n^2-1)/3$: um
+\emph{intervalo} de raios sai no mesmo ângulo — a cáustica. Com
+$n = 1{,}33$: arco a $42{,}4°$ (vermelho) e $40{,}7°$ (violeta) do
+ponto antissolar.
+\end{formadif}
+
+\begin{noquadro}[o dicionário do arco]
+vermelho FORA, violeta DENTRO (dispersão: $n$ do violeta maior)\\
+secundário a $\sim$51°, cores INVERTIDAS (duas reflexões internas)\\
+banda escura de Alexandre entre os dois (nenhum raio sai ali)\\
+brilho supranumerário: interferência — o arco é também experimento de
+ondas
+\end{noquadro}
+
+O arco exige gotas grandes ($\gtrsim$0,5\,mm — chuva
+\javimos{7}{gotas de chuva}); gotículas de nuvem ($\sim$10\,$\mu$m)
+fazem a \emph{glória} e o arco de névoa branco (difração dominando). O
+Monte Carlo do Caso~1 mostra a concentração de raios no ângulo do
+arco; o N1 mede a largura com $n(\lambda)$ real.
+
+\section{Halos: os cristais como prismas}\label{sec:halo}
+
+\quadro{Desenhar o hexágono de gelo como prisma de 60° e o caminho do
+raio pelas faces alternadas.}
+
+\begin{formadif}[o mínimo dos 22° (T2; Caso~2)]
+\[ \delta_{min} = 2\arcsin\!\left(n\sin\frac{A}{2}\right) - A
+\qquad (A = 60°,\ n = 1{,}31)\ \Rightarrow\ 21{,}8°. \]
+Cristais orientados ao acaso acumulam-se no mínimo raso: o anel de
+22°, escuro por dentro (nenhum desvio menor existe), borda interna
+avermelhada (N2).
+\end{formadif}
+
+\begin{noquadro}[a família dos halos]
+halo 22°: colunas/placas ao acaso — o mais comum\\
+parélios (sun dogs): placas orientadas horizontais, à altura do Sol\\
+pilar de luz: reflexo nas bases das placas\\
+halo 46° e arcos tangentes: faces de 90° e orientações especiais\\[2pt]
+todos $=$ \textbf{cirrus} \javimos{6}{nuvens altas de gelo}: halo hoje,
+frente quente amanhã \javimos{12}{sequência Ci$\to$Cs$\to$As}
+\end{noquadro}
+
+\section{Por que o céu é azul (e o poente vermelho)}\label{sec:ceu}
+
+\quadro{A pergunta mais antiga da turma finalmente respondida com o
+dipolo de Rayleigh — e com o Beer do Cap.~2 fazendo o poente.}
+
+\begin{formadif}[Rayleigh (T3; Caso~3)]
+Molécula $\ll \lambda$ como dipolo forçado: potência irradiada
+$\propto \omega^4$, logo
+\[ \sigma \propto \lambda^{-4}
+\quad\Rightarrow\quad
+\frac{\sigma_{azul}}{\sigma_{verm}} =
+\left(\frac{650}{450}\right)^4 \approx 4{,}4. \]
+Céu $=$ luz \emph{espalhada} (azul vence); Sol poente $=$ luz
+\emph{transmitida} por massa de ar $1/\sin\Psi$
+\javimos{2}{Beer e massa de ar}: o azul foi roubado no caminho.
+\end{formadif}
+
+\begin{noquadro}[o dicionário das cores]
+céu azul (não violeta): espectro solar $+$ olho $+$ ozônio\\
+nuvem branca: gotas $\gg\lambda$ espalham tudo igual (Mie)\\
+poente vulcânico roxo: aerossol estratosférico
+\javimos{21}{Pinatubo} (N3)\\
+céu polarizado a 90° do Sol (T5): o dipolo não irradia no próprio eixo
+\end{noquadro}
+
+\section{Refração: miragens, Fata Morgana e o flash verde}
+\label{sec:miragem}
+
+\quadro{Escrever a equação do raio e desenhar os dois casos: asfalto
+quente (raio curva para cima) e mar frio (para baixo).}
+
+\begin{formadif}[o raio que curva (T4; Caso~4)]
+$n$ segue a densidade \javimos{1}{lei dos gases}: ar quente $=$ $n$
+menor. Raio quase horizontal:
+\[ \frac{d^2z}{dx^2} \simeq \frac{1}{n}\frac{dn}{dz},\qquad
+R_{curv} = \left|\frac{n}{dn/dz}\right|. \]
+Asfalto ($dT/dz \sim -2$\,K/m no 1º metro): o ``lago'' que é céu
+refletido. Inversão marítima ($dT/dz > 0$
+\javimos{5}{inversões}): miragem superior, \emph{looming}, Fata
+Morgana; $dT/dz \approx +0{,}11$\,K/m guia o raio na curvatura da
+Terra (N4).
+\end{formadif}
+
+A refração padrão também: achata o Sol poente, adianta o nascer em
+$\sim$2\,min, e — com a dispersão — produz o \textbf{flash verde} no
+último gomo do disco. Cintilação das estrelas: turbulência do Cap.~18
+\javimos{18}{turbulência} vista como ruído de fase.
+
+\section{Síntese da aula --- e do curso}
+
+\begin{noquadro}[mapa final]
+\[ \cos^2\theta_i = \frac{n^2-1}{3}\ (42°) \qquad
+\delta_{min} = 2\arcsin(n\sin\tfrac{A}{2}) - A\ (22°) \]
+\[ \sigma \propto \lambda^{-4} \qquad
+\frac{d^2z}{dx^2} = \frac{1}{n}\frac{dn}{dz} \]
+olhar o céu e LER: gotas, cristais, perfis de temperatura — o curso
+inteiro num pôr do sol
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap22\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Minimize o desvio do raio na gota e mostre que
+        $\cos^2\theta_i = (n^2-1)/3$; calcule os ângulos do arco para
+        o vermelho e o violeta.
+  \item Deduza $\delta_{min} = 2\arcsin(n\sin A/2) - A$ pela simetria
+        do percurso no prisma e avalie para o gelo (60°).
+  \item Obtenha o $\lambda^{-4}$ de Rayleigh pelo argumento do dipolo
+        forçado e explique por que o céu não é violeta e a nuvem é
+        branca.
+  \item Mostre que o raio de curvatura de um raio quase horizontal é
+        $R = n/|dn/dz|$ e calcule o gradiente térmico que iguala $R$
+        ao raio da Terra.
+  \item Explique a polarização do céu a 90° do Sol pelo padrão de
+        radiação do dipolo, e por que o arco-íris também é
+        polarizado.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Com $n(\lambda)$ da água, calcule a largura do arco primário
+        e a posição do secundário.
+  \item Monte Carlo do halo em duas cores: separação angular e a
+        borda vermelha interna.
+  \item Acrescente aerossol vulcânico ao crepúsculo e explique os
+        poentes roxos pós-Pinatubo.
+  \item Inverta o perfil térmico (mar frio) e produza a miragem
+        superior/looming; estime o alcance extra do horizonte.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

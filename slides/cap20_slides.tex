@@ -1,0 +1,184 @@
+% Slides — Capítulo 20: Previsão Numérica do Tempo
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap20/}}
+
+\title[Cap. 20 --- Previsão Numérica]{Capítulo 20 --- Previsão Numérica
+do Tempo}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{As equações e a grade}
+
+\begin{frame}{O globo em caixinhas}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item As 7 equações do curso (Caps.~1, 3, 4, 10) em $10^9$
+            células.
+      \item Grades esféricas, malhas aninhadas, coordenada $\sigma$
+            seguindo o terreno.
+      \item Arakawa C: cada variável no seu canto da célula.
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_20_5a.jpg}{0.42\textheight}{Fig.~20.5 --- a
+      esfera cubada de um modelo global}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_20_2a.jpg}{0.42\textheight}{Fig.~20.2 ---
+      coordenada $\sigma$ abraçando a montanha}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Advecção discreta: os pecados de cada esquema}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{CFL: $C = \dfrac{U\Delta t}{\Delta x} \le 1$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Upwind difunde ($K_{num} = U\Delta x(1-C)/2$, T2);
+            leapfrog dispersa; $C>1$ explode (T1; Caso~1).
+      \item A onda $2\Delta x$ viaja errada: resolução efetiva
+            $\sim 7\Delta x$ (T5).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_20_11c.jpg}{0.5\textheight}{Fig.~20.11 ---
+      violando o CFL: a solução explode}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Parametrizações: a física sub-grade}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item O que a célula não vê vira estatística: radiação
+            (Cap.~2), microfísica (Cap.~7), convecção (Cap.~14),
+            turbulência (Cap.~18), ondas de montanha (Cap.~17).
+      \item Metade do custo computacional — e a maior fonte de erro
+            sistemático.
+      \item Entender os Caps.~2--18 $=$ saber onde o modelo erra.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_20_3c.jpg}{0.48\textheight}{Fig.~20.3 --- os
+      processos que uma célula precisa parametrizar}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Caos e previsibilidade}
+
+\begin{frame}{Lorenz 1963: a borboleta}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$t_{max} = \dfrac{1}{\lambda}
+      \ln\dfrac{E}{\epsilon_0}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Gêmeos indistinguíveis divergem exponencialmente
+            (Caso~2; N2).
+      \item Logarítmico em $\epsilon_0$: melhorar observações 10×
+            compra só $\sim$2 dias (T3).
+      \item Teto de $\sim$2 semanas: estrutural, não computacional.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_20_18a.jpg}{0.52\textheight}{Fig.~20.18 --- o
+      atrator do sistema de Lorenz}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Assimilação e ensembles}
+
+\begin{frame}{A média ponderada mais valiosa do mundo}
+  \eqdestaque{$x_a = x_b + K(y_o - x_b)$,\qquad
+    $K^* = \dfrac{\sigma_b^2}{\sigma_b^2+\sigma_o^2}$,\qquad
+    $\dfrac{1}{\sigma_a^2} = \dfrac{1}{\sigma_b^2} +
+    \dfrac{1}{\sigma_o^2}$}
+  \vspace{0.5em}
+  \begin{itemize}
+    \item As precisões SOMAM: a análise supera modelo E observação
+          (T4; Caso~3; N3).
+    \item Ciclada a cada 6\,h sobre $10^7$ observações (Caps.~8--9):
+          satélites são a espinha dorsal.
+    \item Generalizações: 4D-Var, EnKF — o coração é esta fórmula (a
+          mesma do filtro de Kalman e do laboratório de física).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Ensemble: prever a própria incerteza}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item 30--50 rodadas perturbadas: a dispersão é a barra de
+            erro (Caso~4).
+      \item Fração de membros $=$ probabilidade: ``70\% de chuva'' é
+            saída literal.
+      \item O spread prevê o próprio erro (N4): o ensemble sabe
+            quando vai errar.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_20_19c.jpg}{0.5\textheight}{Fig.~20.19 --- o
+      espaguete do ensemble abrindo com o prazo}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Verificação: a revolução silenciosa}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Previsão de 5 dias hoje $=$ 3 dias dos anos 1990:
+            $\sim$1 dia de ganho por década.
+      \item Ingredientes: satélites $+$ assimilação $+$ física $+$
+            computação.
+      \item Persistência e climatologia: os adversários que toda
+            previsão precisa vencer.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_20_22.jpg}{0.5\textheight}{Fig.~20.22 ---
+      correlação de anomalia vs.\ prazo: previsão × persistência}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$C \le 1$ \quad $K_{num} = \tfrac{U\Delta x(1-C)}{2}$
+    \quad $t_{max} = \tfrac{1}{\lambda}\ln\tfrac{E}{\epsilon_0}$
+    \quad $x_a = x_b + K(y_o-x_b)$}
+  \vspace{0.6em}
+  Discretizar, parametrizar, inicializar, quantificar: o curso inteiro
+  dentro de um computador — com prazo de validade dado pelo caos e
+  incerteza entregue pelo ensemble.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~20}
+  \texttt{notebooks/cap20\_previsao.ipynb}
+  \begin{enumerate}
+    \item Upwind / Lax--Wendroff / leapfrog e o CFL.
+    \item Lorenz 63: borboleta e gêmeos divergindo.
+    \item Ciclo de assimilação no Lorenz.
+    \item Ensemble: espaguete $\to$ probabilidade.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook. Rodar o Caso~2 ao vivo mudando o 6º decimal é o momento
+  ``uau'' do semestre.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

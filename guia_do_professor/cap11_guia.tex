@@ -1,0 +1,96 @@
+% Guia do professor — Capítulo 11: Circulação Geral
+\section{Capítulo 11 --- Circulação Geral}
+
+\subsection*{Visão geral e ritmo}
+
+O capítulo que conecta o micro (Caps.~1--10) ao planeta: desequilíbrio
+radiativo, células, jatos (momento angular e vento térmico) e ondas de
+Rossby. O capítulo do livro é longo (60\,pp); estas notas destilam a
+espinha dorsal física. \textbf{Ritmo: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — os dois perfis radiativos e o transporte exigido
+        (integral no quadro), Hadley, momento angular e o jato subtropical,
+        o mapa-múndi climático. Casos~1--2 (15\,min; o EBM rende).
+  \item \textbf{Aula 2} — vento térmico (dedução completa), jato polar,
+        Rossby ($\beta$ como restauração), cinturões e bloqueios.
+        Casos~3--4 (15\,min).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item calcular o transporte meridional exigido a partir dos perfis
+        radiativos;
+  \item explicar Hadley, seus limites ($\sim$30°) e o jato subtropical por
+        momento angular;
+  \item deduzir e aplicar o vento térmico; localizar o jato polar;
+  \item explicar a restauração $\beta$ e usar $c = U - \beta/k^2$;
+  \item ler o mapa-múndi climático como consequência das células.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Insolação por latitude (Cap.~2, Caso~2!); geostrofia e hidrostática
+(Caps.~1, 10); momento angular (mecânica); vorticidade (definir
+rapidamente — físicos aceitam $\zeta = \nabla\times\vec U$ de imediato).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Hadley vai até o polo''}: o modelo de uma célula falha
+        por momento angular (134\,m/s!) e baroclinia; T2 quantifica.
+  \item \textbf{Jato como ``rio de ar'' isolado}: é a expressão vertical do
+        contraste térmico (vento térmico), não uma entidade à parte.
+  \item \textbf{Rossby para leste}: a FASE das ondas longas anda para
+        oeste em relação ao escoamento; a advecção pelo $U$ costuma vencer
+        — distinguir fase × grupo × advecção.
+  \item \textbf{ZCIT no equador geográfico}: migra com a estação e fica em
+        média ao norte — vale mostrar a climatologia.
+  \item \textbf{Sinais no HS}: vento térmico e Buys-Ballot de novo com
+        $f<0$; insistir nos desenhos com o sul para baixo.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Tanque girante improvisado (balde em prato giratório com água + corante +
+gelo no centro): células e ondas aparecem. Alternativa: vídeos do
+laboratório de tanque do MIT (Marshall) — Hadley e baroclinia em 3\,min.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~11)}
+
+Aquecimento: $\beta$ e período de Rossby em várias latitudes; vento térmico
+com gradientes dados. Aprofundamento: transporte exigido de tabelas
+radiativas; jato por camadas. Síntese: ``o que acontece com os cinturões
+num planeta girando 2$\times$ mais rápido?''.
+\emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap11\_circulacao.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & Transporte exigido (os 5\,PW) & Aula 1, após a integral \\
+2 & EBM meridional (\texttt{climlab}): $T(\phi)$, linha do gelo & Aula 1 \\
+3 & Dispersão de Rossby e onda estacionária & Aula 2, após Rossby \\
+4 & Vento térmico $\to$ jato num perfil realista & Aula 2, após dedução \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~2 reaproveita o \texttt{climlab} do Cap.~2 em modo meridional — e
+antecipa o gelo-albedo do Cap.~21.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap11\_solucoes.ipynb}
+(\emph{não distribuir}): T3 com \texttt{sympy}; N2 é a ponte direta para o
+Cap.~21. Pares: T1$\leftrightarrow$N1, T5$\leftrightarrow$N3.
+
+\subsection*{Conexões com o resto do curso}
+
+Insolação (Cap.~2); geostrofia/vorticidade (Cap.~10); ciclones nascem nas
+ondas (Cap.~13); jato e CAT (Cap.~5); bloqueios e extremos (Cap.~21);
+correntes oceânicas e ENSO (Cap.~21).

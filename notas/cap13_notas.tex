@@ -1,0 +1,220 @@
+% Notas de aula — Capítulo 13: Ciclones Extratropicais
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap13/}}
+
+\title{Capítulo 13 --- Ciclones Extratropicais\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:vida}--\S\ref{sec:eady} (ciclo de vida
+norueguês, vorticidade, instabilidade baroclínica).
+\emph{Aula 2:} \S\ref{sec:spinup}--\S\ref{sec:sintese} (spin-up,
+tendência de pressão, jet streaks, autodesenvolvimento, bombas).
+
+\section{O protagonista das latitudes médias}\label{sec:vida}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~13 --- Ciclones Extratropicais}\\[2pt]
+o ciclone é a \emph{máquina} que executa o serviço do Cap.~11:\\
+transporta calor para o polo e momento para o jato,\\
+usando a energia guardada no contraste térmico (baroclinia).
+\end{noquadro}
+
+Tudo o que o curso montou converge aqui: a frente que ondula
+\javimos{12}{frentes}, a onda de Rossby que a embala
+\javimos{11}{ondas de Rossby}, a convergência que levanta
+\javimos{10}{continuidade} e a chuva frontal que aquece a coluna
+\javimos{7}{precipitação}.
+
+\quadro{Desenhar a sequência do modelo norueguês em 4 quadros: frente
+estacionária $\to$ ondulação $\to$ ciclone maduro com setor quente
+$\to$ oclusão. Anotar os tempos: $\sim$1--2 dias por quadro.}
+
+O \textbf{ciclo de vida norueguês} (escola de Bergen
+\javimos{12}{Bergen}): nasce como ondulação numa frente, amadurece com
+setor quente bem definido, oclui quando a fria alcança a quente
+\javimos{12}{oclusões} e morre em 5--8 dias. No HS tudo gira no sentido
+\emph{horário} em torno da baixa — treinar os desenhos com o sul para
+baixo.
+
+\section{Vorticidade: a moeda do ciclone}\label{sec:vort}
+
+\begin{formadif}[equação da vorticidade (T1)]
+Tomando o rotacional das equações do movimento
+\javimos{10}{equações do movimento}:
+\[ \frac{D(\zeta + f)}{Dt} \simeq -(\zeta + f)\,
+\nabla_h\!\cdot\vec U_h, \]
+o termo de \textbf{esticamento}: convergência encolhe a coluna
+horizontalmente e ela gira mais rápido (bailarina fechando os braços).
+No HS, $\zeta$ do ciclone tem o mesmo sinal de $f$ (negativo… mas
+convém trabalhar com $|\zeta|$ crescendo — fixar convenção no quadro).
+\end{formadif}
+
+\begin{noquadro}[onde nasce o giro]
+convergência $D<0$ sobre coluna com $(\zeta + f)$\\
+$\Rightarrow$ $|\zeta|$ cresce — o ciclone é filho da convergência\\
+e a convergência de superfície é imposta pela \textbf{altitude}
+(advecção de vorticidade, jet streak)
+\end{noquadro}
+
+O Caso~1 do notebook calcula $\zeta$ e sua advecção numa onda de
+500\,hPa: a região a leste do cavado é a ``zona de sucção'' onde o
+ciclone de superfície nasce e para onde ele se move — a regra de bolso
+de qualquer carta de altitude \javimos{9}{cartas de 50\,kPa}.
+
+\begin{formadif}[vorticidade potencial e a ciclogênese de sotavento]
+Para uma coluna adiabática de espessura $\Delta z$, conserva-se a
+\textbf{vorticidade potencial}
+\[ \frac{\zeta + f}{\Delta z} = \text{const}. \]
+É o esticamento em forma de lei de conservação
+\javimos{11}{tipos de vorticidade}. Aplicação imediata: ar de oeste
+cruzando uma cordilheira é \emph{achatado} no topo (perde $\zeta$,
+curva anticiclônico) e \emph{esticado} na descida — ganha $\zeta$
+ciclônica e forma o cavado de sotavento: a \textbf{ciclogênese de
+sotavento} (Stull \S13.3) dos Alpes, das Rochosas e da Cordilheira
+dos Andes (as baixas do Chaco e os ciclones que nascem a leste da
+cordilheira e amadurecem no Prata).
+\end{formadif}
+
+\section{Por que existem ciclones? Instabilidade baroclínica}
+\label{sec:eady}
+
+\quadro{Desenhar as isentrópicas inclinadas da zona baroclínica e uma
+troca de parcelas dentro do ``cone de instabilidade'': a fria desce e a
+quente sobe — energia potencial liberada.}
+
+\begin{formalivro}[taxa de Eady]
+\[ \sigma_{max} \simeq 0{,}31\,\frac{|f|}{N}\,
+\frac{\partial U}{\partial z},\qquad
+\lambda_{max} \simeq 3{,}9\,\frac{N\,H}{|f|} \simeq 4000\ \mathrm{km}. \]
+O cisalhamento vem do vento térmico \javimos{11}{vento térmico}; $N$ é
+a estratificação \javimos{5}{Brunt--Väisälä}; $NH/|f|$ é o raio de
+deformação de Rossby (T2).
+\end{formalivro}
+
+\begin{noquadro}[os números que explicam a carta]
+$\lambda_{max} \simeq 4000$\,km $=$ o tamanho dos ciclones\\
+e-dobra $\sim$1--2 dias no inverno $=$ a velocidade com que o tempo
+muda\\
+inverno (contraste maior) $=$ temporada de ciclones (N2)
+\end{noquadro}
+
+O ciclone é o modo instável da zona baroclínica: extrai energia
+potencial do contraste equador--polo e a converte em vento — cumprindo
+o transporte que a célula de Hadley não alcança
+\javimos{11}{limite da Hadley}.
+
+\section{Spin-up e morte: a EDO do ciclone}\label{sec:spinup}
+
+\begin{formadif}[esticamento × Ekman (Caso~3)]
+\[ \frac{d\zeta}{dt} = -(f+\zeta)\,D - \frac{\zeta}{\tau_E},
+\qquad \tau_E \sim \text{2--4 dias}. \]
+Com $D<0$ imposto pela altitude, o crescimento é
+super-exponencial; o bombeamento de Ekman \javimos{10}{espiral de
+Ekman} põe o teto e, quando a divergência de altitude desliga, mata o
+ciclone em $\sim\tau_E$ (N3). Vida completa: 5--8 dias.
+\end{formadif}
+
+\subsection{Tendência de pressão}
+
+\begin{formadif}[por que a pressão cai (T3)]
+$P_{sfc}$ é o peso da coluna \javimos{1}{massa da coluna}:
+\[ \frac{\partial P_{sfc}}{\partial t} =
+-g\int_0^\infty \nabla\cdot(\rho\vec U)\,dz. \]
+O ciclone aprofunda quando a coluna \emph{exporta} massa — divergência
+em altitude vencendo a convergência de superfície. Aquecimento da
+coluna (calor latente da chuva frontal \javimos{7}{calor latente})
+também derruba $P_{sfc}$: umidade acelera bombas.
+\end{formadif}
+
+\section{Jet streaks e autodesenvolvimento}\label{sec:jet}
+
+\quadro{Desenhar o streak com os 4 quadrantes e marcar (HS!) entrada
+polar e saída equatorial como quadrantes de divergência em altitude.}
+
+\begin{formalivro}[os quatro quadrantes (T4; Caso~4)]
+Na entrada do streak o ar acelera; o vento ageostrófico transversal
+$v_{ag} = (1/f)\,DU/Dt$ monta duas células de circulação: divergência
+em altitude na \textbf{entrada polar} e na \textbf{saída equatorial}
+(HS) — os berços preferenciais de ciclogênese.
+\end{formalivro}
+
+\textbf{Autodesenvolvimento}: o ciclone cava sua própria
+intensificação — a advecção quente à frente amplifica a crista a
+leste, o que afia o cavado a oeste, que aumenta a advecção de
+vorticidade sobre o ciclone\ldots\ realimentação que produz as
+\textbf{bombas} (queda $\ge 24$\,hPa/24\,h normalizada por
+$\sin\phi/\sin 60°$ — T5), como as ciclogêneses explosivas do
+Atlântico Sul ao largo do Uruguai/Argentina.
+
+\section{Síntese da aula}\label{sec:sintese}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \text{baroclinia} \xrightarrow{\text{Eady}} \text{onda que cresce}
+\xrightarrow{\text{adv.\ vort.\ + streak}} \text{convergência}
+\xrightarrow{-(f+\zeta)D} \text{spin-up} \]
+\[ \frac{\partial P_{sfc}}{\partial t} < 0\ \text{(exporta massa)}
+\qquad \text{Ekman mata em } \tau_E \qquad
+\text{bomba: } 24\,\mathrm{hPa/24h}\times\tfrac{\sin\phi}{\sin60°} \]
+\end{noquadro}
+
+Daqui o curso entra na escala convectiva: o que acontece \emph{dentro}
+do setor quente instável \veremos{14}{tempestades}.
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap13\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item A partir das equações do movimento horizontal, deduza o termo
+        de esticamento $-(\zeta+f)\nabla\cdot\vec U_h$ da equação da
+        vorticidade e interprete-o com conservação de momento angular.
+  \item Por análise dimensional com $f$, $N$ e
+        $\Lambda = \partial U/\partial z$, monte a taxa de Eady
+        $\sigma \sim (f/N)\Lambda$ e a escala
+        $L_R = NH/|f|$; avalie $\lambda_{max} = 3{,}9\,L_R$ para a
+        troposfera padrão.
+  \item Mostre que $\partial P_{sfc}/\partial t =
+        -g\int\nabla\cdot(\rho\vec U)\,dz$ e explique por que
+        aquecimento diabático da coluna também derruba a pressão à
+        superfície.
+  \item Derive o vento ageostrófico transversal na entrada/saída de um
+        jet streak e monte o padrão de 4 quadrantes para o HS.
+  \item Enuncie o critério de Sanders--Gyakum para ``bombas'' com a
+        normalização $\sin\phi/\sin 60°$ e calcule o limiar em
+        $35°$S e $60°$S.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Varra a amplitude da onda de 500\,hPa e trace $|\zeta|_{max}/|f|$
+        e a advecção máxima; onde a hipótese quase-geostrófica começa a
+        falhar?
+  \item Com o ciclo sazonal de $\partial T/\partial y$, trace o tempo
+        de e-dobra de Eady mês a mês e identifique a temporada de
+        ciclones do Atlântico Sul.
+  \item Desligue a divergência de altitude no dia 3 da EDO de spin-up e
+        meça a vida útil do ciclone para $\tau_E = 2, 3, 5$ dias.
+  \item Dobre a intensidade do jet streak e meça o máximo de
+        divergência e o $w$ estimado por continuidade; compare com o
+        levantamento sinótico do Cap.~10.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

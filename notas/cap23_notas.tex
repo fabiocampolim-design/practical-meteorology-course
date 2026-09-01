@@ -1,0 +1,158 @@
+﻿% Notas de aula — Capítulo 23 (módulo extra): Mudança Climática
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap23/}}
+
+\title{Capítulo 23 (módulo extra) --- Mudança Climática\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:forcante}--\S\ref{sec:inercia} (forçante do
+CO$_2$, sensibilidade, a inércia oceânica).
+\emph{Aula 2:} \S\ref{sec:tcre}--\S\ref{sec:sintese} (orçamento de
+carbono, detecção e atribuição, impactos e o fecho do curso).
+
+\section{A física que o curso inteiro preparou}\label{sec:forcante}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~23 --- Mudança Climática}\\[2pt]
+não é um tema novo: é o curso inteiro aplicado a uma perturbação\\
+estufa (Cap.~2) $+$ feedbacks (Cap.~21) $+$ oceano lento (Cap.~3)
+$+$ estatística vs.\ caos (Cap.~20)
+\end{noquadro}
+
+\subsection{A forçante logarítmica}
+
+\quadro{Perguntar: se a banda do CO$_2$ já é opaca
+\javimos{2}{$\tau\gg1$}, por que mais CO$_2$ importa? (Deixar a
+turma se enrolar; a resposta são as ASAS da banda.)}
+
+\begin{formadif}[o logaritmo (T1; Caso~1; N1)]
+Centro saturado; asas com $k \sim e^{-|\nu-\nu_0|/\Delta}$: a
+fronteira $\tau = 1$ avança $\propto \ln C$:
+\[ \Delta F = 5{,}35\,\ln\frac{C}{C_0}\ \mathrm{W/m^2},\qquad
+\Delta F_{2\times} = 3{,}7\ \mathrm{W/m^2}. \]
+Cada duplicação compra as mesmas asas. Hoje ($\sim$420\,ppm):
+$\Delta F \simeq 2{,}2$\,W/m² — medível por satélite no espectro de
+saída \javimos{8}{sondadores}.
+\end{formadif}
+
+Com a álgebra de feedbacks \javimos{21}{sensibilidade}:
+$\Delta T_{2\times} \sim 2{,}5$--4\,K, e a maior incerteza mora nas
+nuvens \javimos{6}{nuvens} — microfísica decidindo macroeconomia.
+
+\section{A inércia: o oceano cobra depois}\label{sec:inercia}
+
+\begin{formadif}[duas caixas (T2; Caso~2)]
+\[ c_s\dot T_s = \Delta F - \frac{T_s}{\lambda} - \gamma(T_s - T_d),
+\qquad c_d\dot T_d = \gamma(T_s - T_d). \]
+Autovalores: $\sim$4 anos (camada de mistura — a escala do Pinatubo)
+e $\sim$séculos (oceano profundo). Congelando o CO$_2$ hoje, o
+planeta ainda aquece $\sim$0,4--0,6\,K: o \textbf{aquecimento
+comprometido} — a dívida da inércia térmica \javimos{3}{capacidade
+térmica da água}.
+\end{formadif}
+
+\section{O orçamento de carbono}\label{sec:tcre}
+
+\quadro{Escrever a linearidade TCRE e deixar a turma desconfiada —
+depois mostrar os dois efeitos não lineares que se cancelam (T4).}
+
+\begin{noquadro}[TCRE (Caso~3)]
+$\Delta T \simeq 0{,}45$\,K por 1000\,GtCO$_2$ acumuladas\\
+emitidos até hoje: $\sim$2500\,GtCO$_2$ ($\to \sim$1,2\,K, confere
+com o observado)\\
+restam p/ 1,5\,°C: $\sim$800\,GtCO$_2$ $\approx$ 20 anos no ritmo
+atual\\[2pt]
+consequência: estabilizar $T$ $=$ emissão líquida \textbf{zero}
+\end{noquadro}
+
+A linearidade vem do log da forçante compensando a saturação dos
+sumidouros (T4) — e transforma meta de temperatura em orçamento
+finito, independente da trajetória (N3).
+
+\section{Detecção, atribuição e assinaturas}\label{sec:detec}
+
+\begin{formadif}[o sinal no ruído (Caso~4; N4)]
+A variabilidade interna \javimos{21}{ENSO, vulcões} esconde a
+tendência: com ruído realista, são necessárias $\sim$3--4 décadas
+para 95\% de detecção — por isso o teste é sempre multidecadal, e uma
+década fria isolada não refuta nada.
+\end{formadif}
+
+\begin{noquadro}[impressões digitais do mecanismo estufa (T5)]
+troposfera aquece E estratosfera ESFRIA (Sol aqueceria as duas)\\
+noites aquecem mais que dias; inverno mais que verão; Ártico mais que
+tudo (gelo-albedo \javimos{21}{feedback})\\
+OLR cai exatamente nas bandas do CO$_2$ (satélites, Cap.~8)
+\end{noquadro}
+
+\section{Impactos pelo curso}\label{sec:sintese}
+
+Cada capítulo ganha seu pós-escrito: Clausius--Clapeyron intensifica
+extremos de chuva ($+7\%$/K \javimos{4}{7\%/K}); ciclones tropicais
+com teto MPI maior \javimos{16}{MPI $+2$\,K}; ondas de calor com
+bulbo úmido no limite fisiológico \javimos{4}{$T_w$}; bloqueios e a
+corrente de jato \javimos{11}{Rossby}; nível do mar (expansão térmica
+$+$ gelo, T3); e a previsão sazonal-decadal como fronteira
+\javimos{20}{ensembles}.
+
+\section{Síntese do capítulo e do curso}
+
+\begin{noquadro}[mapa final --- o fecho]
+\[ \Delta F = 5{,}35\ln\frac{C}{C_0} \quad
+\Delta T = \frac{\lambda_0\Delta F}{1-f} \quad
+\tau_{oceano}: \text{anos e séculos} \quad
+\Delta T \simeq \mathrm{TCRE}\times E_{cum} \]
+o mesmo curso que prevê a chuva de amanhã fecha o balanço do século:
+física, do barômetro ao planeta
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap23\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Explique a origem do $\ln(C/C_0)$ pela saturação do centro da
+        banda e o avanço das asas; por que CFCs têm forçante linear?
+  \item Obtenha as duas escalas de tempo do modelo de duas caixas e
+        associe-as ao Pinatubo e ao aquecimento comprometido.
+  \item Estime a subida do nível do mar por expansão térmica
+        ($\alpha \simeq 2\times10^{-4}$\,K$^{-1}$) para 1\,K na
+        camada de 700\,m, e compare com os $\sim$3,5\,mm/ano
+        observados.
+  \item Argumente a linearidade do TCRE pelos dois efeitos que se
+        compensam e extraia a consequência ``líquido zero''.
+  \item Explique por que a estratosfera esfria enquanto a superfície
+        aquece, e por que isso descarta o Sol como causa.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Recupere o coeficiente $\sim$5,35 de um modelo de banda
+        sintético e ache o regime onde o log falha.
+  \item Mapeie o aquecimento comprometido no plano
+        ($\lambda$, $\gamma$); que parâmetro domina?
+  \item Rode três trajetórias com o mesmo acumulado e compare picos e
+        caminhos de temperatura.
+  \item Trace o ano de emergência do sinal contra a amplitude do
+        ruído interno.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

@@ -1,0 +1,177 @@
+% Notas de aula — Capítulo 19: Dispersão de Poluentes
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap19/}}
+
+\title{Capítulo 19 --- Dispersão de Poluentes\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:pluma}--\S\ref{sec:estab} (pluma gaussiana,
+imagem no chão, estabilidade e formas de pluma).
+\emph{Aula 2:} \S\ref{sec:caixa}--\S\ref{sec:walk} (modelo de caixa,
+episódios, passeio aleatório e a difusão turbulenta).
+
+\section{O problema}\label{sec:pluma}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~19 --- Dispersão de Poluentes}\\[2pt]
+a pergunta regulatória: dada uma fonte $Q$, qual a concentração $C$
+em cada lugar?\\
+a resposta é 100\% meteorologia: vento ($U$), turbulência
+($\sigma$s) e teto ($z_i$)\\[2pt]
+``a solução da poluição não é a diluição — mas a diluição é a
+física''
+\end{noquadro}
+
+Este capítulo é o Cap.~18 aplicado: a CLA \javimos{18}{camada
+limite} vira o recipiente, a turbulência \javimos{18}{TKE e espectro}
+vira o agente difusor, e as estabilidades do Cap.~5
+\javimos{5}{classes de estabilidade} esculpem as plumas que qualquer
+um vê de uma chaminé.
+
+\section{A pluma gaussiana}\label{sec:gauss}
+
+\quadro{Escrever a equação de advecção-difusão, trocar $t = x/U$ e
+mostrar que é a equação do calor: a gaussiana não é chute, é
+solução.}
+
+\begin{formadif}[dedução (T1) e imagem (T2)]
+\[ C(x,y,z) = \frac{Q}{2\pi U\sigma_y\sigma_z}\,
+e^{-y^2/2\sigma_y^2}\left[e^{-(z-H)^2/2\sigma_z^2} +
+e^{-(z+H)^2/2\sigma_z^2}\right], \]
+com $\sigma^2 = 2Kx/U$. O segundo termo é a \textbf{fonte-imagem} em
+$z = -H$: o método das imagens da eletrostática garantindo fluxo nulo
+no chão — no solo, $C$ \emph{dobra}.
+\end{formadif}
+
+\begin{noquadro}[o máximo no solo (T3)]
+perto da chaminé: $C_{solo} \approx 0$ (a pluma ainda não desceu)\\
+máximo em $\sigma_z = H/\sqrt2$ \quad e \quad
+$C_{max} \propto 1/H^2$\\[2pt]
+dobrar a chaminé $=$ 1/4 do pico — mas cai mais LONGE (N1): a
+política das chaminés altas exportou chuva ácida
+\end{noquadro}
+
+\section{Estabilidade esculpe a pluma}\label{sec:estab}
+
+\quadro{Desenhar as três plumas clássicas (looping, coning, fanning)
+e pedir à turma que diga a hora do dia e o perfil de $\theta_v$ de
+cada uma \javimos{5}{perfis}.}
+
+\begin{itemize}
+  \item \textbf{Looping} (tarde instável): térmicas jogam a pluma no
+        chão em golfadas — picos altos e curtos.
+  \item \textbf{Coning} (neutro, vento forte): o cone gaussiano de
+        livro.
+  \item \textbf{Fanning} (noite estável): fita fina que viaja
+        quilômetros sem descer\ldots
+  \item \ldots até a \textbf{fumigação} da manhã: a camada de mistura
+        crescente \javimos{18}{crescimento de $z_i$} alcança a fita e
+        despeja tudo no chão de uma vez (N2) — o pico matinal das
+        cidades industriais.
+\end{itemize}
+
+As classes de Pasquill (A--F) quantificam: $\sigma_y(x), \sigma_z(x)$
+por estabilidade — a versão tabelada do Caso~2 do notebook.
+
+\section{O modelo de caixa e os episódios}\label{sec:caixa}
+
+\begin{formadif}[a caixa da cidade (T4; Caso~3)]
+\[ z_i\frac{dC}{dt} = Q_A - \frac{U\,z_i}{W}\,C
+\quad\Rightarrow\quad
+C_{eq} = \frac{Q_A\,W}{U\,z_i}. \]
+$U z_i$ $=$ \textbf{fator de ventilação}: a vazão de ar limpo. Inverno
+estagnado (inversão baixa \javimos{5}{inversões} $+$ calmaria
+anticiclônica \javimos{12}{altas de inverno}): $Uz_i$ despenca e a
+mesma emissão dá 3--4$\times$ mais concentração — os episódios de
+junho--agosto de São Paulo são meteorologia, não pico de emissão.
+\end{formadif}
+
+O N3 acrescenta o ciclo do tráfego e explica o clássico máximo
+noturno: o rush das 18\,h emite dentro de uma caixa que está
+\emph{encolhendo} ($z_i$ caindo \javimos{18}{transição noturna}).
+
+\section{O passeio aleatório e a difusão turbulenta}\label{sec:walk}
+
+\quadro{Fechar o curso de dispersão com Einstein: cada bocado de
+fumaça é uma partícula browniana com a turbulência no papel das
+moléculas.}
+
+\begin{formadif}[Langevin e Taylor (T5; Caso~4)]
+Velocidade com memória $T_L$ (escala lagrangiana):
+\[ \sigma_z^2(t) =
+\begin{cases}
+\sigma_w^2\,t^2 & t \ll T_L\ \text{(balístico)}\\
+2K\,t,\quad K = \sigma_w^2T_L & t \gg T_L\ \text{(difusivo)}
+\end{cases} \]
+O cotovelo de Taylor (1921) aparece limpo na simulação de partículas
+do Caso~4 — e os modelos regulatórios (AERMOD, CALPUFF) são
+exatamente esse passeio aleatório em escala industrial.
+\end{formadif}
+
+Deposição, química (ozônio fotoquímico, chuva ácida) e ilha de calor
+urbana fecham o quadro qualitativamente — cada um mereceria capítulo
+próprio; o essencial: a meteorologia controla o \emph{quando} e o
+\emph{quanto} de todos eles \veremos{21}{química e clima}.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ C = \frac{Q}{2\pi U\sigma_y\sigma_z}e^{\cdots}\ (+\text{imagem})
+\qquad C_{max} \propto \frac{1}{H^2} \qquad
+C_{eq} = \frac{Q_AW}{Uz_i} \qquad K = \sigma_w^2T_L \]
+a poluição de uma cidade é o Cap.~18 com uma fonte dentro
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap19\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Resolva a advecção-difusão estacionária com $t = x/U$ e
+        obtenha a pluma gaussiana com
+        $\sigma^2 = 2Kx/U$; explique o prefator pela conservação de
+        massa.
+  \item Justifique a fonte-imagem pela condição de fluxo nulo no chão
+        e mostre que a concentração no solo dobra; descreva a
+        generalização para a tampa em $z_i$.
+  \item Mostre que o máximo de concentração no solo ocorre onde
+        $\sigma_z = H/\sqrt2$ e que $C_{max} \propto 1/H^2$.
+  \item Deduza o modelo de caixa e o equilíbrio
+        $C_{eq} = Q_AW/(Uz_i)$; defina o fator de ventilação e
+        calcule-o para um dia ventilado e um episódio.
+  \item Derive $\sigma^2 = 2Kt$ do passeio aleatório e conecte com o
+        teorema de Taylor (regimes balístico e difusivo).
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Varra a altura da chaminé e verifique
+        $C_{max}\propto 1/H^2$ e o deslocamento de $x_{max}$.
+  \item Simule a fumigação da manhã com a pluma noturna capturada
+        pela CL crescente.
+  \item Imponha o ciclo do tráfego na caixa e explique o máximo
+        noturno de concentração.
+  \item Varra $T_L$ no passeio aleatório e confirme
+        $K = \sigma_w^2T_L$; identifique o regime balístico perto da
+        fonte.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

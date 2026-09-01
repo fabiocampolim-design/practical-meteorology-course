@@ -1,0 +1,247 @@
+% Notas de aula — Capítulo 8: Satélites e Radar
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap08/}}
+
+\title{Capítulo 8 --- Satélites e Radar\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:orbitas}--\S\ref{sec:canais} (órbitas, funções
+peso, interpretação de canais).
+\emph{Aula 2:} \S\ref{sec:radar}--\S\ref{sec:doppler} (equação do radar,
+$Z$--$R$, Doppler e seu dilema).
+
+\section{Sensoriamento remoto: medir sem tocar}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~8 --- Satélites e Radar}\\[2pt]
+``Tudo o que o satélite e o radar sabem chegou até eles como
+radiação.''\\[2pt]
+satélite: \emph{passivo} (escuta o que a Terra emite/reflete)\\
+radar: \emph{ativo} (emite o pulso e escuta o eco)
+\end{noquadro}
+
+O manual de instruções é o Cap.~2: Planck e a temperatura de brilho
+\javimos{2}{leis de corpo negro}, Beer e as janelas atmosféricas
+\javimos{2}{lei de Beer e janelas}. E o alvo do radar foi construído no
+Cap.~7: a distribuição de gotas com seu $D^6$
+\javimos{7}{Marshall--Palmer}. Este capítulo converte essas leis em
+imagens de nuvens, sondagens de satélite e mapas de chuva — os olhos que
+alimentam a análise \veremos{9}{cartas sinóticas} e a assimilação de
+dados \veremos{20}{assimilação}.
+
+\section{Órbitas}\label{sec:orbitas}
+
+\quadro{Deduzir a órbita geoestacionária no quadro — é Newton puro, e a
+turma agradece rever mecânica aplicada.}
+
+\begin{formadif}[órbita circular]
+Gravitação $=$ centrípeta:
+\[ \frac{GM}{r^2} = \omega^2 r
+\quad\Longrightarrow\quad
+r = \left(\frac{GM}{\omega^2}\right)^{1/3},\qquad
+T = 2\pi\sqrt{\frac{r^3}{GM}}\ \ (\text{3ª lei de Kepler}). \]
+\end{formadif}
+
+\begin{exemplo}[o anel dos geoestacionários]
+$T = 86164$\,s (dia sideral!), $GM = 3{,}986\times10^{14}$\,m$^3$/s$^2$:
+\[ r = \left[\frac{3{,}986\times10^{14}\times(86164)^2}{4\pi^2}\right]^{1/3}
+ = 4{,}216\times10^{7}\ \mathrm{m} \Rightarrow z = r - R_T \simeq
+ 35\,790\ \mathrm{km}. \]
+\emph{Verificação: altitude do GOES — imagens contínuas do mesmo
+disco.}
+\end{exemplo}
+
+\begin{noquadro}[as duas famílias de órbitas]
+geoestacionária (GOES/Meteosat/Himawari): filme contínuo de um
+hemisfério; $\sim$km de resolução; polos invisíveis\\[2pt]
+polar heliosíncrona ($\sim$850\,km, $T \simeq 102$\,min): globo inteiro
+2$\times$/dia na mesma hora solar; resolução fina; base dos sondadores
+\end{noquadro}
+
+A heliosíncrona é uma elegância orbital: o achatamento da Terra faz o
+plano da órbita precessar exatamente $360°$/ano, mantendo o ângulo com o
+Sol — cada passagem vê a mesma iluminação. É dela que vêm os perfis que
+os modelos assimilam \veremos{20}{observações para modelos}.
+
+\section{Funções peso: de onde vem cada canal}\label{sec:pesos}
+
+\quadro{Dedução central da aula — desenhar $\tau(z)$ crescendo para cima
+e $k\rho(z)$ caindo, e o produto com o pico no meio. Anunciar: ``daqui a
+pouco esse gráfico vira um sondador''.}
+
+\begin{formadif}[de que altura o satélite ``enxerga''?]
+A radiância que sai para o espaço vem de cada camada, atenuada pelo que
+há acima (Beer \javimos{2}{Beer}). Com transmitância até o topo
+$\tau(z) = \exp[-\int_z^\infty k\rho\,dz']$, a contribuição da camada
+$dz$ é
+\[ W(z) = \frac{d\tau}{dz} = k\rho(z)\,\tau(z), \]
+a \textbf{função peso}: ``ter emissor'' ($k\rho$, cresce para baixo)
+$\times$ ``conseguir escapar'' ($\tau$, cresce para cima). O pico fica
+na profundidade óptica $\simeq 1$ (dedução exata no T2).
+\end{formadif}
+
+\begin{noquadro}[o truque do sondador]
+canal pouco absorvente (janela): $W$ pica na superfície\\
+canal muito absorvente (centro de banda CO$_2$/H$_2$O): $W$ pica no
+alto\\[2pt]
+varrer canais $=$ varrer alturas $\Rightarrow$ o satélite vira um
+\textbf{sondador vertical}
+\end{noquadro}
+
+É assim que a temperatura de toda a atmosfera global é medida sem tocar
+nela — a espinha dorsal da previsão moderna. A inversão (de radiâncias
+para $T(z)$) é um problema mal-posto clássico: os $W$ são largos e se
+sobrepõem, então a solução mistura canais e um chute inicial — o embrião
+da assimilação variacional \veremos{20}{assimilação variacional}.
+Simulação no Caso~2 do notebook.
+
+\section{Os três canais clássicos}\label{sec:canais}
+
+\begin{noquadro}[os três canais e a regra de ouro]
+\begin{tabular}{lll}
+visível (0{,}6\,$\mu$m) & luz refletida & \emph{brilhante $=$ espessa}\\
+IV janela (10{,}7\,$\mu$m) & $\sigma T^4$ do topo & \emph{frio $=$
+alto}\\
+vapor (6{,}7\,$\mu$m) & H$_2$O média/alta trop. & umidade sem nuvem\\
+\end{tabular}\\[4pt]
+combinações: brilhante$+$frio $=$ Cb \quad brilhante$+$quente $=$
+estrato \quad escuro$+$frio $=$ cirrus fino
+\end{noquadro}
+
+\quadro{Passar imagens reais (notebook, Caso~1, com \texttt{satpy} se
+houver rede) e treinar a regra de ouro na hora.}
+
+O canal IV usa a janela de 8--12\,$\mu$m \javimos{2}{janela
+atmosférica}; o do vapor \emph{escolhe} uma banda de absorção do H$_2$O
+de propósito, para que $W$ pique na média troposfera — céu ``escuro'' no
+vapor significa ar seco descendente \veremos{13}{intrusões secas de
+ciclones}. Os topos frios do IV são o termômetro da convecção profunda
+\veremos{14}{topos de tempestades} — com a atmosfera padrão do Cap.~1
+convertemos $T_B$ em altura (T3).
+
+\section{Radar: a equação e o $Z$}\label{sec:radar}
+
+Pulso de micro-ondas ($\lambda \sim 5$--10\,cm); alcance pelo tempo de
+eco ($R = c\,\Delta t/2$); potência de retorno:
+
+\begin{formalivro}[equação do radar e refletividade]
+\[ P_r \propto \frac{Z}{R^2},\qquad
+Z = \sum_{\text{vol}} D^6\ \ [\mathrm{mm^6\,m^{-3}}],\qquad
+\mathrm{dBZ} = 10\log_{10}\!\frac{Z}{1\ \mathrm{mm^6 m^{-3}}}. \]
+O $D^6$ (espalhamento Rayleigh, $D \ll \lambda$) faz o radar enxergar
+as gotas grandes \javimos{7}{o $D^6$ da Marshall--Palmer}.
+\end{formalivro}
+
+\begin{formalivro}[relação $Z$--$R$]
+\[ Z = a\,R^{b},\qquad a \simeq 300,\ b \simeq 1{,}4
+\ \ (\text{convectiva; Marshall--Palmer dá } a\simeq200,\ b=1{,}6). \]
+\end{formalivro}
+
+\begin{noquadro}[escala prática de dBZ]
+20\,dBZ $\sim$ chuvisco \quad 40\,dBZ $\sim$ 10\,mm/h \quad
+55$+$\,dBZ $\sim$ granizo\\[2pt]
+$\pm3$\,dB de calibração $\Rightarrow$ $+60/{-}40\%$ em $R$ (T5):
+radar SEM pluviômetro não fecha balanço hídrico.
+\end{noquadro}
+
+Armadilhas de leitura que valem slide próprio: banda brilhante (anel de
+neve derretendo que infla $Z$ \javimos{7}{fusão dos flocos}), atenuação
+em banda X \javimos{2}{Beer de novo}, ecos de terreno, propagação
+anômala em inversões \javimos{5}{inversões}. Geometria: o feixe sobe com
+a distância (curvatura da Terra) — a 200\,km o radar já olha 3\,km
+acima do chão, perdendo a chuva rasa.
+
+\section{Radar Doppler e o seu dilema}\label{sec:doppler}
+
+\begin{formadif}[velocidade radial e os dois tetos]
+Do deslocamento de fase entre pulsos: $V_r = \lambda f_d/2$. Mas medir
+com pulsos discretos (frequência PRF) impõe:
+\[ R_{max} = \frac{c}{2\,\mathrm{PRF}},\qquad
+   V_{max} = \frac{\lambda\,\mathrm{PRF}}{4}
+\quad\Longrightarrow\quad
+\boxed{R_{max}V_{max} = \frac{c\,\lambda}{8}}. \]
+Alcance longo e velocidade alta são \emph{inimigos}: o dilema do
+Doppler. Velocidades acima de $V_{max}$ dobram (\emph{aliasing}) —
+Caso~4 do notebook.
+\end{formadif}
+
+\begin{noquadro}[o que o Doppler compra]
+só a componente \emph{radial} do vento\\
+assinatura de rotação (mesociclone): dipolo vermelho/verde lado a lado
+\hfill \veremos{15}{tornados}\\
+divergência (downburst): dipolo alinhado ao feixe
+\hfill \veremos{14}{downbursts}\\
+polarização dual: forma das partículas (chuva × granizo × insetos)
+\end{noquadro}
+
+Parente vertical: o \textbf{perfilador de vento} (\emph{wind
+profiler}) — um radar Doppler apontado para cima que extrai o perfil
+$\vec U(z)$ continuamente do eco do ar limpo (a turbulência como
+alvo \veremos{18}{turbulência}), preenchendo as horas entre as
+radiossondas; com RASS acoplado, mede também $T_v(z)$ acústica.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \underbrace{r=(GM/\omega^2)^{1/3}}_{\text{órbitas}} \;\to\;
+   \underbrace{W = \tfrac{d\tau}{dz}}_{\text{sondagem}} \;\to\;
+   \underbrace{Z = \Sigma D^6,\ Z=aR^b}_{\text{chuva}} \;\to\;
+   \underbrace{R_{max}V_{max} = \tfrac{c\lambda}{8}}_{\text{Doppler}} \]
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap08\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Deduza o raio geoestacionário e calcule também a altitude de uma
+        órbita de período 102\,min (polar típica).
+  \item Para absorvedor com $\rho = \rho_0 e^{-z/H}$ e coeficiente $k$
+        constante, mostre que $W(z)$ tem máximo exatamente onde a
+        profundidade óptica medida do topo vale 1, em
+        $z_{pico} = H\ln(k\rho_0 H)$.
+  \item Um topo de nuvem aparece com temperatura de brilho de $-55\,°$C
+        no canal IV. Use a atmosfera padrão (Cap.~1) para estimar sua
+        altura; discuta o erro se a nuvem for cirrus semitransparente.
+  \item Derive $R_{max}V_{max} = c\lambda/8$ a partir das definições de
+        alcance e velocidade máxima não ambíguos, e calcule o produto
+        para as bandas S (10\,cm), C (5\,cm) e X (3\,cm).
+  \item Mostre que, com $Z = 300R^{1.4}$, um erro de $\pm$3\,dB em $Z$
+        (calibração típica) produz erro de $\sim$60\,\%$/{-}40$\,\% em
+        $R$ — e por que acumulados de radar precisam de pluviômetros.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Trace período, velocidade orbital e fração visível da Terra em
+        função da altitude (200\,km a geoestacionária).
+  \item No modelo de funções peso, varra $k$ por 3 décadas e monte o
+        ``sondador'' de 6 canais: pico de $W$ vs.\ canal; depois deforme
+        o perfil de $\rho_0$ e veja os picos migrarem.
+  \item Inverta $R(Z)$ com as duas relações ($a{=}300,b{=}1{,}4$ e
+        Marshall--Palmer) para dBZ de 20 a 55 e quantifique a
+        divergência; adicione ruído de $\pm2$\,dB e propague.
+  \item Simule aliasing: um campo senoidal de $V_r$ com amplitude
+        $2V_{max}$ dobrado no intervalo $[-V_{max}, V_{max}]$; escreva
+        um dealias simples por continuidade e teste onde ele falha.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

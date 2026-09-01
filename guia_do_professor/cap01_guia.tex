@@ -1,0 +1,124 @@
+% Guia do professor — Capítulo 1: Fundamentos da Atmosfera
+\section{Capítulo 1 --- Fundamentos da Atmosfera}
+
+\subsection*{Visão geral e ritmo}
+
+Capítulo de fundação: convenções, estado termodinâmico $(P,T,\rho)$,
+estrutura vertical, lei dos gases, hidrostática e equação hipsométrica.
+\textbf{Ritmo sugerido: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — convenções meteorológicas, referenciais,
+        $(P,T,\rho)$, estrutura vertical e atmosfera padrão.
+        Fechar com o Caso~1 do notebook (10\,min de projeção).
+  \item \textbf{Aula 2} — lei dos gases + temperatura virtual, dedução da
+        hidrostática, dedução da hipsométrica, processos.
+        Fechar com Casos~2--4 (15\,min).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+Ao final, o aluno deve ser capaz de:
+\begin{enumerate}
+  \item converter unidades de $T$ e $P$ e usar a convenção de direção do vento;
+  \item aplicar $P=\rho \Re_d T_v$, explicando fisicamente por que ar úmido é
+        menos denso e o papel de $T_v$;
+  \item deduzir $dP/dz=-\rho g$ por balanço de forças e estimar variações de
+        pressão com a altura;
+  \item deduzir e aplicar a equação hipsométrica; interpretar espessura como
+        temperatura média da camada;
+  \item descrever as camadas da atmosfera e o porquê físico do perfil $T(z)$
+        de cada uma;
+  \item rodar o notebook do capítulo e interpretar os gráficos gerados.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Gás ideal na forma molecular ($PV=Nk_BT$), integração de $1/x$, e noção de
+massa molar média. Alunos de física raramente viram a forma
+\emph{por unidade de massa} $P=\rho\Re T$ — vale 5 minutos de ponte explícita
+(está na caixa ``forma diferencial'' das notas).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{Direção do vento invertida}: alunos assumem que ``vento de
+        oeste'' vai \emph{para} oeste. Insistir: nomeia-se a origem.
+  \item \textbf{kPa vs.\ hPa}: o livro usa kPa, a operação usa hPa; erros de
+        fator 10 são a falha mais comum nas listas. Treinar as duas.
+  \item \textbf{$T_v$ ``esfriando''}: $T_v \ge T$ para ar sem condensados;
+        parte dos alunos memoriza ao contrário. O Caso~4 do notebook mostra a
+        magnitude real ($\lesssim 3$--4\,K nos trópicos).
+  \item \textbf{Hidrostática como lei exata}: enfatizar que é aproximação de
+        equilíbrio — dentro de uma corrente ascendente de tempestade ela
+        falha (gancho para o Cap.~14).
+  \item \textbf{Escalas de altura}: $H_p \ne H_\rho$ confunde; a pergunta
+        ``por quê?'' rende boa discussão (resposta: $T$ varia com $z$).
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Barômetro do celular (apps gratuitos leem o sensor MEMS): medir $P$ no térreo
+e no último andar do prédio; comparar com $\Delta P=-\rho g \Delta z$.
+Rende 10 minutos memoráveis e conecta imediatamente com a Aula 2.
+
+\subsection*{Problemas sugeridos do livro (seção 1.12)}
+
+\begin{itemize}
+  \item \textbf{Aquecimento (Apply)}: A1, A5 (conversões), A9 (direção do
+        vento), A14--A16 (gás ideal e $T_v$), A19 (hidrostática),
+        A22 (hipsométrica).
+  \item \textbf{Aprofundamento (Evaluate \& Analyze)}: E5 (escala de altura),
+        E12 (espessura vs.\ temperatura) — bons para entrega escrita.
+  \item \textbf{Síntese (Synthesize)}: S1 (``e se a atmosfera fosse
+        isotérmica?'') — casa exatamente com a dedução em caixa vermelha das
+        notas e com o Caso~1 do notebook.
+\end{itemize}
+\emph{Obs.: confira a numeração na sua cópia do livro (v1.02b) antes de
+publicar a lista.}
+
+\subsection*{Uso do notebook \texttt{cap01\_fundamentos.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & Atmosfera padrão ICAO anotada (\texttt{ambiance}); teste log &
+fim da Aula 1 \\
+2 & Integração numérica da EDO hidrostática (\texttt{solve\_ivp}) &
+Aula 2, após hidrostática \\
+3 & Altimetria barométrica; espessura 1000--500 vs.\ $\bar T_v$ &
+Aula 2, após hipsométrica \\
+4 & Sondagem real (\texttt{MetPy}, Skew-T) vs.\ atmosfera padrão &
+Aula 2 ou tarefa de casa \\
+5 & Temperatura virtual e densidade do ar úmido &
+Aula 2, após $T_v$ \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~2 merece destaque pedagógico: é a primeira ``previsão numérica em
+miniatura'' do curso (lei diferencial + condição inicial + integrador) e
+planta a semente do Cap.~20.
+
+Sugestão de tarefa: pedir que cada aluno rode o Caso~4 com a sondagem mais
+recente de uma estação brasileira (ex.: SBMT/Campo de Marte via Wyoming) e
+comente três diferenças em relação à atmosfera padrão.
+
+\subsection*{Exercícios complementares e soluções}
+
+As notas de aula trazem 5 exercícios teóricos (T1--T5, para entrega escrita)
+e 4 numéricos (N1--N4, com células reservadas no fim de
+\texttt{cap01\_fundamentos.ipynb}). O notebook
+\texttt{cap01\_solucoes.ipynb} --- \emph{não distribuir antes da entrega} ---
+resolve todos: os teóricos com verificação simbólica em \texttt{sympy}
+(EDOs, expansões em série, limites) e os numéricos com código completo e
+gráficos. T2$\leftrightarrow$N1 formam um par teoria--numérica proposital:
+o aluno deduz o perfil politrópico e depois o confere com o integrador.
+
+\subsection*{Conexões com o resto do curso}
+
+Gases ideais e $T_v$ $\to$ estabilidade (Cap.~5); hipsométrica $\to$ cartas
+de espessura (Cap.~9) e vento térmico (Cap.~11); camada limite $\to$
+Cap.~18; falha da hidrostática $\to$ tempestades (Cap.~14).

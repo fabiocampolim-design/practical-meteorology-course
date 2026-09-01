@@ -1,0 +1,107 @@
+﻿% Guia do professor — Capítulo 23 (módulo extra): Mudança Climática
+\section{Capítulo 23 (módulo extra) --- Mudança Climática}
+
+\subsection*{Visão geral e ritmo}
+
+O fecho do curso: nada de novo entra — estufa, feedbacks, oceano e
+estatística já foram construídos; aqui são aplicados à perturbação
+antrópica com números na mesa. Tom recomendado: física serena e
+quantitativa; deixar os dados falarem. \textbf{Ritmo: 2 aulas de 2\,h
+(a última pode fechar com retrospectiva do curso).}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — o logaritmo do CO$_2$ (T1 no quadro),
+        sensibilidade e nuvens, a inércia das duas caixas (Casos~1--2).
+  \item \textbf{Aula 2} — TCRE e orçamento (Caso~3), detecção no
+        ruído (Caso~4), impressões digitais (estratosfera!), impactos
+        capítulo a capítulo e o fecho do curso.
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item deduzir/justificar $\Delta F = 5{,}35\ln(C/C_0)$ e calcular a
+        forçante atual;
+  \item combinar forçante e feedbacks para a faixa de sensibilidade;
+  \item explicar o aquecimento comprometido pelas escalas oceânicas;
+  \item usar o TCRE para converter metas em orçamentos de carbono;
+  \item distinguir sinal de ruído e listar as assinaturas do
+        mecanismo estufa.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Bandas e janelas (Cap.~2); feedbacks e $\lambda_0$ (Cap.~21);
+capacidade térmica do oceano (Cap.~3); ENSO como ruído (Cap.~21);
+tendência vs.\ variância (estatística básica); MPI $+2$\,K (Cap.~16,
+N3).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``A banda está saturada, mais CO$_2$ não faz nada''}:
+        o argumento do centro ignora as asas E a altura de emissão —
+        T1 e N1 desmontam com números.
+  \item \textbf{``1 K não é nada''}: 1\,K GLOBAL move distribuições
+        inteiras — os extremos (Cap.~4: $+7\%$/K) escalam muito mais
+        rápido que a média.
+  \item \textbf{``Uma década fria refuta''}: detecção é multidecadal
+        (Caso~4); ruído interno esconde o sinal por 30--40 anos.
+  \item \textbf{``É o Sol''}: a estratosfera ESFRIA (T5) — o Sol
+        aqueceria tudo junto; a assinatura vertical decide.
+  \item \textbf{``Estabilizar emissões estabiliza o clima''}: TCRE
+        exige líquido ZERO; estabilizar emissões só estabiliza a
+        TAXA de aquecimento.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Espectro de OLR medido por satélite (IRIS/AIRS) com o ``dente'' do
+CO$_2$ — a estufa fotografada. Série do Niño-3.4 sobre a série global
+de temperatura: o ruído do Caso~4 na vida real. Keeling completo
+(dente de serra sazonal $+$ tendência): dois fenômenos do curso num
+gráfico.
+
+\subsection*{Problemas sugeridos do livro (módulo extra — sem seção correspondente no livro; usar os complementares)}
+
+Aquecimento: $\Delta F$ para concentrações dadas; aquecimento de
+equilíbrio por sensibilidade. Aprofundamento: orçamentos para metas;
+expansão térmica. Síntese: ``liste três previsões do mecanismo estufa
+feitas ANTES de serem observadas'' (estratosfera fria, noites
+aquecendo mais, Ártico amplificado).
+\emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap23\_mudanca.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & forçante log e cenários por sensibilidade & Aula 1 \\
+2 & duas caixas: aquecimento comprometido & Aula 1 \\
+3 & TCRE e orçamento de carbono & Aula 2 \\
+4 & emergência do sinal no ruído & Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~2 congelando o CO$_2$ em 2024 rende a melhor discussão do
+semestre: a dívida térmica como consequência direta do Cap.~3.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap23\_solucoes.ipynb}
+(\emph{não distribuir}): T2 com \texttt{sympy} (escalas de tempo); N1
+recupera o 5,35 de um modelo de banda; N3 compara trajetórias de
+mesmo acumulado. Pares: T1$\leftrightarrow$N1, T2$\leftrightarrow$N2,
+T4$\leftrightarrow$N3.
+
+\subsection*{Conexões com o resto do curso}
+
+TODAS, de propósito: estufa (Cap.~2), vapor e extremos (Cap.~4),
+nuvens (Caps.~6--7), satélites que medem o dente do CO$_2$ (Cap.~8),
+jato e bloqueios (Cap.~11), ciclones num mundo quente (Caps.~13, 16),
+oceano lento (Cap.~3), modelos e ensembles (Cap.~20), clima natural
+como régua (Cap.~21). O capítulo é a prova de que o curso forma
+leitores qualificados do IPCC.

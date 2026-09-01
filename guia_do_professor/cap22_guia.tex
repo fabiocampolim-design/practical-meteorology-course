@@ -1,0 +1,104 @@
+% Guia do professor — Capítulo 22: Óptica Atmosférica
+\section{Capítulo 22 --- Óptica Atmosférica}
+
+\subsection*{Visão geral e ritmo}
+
+O capítulo-sobremesa do livro: Snell, dispersão, dipolos e refração
+aplicados ao céu. Para físicos é território natal — e a mensagem
+docente é que cada fenômeno luminoso é um \emph{diagnóstico} (halo $=$
+cirrus; arco $=$ gotas grandes; miragem $=$ perfil de $T$).
+\textbf{Ritmo: 2 aulas de 2\,h (rende bem como fecho leve do
+semestre).}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — arco-íris completo (cáustica no quadro,
+        Monte Carlo no Caso~1), halos e a família dos cristais
+        (Caso~2).
+  \item \textbf{Aula 2} — Rayleigh e as cores do céu (Caso~3),
+        polarização, refração e miragens (Caso~4), flash verde, e a
+        síntese do curso.
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item deduzir o ângulo do arco-íris pela cáustica do desvio mínimo;
+  \item explicar o halo de 22° pelo desvio mínimo do prisma de gelo;
+  \item usar Rayleigh ($\lambda^{-4}$) $+$ Beer para céu azul e poente
+        vermelho;
+  \item calcular a curvatura de raios em gradientes de $n$ e
+        classificar miragens;
+  \item ler fenômenos ópticos como diagnósticos de nuvens e perfis.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Snell e dispersão (óptica básica); Beer e massa de ar (Cap.~2); gotas
+e cristais e seus tamanhos (Caps.~6--7); inversões (Cap.~5); lei dos
+gases para $n(\rho)$ (Cap.~1); dipolo irradiante (eletromagnetismo).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``O arco está num lugar''}: é um cone de 42° em torno
+        do antissolar de CADA observador — não há pé do arco-íris.
+  \item \textbf{Halo confundido com coroa}: halo $=$ refração em gelo
+        (22°, borda vermelha interna); coroa $=$ difração em gotículas
+        (poucos graus, vermelho externo).
+  \item \textbf{``Céu azul porque reflete o mar''}: o dipolo de
+        Rayleigh resolve em uma linha (T3) — e a polarização (T5) é a
+        prova experimental barata (óculos polarizados!).
+  \item \textbf{Miragem como ``ilusão''}: os raios chegam de verdade
+        por caminhos curvos — a imagem é real, a interpretação do
+        cérebro é que assume linha reta.
+  \item \textbf{Flash verde como lenda}: é dispersão $+$ refração
+        padrão; raro porque exige horizonte limpo e baixo aerossol.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Laser $+$ aquário com gelatina/açúcar em gradiente: o raio curva à
+vista (miragem de bancada). Óculos polarizados girando contra o céu a
+90° do Sol. Esfera de vidro/gota pendurada ao sol para o arco de
+bancada. CD como rede de difração para o espectro do céu.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~22)}
+
+Aquecimento: ângulos de arco e halo com $n$ dados; massa de ar do
+poente. Aprofundamento: curvatura de raios com gradientes dados;
+polarização. Síntese: ``você vê um halo pela manhã — que nuvem é, o
+que vem nas próximas 24\,h e por quê?'' (amarra Caps.~6, 12 e 22).
+\emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap22\_optica.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & arco-íris: traçado de raios $+$ Monte Carlo & Aula 1 \\
+2 & halo 22°: prisma e histograma de cristais & Aula 1 \\
+3 & Rayleigh $+$ Beer: céu e poente & Aula 2 \\
+4 & miragens: raios integrados em $n(z)$ & Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+Os Casos 1--2 são Monte Carlo de verdade com física de graduação — um
+fecho computacional elegante para o curso.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap22\_solucoes.ipynb}
+(\emph{não distribuir}): T1 e T2 com \texttt{sympy}; N4 (looming) é o
+mais bonito. Pares: T1$\leftrightarrow$N1, T2$\leftrightarrow$N2,
+T3$\leftrightarrow$N3, T4$\leftrightarrow$N4.
+
+\subsection*{Conexões com o resto do curso}
+
+Beer e massa de ar (Cap.~2); gotas e cristais (Caps.~6--7: o arco
+exige chuva, o halo exige cirrus); halo como precursor frontal
+(Cap.~12); inversões e miragens (Cap.~5); turbulência e cintilação
+(Cap.~18); aerossol vulcânico e poentes (Cap.~21). O módulo extra de
+Mudança Climática (Cap.~23) pode fechar o semestre após este.

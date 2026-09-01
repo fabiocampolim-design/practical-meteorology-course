@@ -1,0 +1,104 @@
+% Guia do professor — Capítulo 2: Radiação Solar e Infravermelha
+\section{Capítulo 2 --- Radiação Solar e Infravermelha}
+
+\subsection*{Visão geral e ritmo}
+
+O capítulo energético do curso: geometria Sol--Terra, leis de corpo negro,
+lei de Beer e balanço radiativo, culminando na temperatura efetiva e no
+efeito estufa. \textbf{Ritmo sugerido: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — motivação (radiação como combustível), declinação,
+        elevação solar, duração do dia, fluxo e inverso do quadrado.
+        Fechar com o Caso~2 (mapa de insolação — 10\,min).
+  \item \textbf{Aula 2} — Planck, Wien, Stefan--Boltzmann, Kirchhoff, Beer,
+        balanço na superfície, $T_e = 255$\,K e o efeito estufa.
+        Fechar com o Caso~4 (climlab — 15\,min).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item calcular declinação, elevação solar e duração do dia para qualquer
+        latitude e data;
+  \item aplicar Planck/Wien/Stefan--Boltzmann e justificar a separação
+        onda curta / onda longa;
+  \item deduzir e aplicar a lei de Beer (forma diferencial e integrada);
+  \item calcular $T_e$ de um planeta e explicar quantitativamente o efeito
+        estufa (modelo de 1 e $N$ camadas);
+  \item montar o balanço radiativo de superfície com albedo e IV atmosférico.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Trigonometria esférica mínima (a eq.\ da elevação pode ser \emph{dada});
+integral de $x^3/(e^x-1)$ apenas citada (solução simbólica no notebook de
+soluções); lei dos gases não é usada — capítulo independente do Cap.~1
+exceto pela estrutura vertical.
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Verão porque a Terra está mais perto do Sol''}: o periélio
+        é em janeiro — e o verão do hemisfério norte é em julho. O que manda
+        é $\sin\Psi$ e a duração do dia. Vale perguntar antes de explicar.
+  \item \textbf{Fator 4 do $T_e$}: disco intercepta, esfera emite. Alunos
+        esquecem e obtêm 279\,K em vez de 255\,K (sem albedo) — apontar que
+        os dois erros (fator e albedo) quase se cancelam.
+  \item \textbf{$T_e$ vs.\ temperatura da superfície}: $T_e$ é a temperatura
+        de \emph{emissão para o espaço} (nível médio $\sim$5\,km), não do
+        chão.
+  \item \textbf{Wien com $T$ em °C}: erro clássico; reforçar kelvins.
+  \item \textbf{Beer para radiação difusa}: a lei vale para o feixe direto;
+        céu nublado exige tratamento de espalhamento múltiplo (fora do
+        escopo).
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Termômetro IV de cozinha (ou câmera térmica de celular): medir o ``céu''
+limpo (dá $-20$ a $-50\,°$C — o $I\!\downarrow$ baixo do ar seco) e uma
+nuvem (bem mais quente). Conecta emissividade, $I\!\downarrow$ e efeito
+estufa em 5 minutos.
+
+\subsection*{Problemas sugeridos do livro (seção 2.9)}
+
+Aquecimento: A2 (declinação), A7 (elevação), A12--A14 (Planck/Wien/S-B),
+A19 (Beer), A22 (balanço). Aprofundamento: E8 (insolação diária),
+E15 (albedo e $F^*$). Síntese: S3 (``e se o eixo da Terra fosse
+$45°$?'') — casa com o Caso~2. \emph{Confira a numeração na sua cópia
+(v1.02b) antes de publicar.}
+
+\subsection*{Uso do notebook \texttt{cap02\_radiacao.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & Curvas de Planck Sol × Terra; Wien e S--B verificados & Aula 2, após Planck \\
+2 & Elevação solar, duração do dia, mapa de insolação lat × dia & fim da Aula 1 \\
+3 & Lei de Beer como EDO; atenuação vs.\ ângulo zenital & Aula 2, após Beer \\
+4 & Estufa de $N$ camadas × coluna cinza \texttt{climlab} & fim da Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~2 rende o gráfico mais bonito do início do curso (mapa de insolação
+latitude × dia); o Caso~4 introduz o \texttt{climlab}, que voltará no
+Cap.~21.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 (Wien e S--B a partir de Planck, $T_e$ planetário, estufa
+de 1 camada, massa de ar $1/\sin\Psi$) e N1--N4 (células reservadas no
+notebook). Soluções completas em \texttt{cap02\_solucoes.ipynb}
+(\emph{não distribuir}): T1--T2 verificados simbolicamente com
+\texttt{sympy}, N4 compara a fórmula $(N{+}1)^{1/4}$ com o modelo cinza.
+Par teoria--numérica: T4$\leftrightarrow$N4.
+
+\subsection*{Conexões com o resto do curso}
+
+$F^*$ alimenta o balanço de calor da superfície (Cap.~3); insolação
+diferencial $\to$ circulação geral (Cap.~11); Beer $\to$ satélites
+(Cap.~8); climlab e estufa $\to$ clima (Cap.~21).

@@ -1,0 +1,246 @@
+% Notas de aula — Capítulo 12: Massas de Ar e Frentes
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap12/}}
+
+\title{Capítulo 12 --- Massas de Ar e Frentes\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:massas}--\S\ref{sec:mod} (anticiclones, gênese e
+classificação de massas de ar, modificação).
+\emph{Aula 2:} \S\ref{sec:frentes}--\S\ref{sec:oclusao} (estrutura de
+frentes, Margules, frontogênese, oclusões e linha seca).
+
+\section{Onde estamos no curso}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~12 --- Massas de Ar e Frentes}\\[2pt]
+circulação geral (Cap.~11) $\to$ \emph{granulação} do tempo das
+latitudes médias:\\
+\textbf{massa de ar} $=$ ar que estacionou e ganhou a cara da
+superfície\\
+\textbf{frente} $=$ a zona de batalha entre duas massas
+\end{noquadro}
+
+A circulação geral entrega os ingredientes: anticiclones subtropicais e
+polares onde o ar estaciona \javimos{11}{cinturões}, e a zona
+baroclínica onde os contrastes se encontram \javimos{11}{frente polar e
+jato}. Este capítulo é a anatomia desses contrastes; o próximo põe tudo
+para girar \veremos{13}{ciclones extratropicais}.
+
+\section{Anticiclones: as fábricas de massas de ar}\label{sec:massas}
+
+\quadro{Perguntar: que condições ``carimbam'' o ar com as propriedades
+do chão? (Resposta que se quer ouvir: ar parado, raso e por muitos
+dias.)}
+
+Massas de ar nascem sob \textbf{anticiclones estacionários}: a
+subsidência \javimos{10}{divergência em altas} deixa o céu limpo, o ar
+quase parado e uma camada rasa em contato com a superfície — a receita
+para o solo imprimir sua temperatura e umidade no ar
+\javimos{3}{fluxos de superfície}.
+
+\begin{noquadro}[classificação (Bergeron)]
+\begin{tabular}{lll}
+ & \textbf{c} (continental, seca) & \textbf{m} (marítima, úmida)\\
+\textbf{T} (tropical, quente) & cT: deserto, seca e quente & mT:
+oceano tropical\\
+\textbf{P} (polar, fria) & cP: inverno continental & mP: oceano de
+altas latitudes\\
+\end{tabular}\\[3pt]
+extremos: A (antártica/ártica), E (equatorial). Etiqueta física da
+massa: o par $(\theta_w,\ r)$ \javimos{4}{variáveis conservadas}.
+\end{noquadro}
+
+\subsection{Gênese fria: o esfriamento radiativo}
+
+\begin{formadif}[a EDO da gênese (Caso~1 do notebook)]
+Camada rasa de espessura $H$ sobre neve a $T_{sfc}$, perdendo IV:
+\[ \rho\,C_p\,H\,\frac{dT}{dt} = -\varepsilon\,\sigma\,(T^4 -
+T_{sfc}^4)
+\quad\Rightarrow\quad
+\tau = \frac{\rho\,C_p\,H}{4\,\varepsilon\,\sigma\,T_{sfc}^3}
+\sim \text{3--5 dias}. \]
+O $T^4$ \javimos{2}{Stefan--Boltzmann} faz o esfriamento começar rápido
+e saturar: uma massa cP leva de 3 dias a 2 semanas para ``ficar
+pronta'' (T2, N1).
+\end{formadif}
+
+A gênese \emph{quente} é mais lenta e vem de cima: subsidência $+$
+mistura; a inversão dos alísios \javimos{11}{ramo descendente de
+Hadley} é o carimbo das massas mT. No inverno continental a gênese fria
+constrói também a \textbf{alta fria} rasa (siberiana, canadense — e as
+friagens amazônicas da alta migratória).
+
+\section{Movimento e modificação}\label{sec:mod}
+
+\quadro{Frase para o quadro: ``a massa de ar não é eterna: ela começa a
+morrer no momento em que sai de casa''.}
+
+Ao migrar, a massa é modificada por baixo pelos fluxos \emph{bulk}
+\javimos{3}{fórmulas bulk}: ar cP sobre oceano quente vira mP em ~2--3
+dias (vapor de baixo, \emph{lake-effect} no caminho); ar mT sobre
+continente frio faz nevoeiro de advecção \javimos{6}{nevoeiros}. A
+friagem que chega a São Paulo é uma cP/mP modificada — mais fraca a
+cada dia de viagem.
+
+\section{Frentes de superfície}\label{sec:frentes}
+
+\quadro{Desenhar o corte vertical da frente fria (cunha íngreme,
+$\sim$1/100) e da quente (rampa suave, $\sim$1/200), com as nuvens de
+cada uma. Estes dois desenhos carregam a aula.}
+
+\begin{noquadro}[anatomia comparada]
+\begin{tabular}{lll}
+ & \textbf{fria} & \textbf{quente}\\
+inclinação & $\sim$1/50--1/100 (íngreme) & $\sim$1/200--1/300
+(rampa)\\
+nuvens & Cb/Cu na linha \javimos{6}{cumuliformes} & Ci$\to$Cs$\to$As$\to$Ns
+adiantadas\\
+chuva & pancada curta NA linha & contínua ANTES da linha\\
+vento (HS) & N $\to$ SW, giro rápido & NE $\to$ N, giro lento\\
+pressão & ``V'' com mínimo na linha & queda longa e suave\\
+\end{tabular}
+\end{noquadro}
+
+A assinatura completa vira meteograma no Caso~4 do notebook (o N4
+constrói o da frente quente). Na carta, a frente mora num \emph{cavado}:
+as isóbaras dobram com o bico para a alta pressão (T4)
+\javimos{9}{análise de cartas}.
+
+\subsection{A inclinação: relação de Margules}
+
+\begin{formadif}[Margules (T1; Caso~2)]
+Duas massas em equilíbrio geostrófico \javimos{10}{geostrofia},
+interface estacionária:
+\[ \tan\alpha = \frac{|f|\,\bar T\,\Delta U_g}{g\,\Delta T}. \]
+Com $\Delta T = 10$\,K e $\Delta U_g = 15$\,m/s em $45°$S:
+$\alpha \simeq 1/230$. A frente é uma \emph{cunha quase deitada} — e só
+se sustenta com salto de vento ao longo dela.
+\end{formadif}
+
+Consequência direta: a nebulosidade da frente quente se espalha por
+centenas de km sobre a rampa (por isso o cirrostratus anuncia chuva com
+um dia de antecedência \javimos{6}{estratiformes}); a cunha fria
+íngreme dispara convecção na linha \javimos{5}{levantamento e
+instabilidade}.
+
+\section{Frontogênese: quem afia as frentes}\label{sec:fronto}
+
+\quadro{Desenhar o campo de deformação (eixos de compressão e
+dilatação) com isotermas sendo espremidas. Ligar explicitamente ao
+Caso~3.}
+
+\begin{formadif}[deformação exponencial (T3; Caso~3)]
+Num campo de deformação pura $u = -ax$, $v = ay$, o gradiente na linha
+da frente cresce como
+\[ \frac{d}{dt}\left|\frac{\partial T}{\partial x}\right| =
+a\left|\frac{\partial T}{\partial x}\right|
+\quad\Rightarrow\quad |\nabla T| \propto e^{at}, \]
+dobrando a cada $\ln 2/a \simeq 19$\,h para
+$a = 10^{-5}$\,s$^{-1}$. A circulação de escala sinótica
+\emph{fabrica} a descontinuidade em 1--2 dias; a rotação pura, ao
+contrário, não frontogeniza (N3).
+\end{formadif}
+
+Onde encontrar deformação: entre uma alta e uma baixa (o ``desfiladeiro''
+de isóbaras), nas entradas de jato \javimos{11}{jato}. A frontogênese
+força uma circulação vertical transversal (a quente sobe!) — a conexão
+dinâmica com a chuva frontal e com a ciclogênese
+\veremos{13}{circulação transversal}.
+
+\section{Oclusões, linha seca e frentes de altitude}\label{sec:oclusao}
+
+\begin{noquadro}[oclusão (T5)]
+frente fria alcança a quente $\Rightarrow$ setor quente erguido\\
+comparar os dois lados FRIOS pelo $\theta_w$:\\
+oclusão \textbf{fria}: ar que avança é o mais frio (fica embaixo)\\
+oclusão \textbf{quente}: ar que avança é o menos frio (sobe por cima)
+\end{noquadro}
+
+\begin{itemize}
+  \item \textbf{Linha seca} (\emph{dryline}): fronteira de umidade sem
+        contraste térmico ($\Delta T_d$, não $\Delta T$) — céu de
+        tempestades severas no centro dos continentes
+        \veremos{14}{disparo de tempestades}.
+  \item \textbf{Frentes de altitude}: dobras da tropopausa
+        \javimos{5}{tropopausa} descendo ar estratosférico seco — as
+        intrusões que aparecem escuras no canal do vapor
+        \javimos{8}{canal do vapor}.
+  \item \textbf{Frente estacionária}: ondula e vira fábrica de chuvas
+        persistentes (a ZCAS da América do Sul é parente próxima).
+  \item \textbf{Frente dobrada e sting jet} (Stull \S12.7): em
+        ciclones intensos a frente ocluída enrola-se para trás
+        (\emph{bent-back}) e, na ponta seca que desce da média
+        troposfera, um jato estreito pode tocar a superfície com
+        rajadas destrutivas — o ``ferrão'' das tempestades europeias
+        \veremos{13}{ciclones explosivos}.
+\end{itemize}
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \text{anticiclone parado} \to \text{massa de ar } (\theta_w, r)
+\to \text{contraste} \to \text{frente} \]
+\[ \tan\alpha = \frac{|f|\bar T\Delta U}{g\Delta T} \qquad
+|\nabla T| \propto e^{at} \qquad \text{oclusão: quem é mais frio fica
+embaixo} \]
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap12\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Deduza a relação de Margules a partir da continuidade de
+        pressão na interface entre duas massas geostróficas e
+        hidrostáticas, e mostre a forma
+        $\tan\alpha \simeq |f|\bar T\Delta U_g/(g\Delta T)$.
+  \item Linearize a EDO da gênese radiativa em torno de $T_{sfc}$ e
+        obtenha $\tau = \rho C_p H/(4\varepsilon\sigma T_{sfc}^3)$;
+        avalie para $H = 1$\,km sobre neve a $-25\,°$C e compare com a
+        solução completa do Caso~1.
+  \item Mostre que num campo de deformação pura o gradiente térmico na
+        linha da frente cresce exponencialmente com taxa $a$, e calcule
+        o tempo de dobra para $a = 10^{-5}$\,s$^{-1}$.
+  \item Usando a continuidade de $P$ e a descontinuidade de $\nabla P$
+        através da frente, mostre que as isóbaras dobram com o bico
+        apontando para a pressão alta e que a frente ocupa um cavado.
+  \item Enuncie o critério de classificação de oclusões (fria × quente)
+        em termos de $\theta_w$ das duas massas frias e explique por
+        que $\theta_w$ (e não $T$) é a variável certa para comparar.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Varra $T_{sfc}$ ($-40$ a $-10\,°$C) e $H$ (500 a 2000\,m) na
+        EDO da gênese e mapeie o tempo até o ar atingir $-15\,°$C; que
+        combinações fabricam uma cP em menos de 5 dias?
+  \item Calcule a inclinação de Margules para $\Delta T = 10$\,K,
+        $\Delta U_g = 15$\,m/s em $45°$S e desenhe o corte vertical da
+        cunha até 500\,km.
+  \item Acrescente rotação ao campo de deformação
+        ($u = -ax-\omega y$, $v = ay+\omega x$) e compare a taxa de
+        crescimento de $|\nabla T|$; a rotação frontogeniza?
+  \item Construa o meteograma da frente quente e compare lado a lado
+        com o da fria (Caso~4): temperatura, pressão e tipo de chuva.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

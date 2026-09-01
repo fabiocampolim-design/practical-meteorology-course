@@ -1,0 +1,204 @@
+% Notas de aula — Capítulo 15: Perigos de Tempestades
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap15/}}
+
+\title{Capítulo 15 --- Perigos de Tempestades\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:granizo}--\S\ref{sec:down} (granizo,
+downbursts e rajadas).
+\emph{Aula 2:} \S\ref{sec:raios}--\S\ref{sec:tornado} (relâmpagos,
+tornados e a escala EF).
+
+\section{A máquina e seus produtos}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~15 --- Perigos de Tempestades}\\[2pt]
+a supercélula do Cap.~14 é a fábrica; os produtos:\\
+granizo \quad $|$ \quad downburst/rajadas \quad $|$ \quad relâmpago
+\quad $|$ \quad tornado\\[2pt]
+cada perigo $=$ um pedaço de física clássica levado ao extremo.
+\end{noquadro}
+
+Para físicos, este capítulo é um parque de diversões: balanço
+peso--arrasto (granizo), termodinâmica de evaporação (downburst),
+eletrostática (raios) e equilíbrio ciclostrófico (tornado)
+\javimos{10}{ciclostrófico}.
+
+\section{Granizo}\label{sec:granizo}
+
+\quadro{Perguntar: o que segura uma pedra de 5\,cm a 8\,km de altura?
+Montar o balanço peso $=$ arrasto no quadro.}
+
+\begin{formadif}[o updraft mínimo (T1; Caso~1)]
+Peso $=$ arrasto:
+\[ \rho_{gelo}\,g\,\frac{\pi D^3}{6} =
+C_d\,\rho_{ar}\,\frac{\pi D^2}{8}\,w_T^2
+\quad\Longrightarrow\quad
+w_T = \sqrt{\frac{4\,g\,\rho_{gelo}\,D}{3\,C_d\,\rho_{ar}}}
+\propto \sqrt{D}. \]
+Pedra de 5\,cm $\Rightarrow$ $w \gtrsim 32$\,m/s: granizo grande é
+\emph{diagnóstico} de supercélula \javimos{14}{updrafts}.
+\end{formadif}
+
+\begin{noquadro}[a biografia da pedra]
+embrião (graupel, Cap.~7) $\to$ voos repetidos pelo updraft $\to$
+camadas alternadas (crescimento seco/úmido) $\to$ cai quando
+$D$ vence o updraft\\[2pt]
+derretimento na queda: nível de congelamento alto derrete o granizo
+pequeno (N1) — por isso o equador tem menos granizo que os
+subtrópicos.
+\end{noquadro}
+
+O crescimento por acreção é o \emph{riming} levado ao extremo
+\javimos{7}{riming}; as camadas contam a história térmica dos voos. No
+radar: 55$+$\,dBZ e assinaturas de polarização dual
+\javimos{8}{dual-pol}.
+
+\section{Downbursts e rajadas}\label{sec:down}
+
+\quadro{Desenhar a coluna de chuva evaporando, o ar frio desabando e o
+jato se espalhando no chão. Comparar com o jato de pia invertido.}
+
+\begin{formadif}[DCAPE (T2; Caso~2)]
+O espelho descendente do CAPE:
+\[ \mathrm{DCAPE} = \int_0^{z_0} g\,
+\frac{T_{v,e} - T_{v,p}}{T_{v,e}}\,dz,
+\qquad w_{down} = \sqrt{2\,\mathrm{DCAPE}}. \]
+A parcela desce pelo seu $\theta_w$ \javimos{4}{bulbo úmido},
+resfriada pela evaporação da chuva; DCAPE de 500--1500\,J/kg dá
+rajadas de 30--55\,m/s.
+\end{formadif}
+
+\begin{noquadro}[seco × úmido]
+camada sub-nuvem SECA $\Rightarrow$ evaporação vigorosa $\Rightarrow$
+downburst forte (N2)\\
+downburst \textbf{seco}: cai de virga, quase sem eco no radar — a
+armadilha da aviação\\
+no chão: microburst ($<$4\,km) cisalha a aproximação final — os
+acidentes clássicos dos anos 70--80
+\end{noquadro}
+
+A rajada espalhada é a frente de rajada \javimos{14}{piscina fria} —
+que planta a próxima célula. Escala maior: \emph{derechos}, corredores
+de rajadas de linhas de instabilidade longevas \javimos{14}{RKW}.
+
+\section{Relâmpagos}\label{sec:raios}
+
+\quadro{Montar o circuito no quadro: gerador (colisões
+graupel--cristal no updraft), capacitor (nuvem--solo), resistor de
+fuga, e a ruptura dielétrica como chave.}
+
+\begin{formadif}[o capacitor da tempestade (Caso~3)]
+\[ \frac{dQ}{dt} = I_c - \frac{Q}{RC},\qquad
+E = \frac{Q}{C\,d} \to E_{rup} \simeq 3\times10^5\ \mathrm{V/m}
+\ (\text{com gotas}). \]
+Dente de serra: carrega em dezenas de segundos, descarrega
+$\sim$85\,\% num raio de $\sim$5\,C e $\sim$1--10\,GJ. A taxa de raios
+cresce brutalmente com o updraft (N3) — o mapa global de relâmpagos é
+um mapa de convecção continental profunda.
+\end{formadif}
+
+\begin{noquadro}[números de segurança]
+flash-to-bang: som a 343\,m/s $\Rightarrow$ \textbf{3\,s por km}
+(T3)\\
+regra 30--30: trovão em $<$30\,s do clarão $\Rightarrow$ abrigo; sair
+só 30\,min após o último trovão\\
+canal a $\sim$30\,000\,K (5$\times$ a superfície do Sol) — o trovão é
+o estrondo da expansão
+\end{noquadro}
+
+A separação de carga exige gelo $+$ água super-resfriada $+$ updraft
+— exatamente a zona de crescimento do granizo \javimos{7}{fase mista}:
+raio e granizo são irmãos.
+
+\section{Tornados}\label{sec:tornado}
+
+\quadro{Desenhar o vórtice de Rankine ($v \propto r$ dentro,
+$\propto 1/r$ fora) e integrar a queda de pressão no quadro.}
+
+\begin{formadif}[Rankine ciclostrófico (T4; Caso~4)]
+Sem Coriolis nessa escala \javimos{10}{quem sente Coriolis}:
+\[ \frac{dP}{dr} = \frac{\rho v^2}{r}
+\quad\Longrightarrow\quad
+\Delta P_{centro} = \rho\,v_{max}^2
+\ \ (\text{metade do núcleo, metade de fora}). \]
+EF3 (70\,m/s): $\sim$50\,hPa em 100\,m; EF5 (110\,m/s):
+$\sim$120\,hPa — gradientes que nenhuma escala sinótica alcança.
+\end{formadif}
+
+\begin{noquadro}[da rotação da tempestade ao chão]
+mesociclone (Cap.~14, hodógrafo curvo) $\to$ estiramento sob o updraft
+($-(f{+}\zeta)D$! \javimos{13}{esticamento}) $\to$ funil\\
+escala EF: dano $\to$ vento; carga $q = \tfrac12\rho v^2$ (T5) —
+dobrar $v$ quadruplica a força\\
+HS: giro horário; com translação, o lado \textbf{esquerdo} da
+trajetória é o pior (N4)
+\end{noquadro}
+
+Tornados não-supercelulares (landspouts, trombas d'água) nascem de
+cisalhamento raso esticado por cumulus congestus — mais fracos, mas
+frequentes no litoral brasileiro.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ w_T = \sqrt{\tfrac{4g\rho_i D}{3C_d\rho_a}} \quad
+w_{down} = \sqrt{2\,\mathrm{DCAPE}} \quad
+\tfrac{dQ}{dt} = I_c - \tfrac{Q}{RC} \quad
+\Delta P = \rho v_{max}^2 \]
+quatro perigos, quatro pedaços de física clássica no extremo
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap15\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Do balanço peso--arrasto, deduza
+        $w_T = \sqrt{4g\rho_{gelo}D/(3C_d\rho_{ar})}$ e calcule o
+        updraft mínimo para pedras de 1, 2{,}5, 5 e 10\,cm.
+  \item Defina o DCAPE como espelho do CAPE, explicando por que a
+        parcela de downdraft desce pelo seu $\theta_w$ e qual o papel
+        da umidade da camada sub-nuvem.
+  \item Justifique a regra dos ``3 segundos por km'' do flash-to-bang
+        e estime a energia de um raio a partir de $Q \sim 5$\,C e
+        $V \sim 10^8$\,V.
+  \item Integre o equilíbrio ciclostrófico para o vórtice de Rankine e
+        mostre que $\Delta P = \rho v_{max}^2$, com metade da queda
+        dentro do núcleo.
+  \item Calcule a pressão dinâmica $q = \tfrac12\rho v^2$ para os
+        limiares EF0--EF5 e discuta a não-linearidade da destruição.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Integre a queda com derretimento e ache o diâmetro mínimo que
+        sobrevive para níveis de congelamento a 3, 4 e 5\,km.
+  \item Faça o déficit evaporativo depender da UR sub-nuvem e trace a
+        rajada final; por que downbursts secos são traiçoeiros?
+  \item Varra a corrente de carga do capacitor e trace a taxa de
+        raios; conecte com a sensibilidade $\sim w^6$ observada.
+  \item Some translação ao Rankine e mapeie o vento total; qual lado
+        da trajetória concentra o dano no HS?
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

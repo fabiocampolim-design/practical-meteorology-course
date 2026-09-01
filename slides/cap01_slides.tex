@@ -1,0 +1,326 @@
+% Slides — Capítulo 1: Fundamentos da Atmosfera
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap01/}}
+
+\title[Cap. 1 --- Fundamentos]{Capítulo 1 --- Fundamentos da Atmosfera}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Convenções meteorológicas}
+
+\begin{frame}{Eixos e componentes do vento}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item Sempre: $x\to$ leste ($u$), $y\to$ norte ($v$),
+            $z\to$ cima ($w$).
+      \item Vetor vento horizontal: $\vec M = (u, v)$,
+            $M = \sqrt{u^2+v^2}$.
+      \item O $w$ é milhares de vezes menor que $u,v$ na escala sinótica —
+            mas é ele que faz nuvem (Cap.~5).
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_01_1.jpg}{0.42\textheight}{Fig.~1.1 --- eixos locais
+      $(x,y,z)$ e componentes $(U,V,W)$ do vento}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Direção do vento: DE onde ele vem}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item Meteorologia: ângulo \alert{horário a partir do Norte},
+            apontando a \alert{origem} do vento.
+      \item Matemática: anti-horário a partir de $+x$ — cuidado ao
+            programar! (Caso~2 do notebook)
+      \item Vento de oeste ($270°$) empurra o ar para leste.
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_01_2.jpg}{0.38\textheight}{Fig.~1.2 --- convenção
+      matemática × azimute × direção do vento}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Do par $(u,v)$ à direção e velocidade}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$\alpha = \operatorname{mod}\bigl(270° -
+      \tfrac{180°}{\pi}\operatorname{atan2}(v,u),\ 360°\bigr)$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item \texttt{atan2} resolve os quadrantes sem casos especiais.
+      \item Exemplo: $u=-5$, $v=0$ $\Rightarrow$ vento \alert{de leste}
+            ($90°$).
+    \end{itemize}
+    \column{0.28\textwidth}
+    \figlivroslide{fig_01_3a.jpg}{0.34\textheight}{Fig.~1.3a --- componentes
+      e módulo}
+    \column{0.28\textwidth}
+    \figlivroslide{fig_01_3b.jpg}{0.34\textheight}{Fig.~1.3b --- ângulo na
+      esfera local}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Referenciais na Terra e no céu}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item $1°$ de latitude $\simeq 111$\,km; $1°$ de longitude
+            $\simeq 111\cos\phi$\,km.
+      \item Azimute $\alpha$, elevação $\Psi$, zênite
+            $\zeta = 90°-\Psi$.
+      \item Zênite solar $\to$ radiação (Cap.~2); azimute/elevação $\to$
+            radar (Cap.~8).
+      \item Tudo em \alert{UTC}; cartas em 00/06/12/18\,UTC (Cap.~9).
+    \end{itemize}
+    \column{0.32\textwidth}
+    \figlivroslide{fig_01_5.jpg}{0.4\textheight}{Fig.~1.5 --- latitude,
+      longitude, meridianos e paralelos}
+    \column{0.32\textwidth}
+    \figlivroslide{fig_01_6.jpg}{0.4\textheight}{Fig.~1.6 --- elevação
+      $\Psi$, zênite $\zeta$ e azimute $\alpha$}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Estado termodinâmico: $P$, $T$, $\rho$}
+
+\begin{frame}{O estado do ar em três números}
+  \eqdestaque{estado local $=(P,\ T,\ \rho)$ \quad + lei dos gases
+    $\Rightarrow$ só 2 independentes}
+  \vspace{0.5em}
+  \begin{itemize}
+    \item $T$: agitação molecular ($\tfrac12 k_B T$ por grau de liberdade).
+          \alert{Sempre kelvin nas fórmulas!}
+    \item $P$: colisões moleculares; $1$\,kPa $= 10$\,hPa;
+          nível do mar $= 101{,}325$\,kPa.
+    \item $\rho$: nunca é medida — é \alert{calculada} da lei dos gases;
+          $\rho_0 = 1{,}225$\,kg/m$^3$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Pressão empurra em todas as direções}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Moléculas batem de todos os lados: num fluido em repouso a
+            pressão é \alert{isotrópica}.
+      \item Sobre uma parede, sobra só a componente \alert{normal}:
+            $P = F_\perp/A$.
+      \item É por isso que a pressão consegue sustentar o peso do ar de
+            cima (hidrostática, adiante).
+    \end{itemize}
+    \column{0.29\textwidth}
+    \figlivroslide{fig_01_7c.jpg}{0.34\textheight}{Fig.~1.7 --- colisões:
+      empurra para todos os lados}
+    \column{0.29\textwidth}
+    \figlivroslide{fig_01_7d.jpg}{0.34\textheight}{Fig.~1.7 --- na parede
+      fica a componente normal}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O perfil exponencial de pressão}
+  \begin{columns}
+    \column{0.36\textwidth}
+    \eqdestaque{$P \simeq P_0\,e^{-z/H_p}$,\quad $H_p = 7{,}29$\,km}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Cai à metade a cada $\sim5{,}5$\,km.
+      \item No gráfico mono-log, exponencial $=$ \alert{reta} — teste
+            visual (Caso~1 do notebook).
+      \item Everest: $\sim30$\,kPa; avião: $\sim22$\,kPa.
+    \end{itemize}
+    \column{0.32\textwidth}
+    \figlivroslide{fig_01_8a.jpg}{0.4\textheight}{Fig.~1.8 --- $P(z)$ em
+      escala linear}
+    \column{0.32\textwidth}
+    \figlivroslide{fig_01_8b.jpg}{0.4\textheight}{Fig.~1.8 --- a mesma
+      curva em escala logarítmica}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exponenciais: pressão e densidade}
+  \begin{columns}
+    \column{0.36\textwidth}
+    \eqdestaque{$\rho \simeq \rho_0\,e^{-z/H_\rho}$,\quad
+      $H_\rho = 8{,}55$\,km}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item $H_\rho > H_p$ porque $T$ também cai com $z$ (T1).
+      \item Metade da massa da atmosfera: abaixo de $5{,}5$\,km.
+      \item Uma película de $\sim0{,}1\%$ do raio da Terra.
+    \end{itemize}
+    \column{0.32\textwidth}
+    \figlivroslide{fig_01_9b.jpg}{0.38\textheight}{Fig.~1.9 --- a função
+      $e^{-z/H}$ e sua escala de altura}
+    \column{0.32\textwidth}
+    \figlivroslide{fig_01_9d.jpg}{0.38\textheight}{Fig.~1.9 --- perfil de
+      densidade da atmosfera padrão}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Estrutura vertical}
+
+\begin{frame}{A atmosfera padrão e suas camadas}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Troposfera (0--11\,km): $-6{,}5$\,K/km; $\sim80\%$ da massa e
+            todo o ``tempo''.
+      \item Estratosfera: $T$ sobe — ozônio absorve UV; estável, sem
+            convecção (Cap.~5).
+      \item Cada mudança de sinal do gradiente $=$ uma \alert{fonte de
+            energia} em outra altura (Cap.~2).
+      \item Este perfil é a referência para calibrar altímetros e comparar
+            sondagens (Cap.~5).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_01_10.jpg}{0.62\textheight}{Fig.~1.10 --- atmosfera
+      padrão: $T$ vs.\ altura, camadas e pausas}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Troposfera real: sondagem e camada limite}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Sondagens reais oscilam em torno do padrão
+            ($\gamma = 6{,}5$\,K/km é uma média).
+      \item Junto ao chão: \alert{camada limite} (0--1\,km), com ciclo
+            diurno forte — capítulo próprio (Cap.~18).
+      \item À noite pode haver \alert{inversão} ($T$ subindo com $z$):
+            tampa que prende poluentes (Cap.~19).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_01_11b.jpg}{0.6\textheight}{Fig.~1.11 --- troposfera
+      padrão vs.\ perfis reais de dia e de noite; camada limite}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Lei dos gases e temperatura virtual}
+
+\begin{frame}{A equação mais usada do curso}
+  \eqdestaque{$P = \rho\,\Re_d\,T$,\qquad
+    $\Re_d = 287$\,J\,kg$^{-1}$\,K$^{-1}$}
+  \vspace{0.5em}
+  \begin{itemize}
+    \item Forma por massa (com $\rho$, não $V$): o ar não tem recipiente.
+    \item $\Re_d = R^*/M_{\text{molar}}$ — mesma física estatística de
+          sempre ($PV = Nk_BT$).
+    \item Gás real desvia $<0{,}2\%$ nas condições atmosféricas.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Temperatura virtual: ar úmido é mais leve}
+  \eqdestaque{$T_v = T\,(1 + 0{,}61\,r - r_L - r_I)$
+    \quad$\Rightarrow$\quad $P = \rho\,\Re_d\,T_v$}
+  \vspace{0.5em}
+  \begin{itemize}
+    \item H$_2$O (18\,g/mol) substitui N$_2$/O$_2$ ($\sim29$\,g/mol):
+          vapor \alert{alivia} o ar.
+    \item Gotículas e cristais ($r_L$, $r_I$) são lastro: \alert{pesam}.
+    \item Correção de só 2--3\,K — mas é ela que decide o empuxo de uma
+          parcela (Cap.~5: CAPE).
+    \item Exemplo: $T=25\,°$C, $r=20$\,g/kg $\Rightarrow$
+          $T_v = 28{,}6\,°$C.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Hidrostática e hipsométrica}
+
+\begin{frame}{Por que o ar não cai?}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \eqdestaque{$\dfrac{dP}{dz} = -\rho\,g$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Balanço na fatia: $P$ de baixo empurra para cima, $P$ de cima
+            $+$ peso para baixo.
+      \item $P(z)$ $=$ peso (por área) de todo o ar acima.
+      \item Regra prática: $-1$\,kPa a cada $84$\,m.
+      \item Vale para o que é largo e raso; falha dentro de tempestades
+            (Cap.~14).
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_01_12.jpg}{0.42\textheight}{Fig.~1.12 --- balanço
+      hidrostático numa fatia de ar}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Dez toneladas nos ombros}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item Coluna inteira: $P_0/g \simeq 10^4$\,kg por m$^2$.
+      \item Não sentimos porque a pressão empurra \alert{de todos os
+            lados} — inclusive de baixo para cima.
+      \item Barômetro de celular resolve $\sim10$\,Pa $\approx$ 1 andar:
+            experimento em sala (exercício N3).
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_01_13.jpg}{0.42\textheight}{Fig.~1.13 --- ``pesando''
+      a coluna de ar com um barômetro}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Equação hipsométrica: altura por barômetro}
+  \eqdestaque{$z_2 - z_1 = a\,\bar T_v\,\ln\!\dfrac{P_1}{P_2}$,\qquad
+    $a = \Re_d/g = 29{,}3$\,m/K}
+  \vspace{0.5em}
+  \begin{itemize}
+    \item Hidrostática $+$ lei dos gases, integradas.
+    \item \alert{Camada quente $=$ espessa; fria $=$ rasa} — daí a carta
+          de espessura (Cap.~9) e o vento térmico e o jato (Cap.~11).
+    \item Espessura 1000--500\,hPa como termômetro: $5400$\,m separa chuva
+          de neve.
+    \item Altímetro de aeronave $=$ esta equação ao contrário.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$P=\rho\Re_dT_v$ \quad $\dfrac{dP}{dz}=-\rho g$ \quad
+    $\Delta z = a\bar T_v\ln\tfrac{P_1}{P_2}$ \quad
+    $P\simeq P_0e^{-z/H_p}$}
+  \vspace{0.6em}
+  Duas leis (estado, hidrostática) $+$ duas consequências (hipsométrica,
+  exponencial). Tudo que vem depois no curso se apoia nelas.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~1}
+  \texttt{notebooks/cap01\_fundamentos.ipynb}
+  \begin{enumerate}
+    \item Atmosfera padrão ICAO com \texttt{ambiance}: perfis $P$, $T$,
+          $\rho$ e o teste da exponencial.
+    \item Conversões de vento (a armadilha \texttt{atan2}).
+    \item Equação hipsométrica camada a camada.
+    \item Sondagem real de Campo de Marte (SBMT) com \texttt{MetPy}.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

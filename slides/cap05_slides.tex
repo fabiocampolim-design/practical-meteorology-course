@@ -1,0 +1,271 @@
+% Slides — Capítulo 5: Estabilidade Atmosférica
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap05/}}
+
+\title[Cap. 5 --- Estabilidade]{Capítulo 5 --- Estabilidade Atmosférica}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Diagramas termodinâmicos}
+
+\begin{frame}{Construindo o diagrama: as famílias de linhas}
+  \begin{columns}
+    \column{0.25\textwidth}
+    \begin{itemize}
+      \item Isotermas/isóbaras;
+      \item $+$ isoumas ($T_d$, LCL);
+      \item $+$ adiabáticas secas ($\theta$);
+      \item $+$ úmidas ($\theta_w$).
+    \end{itemize}
+    \column{0.37\textwidth}
+    \figlivroslide{fig_05_1c.jpg}{0.4\textheight}{Fig.~5.1 ---
+      adiabáticas secas no emagrama}
+    \column{0.37\textwidth}
+    \figlivroslide{fig_05_1d.jpg}{0.4\textheight}{Fig.~5.1 ---
+      adiabáticas úmidas: mais suaves ($L_v$ devolvido)}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O mesmo conteúdo, eixos deformados}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Emagrama, Skew-$T$, Stüve, tefigrama: mesmas 5 famílias.
+      \item O Skew-$T$ \alert{inclina as isotermas} para abrir o ângulo
+            com as adiabáticas: a sondagem fica legível.
+      \item Padrão operacional mundial; o MetPy o desenha (Caso~1).
+    \end{itemize}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_05_3b.jpg}{0.42\textheight}{Fig.~5.3 --- emagrama}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_05_3c.jpg}{0.42\textheight}{Fig.~5.3 ---
+      Skew-$T$ log-$P$}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O Skew-$T$ completo}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Sondagem: $T$ e $T_d$ ponto a ponto \alert{sobre} as réguas.
+      \item Parcela de superfície: seca até o LCL (Normand, Cap.~4),
+            úmida acima.
+      \item Áreas entre parcela e ambiente $=$ energia (CAPE/CIN,
+            Cap.~14).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_05_6g.jpg}{0.58\textheight}{Fig.~5.6 --- as
+      famílias sobrepostas no Skew-$T$ log-$P$}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Processos no diagrama: subida até a nuvem}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Subida seca: $T$ pela adiabática, $T_d$ pela isouma — as
+            duas se encontram no \alert{LCL}.
+      \item Acima: adiabática úmida (condensa e aquece).
+      \item Descida: seca de novo (a chuva ficou lá em cima) — föhn
+            (Cap.~3, Cap.~17).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_05_9.jpg}{0.56\textheight}{Fig.~5.9 --- parcela
+      levantada: LCL como cruzamento adiabática seca × isouma}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Método da parcela e empuxo}
+
+\begin{frame}{Quem sobe e quem afunda: $T_v$ decide}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \eqdestaque{$\dfrac{F}{m} = |g|\,
+      \dfrac{T_{v,p}-T_{v,e}}{T_{v,e}}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Arquimedes $+$ lei dos gases; \alert{virtual} porque vapor
+            alivia e gotículas pesam (Cap.~1).
+      \item $2$\,K de excesso $\Rightarrow$ $0{,}065$\,m/s$^2$
+            $\Rightarrow$ $11$\,m/s após 1\,km: um termal de planador.
+      \item 1\,g/kg de água líquida $\simeq -0{,}3$\,K (T1).
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_05_12c.jpg}{0.5\textheight}{Fig.~5.12 --- parcela
+      × ambiente: o processo adiabático contra o perfil}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A atmosfera estável é uma mola}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$\ddot z' = -N^2 z'$,\qquad
+      $N^2 = \dfrac{|g|}{\theta_v}\dfrac{\Delta\theta_v}{\Delta z}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Troposfera: $N \simeq 0{,}01$\,s$^{-1}$,
+            $P_{BV} \simeq 10$\,min.
+      \item Visível: ondas de montanha, faixas de nuvens espaçadas de
+            $U P_{BV}$ (Cap.~17).
+      \item Simulação com \texttt{solve\_ivp}: Caso~2.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_05_13c.jpg}{0.5\textheight}{Fig.~5.13 --- a
+      analogia da mola: oscilação de Brunt--Väisälä}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Estabilidade estática: local e não local}
+
+\begin{frame}{As cinco classes de estabilidade}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item Comparar $\gamma$ do ambiente com $\Gamma_d$ e $\Gamma_s$.
+      \item \alert{Condicional}: estável seca, instável saturada — a
+            atmosfera ``armada'' dos trópicos (Cap.~14).
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_05_15a.jpg}{0.44\textheight}{Fig.~5.15 ---
+      absolutamente estável e saturada neutra}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_05_15b.jpg}{0.44\textheight}{Fig.~5.15 ---
+      condicionalmente instável}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O critério local falha: estabilidade não local}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Local: sinal de $\Delta\theta_v/\Delta z$ no nível.
+      \item \alert{Não local}: siga as \emph{trajetórias} — camada
+            ``neutra'' atravessada por parcela quente de baixo é
+            instável.
+      \item Método do Stull: levantar/afundar parcelas de todos os
+            níveis (Caso~3 do notebook).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_05_14cb.jpg}{0.56\textheight}{Fig.~5.14 ---
+      classificação não local sobre a sondagem: zonas turbulentas}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Estabilidade dinâmica: Richardson}
+
+\begin{frame}{Cisalhamento contra a mola}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$Ri = \dfrac{N^2}{|\Delta\vec U/\Delta z|^2}$;\qquad
+      $Ri < 0{,}25 \Rightarrow$ turbulência}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Ar estável PODE virar turbulento: basta cisalhamento.
+      \item Kelvin--Helmholtz: a instabilidade fotografável.
+      \item CAT no jato (Cap.~11); camada noturna intermitente
+            (Cap.~18). $Ri(z)$ da sondagem: Caso~4.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_05_17.jpg}{0.52\textheight}{Fig.~5.17 --- ondas de
+      Kelvin--Helmholtz nascendo do cisalhamento}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Richardson na prática}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Perfis medidos de $U$, $V$, $\theta$ $\to$ $Ri(z)$ camada a
+            camada.
+      \item $Ri$ atravessa 0{,}25 nas zonas de cisalhamento do jato
+            noturno.
+      \item Exercício T4: o jato com $\Delta U = 20$\,m/s em 500\,m.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_05_17a.jpg}{0.52\textheight}{Fig.~5.17 --- perfis
+      de vento e $\theta$ e o $Ri$ resultante}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Tropopausa e estrutura do perfil}
+
+\begin{frame}{Lendo a sondagem inteira}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item \alert{Camada de mistura}: $\theta_v$ constante até $z_i$.
+      \item \alert{Inversões}: tampas de poluição (Cap.~19) e de
+            convecção (Cap.~14).
+      \item \alert{Tropopausa}: salto de $N^2$; WMO: gradiente
+            $\le2$\,K/km. A tampa global.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_05_18.jpg}{0.56\textheight}{Fig.~5.18 --- camada
+      de mistura, camadas isotérmicas, inversão e tropopausa no
+      Skew-$T$}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A tropopausa no planeta}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Alta e fria nos trópicos ($\sim16$\,km); baixa nos polos
+            ($\sim8$\,km); degrau perto do jato (Cap.~11).
+      \item Isentrópicas ($\theta$ const) cruzam a tropopausa nas
+            dobras — intercâmbio estratosfera--troposfera.
+      \item Bigornas de tempestade se achatam nela (Cap.~14).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_05_20.jpg}{0.52\textheight}{Fig.~5.20 ---
+      tropopausa e isentrópicas em corte meridional}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$\dfrac{F}{m} = |g|\dfrac{T_{v,p}-T_{v,e}}{T_{v,e}}
+    \;\to\; N^2 = \dfrac{|g|}{\theta_v}\dfrac{\Delta\theta_v}{\Delta z}
+    \;\to\; \text{não local!} \;\to\; Ri \lessgtr 0{,}25$}
+  \vspace{0.6em}
+  Empuxo: volta ou dispara. $N$: com que ritmo volta. $Ri$: o
+  cisalhamento bagunça mesmo quando voltaria. Tabuleiro: o Skew-$T$.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~5}
+  \texttt{notebooks/cap05\_estabilidade.ipynb}
+  \begin{enumerate}
+    \item Skew-$T$ do zero e com MetPy (sondagem de Campo de Marte).
+    \item Oscilador de Brunt--Väisälä com \texttt{solve\_ivp}.
+    \item Estabilidade não local: o algoritmo do Stull em NumPy.
+    \item $Ri(z)$ e o mapa de turbulência da sondagem.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

@@ -1,0 +1,260 @@
+% Slides — Capítulo 12: Massas de Ar e Frentes
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap12/}}
+
+\title[Cap. 12 --- Massas de Ar e Frentes]{Capítulo 12 --- Massas de Ar e
+Frentes}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Massas de ar}
+
+\begin{frame}{O palco: ciclone, massas e frentes}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Massa de ar $=$ ar que estacionou e ganhou a cara da
+            superfície; etiqueta: $(\theta_w, r)$ (Cap.~4).
+      \item Frente $=$ zona de batalha entre duas massas.
+      \item O ciclone (Cap.~13) é a onda que as põe em movimento.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_12_1.jpg}{0.54\textheight}{Fig.~12.1 --- ciclone
+      idealizado com massas cP e mT e suas frentes}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Onde nascem: os berçários do planeta}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Anticiclones estacionários: céu limpo, ar raso e parado —
+            o chão carimba o ar (Caps.~10--11).
+      \item Classificação de Bergeron: cP, cT, mP, mT ($+$ A, E).
+      \item A friagem paulista: cP/mP andina modificada em trânsito.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_12_4.jpg}{0.52\textheight}{Fig.~12.4 --- regiões
+      de gênese e tipos de massas de ar}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Gênese fria: a EDO no quadro e no notebook}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$\rho C_p H\,\dfrac{dT}{dt} =
+      -\varepsilon\sigma(T^4 - T_{sfc}^4)$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item $\tau = \rho C_pH/4\varepsilon\sigma T^3 \sim$ dias:
+            rápido no início, satura no fim (T2).
+      \item Massa cP ``pronta'' em 3 dias a 2 semanas (Caso~1; N1).
+      \item Gênese quente: subsidência $+$ mistura, de cima para
+            baixo.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_12_5.jpg}{0.5\textheight}{Fig.~12.5 ---
+      esfriamento da massa de ar em formação dia após dia}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Anatomia das frentes}
+
+\begin{frame}{Frente fria em quatro camadas de carta}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item A MESMA frente vista em isotermas, isóbaras (o cavado em
+            ``V'', T4), ventos (o giro N$\to$SW no HS) e tempo
+            presente.
+      \item Treinar a sobreposição mental — é assim que se acha a
+            frente na análise (Cap.~9).
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_12_11a.jpg}{0.4\textheight}{Fig.~12.11 ---
+      isotermas apertadas na zona frontal}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_12_11b.jpg}{0.4\textheight}{Fig.~12.11 ---
+      isóbaras dobrando no cavado frontal}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Os cortes verticais clássicos}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item Fria: cunha íngreme ($\sim$1/100), convecção na linha.
+      \item Quente: rampa $\sim$1/200--1/300, estratiformes
+            adiantados (Ci$\to$Cs$\to$As$\to$Ns).
+      \item Inversão frontal marca a interface na sondagem (Cap.~5).
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_12_14a.jpg}{0.4\textheight}{Fig.~12.14 --- frente
+      fria: a cunha que empurra}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_12_14b.jpg}{0.4\textheight}{Fig.~12.14 --- frente
+      quente: a rampa que recua}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Margules: a inclinação em equilíbrio}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$\tan\alpha = \dfrac{|f|\,\bar T\,\Delta U_g}
+      {g\,\Delta T}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Interface só estaciona com salto de vento ao longo da
+            frente (T1).
+      \item $\Delta T = 10$\,K, $\Delta U = 15$\,m/s: 1/230 — cunha
+            quase deitada (Caso~2; N2).
+      \item Sem rotação a cunha desaba: frentes são estruturas
+            dinâmicas.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_12_17b.jpg}{0.5\textheight}{Fig.~12.17 --- o
+      ajuste geostrófico da interface fria/quente}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O jato mora em cima da frente}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Zona baroclínica concentrada $\Rightarrow$ vento térmico
+            concentrado $\Rightarrow$ \alert{jato} na tropopausa
+            (Cap.~11).
+      \item O corte mostra as isotacas fechando no núcleo, bem sobre a
+            zona frontal.
+      \item CAT nas bordas (Cap.~5); streaks e ciclogênese (Cap.~13).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_12_19.jpg}{0.54\textheight}{Fig.~12.19 --- corte
+      meridional: jato sobre a zona frontal}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Frontogênese}
+
+\begin{frame}{Quem afia o gradiente}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item Confluência, cisalhamento e inclinação: os três termos da
+            função frontogenética.
+      \item Deformação comprime isotermas no eixo de dilatação:
+            $|\nabla T| \propto e^{at}$ (T3; Caso~3).
+      \item Dobra a cada $\sim$19\,h — a frente nasce em 1--2 dias.
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_12_22b.jpg}{0.42\textheight}{Fig.~12.22 ---
+      confluência espremendo as isentropas}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_12_26b.jpg}{0.42\textheight}{Fig.~12.26 ---
+      deformação: isotermas dentro do ângulo crítico afiam}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A circulação transversal: a quente sobe}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Frontogênese quebra o balanço térmico do vento; a
+            atmosfera responde com uma circulação transversal
+            \alert{termicamente direta}.
+      \item Ar quente sobe sobre a cunha: a chuva frontal é filha
+            desta célula.
+      \item Mesma física dos quadrantes de jato (Cap.~13).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_12_28a.jpg}{0.5\textheight}{Fig.~12.28 ---
+      circulação vertical transversal à zona frontal}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Oclusões, TROWAL e linha seca}
+
+\begin{frame}{Oclusão: quem é mais frio fica embaixo}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item Fria alcança a quente; setor quente erguido.
+      \item Comparar $\theta_w$ dos dois lados frios (T5).
+      \item TROWAL: a língua de ar quente erguida — faixa de nuvem e
+            chuva enrolada no ciclone maduro (Cap.~13).
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_12_30b.jpg}{0.44\textheight}{Fig.~12.30 ---
+      oclusão de tipo frio em corte}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_12_32.jpg}{0.44\textheight}{Fig.~12.32 --- o
+      TROWAL nas isentropas}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Frentes de altitude e a linha seca}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item Dobra da tropopausa: ar estratosférico desce seco e rico
+            em ozônio — escuro no canal do vapor (Cap.~8).
+      \item Linha seca: fronteira de $T_d$ sem contraste de $T$ —
+            gatilho clássico de severo (Cap.~14).
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_12_35.jpg}{0.44\textheight}{Fig.~12.35 --- dobra
+      da tropopausa junto ao jato}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_12_37b.jpg}{0.44\textheight}{Fig.~12.37 --- a
+      linha seca em corte vertical}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{anticiclone parado $\to$ massa $(\theta_w, r)$ $\to$
+    contraste $\to$ frente:\quad
+    $\tan\alpha = \tfrac{|f|\bar T\Delta U}{g\Delta T}$,\quad
+    $|\nabla T|\propto e^{at}$}
+  \vspace{0.6em}
+  Massas são a memória térmica do chão; frentes, as costuras entre
+  elas; a frontogênese fabrica a descontinuidade e a circulação
+  transversal faz a chuva. O ciclone que anima tudo: Cap.~13.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~12}
+  \texttt{notebooks/cap12\_frentes.ipynb}
+  \begin{enumerate}
+    \item Gênese cP: a EDO radiativa do $T^4$.
+    \item Margules: inclinação × contrastes.
+    \item Frontogênese por deformação (mini-NWP com solução exata).
+    \item Meteograma sintético da frente fria.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

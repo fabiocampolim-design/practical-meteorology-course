@@ -1,0 +1,30 @@
+name: meteo
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - sympy
+  - matplotlib<3.11   # metpy 1.7 StationPlot quebra com mpl 3.11
+  - pandas
+  - xarray
+  - metpy
+  - arm_pyart
+  - satpy
+  - cartopy
+  - jupyterlab
+  - ipykernel
+  - ipywidgets
+  - pint
+  - pip
+  - pip:
+      - ambiance
+      - pyrcel
+      - tcpypi
+      - climlab>=0.9.2   # via pip: 0.9+ é Python puro e compatível com numpy 2
+# Nota: o pip instala numpy>=2 (dependência do pyrcel/jax). O climlab do
+# conda-forge (0.8.2) quebra com numpy 2 (solver de difusão) e arrasta as
+# extensões Fortran compiladas contra numpy 1.x — por isso vem do pip (0.9.2,
+# núcleo Python puro: GreyRadiationModel, EBM). Se precisar de RRTMG/CAM3
+# (cap. 21?), instalar os plugins separados climlab-rrtmg etc. e testar.

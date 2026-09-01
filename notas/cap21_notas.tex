@@ -1,0 +1,202 @@
+﻿% Notas de aula — Capítulo 21: Processos Climáticos Naturais
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap21/}}
+
+\title{Capítulo 21 --- Processos Climáticos Naturais\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:sistema}--\S\ref{sec:milan} (o sistema
+climático, feedbacks, gelo-albedo, Milankovitch).
+\emph{Aula 2:} \S\ref{sec:daisy}--\S\ref{sec:enso} (Daisyworld,
+variabilidade interna, ENSO).
+
+\section{Do tempo ao clima}\label{sec:sistema}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~21 --- Clima Natural}\\[2pt]
+tempo $=$ a trajetória (imprevisível além de 2 semanas
+\javimos{20}{caos})\\
+clima $=$ a \emph{estatística} da trajetória — e ela é previsível\\[2pt]
+personagens novos: \textbf{feedbacks}, \textbf{escalas lentas}
+(oceano, gelo) e \textbf{forçantes externas} (Sol, órbita, vulcões)
+\end{noquadro}
+
+O balanço de energia do Cap.~2 \javimos{2}{$T_e = 255$\,K} volta como
+protagonista — mas agora com o albedo, o vapor e as nuvens
+\emph{respondendo} à própria temperatura: o sistema tem
+retroalimentação, e retroalimentação muda tudo.
+
+\section{A álgebra dos feedbacks}\label{sec:feed}
+
+\quadro{Desenhar o diagrama de blocos do amplificador realimentado
+(os alunos de eletrônica sorriem) e traduzir cada bloco para o
+clima.}
+
+\begin{formadif}[ganho com feedback (T1--T2)]
+\[ \Delta T = \frac{\lambda_0\,\Delta F}{1 - f},\qquad
+\lambda_0 = \frac{1}{4\varepsilon\sigma T^3} \simeq
+0{,}3\ \mathrm{K/(W\,m^{-2})}. \]
+Sem feedbacks, $2\times$CO$_2$ ($3{,}7$\,W/m²) dá $\sim$1,2\,K
+(resposta de Planck). Com vapor ($f\sim+0{,}4$
+\javimos{4}{Clausius--Clapeyron!}), gelo-albedo ($+0{,}1$--$0{,}2$) e
+nuvens (incerto \javimos{6}{nuvens}): 2,5--4\,K.
+\end{formadif}
+
+\begin{noquadro}[o gelo-albedo em uma linha]
+mais frio $\to$ mais gelo $\to$ mais albedo $\to$ mais frio\\
+feedback POSITIVO $\Rightarrow$ múltiplos equilíbrios: para o MESMO
+Sol, dois climas estáveis (Caso~1)\\[2pt]
+a Terra bola-de-neve (~700\,Ma) visitou o outro ramo — e saiu pelo
+CO$_2$ vulcânico (N1)
+\end{noquadro}
+
+A bifurcação do Caso~1 é o gráfico mais importante da aula: dois
+ramos estáveis, um instável no meio, e histerese — sair do gelo exige
+forçante muito além da que bastaria para não entrar.
+
+\section{Milankovitch: o metrônomo orbital}\label{sec:milan}
+
+\quadro{Os três ciclos com as mãos: excentricidade (abrir/fechar a
+elipse, $\sim$100\,ka), obliquidade (inclinar o eixo, 41\,ka),
+precessão (rodar o pião, 23/19\,ka).}
+
+\begin{formalivro}[o gatilho das eras glaciais (T3; Caso~2)]
+O que decide é a \textbf{insolação de verão em $\sim$65°N}
+\javimos{2}{insolação por latitude}: se a neve do inverno sobrevive
+ao verão, o gelo cresce. Precessão modula QUAL estação coincide com o
+periélio; obliquidade, o contraste sazonal; excentricidade, a
+amplitude da precessão.
+\end{formalivro}
+
+O mistério dos 100\,ka: a forçante quase não tem esse período, mas a
+resposta tem — o gelo lento e não linear (Caso~1!) retifica o
+metrônomo (N2): glaciação lenta, deglaciação abrupta. Vulcões e
+variação solar completam as forçantes naturais: Pinatubo esfriou
+$\sim$0,5\,K por 2 anos — os aerossóis \javimos{7}{aerossóis} em
+escala planetária. Na escala mais lenta de todas ($10^7$--$10^8$
+anos), a \textbf{tectônica} (Stull \S21.3) reposiciona continentes e
+correntes: a Pangeia teve clima continental extremo, e a abertura da
+passagem de Drake isolou (e congelou) a Antártida — geografia é
+forçante climática.
+
+\section{Daisyworld: regulação sem termostato}\label{sec:daisy}
+
+\begin{formadif}[o planeta das margaridas (T4; Caso~3)]
+Margaridas pretas (aquecem o planeta) prosperam com Sol fraco;
+brancas (esfriam) com Sol forte. Sem intenção alguma, a cobertura
+ajusta o albedo e a temperatura fica $\sim$ótima por um largo
+intervalo de luminosidade: \textbf{feedback biológico negativo}.
+A diversidade amplia a regulação (N3) — e o colapso nas bordas é
+abrupto.
+\end{formadif}
+
+É o contraponto pedagógico do gelo-albedo: feedbacks positivos criam
+saltos; negativos, platôs. O clima real tem os dois — e a pergunta
+``qual domina?'' é a pergunta da sensibilidade climática.
+
+\section{O clima presente e sua classificação}\label{sec:koppen}
+
+\begin{noquadro}[Köppen em uma linha (Stull \S21.7)]
+letras $=$ física: A tropical úmido (ZCIT) $\cdot$ B seco
+(subsidência de Hadley) $\cdot$ C temperado $\cdot$ D continental
+$\cdot$ E polar\\[2pt]
+o mapa de Köppen é o mapa da circulação geral \javimos{11}{cinturões}
+carimbado no chão.
+\end{noquadro}
+
+Cada zona de Köppen é diagnóstico das médias de $T$ e precipitação —
+e portanto dos cinturões do Cap.~11: os B nos $30°$ de subsidência,
+os A sob a ZCIT, os C onde as frentes \javimos{12}{frentes} visitam.
+Deslocamentos das zonas são a régua de detecção de mudanças
+\veremos{23}{mudança climática}. A hierarquia de modelos que fecha o
+capítulo: EBM 0-D (Caso~1) $\to$ EBM meridional
+\javimos{11}{climlab} $\to$ \textbf{GCMs} (Stull \S21.6) — os mesmos
+modelos do Cap.~20 \javimos{20}{NWP} rodados por séculos, com oceano,
+gelo e biosfera acoplados.
+
+\section{Variabilidade interna: ENSO}\label{sec:enso}
+
+\quadro{Desenhar o Pacífico equatorial: alísios
+\javimos{11}{alísios}, piscina quente no oeste, ressurgência fria no
+leste — e perguntar o que acontece se os alísios fraquejarem.}
+
+\begin{formadif}[o oscilador de recarga (T5; Caso~4)]
+TSM do leste ($T$) e conteúdo de calor ($h$):
+\[ \dot T = aT + bh,\qquad \dot h = -cT - dh
+\quad\Rightarrow\quad \text{oscilação de 3--5 anos}. \]
+Acoplamento de Bjerknes ($a$): alísios fracos $\to$ leste quente
+$\to$ alísios mais fracos — feedback positivo saturado pela descarga
+lenta de calor. Ruído do \emph{tempo} torna os eventos irregulares.
+\end{formadif}
+
+\begin{noquadro}[por que ENSO importa aqui]
+El Niño remodela as chuvas do planeta (Brasil: seca no N/NE, chuva no
+S)\\
+previsibilidade CLIMÁTICA de meses \javimos{20}{apesar do caos}:
+o oceano lento é a memória\\
+irmãos: PDO, AMO, NAO — o espectro contínuo da variabilidade interna
+\end{noquadro}
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \Delta T = \frac{\lambda_0\Delta F}{1 - f} \qquad
+\text{gelo-albedo: 2 equilíbrios} \qquad
+Q_{65N}(\text{órbita}) \qquad
+\dot T = aT + bh \]
+feedbacks $+$ escalas lentas $+$ forçantes externas $=$ o clima que
+varia sozinho — o palco onde o módulo de mudança climática (Cap.~23) entra
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap21\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Monte a álgebra de feedbacks (série geométrica) e classifique
+        vapor d'água, gelo-albedo, Planck e Daisyworld em $f>0$ ou
+        $f<0$.
+  \item Calcule a resposta de Planck
+        $\lambda_0 = 1/(4\varepsilon\sigma T^3)$ e o aquecimento sem
+        feedbacks para $2\times$CO$_2$.
+  \item Explique por que a insolação de verão em 65°N comanda as
+        glaciações e associe cada ciclo orbital a seu período.
+  \item Mostre que o equilíbrio interior do Daisyworld é estável
+        (sinal do feedback via $dA/dT$) e discuta os colapsos de
+        borda.
+  \item Obtenha os autovalores do oscilador de recarga e a condição
+        de oscilação; calcule o período para os parâmetros do
+        Caso~4.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Simule o resgate vulcânico da bola de neve (histerese
+        completa).
+  \item Retifique Milankovitch com gelo lento $+$ limiar e recupere a
+        periodicidade de $\sim$100\,ka.
+  \item Compare o Daisyworld com uma e duas espécies: a diversidade
+        amplia a regulação?
+  \item Varra o acoplamento do ENSO e localize a bifurcação de Hopf;
+        discuta o papel do ruído no regime subcrítico.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

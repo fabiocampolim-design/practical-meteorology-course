@@ -1,0 +1,105 @@
+% Guia do professor — Capítulo 6: Nuvens
+\section{Capítulo 6 --- Nuvens}
+
+\subsection*{Visão geral e ritmo}
+
+O capítulo mais visual do curso: a taxonomia das nuvens (linguagem
+operacional) e os três mecanismos de saturação (física), com nevoeiros como
+estudo de caso e a geometria fractal como sobremesa para físicos.
+\textbf{Ritmo sugerido: 2 aulas de 2\,h} — pode comprimir para 1 aula e
+meia se o semestre apertar (a classificação anda rápido com fotos).
+
+\begin{itemize}
+  \item \textbf{Aula 1} — gêneros com fotos (15\,min bem gastos),
+        gramática dos nomes, os três caminhos para saturar (com a dedução
+        da convexidade), bafo e contrails. Caso~1 (10\,min).
+  \item \textbf{Aula 2} — nevoeiros (tabela + EDO do nevoeiro de
+        radiação), organização (ruas, ondas, células), fractais, oktas.
+        Casos~2--4 (20\,min; o Caso~3 rende).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item nomear os 10 gêneros e inferir o mecanismo (estável × convectivo)
+        do aspecto;
+  \item explicar os três caminhos para a saturação na curva $e_s(T)$ e
+        provar por que mistura satura (convexidade);
+  \item classificar nevoeiros pelo mecanismo e estimar tempo de formação do
+        nevoeiro de radiação;
+  \item relacionar padrões de organização com $z_i$ e com $N$ (Cap.~5);
+  \item explicar o que significa dimensão fractal $D \simeq 1{,}35$ e como
+        se mede;
+  \item usar oktas e teto na linguagem METAR.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Curva $e_s(T)$ e LCL (Cap.~4); $N$ de Brunt--Väisälä e camada de mistura
+(Cap.~5); balanço radiativo noturno (Cap.~2). Fractais: nenhum
+pré-requisito — introduzir do zero é parte da graça.
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Nuvem é vapor''}: nuvem é água \emph{líquida/gelo};
+        vapor é invisível. Corrigir logo com o bafo.
+  \item \textbf{``Misturar ar só faz média''}: a média é na corda, mas a
+        saturação é na curva — a convexidade surpreende até veteranos.
+  \item \textbf{Nevoeiro como ``nuvem baixa'' sem física}: cada tipo tem um
+        mecanismo distinto; a tabela de 5 tipos organiza.
+  \item \textbf{Contrail como ``fumaça''}: é nuvem de mistura; a fuligem só
+        fornece núcleos (gancho para o Cap.~7).
+  \item \textbf{Perímetro fractal}: alunos esperam convergência ao refinar
+        a régua; a divergência $\ell^{1-D}$ é contraintuitiva — o exercício
+        T4 fixa.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Nuvem na garrafa: garrafa PET com um dedo d'água + fumaça de palito de
+fósforo; apertar e soltar — expansão adiabática forma a nuvem no ato
+(mecanismo 2 + núcleos do Cap.~7). Complemento: vídeo timelapse de nevoeiro
+de radiação se formando em vale.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~6)}
+
+Aquecimento: identificação de gêneros a partir de descrições; altura de
+base de cumulus via LCL. Aprofundamento: problemas de mistura
+(bafo/contrail); tempo de formação de nevoeiro. Síntese: ``por que noites
+nubladas não dão nevoeiro de radiação?''.
+\emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap06\_nuvens.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & Diagrama de mistura: bafo e contrail em $e_s(T)$ & Aula 1, após mistura \\
+2 & EDO do nevoeiro de radiação (forma e dissipa) & Aula 2, após nevoeiros \\
+3 & Nuvens fractais sintetizadas; $D$ por contagem de caixas & Aula 2, fractais \\
+4 & $\lambda$ de ondas e ruas a partir da sondagem & Aula 2, organização \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~3 é o mais ``físico computacional'' do curso até aqui (síntese
+espectral + contagem de caixas) — bom para apresentar como mini-projeto.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 (convexidade e supersaturação de misturas, critério de
+Appleman, dedução do $t_{fog}$, aritmética fractal, espaçamentos de
+organização) e N1--N4. Soluções em \texttt{cap06\_solucoes.ipynb}
+(\emph{não distribuir}): T1 com \texttt{sympy} (segunda derivada de
+Clausius--Clapeyron), N3 com o estudo $D(\beta)$ completo. Pares:
+T1$\leftrightarrow$N1, T3$\leftrightarrow$N2, T4$\leftrightarrow$N3.
+
+\subsection*{Conexões com o resto do curso}
+
+LCL/base de cumulus $\to$ Cap.~4; estável × convectivo e $N$ $\to$ Cap.~5;
+núcleos de condensação e crescimento de gotas $\to$ Cap.~7; oktas/teto
+$\to$ METARs (Cap.~9); nevoeiro de radiação $\to$ camada limite noturna
+(Cap.~18); células abertas/fechadas $\to$ interação ar-mar (Cap.~21).

@@ -1,0 +1,93 @@
+% Guia do professor — Capítulo 9: Boletins e Análise de Cartas
+\section{Capítulo 9 --- Boletins Meteorológicos e Análise de Cartas}
+
+\subsection*{Visão geral e ritmo}
+
+Capítulo de alfabetização operacional: METAR, modelo de estação, redução ao
+nível do mar e análise (manual e objetiva). \textbf{Ritmo: 1 aula
+expositiva + 1 aula prática} com carta impressa e lápis — a prática é o
+coração.
+
+\begin{itemize}
+  \item \textbf{Aula 1} — METAR grupo a grupo (com boletins do dia!),
+        modelo de estação, redução ao nível do mar. Casos~1--2 (10\,min).
+  \item \textbf{Aula 2 (prática)} — cada dupla analisa a mesma carta de
+        superfície impressa: isóbaras de 4 em 4\,hPa, centros, frentes
+        tentativas. Fechar comparando com a análise oficial e com o
+        Caso~3.
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item decodificar METARs sem tabela de consulta (grupos principais);
+  \item plotar e ler o modelo de estação (barbela, pressão codificada);
+  \item explicar e aplicar a redução ao nível do mar;
+  \item traçar isóbaras seguindo as regras e identificar centros;
+  \item descrever a análise objetiva (Cressman/Barnes) e seu papel
+        histórico.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Hipsométrica (Cap.~1); oktas (Cap.~6); $T_d$/UR (Cap.~4); convenção de
+direção do vento (Cap.~1 — o erro clássico reaparece na barbela).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{Barbela ao contrário}: a haste aponta de onde o vento vem;
+        metade da turma erra na primeira vez.
+  \item \textbf{Pressão codificada}: 052 $\to$ 1005{,}2 (não 905{,}2);
+        a regra do valor mais próximo de 1000 e sua exceção em furacões.
+  \item \textbf{QNH × QFE × pressão da estação}: três pressões diferentes;
+        cartas usam a reduzida.
+  \item \textbf{Isóbaras ``ligando pontos''}: interpolação proporcional,
+        não conexão de estações.
+  \item \textbf{Análise objetiva como verdade}: é filtro; o raio de
+        influência decide o que sobrevive (T5/N3).
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+METARs ao vivo do REDEMET/aviationweather.gov no projetor: decodificar o
+aeroporto da cidade em tempo real. Para a prática: imprimir a carta de
+superfície da Marinha/CPTEC do dia anterior sem análise.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~9)}
+
+Aquecimento: decodificação de boletins; plotagem de estações.
+Aprofundamento: análise de mini-cartas com 10--15 estações. Síntese:
+``que observações faltam sobre os oceanos e como os satélites (Cap.~8)
+preenchem?''. \emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap09\_cartas.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & Parser de METAR (Brasil) & Aula 1, após o código \\
+2 & Modelo de estação (MetPy) & Aula 1, após o modelo \\
+3 & Cressman: pontos $\to$ isóbaras & Aula 2, após a prática manual \\
+4 & Redução ao nível do mar: antes × depois & Aula 1 ou 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+Momento pedagógico forte: mostrar o Caso~3 \emph{depois} da análise manual
+— os alunos reconhecem no algoritmo o que a mão deles acabou de fazer.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4 (o par N1$\to$N2 constrói um mini-sistema de
+plotagem). Soluções em \texttt{cap09\_solucoes.ipynb}
+(\emph{não distribuir}); N3 traz validação cruzada de verdade — primeira
+aparição de um conceito de aprendizado estatístico no curso.
+
+\subsection*{Conexões com o resto do curso}
+
+Hipsométrica $\to$ Cap.~1; oktas/teto $\to$ Cap.~6; isóbaras$\to$vento
+$\to$ Cap.~10; frentes $\to$ Cap.~12; análise objetiva $\to$ assimilação
+(Cap.~20).

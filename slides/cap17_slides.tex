@@ -1,0 +1,210 @@
+% Slides — Capítulo 17: Ventos Regionais
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap17/}}
+
+\title[Cap. 17 --- Ventos Regionais]{Capítulo 17 --- Ventos Regionais}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Circulações térmicas}
+
+\begin{frame}{Brisa marítima: a frente que entra do mar}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item Terra quente de dia (Bowen, Cap.~3): circuito de
+            Bjerknes (T1).
+      \item Mini-frente fria avançando 10--50\,km terra adentro —
+            gatilho da convecção da tarde (Cap.~14).
+      \item À noite, o terral fraco.
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_17_13.jpg}{0.42\textheight}{Fig.~17.13 --- a
+      frente de brisa em corte}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_17_14.jpg}{0.42\textheight}{Fig.~17.14 --- o
+      relógio da brisa: Coriolis gira o vetor}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Vale e encosta: o dia e a noite da montanha}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Dia: anabático sobe a encosta $+$ vento de vale sobe o
+            eixo (nuvens de crista ao meio-dia).
+      \item Noite: catabático $+$ vento de montanha descem —
+            $u_{eq} = \sqrt{gh\Delta\theta\sin\alpha/C_D\theta}$
+            (T2).
+      \item Piscinas frias de fundo de vale: as geadas do café
+            (Cap.~18).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_17_11.jpg}{0.52\textheight}{Fig.~17.11 ---
+      anabáticos e ventos de vale diurnos}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Ondas de montanha}
+
+\begin{frame}{Os regimes de Froude num desenho}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item $Fr \ll 1$: contorna/bloqueia; $Fr \sim 1$: ondas e
+            rotores; $Fr \gg 1$: cavidade turbulenta.
+      \item A serra ``toca'' a mola $N$ do Cap.~5.
+      \item Rotores sob as cristas: perigo de aviação.
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_17_30e.jpg}{0.4\textheight}{Fig.~17.30 ---
+      $Fr \sim 1$: ondas e rotores a sotavento}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_17_30g.jpg}{0.4\textheight}{Fig.~17.30 ---
+      turbulência na esteira}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Lenticulares: as cristas fotografáveis}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$\lambda_z = \dfrac{2\pi U}{N} \sim 7$\,km}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Nuvem PARADA com vento forte através: condensa na crista,
+            evapora no vale (Cap.~6).
+      \item Cristas inclinam contra o vento com a altura: energia
+            propagando para cima (T3; Caso~3).
+      \item Quebra em altitude: CAT (Cap.~5) e arrasto de onda
+            (Cap.~20).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_17_30c.jpg}{0.5\textheight}{Fig.~17.30 --- LCL
+      cruzado nas cristas: o trem de lenticulares}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Hidráulica de sotavento}
+
+\begin{frame}{O salto hidráulico da serra}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$Fr = \dfrac{U}{\sqrt{g'h}}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Transição crítica no topo $\Rightarrow$ a camada
+            despenca supercrítica e fecha num salto turbulento (T4;
+            Caso~4).
+      \item A física da pia da cozinha — e da Bora e dos windstorms
+            de Boulder.
+      \item Gap winds: Bernoulli no desfiladeiro.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_17_18.jpg}{0.52\textheight}{Fig.~17.18 ---
+      sub$\to$supercrítico$\to$salto: o vendaval de sotavento}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Föhn: desce quente e seco}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item Sobe úmido (chove na serra), desce TUDO pelo
+            $\Gamma_d$: $+\Delta T$ e ar seco (T5).
+      \item O $L_v$ que ficou a barlavento paga a conta (Caps.~3--4).
+      \item A parede de föhn no cume e o céu limpo a sotavento.
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_17_38.jpg}{0.42\textheight}{Fig.~17.38 --- a
+      parede de föhn}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_17_39.jpg}{0.42\textheight}{Fig.~17.39 --- o
+      caminho do föhn no emagrama}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Vento como recurso e a cidade}
+
+\begin{frame}{Energia eólica: o cubo do vento}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item Potência $\propto \rho A v^3$; limite de Betz:
+            $E_o^{max} = 16/27 \approx 59\%$.
+      \item Perfil log (Cap.~18) decide a altura da torre.
+      \item Curva real: cut-in, rated, cut-out.
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_17_5a.jpg}{0.42\textheight}{Fig.~17.5 ---
+      eficiência vs.\ razão de velocidades (Betz)}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_17_5b.jpg}{0.42\textheight}{Fig.~17.5 --- curva
+      de potência de uma turbina}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A ilha de calor urbana}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Concreto guarda calor (Cap.~3), cânions prendem IV
+            (Cap.~2), impermeabilização mata o $F_E$: cidade
+            2--6\,K mais quente à noite.
+      \item $\Delta T_{max}$ cresce com a razão altura/largura das
+            ruas.
+      \item A pluma urbana e a brisa rural fecham o quadro
+            (Cap.~19).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_17_41c.jpg}{0.48\textheight}{Fig.~17.41 --- a
+      ilha de calor em planta}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$\oint dP/\rho$ (brisas) \quad
+    $u_{eq}=\sqrt{\tfrac{gh\Delta\theta\sin\alpha}{C_D\theta}}$ \quad
+    $\lambda_z = \tfrac{2\pi U}{N}$ \quad
+    $Fr = \tfrac{U}{\sqrt{g'h}}$}
+  \vspace{0.6em}
+  Térmicos de dia, catabáticos de noite, ondas e saltos onde há serra —
+  e o vento como recurso ($v^3$!) fechando a conta.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~17}
+  \texttt{notebooks/cap17\_ventosregionais.ipynb}
+  \begin{enumerate}
+    \item Brisa com Coriolis: EDO $+$ hodógrafo diurno.
+    \item Catabático: da serra à Antártida.
+    \item Ondas de montanha lineares (morro-sino).
+    \item Água rasa sobre a serra: regimes de Froude.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

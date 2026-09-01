@@ -1,0 +1,101 @@
+% Guia do professor — Capítulo 15: Perigos de Tempestades
+\section{Capítulo 15 --- Perigos de Tempestades}
+
+\subsection*{Visão geral e ritmo}
+
+O capítulo mais ``vendável'' do curso — e uma coleção de física
+clássica no extremo: balanço peso--arrasto (granizo), termodinâmica da
+evaporação (downburst), eletrostática (raios) e ciclostrofia
+(tornado). Cada perigo fecha com números de segurança reais.
+\textbf{Ritmo: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — granizo (balanço no quadro, biografia da
+        pedra, derretimento na queda) e downbursts (DCAPE, seco ×
+        úmido, microburst e aviação). Casos~1--2.
+  \item \textbf{Aula 2} — relâmpagos (o capacitor no quadro,
+        flash-to-bang, 30--30) e tornados (Rankine, queda de pressão,
+        escala EF, lado perigoso no HS). Casos~3--4.
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item calcular o updraft mínimo para cada tamanho de granizo;
+  \item definir DCAPE e prever a intensidade de downbursts a partir da
+        umidade sub-nuvem;
+  \item descrever a eletrificação por colisões e usar as regras de
+        segurança (3\,s/km, 30--30);
+  \item integrar o equilíbrio ciclostrófico do Rankine e obter
+        $\Delta P = \rho v_{max}^2$;
+  \item relacionar a escala EF com a pressão dinâmica
+        $\tfrac12\rho v^2$.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Updraft e CAPE (Cap.~14); riming e fase mista (Cap.~7); $\theta_w$ e
+evaporação (Cap.~4); equilíbrio ciclostrófico (Cap.~10); esticamento
+de vorticidade (Cap.~13); refletividade e dual-pol (Cap.~8).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Granizo cai porque ficou pesado''}: cai quando
+        $w_T(D)$ VENCE o updraft — a mesma pedra estaria voando numa
+        supercélula mais forte.
+  \item \textbf{Downburst exige chuva forte}: o seco cai de virga com
+        eco fraco — o mais perigoso é o que não se vê.
+  \item \textbf{Raio ``procura o mais alto''}: o líder desce por
+        passos de campo máximo; altura ajuda mas não decide sozinha —
+        daí a regra do abrigo, não da estatística.
+  \item \textbf{Tornado como ``mini-ciclone''}: sem Coriolis! É
+        ciclostrófico e pode girar para qualquer lado; o giro
+        predominante vem do mesociclone-mãe.
+  \item \textbf{Lado perigoso}: no HS é o ESQUERDO da trajetória
+        (giro horário $+$ translação) — espelho dos livros do HN.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Gerador eletrostático (Wimshurst/van de Graaff) para faíscas e o
+conceito de ruptura; vórtice de garrafa PET (dois litros + água) para
+o Rankine com ``olho'' visível. Vídeos: microburst de Andrews AFB
+(anemômetro de 67\,m/s) e granizo em câmera lenta.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~15)}
+
+Aquecimento: $w_T$ para tamanhos dados; flash-to-bang de tempos
+medidos. Aprofundamento: DCAPE de sondagens; $\Delta P$ de tornados
+com $v_{max}$ dados. Síntese: ``por que o corredor sul do Brasil /
+norte da Argentina tem os MCCs mais elétricos do planeta?''.
+\emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap15\_perigos.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & $w_T(D)$ do granizo com marcos (ervilha$\to$laranja) & Aula 1 \\
+2 & downburst: queda com déficit evaporativo & Aula 1 \\
+3 & capacitor da tempestade: dente de serra de raios & Aula 2 \\
+4 & Rankine: $v(r)$ e $\Delta P$ por EF & Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap15\_solucoes.ipynb}
+(\emph{não distribuir}): T1 e T4 com \texttt{sympy}; N1 e N4 são os
+mais ricos (derretimento na queda; lado perigoso no HS). Pares:
+T1$\leftrightarrow$N1, T2$\leftrightarrow$N2, T4$\leftrightarrow$N4.
+
+\subsection*{Conexões com o resto do curso}
+
+Fábrica (Cap.~14); microfísica do gelo (Cap.~7); radar e dual-pol
+(Cap.~8); ciclostrofia (Cap.~10); esticamento (Cap.~13); ventos fortes
+não-convectivos para contraste (Cap.~17); climatologia de severos num
+clima mais quente (Cap.~21).

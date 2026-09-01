@@ -1,0 +1,249 @@
+% Slides — Capítulo 15: Perigos de Tempestades
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap15/}}
+
+\title[Cap. 15 --- Perigos]{Capítulo 15 --- Perigos de Tempestades}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Granizo}
+
+\begin{frame}{A balança updraft × queda}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$w_T = \sqrt{\dfrac{4g\rho_{gelo}D}{3C_d\rho_{ar}}}
+      \propto \sqrt{D}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Pedra de 5\,cm exige updraft $\gtrsim$32\,m/s: granizo
+            grande \alert{denuncia} supercélula (Cap.~14).
+      \item As camadas de cebola: voos repetidos pela zona de
+            crescimento (riming, Cap.~7).
+    \end{itemize}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_15_4.jpg}{0.42\textheight}{Fig.~15.4 ---
+      velocidade terminal vs.\ diâmetro}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_15_6.jpg}{0.42\textheight}{Fig.~15.6 --- o
+      embrião de graupel e as camadas}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Onde a pedra cresce}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Zona ótima: $-10$ a $-30\,°$C, com muita água
+            super-resfriada (Cap.~7).
+      \item BWER no radar: o updraft tão forte que nem a chuva cai
+            dentro (Cap.~8).
+      \item Derretimento na queda: nível de congelamento alto poupa o
+            chão (N1) — por isso o equador tem pouco granizo.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_15_10.jpg}{0.54\textheight}{Fig.~15.10 --- a
+      trajetória de crescimento e o BWER}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Downbursts}
+
+\begin{frame}{O CAPE de cabeça para baixo}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \eqdestaque{$w_{down} = \sqrt{2\,\mathrm{DCAPE}}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Evaporação esfria a parcela, que desce pelo seu
+            $\theta_w$ (Cap.~4).
+      \item DCAPE 500--1500\,J/kg $\to$ rajadas de 30--55\,m/s.
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_15_7.jpg}{0.44\textheight}{Fig.~15.7 --- DCAPE
+      no Skew-$T$: a área do downdraft}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_15_14.jpg}{0.44\textheight}{Fig.~15.14 ---
+      $w_{down}$ vs.\ DCAPE}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{No chão: microburst e frente de rajada}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item O jato desce, espalha e enrola: vórtice de anel na frente
+            de rajada (Cap.~14).
+      \item Downburst \alert{seco}: cai de virga, quase sem eco — a
+            armadilha da aviação (N2).
+      \item Haboob: a parede de poeira da rajada em solo seco.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_15_11.jpg}{0.52\textheight}{Fig.~15.11 ---
+      downburst, ventos de outflow e a frente de rajada}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Relâmpagos}
+
+\begin{frame}{O gerador: colisões graupel--cristal}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item Graupel (pesado) fica $-$, cristais (leves) sobem $+$:
+            o updraft separa cargas.
+      \item Exige gelo $+$ água super-resfriada $+$ updraft: raio e
+            granizo são irmãos (Cap.~7).
+      \item Dente de serra do capacitor: Caso~3 do notebook.
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_15_22b.jpg}{0.42\textheight}{Fig.~15.22 --- a
+      transferência de carga nas colisões}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_15_23.jpg}{0.42\textheight}{Fig.~15.23 --- líder
+      escalonado e descarga de retorno}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Trovão e segurança}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Canal a $\sim$30\,000\,K: expansão supersônica $=$
+            trovão.
+      \item \alert{3\,s por km} (flash-to-bang, T3); regra 30--30
+            para abrigo.
+      \item O som refrata para cima (Cap.~1: $T$ cai com $z$): além
+            de $\sim$15\,km o raio é ``mudo''.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_15_31.jpg}{0.5\textheight}{Fig.~15.31 ---
+      refração do trovão e o alcance audível}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Tornados}
+
+\begin{frame}{O zoológico e o ciclo de vida}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item Formas: cone, cunha, ampulheta, corda — tamanho não é
+            força.
+      \item Família: supercelular, landspout, waterspout, gustnado
+            (e o primo dust devil).
+      \item Estágios: organização $\to$ maduro $\to$ encolhimento
+            $\to$ corda.
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_15_32b.jpg}{0.42\textheight}{Fig.~15.32 ---
+      formas de funil}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_15_38.jpg}{0.42\textheight}{Fig.~15.38 --- o
+      ciclo de vida}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Rankine: o vórtice e a queda de pressão}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$\dfrac{dP}{dr} = \dfrac{\rho v^2}{r}
+      \Rightarrow \Delta P = \rho v_{max}^2$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Ciclostrófico puro (Cap.~10): sem Coriolis, gira para
+            qualquer lado.
+      \item EF5 (110\,m/s): $\sim$120\,hPa em 100\,m.
+      \item Carga $q = \tfrac12\rho v^2$: dobrar $v$ quadruplica a
+            força (T5).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_15_33.jpg}{0.52\textheight}{Fig.~15.33 --- o
+      perfil de Rankine e a depressão central}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{De onde vem o giro}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item Vorticidade horizontal do cisalhamento é
+            \alert{inclinada} pelo updraft e \alert{esticada}
+            (Cap.~13!) até virar tornado.
+      \item Mesociclone $\to$ RFD $\to$ toque no solo.
+      \item SRH do hodógrafo prevê o risco (Cap.~14, N3).
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_15_41a.jpg}{0.42\textheight}{Fig.~15.41 ---
+      inclinar e esticar o tubo de vorticidade}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_15_44a.jpg}{0.42\textheight}{Fig.~15.44 --- do
+      mesociclone ao vórtice de tornado}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Translação e vórtices de sucção}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item Giro $+$ translação: no HS o lado \alert{esquerdo} da
+            trajetória é o pior (N4).
+      \item Tornados multivórtice: sub-vórtices de sucção varrem
+            faixas estreitas de dano extremo.
+      \item Escala EF: dano $\to$ vento estimado.
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_15_34.jpg}{0.42\textheight}{Fig.~15.34 ---
+      vento total $=$ rotação $+$ translação}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_15_52.jpg}{0.42\textheight}{Fig.~15.52 ---
+      vórtices de sucção múltiplos}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$w_T \propto \sqrt{D}$ \quad
+    $w_{down} = \sqrt{2\mathrm{DCAPE}}$ \quad
+    $\dot Q = I_c - Q/RC$ \quad $\Delta P = \rho v_{max}^2$}
+  \vspace{0.6em}
+  Quatro perigos, quatro pedaços de física clássica no extremo — todos
+  filhos da mesma supercélula do Cap.~14, todos visíveis no radar do
+  Cap.~8.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~15}
+  \texttt{notebooks/cap15\_perigos.ipynb}
+  \begin{enumerate}
+    \item Granizo: $w_T(D)$ com os marcos ervilha$\to$laranja.
+    \item Downburst: a EDO da queda com déficit evaporativo.
+    \item O capacitor da tempestade (dente de serra de raios).
+    \item Rankine: $v(r)$ e $\Delta P$ por categoria EF.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

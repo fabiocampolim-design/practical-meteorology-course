@@ -1,0 +1,288 @@
+% Notas de aula — Capítulo 10: Forças Atmosféricas e Ventos
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap10/}}
+
+\title{Capítulo 10 --- Forças Atmosféricas e Ventos\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:forcas}--\S\ref{sec:geo} (as forças, Coriolis,
+vento geostrófico).
+\emph{Aula 2:} \S\ref{sec:gradiente}--\S\ref{sec:continuidade}
+(vento gradiente, atrito e camada limite, espiral de Ekman,
+continuidade).
+
+\section{A 2ª lei de Newton num planeta que gira}\label{sec:forcas}
+
+Chegou a dinâmica. Os Caps.~1--9 montaram os campos ($P$, $T$, umidade)
+e as cartas que os mostram \javimos{9}{análise de cartas}; agora
+perguntamos: \emph{por que o vento sopra como sopra?} A resposta é a 2ª
+lei de Newton por unidade de massa, escrita num referencial que gira.
+
+\begin{noquadro}[a equação da aula --- montar termo a termo]
+\[ \frac{D\vec{U}_h}{Dt} =
+ \underbrace{-\frac{1}{\rho}\nabla_h P}_{\text{gradiente de pressão}}
+ \;\underbrace{-\;f\,\hat{k}\times\vec{U}_h}_{\text{Coriolis}}
+ \;\underbrace{-\;\frac{\vec U_h}{\tau_{atrito}}}_{\text{atrito (CL)}}
+\qquad f = 2\Omega\sin\phi \]
+HS: $f<0$ $\Rightarrow$ Coriolis desvia \textbf{para a esquerda}.
+\end{noquadro}
+
+\quadro{Apresentar cada força com seu desenho: (1) PGF apontando da alta
+para a baixa, perpendicular às isóbaras; (2) Coriolis perpendicular ao
+vento; (3) atrito contra o vento. Insistir: Coriolis não faz trabalho —
+só gira.}
+
+A força de gradiente de pressão é a única que \emph{cria} vento — as
+outras duas o desviam ou o freiam. A PGF por unidade de massa é
+$|\nabla P|/\rho$: com as isóbaras da carta do Cap.~9 e a régua de
+111\,km/grau \javimos{1}{referenciais terrestres}, ela se mede
+diretamente na carta.
+
+\begin{formalivro}[parâmetro de Coriolis]
+\[ f = 2\Omega\sin\phi,\qquad
+\Omega = 7{,}292\times10^{-5}\ \mathrm{s^{-1}};
+\quad f(-30°) = -7{,}3\times10^{-5}\ \mathrm{s^{-1}}. \]
+\end{formalivro}
+
+\begin{formadif}[de onde vem o $2\Omega\sin\phi$]
+No referencial girante aparecem as forças fictícias centrífuga (já
+absorvida no $g$ efetivo) e de Coriolis, $-2\vec\Omega\times\vec U$.
+Projetando $\vec\Omega$ na vertical local: componente útil
+$\Omega\sin\phi$; o fator 2 vem da soma dos efeitos ``mudança de raio''
+e ``conservação de momento angular''. No equador $f = 0$ — o vento não
+sente rotação horizontal ali (T2).
+\end{formadif}
+
+\begin{noquadro}[quem sente Coriolis?]
+escala de tempo $1/|f| \sim 3$--4\,h\\
+dura horas/dias (sinótico): sente \quad dura segundos/minutos (pia,
+redemoinho): NÃO sente\\[2pt]
+sem PGF, o vento faz \textbf{círculos inerciais}: período
+$2\pi/|f|$, raio $V/|f|$
+\end{noquadro}
+
+Círculos inerciais são a primeira simulação do notebook (Caso~1) — e
+aparecem de verdade em boias oceânicas à deriva. A hierarquia de escalas
+espaciais e temporais (Fig.~10.24 do livro) diz quem entra no equilíbrio
+em cada fenômeno: tornado (ciclostrófico), ciclone (gradiente), jato
+(geostrófico) \veremos{11}{escalas da circulação geral}.
+
+\section{Vento geostrófico}\label{sec:geo}
+
+\quadro{Desenhar isóbaras retas e CONSTRUIR o equilíbrio em três atos:
+1) ar parado sente só PGF e acelera para a baixa; 2) ganhando
+velocidade, Coriolis gira; 3) estado final: PGF $\perp$ isóbaras,
+Coriolis oposta, vento paralelo às isóbaras. Este desenho é o mais
+importante do capítulo.}
+
+\begin{formadif}[o equilíbrio central da meteorologia dinâmica]
+Escoamento reto, sem atrito, estacionário: PGF $+$ Coriolis $= 0$:
+\[ f\,U_g = -\frac{1}{\rho}\frac{\partial P}{\partial y},\qquad
+   f\,V_g = +\frac{1}{\rho}\frac{\partial P}{\partial x}
+\quad\Longrightarrow\quad
+\vec U_g = \frac{1}{\rho f}\,\hat k\times\nabla_h P. \]
+\end{formadif}
+
+\begin{noquadro}[Buys-Ballot]
+vento paralelo às isóbaras;\\
+de costas para o vento no HS: baixa pressão à \textbf{direita}\\
+(no HN: à esquerda)\\[2pt]
+nas cartas de altitude: mesmo equilíbrio com alturas geopotenciais
+\javimos{9}{cartas de 50\,kPa}
+\end{noquadro}
+
+\begin{exemplo}[régua sobre a carta]
+Isóbaras de 4\,hPa espaçadas 300\,km, $\phi = -30°$,
+$\rho = 1{,}2$\,kg/m$^3$:
+\[ U_g = \frac{1}{\rho|f|}\frac{\Delta P}{\Delta n}
+ = \frac{400}{1{,}2\times7{,}3\times10^{-5}\times3\times10^{5}}
+ \simeq 15\ \mathrm{m/s}. \]
+\emph{Verificação: vento sinótico típico; apertando para 150\,km dobra —
+o ``apertado $=$ ventoso'' do Cap.~9, agora explicado.}
+\end{exemplo}
+
+Por que a natureza escolhe esse equilíbrio? Porque qualquer
+desequilíbrio gera acelerações que Coriolis converte em giro até
+alinhar — o ajustamento geostrófico. A rotação da Terra é o motivo de os
+ventos \emph{contornarem} os centros de pressão em vez de preenchê-los
+em horas; sem ela, não haveria ciclones durando dias
+\veremos{13}{ciclones extratropicais}.
+
+\section{Vento gradiente: curvas mudam tudo}\label{sec:gradiente}
+
+\quadro{Desenhar baixa e alta com os triângulos de força; mostrar que a
+resultante centrípeta exige vento diferente do geostrófico.}
+
+Em torno de centros, sobra força centrípeta $V^2/R$:
+
+\begin{formalivro}[vento gradiente]
+\[ \frac{V^2}{R} =
+\underbrace{\frac{1}{\rho}\left|\frac{\partial P}{\partial n}\right|}_{PGF}
+ \mp |f|\,V
+\quad\Rightarrow\quad
+V_{baixa} < U_g < V_{alta}. \]
+\end{formalivro}
+
+\begin{noquadro}[baixas apertadas, altas moles]
+baixas: Coriolis ajuda a curvar $\Rightarrow$ vento
+\emph{sub}geostrófico; PGF pode ser gigante (furacões!)\\
+altas: Coriolis briga $\Rightarrow$ vento \emph{super}geostrófico; e há
+teto: $|\partial P/\partial n| \le \rho f^2R/4$ (T3)\\[2pt]
+$\Rightarrow$ por isso baixas têm centros afiados e ventania; altas,
+centros chatos e calmaria
+\end{noquadro}
+
+Esse contraste é visível em qualquer perfil de pressão de carta
+(Fig.~10.14 do livro) — e explica por que só as \emph{baixas} podem
+virar tempestades intensas \veremos{16}{ciclones tropicais}.
+
+Caso extremo: $R$ pequeno e $V$ grande $\Rightarrow$ Coriolis
+desprezível $\Rightarrow$ \textbf{equilíbrio ciclostrófico} (tornados,
+redemoinhos — podem girar para qualquer lado!
+\veremos{15}{tornados}). No extremo oposto (escoamentos rasos e
+lentos, brisas fracas), o balanço PGF--atrito sem Coriolis é o vento
+\textbf{antitríptico} — completa-se assim o cardápio do Stull:
+geostrófico, gradiente, ciclostrófico, inercial e antitríptico.
+
+\section{Atrito: a camada limite entra no jogo}\label{sec:atrito}
+
+\quadro{Triângulo de forças com atrito: o vento cruza as isóbaras
+$\sim$15--45° em direção à baixa. Desenhar a espiral convergindo para o
+centro da baixa.}
+
+Com atrito \veremos{18}{arrasto turbulento}, o equilíbrio de 3 forças
+gira o vento em direção à baixa pressão.
+
+\begin{noquadro}[a consequência sinótica mais importante]
+atrito $\Rightarrow$ vento cruza isóbaras para a baixa\\
+$\Rightarrow$ \textbf{convergência} em baixas: ar sobe $\to$ nuvem e
+chuva\\
+$\Rightarrow$ \textbf{divergência} em altas: ar desce $\to$ céu limpo\\[2pt]
+a meteorologia inteira da carta de superfície está neste desenho
+\end{noquadro}
+
+É o elo que fecha com os Caps.~4--7: a subida forçada pela convergência
+satura o ar \javimos{4}{LCL} e alimenta os nimbostratus
+\javimos{6}{estratiformes}; e antecipa o ``bombeamento de Ekman'' que
+acopla a camada limite aos ciclones \veremos{13}{ciclogênese}.
+
+\subsection{Espiral de Ekman}
+
+\begin{formadif}[a solução clássica]
+Modelando o atrito como difusão turbulenta
+$K\,\partial^2\vec U/\partial z^2$ e resolvendo o equilíbrio em função
+de $z$:
+\[ U(z) = U_g\left[1 - e^{-z/\delta}\cos(z/\delta)\right],\quad
+   V(z) = U_g\,e^{-z/\delta}\sin(z/\delta),\quad
+   \delta = \sqrt{2K/|f|}. \]
+O vetor vento \emph{espirala} com a altura até o geostrófico em
+$z \sim \pi\delta \sim 1$\,km. Verificação numérica no Caso~3; o T5
+mostra que o transporte integrado é perpendicular a $\vec U_g$ — o
+transporte de Ekman que também governa o oceano.
+\end{formadif}
+
+\section{Continuidade: o vento vertical nasce da convergência}
+\label{sec:continuidade}
+
+\quadro{Desenhar o cubo com fluxos entrando e saindo
+\javimos{3}{o cubo euleriano}; se entra mais do que sai na horizontal,
+sobe pelo topo.}
+
+\begin{formalivro}[conservação de massa, forma incompressível]
+\[ \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y}
+ + \frac{\partial w}{\partial z} = 0
+\quad\Longrightarrow\quad
+w(z_{topo}) = -\,z_{topo}\,
+\overline{\left(\nabla_h\cdot\vec U_h\right)}. \]
+\end{formalivro}
+
+\begin{noquadro}[números do levantamento sinótico]
+convergência de $10^{-5}$\,s$^{-1}$ em 1\,km $\Rightarrow$
+$w \simeq 1$\,cm/s\\[2pt]
+invisível — mas em poucas horas satura o ar (Cap.~4) e sustenta o
+nimbostratus de uma frente
+\end{noquadro}
+
+Este é o quarto ingrediente da lista do Cap.~1 (continuidade
+\javimos{1}{as quatro leis}) entrando em cena — e o levantamento que os
+Caps.~12--13 usarão o tempo todo \veremos{12}{levantamento frontal}.
+A \emph{cinemática} completa do campo de vento (divergência, que
+acabamos de usar; vorticidade; deformação) será formalizada onde cada
+peça trabalha: deformação na frontogênese \veremos{12}{deformação} e
+vorticidade nos ciclones \veremos{13}{vorticidade}.
+
+\textbf{Medindo ventos} (Stull \S10.10): anemômetro de conchas
+(padrão das estações), de hélice, e o \textbf{sônico} — tempo de voo
+do som em três eixos, rápido o bastante para medir turbulência
+\veremos{18}{fluxos turbulentos}; em altitude, balão-piloto,
+radiossonda GPS e os perfiladores \javimos{8}{sensoriamento}.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ f = 2\Omega\sin\phi \;\to\;
+   \vec U_g = \frac{1}{\rho f}\hat k\times\nabla P \;\to\;
+   \frac{V^2}{R}\ \text{(gradiente)} \;\to\;
+   \text{atrito}\Rightarrow\text{convergência} \;\to\; w \]
+do equilíbrio geostrófico à chuva da baixa pressão: quatro passos
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap10\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Mostre que, sem PGF e atrito, as equações do movimento dão
+        círculos inerciais de período $2\pi/|f|$ e raio $V/|f|$; calcule
+        ambos para $V = 10$\,m/s em $\phi = -23{,}5°$ e $-60°$.
+  \item Derive o vento geostrófico e mostre que ele \emph{não pode}
+        existir no equador; o que equilibra a PGF lá?
+  \item Resolva a quadrática do vento gradiente para baixas e altas;
+        mostre que em altas só há solução real se
+        $|\partial P/\partial n| \le \rho f^2 R/4$ — o ``teto'' de PGF
+        das altas.
+  \item A partir do equilíbrio de 3 forças com atrito linear
+        ($-\vec U/\tau$), deduza o ângulo de cruzamento das isóbaras
+        $\tan\alpha = 1/(f\tau)$ e avalie para $\tau = 0{,}5$ e 3\,h.
+  \item Verifique por substituição que a espiral de Ekman satisfaz o
+        sistema $-fV = K U''$, $f(U - U_g) = K V''$, e mostre que o
+        transporte integrado na camada (transporte de Ekman) é
+        perpendicular ao vento geostrófico.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Integre trajetórias inerciais em $\phi = -10°, -30°, -60°$ e
+        confirme período e raio do T1; adicione um vento médio e observe
+        as cicloides.
+  \item Para o campo de pressão sintético do Caso~2, compare o vento
+        geostrófico com o vento gradiente ao redor da baixa e
+        quantifique o quanto o gradiente é subgeostrófico no raio de
+        máximo aperto.
+  \item Resolva a camada de Ekman numericamente (diferenças finitas)
+        para $K$ variável com a altura e compare com a espiral analítica
+        de $K$ constante.
+  \item Com o vento do Caso~2 mais um atrito de 20° de cruzamento,
+        calcule a divergência horizontal e o $w$ no topo da camada
+        limite; mapeie onde o ar sobe.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

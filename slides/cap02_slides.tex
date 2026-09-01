@@ -1,0 +1,284 @@
+% Slides — Capítulo 2: Radiação Solar e Infravermelha
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap02/}}
+
+\title[Cap. 2 --- Radiação]{Capítulo 2 --- Radiação Solar e Infravermelha}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Geometria Sol--Terra}
+
+\begin{frame}{A órbita: elipse fraca, inclinação forte}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Periélio em \alert{janeiro}: a distância NÃO explica as
+            estações.
+      \item O que explica: eixo inclinado $\Phi_r = 23{,}44°$, fixo no
+            espaço durante a órbita.
+      \item Elipse: $\pm3{,}4\%$ na radiação — pequena hoje, mas seus
+            ciclos seculares marcam as eras glaciais (Cap.~21).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_02_2.jpg}{0.52\textheight}{Fig.~2.2 --- a órbita da
+      Terra: periélio, afélio e a Lua exagerada}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Solstícios e equinócios}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item $\delta_s$ $=$ latitude onde o Sol está a pino ao meio-dia.
+      \item $\delta_s \simeq \Phi_r\cos[2\pi(d-173)/365{,}25]$.
+      \item Trópicos de Câncer/Capricórnio $=$ extremos de $\delta_s$;
+            círculos polares $=$ noite/sol de 24\,h.
+    \end{itemize}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_02_5a.jpg}{0.42\textheight}{Fig.~2.5 --- trópicos e
+      círculos polares}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_02_5b.jpg}{0.42\textheight}{Fig.~2.5 --- estações ao
+      longo da órbita}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O Sol no céu local}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$\Psi_{\text{meio-dia}} = 90° - |\phi - \delta_s|$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item SP no solstício de verão: Sol no \alert{zênite} (Capricórnio
+            passa por SP!); no inverno: $43°$.
+      \item Fórmula completa (com hora): Caso~2 do notebook.
+      \item $\Psi = 0$ dá nascer/pôr e a duração do dia.
+    \end{itemize}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_02_6b.jpg}{0.42\textheight}{Fig.~2.6 --- elevação ao
+      longo do dia, três estações}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_02_6c.jpg}{0.42\textheight}{Fig.~2.6 --- trajetória
+      do Sol: elevação × azimute}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Fluxo radiativo e insolação}
+
+\begin{frame}{Fluxo, constante solar e inclinação}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$S_0 = 1361$\,W/m$^2$;\qquad
+      $F_{\text{sup}} = S\,\sin\Psi$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Inverso do quadrado: cascas esféricas conservam
+            $L_\odot = 4\pi R^2 S$.
+      \item $\sin\Psi$: mesma energia, área maior — \alert{esta linha
+            explica as estações}.
+    \end{itemize}
+    \column{0.26\textwidth}
+    \figlivroslide{fig_02_7.jpg}{0.34\textheight}{Fig.~2.7 --- fluxo:
+      energia por área por tempo}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_02_11b.jpg}{0.34\textheight}{Fig.~2.11 --- feixe
+      inclinado espalha-se por área maior}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Insolação diária no topo da atmosfera}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Soma de $S\sin\Psi$ ao longo do dia: função de $(\phi, d)$
+            apenas.
+      \item Surpresa 1: no verão, o \alert{polo} bate o equador (24\,h de
+            sol fraco $>$ 12\,h de sol forte).
+      \item Surpresa 2: o equador tem \alert{dois} máximos anuais
+            (equinócios).
+      \item Esta curva alimenta o EBM do Cap.~11.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_02_11c.jpg}{0.58\textheight}{Fig.~2.11 --- insolação
+      diária (W/m$^2$) vs.\ latitude e dia do ano}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Leis de corpo negro}
+
+\begin{frame}{Planck: o espectro só depende de $T$}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$E^*_\lambda =
+      \dfrac{c_1}{\lambda^5\left[e^{c_2/\lambda T}-1\right]}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Corpo negro: absorvedor (e emissor) perfeito.
+      \item Sol $5772$\,K e Terra $255$\,K: mesmas leis, escalas muito
+            diferentes.
+    \end{itemize}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_02_8.jpg}{0.42\textheight}{Fig.~2.8 --- Planck para
+      o Sol ($\lambda_{max}=0{,}5\,\mu$m)}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_02_9.jpg}{0.42\textheight}{Fig.~2.9 --- Planck para
+      a Terra ($\lambda_{max}\simeq10\,\mu$m)}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Onda curta × onda longa: bandas disjuntas}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$\lambda_{max} = \dfrac{2897\,\mu\mathrm{m\,K}}{T}$;\qquad
+      $E^* = \sigma T^4$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Wien e Stefan--Boltzmann saem da lei de Planck (T1, T2 —
+            \texttt{sympy} no notebook).
+      \item Bandas quase disjuntas $\Rightarrow$ contabilidades separadas
+            $K$ e $I$ no balanço.
+      \item Satélites: visível de dia, IV a qualquer hora (Cap.~8).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_02_10b.jpg}{0.55\textheight}{Fig.~2.10 --- radiância
+      solar e terrestre no topo da atmosfera (log--log)}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Absorção: lei de Beer}
+
+\begin{frame}{Cada camada remove uma fração fixa}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \eqdestaque{$\dfrac{dE}{ds} = -k\rho E \;\Rightarrow\;
+      E = E_0\,e^{-\tau}$,\quad $\tau = \int k\rho\,ds$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Mesma matemática do decaimento radioativo.
+      \item Feixe inclinado: caminho $\propto 1/\sin\Psi$ — pôr do sol
+            fraco e vermelho.
+      \item Voltará como atenuação de radar (Cap.~8) e visibilidade em
+            nevoeiro (Cap.~6).
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_02_12.jpg}{0.42\textheight}{Fig.~2.12 --- extinção
+      do feixe por partículas e moléculas no caminho $\Delta s$}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Balanço radiativo e efeito estufa}
+
+\begin{frame}{As quatro setas na superfície}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \eqdestaque{$F^* = (1-A)K\!\downarrow \;+\; I\!\downarrow - I\!\uparrow$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Albedo $A$: oceano 0{,}06 $\cdots$ neve fresca 0{,}85.
+      \item Nuvens: esfriam de dia ($A\uparrow$), aquecem à noite
+            ($I\!\downarrow\uparrow$) — Cap.~6.
+      \item $F^*$ alimenta o balanço de calor do Cap.~3 e o ciclo diurno
+            da camada limite (Cap.~18).
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_02_14.jpg}{0.44\textheight}{Fig.~2.14 --- feixe
+      solar, atmosfera e as componentes do balanço na superfície}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O ciclo diurno do balanço}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item De dia: $K\!\downarrow$ domina, $F^* > 0$ — superfície
+            acumula energia.
+      \item De noite: só onda longa, $F^* \lesssim 0$ — resfriamento
+            radiativo, orvalho e inversão (Caps.~4, 18).
+      \item Este gráfico é reproduzido com dados no Caso~3 do notebook.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_02_13b.jpg}{0.55\textheight}{Fig.~2.13 --- ciclo
+      diurno dos fluxos radiativos na superfície}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Efeito estufa: a conta que dá $-18\,°$C}
+  \eqdestaque{$T_e = \left[\dfrac{(1-A)S_0}{4\sigma}\right]^{1/4}
+    \simeq 255\ \mathrm{K} = -18\,°\mathrm{C}
+    \qquad\text{vs.}\qquad T_s = +15\,°\mathrm{C}$}
+  \vspace{0.5em}
+  \begin{itemize}
+    \item Fator 4 $=$ esfera/disco. Os \alert{33\,K} de diferença são o
+          efeito estufa.
+    \item Atmosfera: transparente ao solar, opaca ao IV (vapor d'água,
+          CO$_2$, nuvens) — Kirchhoff por banda.
+    \item Janela 8--12\,$\mu$m: por onde satélites IV enxergam o chão
+          (Cap.~8); o CO$_2$ a estreita (Cap.~21).
+    \item 1 camada opaca: $T_s = 2^{1/4}T_e = 303$\,K (T4); modelo cinza
+          contínuo: Caso~4, \texttt{climlab}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{A janela atmosférica}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Transparências comparadas: vidro (0{,}3--3\,$\mu$m) deixa o
+            solar entrar; silício (4{,}5--40\,$\mu$m) deixaria o IV sair.
+      \item A atmosfera é o ``vidro'': absorve o IV da superfície e
+            devolve $I\!\downarrow$.
+      \item Emissores IV: H$_2$O $>$ CO$_2$ $>$ CH$_4$, O$_3$, nuvens.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_02_15.jpg}{0.55\textheight}{Fig.~2.15 --- espectros
+      solar e terrestre com as janelas de transparência}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$\delta_s(d),\ \sin\Psi \;\to\; S\sin\Psi \;\to\;
+    E^*_\lambda(T),\ \sigma T^4 \;\to\; e^{-\tau} \;\to\; F^*$}
+  \vspace{0.6em}
+  Geometria (quanto chega) $\to$ Planck (quem emite o quê) $\to$ Beer
+  (quanto atravessa) $\to$ balanço na superfície — e 33\,K de estufa.
+  O gradiente equador--polo desta conta move tudo (Cap.~11).
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~2}
+  \texttt{notebooks/cap02\_radiacao.ipynb}
+  \begin{enumerate}
+    \item Curvas de Planck e verificação de Wien/Stefan--Boltzmann.
+    \item Elevação solar e duração do dia (São Paulo × Oslo).
+    \item Lei de Beer e o ciclo diurno do balanço.
+    \item Efeito estufa: modelo cinza com \texttt{climlab}.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

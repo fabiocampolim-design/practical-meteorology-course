@@ -1,0 +1,259 @@
+% Notas de aula — Capítulo 6: Nuvens
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap06/}}
+
+\title{Capítulo 6 --- Nuvens\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:class}--\S\ref{sec:saturar} (classificação e os
+três caminhos para a saturação).
+\emph{Aula 2:} \S\ref{sec:fog}--\S\ref{sec:fractal} (nevoeiros,
+organização e geometria fractal).
+
+\section{Nuvem: definição de trabalho}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~6 --- Nuvens}\\[2pt]
+nuvem $=$ ar que atingiu UR $= 100\%$ e condensou.\\[2pt]
+A pergunta física é sempre: \emph{o que} levou a UR a $100\%$?
+\end{noquadro}
+
+O Cap.~4 disse \emph{quando} o ar satura \javimos{4}{$e_s(T)$ e LCL}; o
+Cap.~5, \emph{se} a convecção prossegue \javimos{5}{estabilidade}. Este
+capítulo cataloga as nuvens (a linguagem operacional dos METARs
+\veremos{9}{METAR e cobertura}) e os mecanismos de saturação (a física).
+O detalhe microscópico — como o vapor vira gotícula de verdade — fica
+para o próximo \veremos{7}{nucleação e crescimento}.
+
+\section{Classificação: os 10 gêneros}\label{sec:class}
+
+\quadro{Tabela no quadro; construir com a turma perguntando ``alta, média
+ou baixa? camada ou bolha?'' para cada gênero.}
+
+\begin{noquadro}[os 10 gêneros]
+\begin{tabular}{llll}
+ & \textbf{Estratiformes} & \textbf{Cumuliformes} & \textbf{Precipit.} \\
+Altas ($>6$\,km) & cirrus, cirrostratus & cirrocumulus & --- \\
+Médias (2--6\,km) & altostratus & altocumulus & --- \\
+Baixas ($<2$\,km) & stratus, stratocumulus & cumulus & nimbostratus \\
+Desenv.\ vertical & --- & cum.\ congestus & cumulonimbus \\
+\end{tabular}\\[4pt]
+gramática: \emph{cirro-} alto $\cdot$ \emph{alto-} médio $\cdot$
+\emph{nimbo-} chuva $\cdot$ \emph{strato-} camada $\cdot$
+\emph{cumulo-} bolha
+\end{noquadro}
+
+A tabela é um mapa de física disfarçado: estratiformes
+$\leftrightarrow$ ar estável levantado suavemente (frentes quentes
+\veremos{12}{nuvens frontais}); cumuliformes $\leftrightarrow$ convecção
+\javimos{5}{estabilidade não local}. Altura da base de cumulus $=$ LCL
+\javimos{4}{LCL}; nuvens altas são de gelo — lembrar da curva $e_s$
+sobre gelo \javimos{4}{água × gelo}, que dá a elas os halos e a cara
+fibrosa. O cumulonimbus atravessa as três alturas e ganha capítulo
+próprio \veremos{14}{tempestades}.
+
+\section{Os três caminhos para a saturação}\label{sec:saturar}
+
+\quadro{Desenhar a curva $e_s(T)$ do Cap.~4 e mostrar os três caminhos
+como setas: esfriar (horizontal para a esquerda), umidificar (vertical),
+misturar (corda). A curva fica no quadro a aula toda.}
+
+\begin{noquadro}[três jeitos de chegar à curva]
+1. \textbf{esfriar} a $e$ constante (radiação noturna, contato com chão
+frio) $\to$ orvalho, geada, nevoeiros\\
+2. \textbf{subir} (expansão adiabática, $-9{,}8$\,K/km até o LCL) $\to$
+praticamente todas as nuvens\\
+3. \textbf{misturar} duas massas subsaturadas $\to$ bafo, contrail,
+nevoeiro de vapor
+\end{noquadro}
+
+\begin{formadif}[por que misturar satura: convexidade]
+Numa mistura com fração $f$, temperatura e pressão de vapor misturam-se
+\emph{linearmente} (conservação de entalpia e de água):
+\[ T_{mix} = fT_1 + (1{-}f)T_2,\qquad e_{mix} = fe_1 + (1{-}f)e_2. \]
+A mistura anda sobre a \emph{corda} que liga os dois estados no plano
+$(T,e)$. Mas $e_s(T)$ é \emph{convexa} ($d^2e_s/dT^2 > 0$, pela
+Clausius--Clapeyron \javimos{4}{Clausius--Clapeyron}): a corda de dois
+pontos sobre a curva passa \textbf{acima} da curva $\Rightarrow$ a
+mistura fica supersaturada e condensa. É o único jeito de fazer nuvem
+\emph{esquentando} o ar.
+\end{formadif}
+
+\begin{exemplo}[o bafo de inverno]
+Hálito: $T_1 = 35\,°$C, saturado ($e_1 = 5{,}6$\,kPa). Ar de inverno:
+$T_2 = 5\,°$C, UR $= 60\,\%$ ($e_2 = 0{,}52$\,kPa). Mistura meio a meio:
+$T = 20\,°$C, $e = 3{,}06$\,kPa, mas $e_s(20\,°\mathrm{C}) =
+2{,}37$\,kPa $\Rightarrow$ UR $= 129\,\%$: nuvem instantânea. Contrails:
+mesma física com exaustão a $\sim$600\,K (critério de Appleman, T2) —
+por isso só existem em ar muito frio, e por isso persistem quando o
+ambiente já está quase saturado em relação ao gelo. Simulação no Caso~1
+do notebook.
+\end{exemplo}
+
+O entranhamento de ar seco nas bordas dos cumulus é o caminho 3 ao
+contrário — mistura que \emph{evapora} nuvem — e é ele que corrói as
+torres convectivas \veremos{14}{entranhamento}.
+
+\section{Nevoeiros}\label{sec:fog}
+
+\quadro{Tabela dos tipos no quadro, com o mecanismo dominante de cada
+um; pedir exemplos locais (serra do Mar, represa de manhã).}
+
+\begin{noquadro}[tipos de nevoeiro]
+\begin{tabular}{lll}
+radiação & esfriamento IV noturno & noite clara, calma, úmida \\
+advecção & ar quente sobre superfície fria & maresia em corrente fria \\
+orográfico & subida forçada da encosta & serra do Mar \\
+vapor & mistura sobre água quente & lago ao amanhecer \\
+frontal & chuva evaporando em ar frio & antes da frente quente \\
+\end{tabular}
+\end{noquadro}
+
+\begin{formalivro}[nevoeiro de radiação: quando forma?]
+A camada rasa junto ao chão perde calor à taxa radiativa líquida
+$F^*_{IR}$ \javimos{2}{balanço noturno}. Com capacidade térmica
+$C = \rho C_p \Delta z$:
+\[ \frac{dT}{dt} \simeq \frac{F^*_{IR}}{\rho\,C_p\,\Delta z}
+\quad\Longrightarrow\quad
+t_{fog} \simeq \frac{\rho C_p \Delta z\,(T_0 - T_d)}{|F^*_{IR}|}. \]
+Depois de saturar, o esfriamento continua \emph{sobre a curva}
+$e_s(T)$ — o excesso vira água líquida (conteúdo de água do nevoeiro).
+\end{formalivro}
+
+\begin{exemplo}[madrugada de nevoeiro]
+$T_0 - T_d = 3$\,K ao anoitecer, camada de 50\,m,
+$|F^*_{IR}| = 50$\,W/m$^2$:
+\[ t_{fog} = \frac{1{,}2\times1004\times50\times3}{50}
+ \simeq 3{,}6\times10^3\ \mathrm{s} \simeq 1\ \mathrm{h}. \]
+Noite nublada ($F^*_{IR}\to0$): sem nevoeiro — a nuvem é o cobertor
+\javimos{2}{nuvens e $I\!\downarrow$}. Vento forte também impede: mistura
+turbulenta dilui o esfriamento numa camada espessa
+\veremos{18}{camada estável noturna}. Dissipação: o sol da manhã aquece
+e o nevoeiro evapora de baixo para cima. EDO completa no Caso~2 do
+notebook (o N2 varre o efeito da nebulosidade).
+\end{exemplo}
+
+\section{Organização: ruas, ondas e células}\label{sec:organizacao}
+
+\quadro{Ligar com o Cap.~5: a atmosfera organiza as nuvens em padrões
+previsíveis — cada padrão denuncia o mecanismo por baixo.}
+
+\begin{itemize}
+  \item \textbf{Ruas de cumulus} (\emph{cloud streets}): rolos
+        convectivos na camada de mistura; espaçamento
+        $\lambda \simeq 2$--$3\,z_i$, alinhado ao vento
+        \veremos{18}{rolos da camada limite}.
+  \item \textbf{Nuvens de onda} (lenticulares, faixas): oscilações de
+        Brunt--Väisälä a sotavento de montanhas
+        \javimos{5}{Brunt--Väisälä}; espaçamento
+        $\lambda = U\,P_{BV} = 2\pi U/N$ \veremos{17}{ondas de
+        montanha}.
+  \item \textbf{Células abertas/fechadas} sobre oceano: convecção rasa
+        tipo Rayleigh--Bénard — o padrão hexagonal das fotos de
+        satélite \veremos{8}{imagens de satélite}.
+\end{itemize}
+
+\section{Tamanhos de nuvens e geometria fractal}\label{sec:fractal}
+
+\quadro{Perguntar: ``qual o perímetro de um cumulus?'' — resposta:
+depende da régua! Desenhar a mesma nuvem coberta por caixas grandes e
+pequenas (contagem de caixas).}
+
+Nuvens não têm escala própria: bordas de nuvens são \textbf{fractais}.
+O perímetro medido cresce quando a régua diminui,
+$P \propto \text{régua}^{1-D}$, com dimensão fractal $D \simeq 1{,}35$
+(medida clássica de Lovejoy em imagens de satélite, citada pelo Stull).
+Distribuição de tamanhos: lei de potência — muitas nuvens pequenas,
+poucas gigantes, sem tamanho ``típico''. Isso importa na prática: a
+turbulência que faz as bordas \veremos{18}{cascata turbulenta} é ela
+própria sem escala, e parametrizar nebulosidade fracionária em modelos é
+difícil exatamente por isso \veremos{20}{parametrização de nuvens}.
+
+No Caso~3 do notebook \emph{sintetizamos} campos de nuvens fractais
+(ruído com espectro de potência) e medimos $D$ por contagem de caixas —
+físico de verdade brincando de nuvem.
+
+\section{Cobertura do céu}
+
+\begin{noquadro}[oktas e teto]
+oktas 0--8 (oitavos de céu coberto)\\
+SKC/FEW/SCT/BKN/OVC $=$ 0 / 1--2 / 3--4 / 5--7 / 8\\
+teto $=$ base da camada mais baixa BKN ou OVC
+\end{noquadro}
+
+O teto decide pousos e alternativas de voo — é um dos números mais
+operacionais do METAR \veremos{9}{decodificando METAR}.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \text{UR}\to100\,\%:\
+\underbrace{\text{esfriar}}_{\text{nevoeiros}}\ \big|\
+\underbrace{\text{subir}}_{\text{quase tudo}}\ \big|\
+\underbrace{\text{misturar}}_{\text{bafo, contrail}} \]
+\[ \lambda_{ruas}\simeq 3z_i \qquad \lambda_{onda} = \frac{2\pi U}{N}
+\qquad D \simeq 1{,}35 \]
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap06\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Prove que a mistura de duas parcelas \emph{saturadas} a
+        temperaturas diferentes é sempre supersaturada: mostre que
+        $d^2e_s/dT^2 > 0$ pela Clausius--Clapeyron e aplique a
+        desigualdade da corda.
+  \item Critério de Appleman para contrails: a reta de mistura entre a
+        exaustão ($T_{ex}$, $e_{ex}$) e o ambiente tem coeficiente
+        angular $\Delta e/\Delta T$ fixo. Mostre que há contrail
+        persistente quando essa reta cruza a curva $e_s(T)$ e deduza por
+        que isso só ocorre em ar muito frio ($T \lesssim -40\,°$C).
+  \item A partir do balanço radiativo da camada rasa, deduza
+        $t_{fog} = \rho C_p \Delta z (T_0-T_d)/|F^*_{IR}|$ e discuta os
+        papéis de vento e nebulosidade nos termos da fórmula.
+  \item Uma curva fractal de dimensão $D$ tem comprimento
+        $L(\ell) = L_0\,\ell^{\,1-D}$ medido com régua $\ell$. Mostre
+        que o perímetro de um cumulus ($D = 1{,}35$) medido com régua de
+        1\,m é $\sim$16 vezes maior que medido com régua de 1\,km.
+  \item Estime o espaçamento das ruas de cumulus ($z_i = 1{,}2$\,km) e
+        das nuvens de onda ($U = 15$\,m/s, $N = 0{,}012$\,s$^{-1}$) e
+        compare com fotos de satélite típicas ($\sim$2--10\,km).
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item No diagrama de mistura do Caso~1, varra a fração de mistura $f$
+        e ache a UR máxima da mistura bafo--inverno; repita para um dia
+        de $15\,°$C e mostre por que o bafo some.
+  \item Na EDO do nevoeiro (Caso~2), varra $|F^*_{IR}|$ de 10 a
+        70\,W/m$^2$ (efeito de nebulosidade) e trace a hora de formação
+        e o conteúdo máximo de água; ache o $F^*_{IR}$ mínimo que ainda
+        forma nevoeiro antes das 6\,h.
+  \item Gere campos fractais com expoentes espectrais $\beta$ diferentes
+        e meça $D$ (contagem de caixas) em função de $\beta$; onde fica
+        o $D = 1{,}35$ das nuvens reais?
+  \item Com o $N(z)$ da sondagem do curso (Cap.~5) e vento de 15\,m/s,
+        calcule o espaçamento esperado de nuvens de onda por camada e
+        identifique a camada que produziria as faixas mais visíveis.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

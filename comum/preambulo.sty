@@ -1,0 +1,78 @@
+% preambulo.sty — pacote comum das notas de aula de Meteorologia Prática
+% Curso baseado em: R. Stull, "Practical Meteorology" (CC BY-NC-SA 4.0)
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{preambulo}[2026/08/22 Notas de aula Meteorologia Pratica]
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[brazil]{babel}
+\RequirePackage{amsmath,amssymb,bm}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{siunitx}
+\sisetup{locale=FR, per-mode=symbol}  % vírgula decimal, unidades como m/s
+\RequirePackage[a4paper,margin=2.5cm]{geometry}
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{hyperref}
+
+% ---------- cores ----------
+\definecolor{corlivro}{RGB}{0,90,160}     % forma algébrica (do livro)
+\definecolor{cordif}{RGB}{150,40,40}      % forma diferencial
+\definecolor{corquadro}{RGB}{30,110,60}   % instruções de quadro-negro
+\definecolor{corex}{RGB}{110,70,10}       % exemplos
+
+% ---------- caixas ----------
+% Equação na forma do livro (algébrica)
+\newtcolorbox{formalivro}[1][]{colback=corlivro!6,colframe=corlivro,
+  title={Forma do livro (algébrica)\ifx\relax#1\relax\else{ --- #1}\fi},
+  fonttitle=\bfseries\small,before skip=8pt,after skip=8pt}
+
+% Equação na forma diferencial
+\newtcolorbox{formadif}[1][]{colback=cordif!5,colframe=cordif,
+  title={Forma diferencial\ifx\relax#1\relax\else{ --- #1}\fi},
+  fonttitle=\bfseries\small,before skip=8pt,after skip=8pt}
+
+% Exemplo resolvido (adaptado dos "Sample Applications" do Stull)
+\newtcolorbox{exemplo}[1][]{colback=corex!5,colframe=corex,
+  title={Exemplo resolvido\ifx\relax#1\relax\else{ --- #1}\fi},
+  fonttitle=\bfseries\small,breakable,before skip=8pt,after skip=8pt}
+
+% Instrução ao professor: o que desenhar / fazer no quadro
+\newcommand{\quadro}[1]{\par\noindent\textcolor{corquadro}{\small$\blacktriangleright$ \textbf{No quadro:} \emph{#1}}\par}
+
+% Caixa com o CONTEÚDO a escrever no quadro-negro (títulos, equações,
+% esquemas em texto). Tudo que está dentro vai para o quadro, na ordem.
+% \begin{noquadro}[rótulo opcional] ... \end{noquadro}
+\newtcolorbox{noquadro}[1][]{colback=corquadro!6,colframe=corquadro,
+  title={Escrever no quadro\ifx\relax#1\relax\else{ --- #1}\fi},
+  fonttitle=\bfseries\small,breakable,before skip=8pt,after skip=8pt}
+
+% Referências cruzadas entre capítulos do curso
+% \javimos{4}{umidade}  -> conceito já visto;  \veremos{12}{frentes} -> virá
+\newcommand{\javimos}[2]{\textcolor{corlivro}{\footnotesize\ [$\leftarrow$ Cap.~#1: #2]}}
+\newcommand{\veremos}[2]{\textcolor{cordif}{\footnotesize\ [$\rightarrow$ Cap.~#1: #2]}}
+
+% Espaço reservado para figura que o professor deve inserir
+\newcommand{\figplaceholder}[2]{%
+  \begin{center}\fbox{\parbox[c][#1][c]{0.85\linewidth}{\centering
+    \textbf{[ INSERIR FIGURA ]}\\ \small #2}}\end{center}}
+
+% Figura do livro com atribuição automática
+% \figlivro{arquivo}{largura}{legenda}{Fig. X.Y do Stull}
+\newcommand{\figlivro}[4]{%
+  \begin{figure}[htbp]\centering
+    \includegraphics[width=#2\linewidth]{#1}
+    \caption{#3 {\scriptsize (#4, R.~Stull, \emph{Practical Meteorology}, CC BY-NC-SA 4.0)}}
+  \end{figure}}
+
+% ---------- cabeçalho ----------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Meteorologia Prática}
+\fancyhead[R]{\small\leftmark}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{\scriptsize Baseado em R.~Stull, \emph{Practical Meteorology} (CC BY-NC-SA 4.0)}
+
+\setlength{\parskip}{4pt}

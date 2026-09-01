@@ -1,0 +1,106 @@
+﻿% Guia do professor — Capítulo 21: Processos Climáticos Naturais
+\section{Capítulo 21 --- Processos Climáticos Naturais}
+
+\subsection*{Visão geral e ritmo}
+
+A ponte tempo$\to$clima: feedbacks (a álgebra do amplificador),
+escalas lentas e variabilidade interna. Quatro modelos de brinquedo
+carregam tudo — gelo-albedo, Milankovitch, Daisyworld e o oscilador
+ENSO — e cada um é um clássico da literatura rodando no notebook.
+\textbf{Ritmo: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — tempo × clima (por que a estatística é
+        previsível), álgebra de feedbacks, bifurcação gelo-albedo
+        (Caso~1 — o gráfico da aula), Milankovitch (Caso~2).
+  \item \textbf{Aula 2} — Daisyworld (Caso~3), variabilidade interna
+        e ENSO (Caso~4), vulcões e Sol, fechamento para o módulo extra (Cap.~23).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item usar a álgebra de feedbacks ($\Delta T =
+        \lambda_0\Delta F/(1-f)$) e classificar os feedbacks
+        principais;
+  \item explicar múltiplos equilíbrios e histerese do gelo-albedo;
+  \item associar os três ciclos orbitais a seus períodos e ao gatilho
+        de 65°N;
+  \item interpretar o Daisyworld como feedback negativo emergente;
+  \item descrever o mecanismo do ENSO e sua previsibilidade sazonal.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Balanço radiativo e $T_e$ (Cap.~2); Clausius--Clapeyron para o
+feedback do vapor (Cap.~4); insolação orbital (Cap.~2, Caso~2);
+alísios e Walker (Cap.~11); caos vs.\ estatística (Cap.~20);
+realimentação (eletrônica básica).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``O clima sempre mudou, logo\ldots''}: sim — e cada
+        mudança teve CAUSA física identificável (órbita, vulcões,
+        CO$_2$); entender as naturais é o que permite atribuir a
+        atual (Cap.~23).
+  \item \textbf{Feedback positivo $=$ explosão}: com $f<1$ é
+        amplificação finita; a fuga só ocorre em $f\to1$ (bola de
+        neve).
+  \item \textbf{Milankovitch como ``causa direta''}: é o metrônomo;
+        a amplitude vem dos feedbacks (gelo, CO$_2$) — N2 mostra a
+        retificação.
+  \item \textbf{Daisyworld como Gaia teleológica}: não há intenção —
+        só seleção $+$ acoplamento; o modelo existe exatamente para
+        desfazer essa confusão.
+  \item \textbf{ENSO como ciclo regular}: é oscilador irregular
+        (ruído $+$ não linearidade) — 3--7 anos, não relógio.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+A bifurcação do Caso~1 desenhada no quadro com setas de estabilidade
+(análise gráfica de EDO — os alunos fazem sozinhos). Vídeo do tanque
+giratório de convecção ou da série de TSM do Niño-3.4 (ondas reais de
+El Niño/La Niña na tela).
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~21)}
+
+Aquecimento: resposta de Planck com números; períodos orbitais.
+Aprofundamento: ganho com múltiplos feedbacks; equilíbrios do EBM com
+albedo degrau. Síntese: ``por que o clima é previsível se o tempo não
+é?''. \emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap21\_clima.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & bifurcação gelo-albedo (bola de neve) & Aula 1 \\
+2 & ciclos de Milankovitch e $Q_{65N}$ & Aula 1 \\
+3 & Daisyworld completo & Aula 2 \\
+4 & oscilador de recarga do ENSO & Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+Os quatro casos são papers clássicos (Budyko/Sellers 1969; Milankovitch;
+Watson--Lovelock 1983; Jin 1997) em miniatura — vale dizer isso à
+turma: eles estão rodando a literatura.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap21\_solucoes.ipynb}
+(\emph{não distribuir}): T2 e T5 com \texttt{sympy}; N1 e N2 são os
+mais ricos (histerese; retificação de Milankovitch). Pares:
+T1$\leftrightarrow$N1, T3$\leftrightarrow$N2, T4$\leftrightarrow$N3,
+T5$\leftrightarrow$N4.
+
+\subsection*{Conexões com o resto do curso}
+
+Balanço radiativo (Cap.~2); vapor e Clausius--Clapeyron (Cap.~4);
+nuvens como feedback incerto (Caps.~6--7); circulação de Walker e
+alísios (Cap.~11); caos e previsibilidade estatística (Cap.~20); o
+Cap.~23 (módulo extra) aplica TUDO isto à perturbação antrópica; o Cap.~22 fecha o livro com a óptica atmosférica.

@@ -1,0 +1,966 @@
+% Listas de exercícios — geradas de notas/capNN_notas.tex por
+% ferramentas/gera_listas.py — NÃO editar à mão; editar as notas e regerar.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+
+\title{Listas de Exercícios Complementares\\
+{\large Meteorologia Prática --- curso baseado em R.~Stull,
+\emph{Practical Meteorology}}}
+\author{}
+\date{}
+
+\newtcolorbox{caixalista}{colback=corquadro!6,colframe=corquadro,
+  title={Instruções},fonttitle=\bfseries\small,
+  before skip=8pt,after skip=8pt}
+\newcommand{\instrucoes}{%
+\begin{caixalista}
+\textbf{Teóricos (T):} resolução escrita, individual, para entrega.\\
+\textbf{Numéricos (N):} resolver nas células reservadas no notebook do
+capítulo (\texttt{notebooks/capNN\_*.ipynb}) e entregar o
+\texttt{.ipynb} executado.\\
+Estas listas complementam os exercícios do próprio livro indicados no
+guia do professor.
+\end{caixalista}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent Uma lista por capítulo; cada uma começa em página nova para
+impressão avulsa. Numeração: T$n$ (teóricos), N$n$ (numéricos, no
+notebook do capítulo).
+
+\clearpage
+\section*{Lista 1 --- Capítulo 1 --- Fundamentos da Atmosfera}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Mostre que numa atmosfera \emph{isotérmica} as escalas de altura de
+        pressão e densidade coincidem, $H_p = H_\rho = \Re_d T/g$, e
+        calcule-as para $T=250$\,K. Explique por que na atmosfera real
+        $H_\rho > H_p$.
+  \item Para uma troposfera com $T(z)=T_0-\gamma z$, deduza o perfil
+        politrópico
+        $P(z)=P_0\,(1-\gamma z/T_0)^{\,g/(\Re_d\gamma)}$
+        e mostre que no limite $\gamma\to0$ ele recupera a exponencial
+        isotérmica.
+  \item A partir da lei de Dalton para a mistura ar seco + vapor, com
+        $\varepsilon = M_v/M_d = 0{,}622$, deduza
+        $T_v \simeq T\,(1+0{,}61\,r)$ em primeira ordem na razão de mistura
+        $r$.
+  \item Mostre, integrando a equação hidrostática, que a massa de ar por
+        unidade de área da superfície é $m = P_0/g$, e estime a massa total
+        da atmosfera terrestre.
+  \item Mostre que a espessura da camada 1000--500\,hPa vale
+        $\Delta z = a\,\bar T_v \ln 2$ e determine o $\bar T_v$
+        correspondente ao limiar operacional de 5400\,m. Discuta o sentido
+        físico da regra chuva/neve.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Integre numericamente $dP/dz = -gP/(\Re_d T)$ com o perfil
+        politrópico do T2 (0 a 11\,km) e compare com a solução analítica;
+        trace o erro relativo.
+  \item Ajuste por mínimos quadrados a melhor escala de altura $H_p$ da
+        atmosfera padrão (0--20\,km) e ache as altitudes em que $P$ vale
+        $\tfrac12$, $\tfrac14$ e $\tfrac1{10}$ de $P_0$.
+  \item Com a série temporal de pressão de um barômetro dentro de um
+        elevador (dados no notebook), reconstrua $z(t)$ pela equação
+        hipsométrica; determine a altura do prédio e a velocidade média.
+  \item Para a sondagem do Caso~4, calcule a espessura 1000--500\,hPa com o
+        MetPy e aplique a regra dos 5400\,m; repita esfriando a sondagem em
+        30\,K.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 2 --- Capítulo 2 --- Radiação Solar e Infravermelha}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item A partir da lei de Planck, deduza a lei de Wien: mostre que
+        $\lambda_{max}T = c_2/x^*$ onde $x^*$ resolve $x = 5(1-e^{-x})$, e
+        obtenha $a \simeq 2897\,\mu$m\,K.
+  \item Integre a lei de Planck em $\lambda$ e mostre que
+        $E^* = \sigma T^4$ com $\sigma = \pi^4 c_1/(15\,c_2^4)$; confira o
+        valor numérico de $\sigma$.
+  \item Deduza a temperatura efetiva $T_e = [(1-A)S_0/4\sigma]^{1/4}$
+        explicando a origem do fator 4, e calcule $T_e$ para Vênus
+        ($S = 2601$\,W\,m$^{-2}$, $A = 0{,}77$) e Marte
+        ($S = 586$\,W\,m$^{-2}$, $A = 0{,}25$).
+  \item Modelo de estufa de 1 camada: uma camada atmosférica transparente
+        ao solar e opaca ao IV, em equilíbrio. Mostre que
+        $T_s = 2^{1/4}\,T_e$ e compare com os 288\,K observados.
+  \item Mostre que, para o feixe solar direto, a ``massa de ar''
+        atravessada varia como $1/\sin\Psi$ e que, portanto,
+        $E(\Psi) = E_0\exp(-\tau_z/\sin\Psi)$, com $\tau_z$ a profundidade
+        óptica vertical.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Verifique numericamente Wien e Stefan--Boltzmann: ache o máximo da
+        curva de Planck e a integral para $T = 5772$ e $288$\,K; compare
+        com as fórmulas.
+  \item Trace a elevação solar ao meio-dia e a duração do dia ao longo do
+        ano para São Paulo, e compare com uma cidade de latitude alta
+        (ex.: Oslo, $60°$N).
+  \item Com a lei de Beer, ajuste a profundidade óptica $\tau_z$ a partir
+        dos dados fornecidos de irradiância vs.\ ângulo zenital e estime a
+        transmissividade da atmosfera limpa.
+  \item Generalize o modelo de estufa para $N$ camadas
+        ($T_s = (N{+}1)^{1/4}T_e$) e compare com o modelo cinza do
+        \texttt{climlab} do Caso~4.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 3 --- Capítulo 3 --- Termodinâmica da Atmosfera}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Deduza $\Gamma_d = g/c_p$ a partir da 1ª lei e da hidrostática, e
+        explique por que $\Gamma_d$ não depende da altura (nesta
+        aproximação). Calcule $\Gamma_d$ em Marte
+        ($g = 3{,}7$\,m/s$^2$, $c_p^{CO_2} = 845$\,J\,kg$^{-1}$K$^{-1}$).
+  \item Integre $c_p\,dT/T = \Re_d\,dP/P$ e obtenha
+        $\theta = T(P_0/P)^{\Re_d/c_p}$; mostre que
+        $\theta \simeq T + \Gamma_d z$ para pequenas excursões verticais.
+  \item Mostre que $ds = c_p\,d\ln\theta$, isto é, que superfícies
+        isentrópicas são superfícies de $\theta$ constante — e conclua que
+        processos adiabáticos reversíveis conservam $\theta$.
+  \item Advecção pura: para
+        $\partial T/\partial t = -U\,\partial T/\partial x$ com $U$
+        constante, verifique que $T(x,t) = f(x-Ut)$ é solução para
+        qualquer perfil $f$ — a forma viaja sem se deformar.
+  \item Numa tarde com $F^* = 500$\,W/m$^2$ e $F_G = 50$\,W/m$^2$, compare
+        $F_H$ e $F_E$ para $\beta = 5$ (deserto) e $\beta = 0{,}2$
+        (floresta), e estime quanta água a floresta evapora por hora e
+        por m$^2$.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Integre a subida adiabática de uma parcela como EDO
+        ($dT/dz = -g/c_p$) e verifique que $\theta$ calculada com a
+        fórmula exata permanece constante ao longo da trajetória (compare
+        também com $\theta \simeq T+\Gamma_d z$).
+  \item No modelo de ciclo diurno do Caso~2, compare uma superfície
+        ``continental'' (capacidade térmica baixa) com uma ``oceânica''
+        (alta): amplitude e defasagem do máximo de temperatura.
+  \item Repita o experimento de advecção do Caso~3 com esquema
+        \emph{upwind} em resoluções $\Delta x$ diferentes e quantifique a
+        difusão numérica (largura da frente após 24\,h vs.\ resolução).
+  \item Calcule $\theta$ e $\theta_v$ da sondagem do Cap.~1 com o MetPy e
+        identifique a camada de mistura (onde $\theta \approx$ constante)
+        e as camadas estáveis.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 4 --- Capítulo 4 --- Vapor d'Água}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item A partir de $de_s/dT = L_v e_s/(\Re_v T^2)$, integre com $L_v$
+        constante e obtenha a fórmula do livro. Estime o erro de assumir
+        $L_v$ constante sabendo que $L_v(T) \simeq 2{,}501 - 0{,}00237\,
+        (T-273{,}15)$\,MJ/kg.
+  \item Mostre que $e_s$ cresce $\sim$7\,\%/K perto de 300\,K
+        (calcule $d\ln e_s/dT$) e conecte com a intensificação de chuvas
+        extremas num clima 2\,K mais quente.
+  \item Deduza $r = \varepsilon e/(P-e)$ a partir das leis de gás ideal
+        para vapor e ar seco.
+  \item Justifique $z_{LCL} = 0{,}125\,(T-T_d)$: mostre que
+        $dT_d/dz \simeq -\Re_v T_d^2\,g/(L_v \Re_d T)$ numa subida com $r$
+        constante e avalie numericamente.
+  \item Derive $W = (1/\rho_{liq}g)\int r\,dP$ a partir da massa de vapor
+        numa coluna (use o resultado T4 do Cap.~1) e calcule $W$ para uma
+        atmosfera idealizada com $r(P) = r_0 (P/P_0)^3$, $r_0 = 20$\,g/kg.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Integre a EDO de Clausius--Clapeyron com $L_v(T)$ variável e
+        compare com a fórmula de $L_v$ constante entre $-40$ e $+40\,°$C;
+        trace o erro relativo.
+  \item Psicrômetro digital: dado $(T, T_w, P)$, resolva a equação
+        psicrométrica para $r$ e UR (com \texttt{scipy.optimize.brentq}) e
+        valide contra o MetPy.
+  \item Para a sondagem tropical do curso, calcule o LCL exato (MetPy) e
+        pela regra dos 125\,m/°C; estime a base de nuvem ao longo de um dia
+        em que $T$ sobe de 24 a 33\,°C com $T_d = 21\,°$C fixo.
+  \item Água precipitável: compare $W$ da sondagem tropical com uma versão
+        resfriada em 10\,K com a mesma UR; verifique a taxa de
+        $\sim$7\,\%/K.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 5 --- Capítulo 5 --- Estabilidade Atmosférica}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Deduza $F/m = |g|(T_{v,p}-T_{v,e})/T_{v,e}$ a partir do empuxo de
+        Arquimedes e da lei dos gases; mostre que 1\,g/kg de água líquida
+        em suspensão equivale a $\sim$0{,}3\,K de esfriamento
+        (\emph{liquid loading}).
+  \item Linearize o empuxo para deslocamento $z'$ pequeno e obtenha
+        $\ddot z' = -N^2 z'$ com
+        $N^2 = (|g|/T_{v,e})(\Delta T_{v,e}/\Delta z + \Gamma_d)$; mostre
+        a equivalência com a forma em $\theta_v$.
+  \item Calcule $N$ e $P_{BV}$ para: (a) troposfera padrão
+        ($\Gamma = 6{,}5$\,K/km); (b) estratosfera isotérmica; (c) camada
+        de mistura neutra. Interprete o caso (c).
+  \item Um jato tem $\Delta U = 20$\,m/s em $\Delta z = 500$\,m numa
+        camada com $N^2 = 4\times10^{-4}$\,s$^{-2}$. Calcule $Ri$, decida
+        se há CAT e ache o cisalhamento crítico para $Ri_c = 0{,}25$.
+  \item Construa um perfil de $\theta_v$ em que o critério local erre a
+        classificação de pelo menos duas camadas em relação ao não local,
+        e explique o erro em termos de trajetórias de parcelas.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Integre $\ddot z' = -N^2 z'$ com \texttt{solve\_ivp} para a
+        troposfera padrão, verifique o período contra $2\pi/N$ e adicione
+        amortecimento (arrasto linear) para estimar quantas oscilações
+        uma parcela real executa.
+  \item Construa do zero (NumPy) um mini-diagrama termodinâmico
+        $T$--$\ln P$ com adiabáticas secas e isoumas, e trace nele a
+        sondagem tropical do curso com a trajetória da parcela de
+        superfície até o LCL.
+  \item Aplique o algoritmo de estabilidade não local a um perfil de
+        tarde convectiva (fornecido) e compare com a classificação local
+        camada a camada.
+  \item Com o perfil de vento fornecido, calcule $Ri(z)$ para a sondagem
+        do curso e marque as camadas com risco de turbulência; teste o
+        efeito de dobrar o cisalhamento.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 6 --- Capítulo 6 --- Nuvens}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Prove que a mistura de duas parcelas \emph{saturadas} a
+        temperaturas diferentes é sempre supersaturada: mostre que
+        $d^2e_s/dT^2 > 0$ pela Clausius--Clapeyron e aplique a
+        desigualdade da corda.
+  \item Critério de Appleman para contrails: a reta de mistura entre a
+        exaustão ($T_{ex}$, $e_{ex}$) e o ambiente tem coeficiente
+        angular $\Delta e/\Delta T$ fixo. Mostre que há contrail
+        persistente quando essa reta cruza a curva $e_s(T)$ e deduza por
+        que isso só ocorre em ar muito frio ($T \lesssim -40\,°$C).
+  \item A partir do balanço radiativo da camada rasa, deduza
+        $t_{fog} = \rho C_p \Delta z (T_0-T_d)/|F^*_{IR}|$ e discuta os
+        papéis de vento e nebulosidade nos termos da fórmula.
+  \item Uma curva fractal de dimensão $D$ tem comprimento
+        $L(\ell) = L_0\,\ell^{\,1-D}$ medido com régua $\ell$. Mostre
+        que o perímetro de um cumulus ($D = 1{,}35$) medido com régua de
+        1\,m é $\sim$16 vezes maior que medido com régua de 1\,km.
+  \item Estime o espaçamento das ruas de cumulus ($z_i = 1{,}2$\,km) e
+        das nuvens de onda ($U = 15$\,m/s, $N = 0{,}012$\,s$^{-1}$) e
+        compare com fotos de satélite típicas ($\sim$2--10\,km).
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item No diagrama de mistura do Caso~1, varra a fração de mistura $f$
+        e ache a UR máxima da mistura bafo--inverno; repita para um dia
+        de $15\,°$C e mostre por que o bafo some.
+  \item Na EDO do nevoeiro (Caso~2), varra $|F^*_{IR}|$ de 10 a
+        70\,W/m$^2$ (efeito de nebulosidade) e trace a hora de formação
+        e o conteúdo máximo de água; ache o $F^*_{IR}$ mínimo que ainda
+        forma nevoeiro antes das 6\,h.
+  \item Gere campos fractais com expoentes espectrais $\beta$ diferentes
+        e meça $D$ (contagem de caixas) em função de $\beta$; onde fica
+        o $D = 1{,}35$ das nuvens reais?
+  \item Com o $N(z)$ da sondagem do curso (Cap.~5) e vento de 15\,m/s,
+        calcule o espaçamento esperado de nuvens de onda por camada e
+        identifique a camada que produziria as faixas mais visíveis.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 7 --- Capítulo 7 --- Processos de Precipitação}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Derive a equação de Kelvin minimizando a energia livre
+        $G = -n\,\Delta\mu\,\tfrac43\pi r^3/v_m + 4\pi r^2\sigma$ e
+        calcule a UR de equilíbrio para gotas de 0{,}01, 0{,}1 e
+        1\,$\mu$m.
+  \item Para a curva de Köhler $S = 1 + A/r - Br_d^3/r^3$, mostre que
+        $r^* = \sqrt{3Br_d^3/A}$ e $S^* = 1 + \sqrt{4A^3/(27Br_d^3)}$;
+        interprete a dependência com $r_d$.
+  \item Integre $r\,dr/dt = C$ e mostre que o tempo para ir de $r_1$ a
+        $r_2$ por difusão é $t = (r_2^2 - r_1^2)/2C$; com o $C$ típico
+        de nuvem, estime os tempos 1$\to$10\,$\mu$m e
+        10\,$\mu$m$\to$1\,mm.
+  \item Derive a velocidade de Stokes
+        $w_T = \tfrac{2}{9}\,g r^2(\rho_L-\rho)/\mu$ igualando peso e
+        arrasto viscoso, e verifique o $k_1$ do livro.
+  \item Da Marshall--Palmer, mostre que o conteúdo de água da chuva é
+        $M = \pi\rho_L N_0/(6\Lambda^4)\cdot\Gamma(4)$ e que o diâmetro
+        médio ponderado por massa é $D_m = 4/\Lambda$.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Trace famílias de curvas de Köhler variando $\kappa$ (0{,}1 a
+        1{,}3) e $r_d$; ache numericamente $S^*(r_d)$ e compare com a
+        fórmula do T2.
+  \item Com o \texttt{pyrcel} (ou o modelo simplificado do notebook),
+        varra a velocidade de subida $W$ de 0{,}1 a 5\,m/s e trace a
+        fração de aerossol ativada e o pico de supersaturação
+        $S_{max}(W)$.
+  \item Integre o crescimento combinado difusão + coleta e ache o tempo
+        total gotícula$\to$gota para $\bar L$ = 0{,}3, 1{,}0 e 3{,}0
+        g/m$^3$; identifique o raio em que a coleta assume o comando.
+  \item Da Marshall--Palmer, calcule numericamente $R$ (integral de
+        $N\,w_T\,D^3$) e $Z$ ($\int N D^6$) para $\Lambda$ de chuvas
+        fraca, moderada e forte, e verifique a relação $Z$--$R$ tipo
+        $Z = a R^{1.4}$ que o Cap.~8 usará.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 8 --- Capítulo 8 --- Satélites e Radar}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Deduza o raio geoestacionário e calcule também a altitude de uma
+        órbita de período 102\,min (polar típica).
+  \item Para absorvedor com $\rho = \rho_0 e^{-z/H}$ e coeficiente $k$
+        constante, mostre que $W(z)$ tem máximo exatamente onde a
+        profundidade óptica medida do topo vale 1, em
+        $z_{pico} = H\ln(k\rho_0 H)$.
+  \item Um topo de nuvem aparece com temperatura de brilho de $-55\,°$C
+        no canal IV. Use a atmosfera padrão (Cap.~1) para estimar sua
+        altura; discuta o erro se a nuvem for cirrus semitransparente.
+  \item Derive $R_{max}V_{max} = c\lambda/8$ a partir das definições de
+        alcance e velocidade máxima não ambíguos, e calcule o produto
+        para as bandas S (10\,cm), C (5\,cm) e X (3\,cm).
+  \item Mostre que, com $Z = 300R^{1.4}$, um erro de $\pm$3\,dB em $Z$
+        (calibração típica) produz erro de $\sim$60\,\%$/{-}40$\,\% em
+        $R$ — e por que acumulados de radar precisam de pluviômetros.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Trace período, velocidade orbital e fração visível da Terra em
+        função da altitude (200\,km a geoestacionária).
+  \item No modelo de funções peso, varra $k$ por 3 décadas e monte o
+        ``sondador'' de 6 canais: pico de $W$ vs.\ canal; depois deforme
+        o perfil de $\rho_0$ e veja os picos migrarem.
+  \item Inverta $R(Z)$ com as duas relações ($a{=}300,b{=}1{,}4$ e
+        Marshall--Palmer) para dBZ de 20 a 55 e quantifique a
+        divergência; adicione ruído de $\pm2$\,dB e propague.
+  \item Simule aliasing: um campo senoidal de $V_r$ com amplitude
+        $2V_{max}$ dobrado no intervalo $[-V_{max}, V_{max}]$; escreva
+        um dealias simples por continuidade e teste onde ele falha.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 9 --- Capítulo 9 --- Boletins Meteorológicos e Análise de Cartas}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Deduza a fórmula de redução ao nível do mar a partir da
+        hipsométrica e calcule a correção para São Paulo ($z = 800$\,m,
+        $P_{est} = 92{,}5$\,kPa, $T = 20\,°$C). Discuta o erro de usar a
+        $T$ da estação numa manhã de inversão.
+  \item Decodifique à mão:
+        \texttt{SBSP 221500Z 33012G25KT 9999 TS FEW030CB 28/21 Q1012} e
+        desenhe o modelo de estação correspondente (com a barbela
+        correta).
+  \item A pressão codificada ``052'' num station plot pode ser 1005{,}2
+        ou 905{,}2\,hPa. Formule a regra de desempate e dê um exemplo em
+        que ela falharia (furacão intenso).
+  \item Mostre que, para espaçamento de isóbaras $\Delta n$ na carta, o
+        vento geostrófico (prévia do Cap.~10) escala como $1/\Delta n$ —
+        e por isso ``apertado $=$ ventoso''.
+  \item No método de Barnes, o peso é $w = e^{-d^2/R^2}$. Mostre que
+        $R$ grande filtra escalas pequenas (média quase uniforme) e $R$
+        pequeno superajusta às observações; relacione com o dilema
+        viés$\times$variância.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Estenda o parser de METAR para rajadas (\texttt{G}), vento
+        variável (\texttt{VRB}), \texttt{CAVOK} e visibilidade em
+        milhas; teste com os 8 METARs fornecidos.
+  \item Plote com o MetPy o modelo de estação dos METARs decodificados
+        no N1, num mini-mapa do estado de São Paulo.
+  \item No Caso~3, varra o raio de influência do Cressman e trace o
+        erro RMS contra observações reservadas (validação cruzada);
+        ache o raio ótimo.
+  \item Reduza ao nível do mar as pressões da lista de estações
+        fornecida (litoral a 800\,m) e trace as isóbaras antes e depois
+        da redução — o mapa ``errado'' vs.\ o mapa sinótico.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 10 --- Capítulo 10 --- Forças Atmosféricas e Ventos}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Mostre que, sem PGF e atrito, as equações do movimento dão
+        círculos inerciais de período $2\pi/|f|$ e raio $V/|f|$; calcule
+        ambos para $V = 10$\,m/s em $\phi = -23{,}5°$ e $-60°$.
+  \item Derive o vento geostrófico e mostre que ele \emph{não pode}
+        existir no equador; o que equilibra a PGF lá?
+  \item Resolva a quadrática do vento gradiente para baixas e altas;
+        mostre que em altas só há solução real se
+        $|\partial P/\partial n| \le \rho f^2 R/4$ — o ``teto'' de PGF
+        das altas.
+  \item A partir do equilíbrio de 3 forças com atrito linear
+        ($-\vec U/\tau$), deduza o ângulo de cruzamento das isóbaras
+        $\tan\alpha = 1/(f\tau)$ e avalie para $\tau = 0{,}5$ e 3\,h.
+  \item Verifique por substituição que a espiral de Ekman satisfaz o
+        sistema $-fV = K U''$, $f(U - U_g) = K V''$, e mostre que o
+        transporte integrado na camada (transporte de Ekman) é
+        perpendicular ao vento geostrófico.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Integre trajetórias inerciais em $\phi = -10°, -30°, -60°$ e
+        confirme período e raio do T1; adicione um vento médio e observe
+        as cicloides.
+  \item Para o campo de pressão sintético do Caso~2, compare o vento
+        geostrófico com o vento gradiente ao redor da baixa e
+        quantifique o quanto o gradiente é subgeostrófico no raio de
+        máximo aperto.
+  \item Resolva a camada de Ekman numericamente (diferenças finitas)
+        para $K$ variável com a altura e compare com a espiral analítica
+        de $K$ constante.
+  \item Com o vento do Caso~2 mais um atrito de 20° de cruzamento,
+        calcule a divergência horizontal e o $w$ no topo da camada
+        limite; mapeie onde o ar sobe.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 11 --- Capítulo 11 --- Circulação Geral}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Escreva o balanço de energia por faixa de latitude e mostre que
+        o transporte exigido é a integral do desequilíbrio; explique por
+        que $T(90°) = 0$ é o teste de consistência do cálculo.
+  \item Derive $u(\phi) = \Omega R\sin^2\phi/\cos\phi$ por conservação
+        de momento angular e avalie em $10°, 20°, 30°$; discuta por que
+        a célula de Hadley não pode ir além de $\sim$30°.
+  \item Deduza a relação do vento térmico a partir de geostrofia $+$
+        hidrostática ($+$ gás ideal) e mostre que no HS o jato fica a
+        \emph{oeste} com ar frio ao sul.
+  \item Pela conservação de $\zeta + f$, mostre que uma cadeia de
+        parcelas deslocada meridionalmente oscila e propaga para oeste;
+        obtenha $c = U - \beta/k^2$ (argumento heurístico basta).
+  \item Estime o comprimento de onda estacionário para $U = 10, 15,
+        25$\,m/s em $50°$S e conecte com o número de ondas planetárias
+        observado ($\sim$4--5).
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item No Caso~1, adicione albedo alto ($A = 0{,}6$) além de $\pm70°$
+        (gelo) e recalcule o transporte exigido; compare o pico.
+  \item Com o EBM do \texttt{climlab} (Caso~2), varra a difusividade $D$
+        e trace a posição da linha do gelo e o gradiente equador--polo
+        contra $D$; interprete os limites $D\to0$ e $D\to\infty$.
+  \item Trace $c(k)$ de Rossby para vários $U$ e ache numericamente o
+        $k$ estacionário; verifique contra a fórmula do T5.
+  \item Com o perfil zonal-médio de $T(y, z)$ fornecido no notebook,
+        integre o vento térmico da superfície a 12\,km e localize o
+        jato; compare inverno × verão.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 12 --- Capítulo 12 --- Massas de Ar e Frentes}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Deduza a relação de Margules a partir da continuidade de
+        pressão na interface entre duas massas geostróficas e
+        hidrostáticas, e mostre a forma
+        $\tan\alpha \simeq |f|\bar T\Delta U_g/(g\Delta T)$.
+  \item Linearize a EDO da gênese radiativa em torno de $T_{sfc}$ e
+        obtenha $\tau = \rho C_p H/(4\varepsilon\sigma T_{sfc}^3)$;
+        avalie para $H = 1$\,km sobre neve a $-25\,°$C e compare com a
+        solução completa do Caso~1.
+  \item Mostre que num campo de deformação pura o gradiente térmico na
+        linha da frente cresce exponencialmente com taxa $a$, e calcule
+        o tempo de dobra para $a = 10^{-5}$\,s$^{-1}$.
+  \item Usando a continuidade de $P$ e a descontinuidade de $\nabla P$
+        através da frente, mostre que as isóbaras dobram com o bico
+        apontando para a pressão alta e que a frente ocupa um cavado.
+  \item Enuncie o critério de classificação de oclusões (fria × quente)
+        em termos de $\theta_w$ das duas massas frias e explique por
+        que $\theta_w$ (e não $T$) é a variável certa para comparar.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Varra $T_{sfc}$ ($-40$ a $-10\,°$C) e $H$ (500 a 2000\,m) na
+        EDO da gênese e mapeie o tempo até o ar atingir $-15\,°$C; que
+        combinações fabricam uma cP em menos de 5 dias?
+  \item Calcule a inclinação de Margules para $\Delta T = 10$\,K,
+        $\Delta U_g = 15$\,m/s em $45°$S e desenhe o corte vertical da
+        cunha até 500\,km.
+  \item Acrescente rotação ao campo de deformação
+        ($u = -ax-\omega y$, $v = ay+\omega x$) e compare a taxa de
+        crescimento de $|\nabla T|$; a rotação frontogeniza?
+  \item Construa o meteograma da frente quente e compare lado a lado
+        com o da fria (Caso~4): temperatura, pressão e tipo de chuva.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 13 --- Capítulo 13 --- Ciclones Extratropicais}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item A partir das equações do movimento horizontal, deduza o termo
+        de esticamento $-(\zeta+f)\nabla\cdot\vec U_h$ da equação da
+        vorticidade e interprete-o com conservação de momento angular.
+  \item Por análise dimensional com $f$, $N$ e
+        $\Lambda = \partial U/\partial z$, monte a taxa de Eady
+        $\sigma \sim (f/N)\Lambda$ e a escala
+        $L_R = NH/|f|$; avalie $\lambda_{max} = 3{,}9\,L_R$ para a
+        troposfera padrão.
+  \item Mostre que $\partial P_{sfc}/\partial t =
+        -g\int\nabla\cdot(\rho\vec U)\,dz$ e explique por que
+        aquecimento diabático da coluna também derruba a pressão à
+        superfície.
+  \item Derive o vento ageostrófico transversal na entrada/saída de um
+        jet streak e monte o padrão de 4 quadrantes para o HS.
+  \item Enuncie o critério de Sanders--Gyakum para ``bombas'' com a
+        normalização $\sin\phi/\sin 60°$ e calcule o limiar em
+        $35°$S e $60°$S.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Varra a amplitude da onda de 500\,hPa e trace $|\zeta|_{max}/|f|$
+        e a advecção máxima; onde a hipótese quase-geostrófica começa a
+        falhar?
+  \item Com o ciclo sazonal de $\partial T/\partial y$, trace o tempo
+        de e-dobra de Eady mês a mês e identifique a temporada de
+        ciclones do Atlântico Sul.
+  \item Desligue a divergência de altitude no dia 3 da EDO de spin-up e
+        meça a vida útil do ciclone para $\tau_E = 2, 3, 5$ dias.
+  \item Dobre a intensidade do jet streak e meça o máximo de
+        divergência e o $w$ estimado por continuidade; compare com o
+        levantamento sinótico do Cap.~10.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 14 --- Capítulo 14 --- Fundamentos de Tempestades}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Deduza $w_{max} = \sqrt{2\,\mathrm{CAPE}}$ pelo teorema
+        trabalho--energia aplicado ao empuxo, explicitando as
+        hipóteses (sem entranhamento, sem carga de água, sem
+        perturbação de pressão).
+  \item Para um perfil de excesso térmico triangular ($\Delta T_{max}$
+        no meio da camada LFC--EL de profundidade $D$), mostre que
+        $\mathrm{CAPE} \simeq g\,\Delta T_{max}\,D/(2\bar T)$ e avalie
+        para $\Delta T_{max} = 4$\,K, $D = 10$\,km.
+  \item Mostre que com entranhamento de fração $\mu$ por metro o
+        excesso de empuxo decai como $e^{-\mu z}$ e discuta por que
+        torres largas realizam mais CAPE que estreitas.
+  \item Deduza a velocidade da corrente de densidade
+        $c = k\sqrt{g'H}$ (Bernoulli no referencial da frente) e
+        avalie para $\Delta\theta_v = 5$\,K, $H = 1$\,km.
+  \item Defina o BRN e classifique os regimes convectivos para
+        (CAPE, $\Delta U$) $=$ (2000, 8), (2000, 18), (2000, 35) e
+        (800, 18) (J/kg, m/s).
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Aqueça a superfície da sondagem do Caso~1 de $+1$ em $+1$\,K e
+        trace CAPE e CIN; em que aquecimento a tampa estoura?
+  \item Integre o updraft com entranhamento
+        ($dw/dz = (B - \mu w^2)/w$, $\mu = 0{,}5/H_{ent}$) e compare
+        $w_{max}$ com $\sqrt{2\mathrm{CAPE}}$ para $H_{ent}$ de 2 a
+        20\,km.
+  \item Calcule a helicidade relativa à tempestade (0--3\,km) para os
+        três hodógrafos do Caso~3 e associe ao risco de supercélula.
+  \item Mapeie $c/\Delta u$ (RKW) no plano
+        ($\Delta\theta_v$, $\Delta u$) e marque a faixa ótima para
+        linhas de instabilidade duradouras.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 15 --- Capítulo 15 --- Perigos de Tempestades}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Do balanço peso--arrasto, deduza
+        $w_T = \sqrt{4g\rho_{gelo}D/(3C_d\rho_{ar})}$ e calcule o
+        updraft mínimo para pedras de 1, 2{,}5, 5 e 10\,cm.
+  \item Defina o DCAPE como espelho do CAPE, explicando por que a
+        parcela de downdraft desce pelo seu $\theta_w$ e qual o papel
+        da umidade da camada sub-nuvem.
+  \item Justifique a regra dos ``3 segundos por km'' do flash-to-bang
+        e estime a energia de um raio a partir de $Q \sim 5$\,C e
+        $V \sim 10^8$\,V.
+  \item Integre o equilíbrio ciclostrófico para o vórtice de Rankine e
+        mostre que $\Delta P = \rho v_{max}^2$, com metade da queda
+        dentro do núcleo.
+  \item Calcule a pressão dinâmica $q = \tfrac12\rho v^2$ para os
+        limiares EF0--EF5 e discuta a não-linearidade da destruição.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Integre a queda com derretimento e ache o diâmetro mínimo que
+        sobrevive para níveis de congelamento a 3, 4 e 5\,km.
+  \item Faça o déficit evaporativo depender da UR sub-nuvem e trace a
+        rajada final; por que downbursts secos são traiçoeiros?
+  \item Varra a corrente de carga do capacitor e trace a taxa de
+        raios; conecte com a sensibilidade $\sim w^6$ observada.
+  \item Some translação ao Rankine e mapeie o vento total; qual lado
+        da trajetória concentra o dano no HS?
+\end{enumerate}
+
+\clearpage
+\section*{Lista 16 --- Capítulo 16 --- Ciclones Tropicais}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Compare a eficiência de Carnot clássica $(T_s-T_{out})/T_s$
+        com o fator de Emanuel $(T_s-T_{out})/T_{out}$ para
+        $T_s = 300$\,K, $T_{out} = 200$\,K, e explique fisicamente a
+        diferença (reciclagem do calor dissipado).
+  \item Do perfil de Holland, obtenha o vento ciclostrófico
+        $v^2 = (r/\rho)\,dP/dr$ e mostre que o máximo fica em
+        $r \approx R_w$.
+  \item Use a equação hipsométrica para estimar a queda de pressão à
+        superfície produzida por um núcleo 10\,K mais quente numa
+        camada de 10\,km.
+  \item Mostre que o barômetro invertido dá
+        $d\eta/dP = 1/(\rho_{agua}g) \approx 1$\,cm/hPa e calcule a
+        contribuição para um CT5 ($\Delta P = 90$\,hPa).
+  \item Explique a deriva beta: por que um vórtice intenso num planeta
+        com $\beta$ migra para oeste e para o polo mesmo sem
+        escoamento médio?
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Mapeie a MPI no plano (TSM, $T_{out}$); quanto vale esfriar o
+        topo em 5\,K vs.\ aquecer o mar em 1\,K?
+  \item Ajuste ($P_c$, $R_w$, $B$) de Holland para vento máximo de
+        60\,m/s em 25\,km e classifique o furacão.
+  \item Com o \texttt{tcpyPI}, aqueça sondagem e TSM em $+2$\,K e
+        calcule a intensificação em \%/K.
+  \item Varra largura e profundidade da plataforma no modelo de surge
+        e mapeie a elevação na costa para $V = 50$\,m/s.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 17 --- Capítulo 17 --- Ventos Regionais}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Enuncie o teorema de circulação de Bjerknes e estime a taxa de
+        geração de circulação do circuito costa--mar para
+        $\Delta T = 5$\,K numa coluna de 1\,km.
+  \item Deduza a velocidade de equilíbrio catabática e avalie para uma
+        encosta de serra (2°, 5\,K, 50\,m) e para a Antártida
+        (0{,}6°, 20\,K, 300\,m).
+  \item Apresente o parâmetro de Scorer e as condições de onda
+        propagante, evanescente e aprisionada; calcule $\lambda_z$
+        para $U = 12$\,m/s, $N = 0{,}011$\,s$^{-1}$.
+  \item Defina o número de Froude da camada rasa e explique a
+        sequência subcrítico $\to$ crítico no topo $\to$ supercrítico
+        na descida $\to$ salto hidráulico.
+  \item Calcule o aquecimento föhn para ar que sobe com LCL a 1\,km,
+        cruza serra de 3\,km chovendo, e desce seco do outro lado
+        ($T_0 = 20\,°$C).
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Varra a forçante térmica da brisa e adicione vento sinótico
+        oposto; a partir de que oposição a brisa não entra?
+  \item Reproduza um catabático antártico e compare com os
+        20--50\,m/s de Cape Denison.
+  \item Meça $\lambda_z$ das ondas simuladas contra $2\pi U/N$ e ache
+        os $U$ de ressonância na troposfera.
+  \item Mapeie os regimes de Froude no plano ($Fr$, $h_m/h_0$) e
+        marque a região de vendaval de sotavento.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 18 --- Capítulo 18 --- Camada Limite Atmosférica}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Resolva a EDO do encroachment e mostre que
+        $z_i^2 - z_0^2 \propto \int F_H\,dt$; interprete o quadrado
+        geometricamente (área do triângulo de aquecimento).
+  \item Deduza o perfil logarítmico a partir de tensão constante e
+        comprimento de mistura $\ell = kz$, e explique o significado
+        de $z_0$.
+  \item Escreva o orçamento de TKE, identifique produção mecânica e
+        térmica, e explique o papel do fluxo de Richardson na morte da
+        turbulência noturna.
+  \item Resolva a oscilação de Blackadar em variável complexa e mostre
+        que o pico do jato vale $U_g + |{\vec V}_{18h} - \vec U_g|$
+        meia volta inercial depois.
+  \item Obtenha o $-5/3$ de Kolmogorov por análise dimensional com
+        $\varepsilon$ e $\kappa$, e estime a escala dissipativa
+        $\eta = (\nu^3/\varepsilon)^{1/4}$.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Mapeie o $z_i$ do fim da tarde no plano
+        ($F_H^{max}$, $\gamma$) e compare floresta × deserto.
+  \item Calcule a potência eólica relativa a 60/100/150\,m nos três
+        terrenos; quanto rende subir a torre em cada um?
+  \item Reamostre o sinal turbulento (1\,Hz, 0{,}1\,Hz) e mostre o
+        encurtamento do inercial e o aliasing.
+  \item Trace período e hora do pico do jato de Blackadar para 10°,
+        23{,}5°, 45° e 60°S; onde o pico cabe na noite?
+\end{enumerate}
+
+\clearpage
+\section*{Lista 19 --- Capítulo 19 --- Dispersão de Poluentes}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Resolva a advecção-difusão estacionária com $t = x/U$ e
+        obtenha a pluma gaussiana com
+        $\sigma^2 = 2Kx/U$; explique o prefator pela conservação de
+        massa.
+  \item Justifique a fonte-imagem pela condição de fluxo nulo no chão
+        e mostre que a concentração no solo dobra; descreva a
+        generalização para a tampa em $z_i$.
+  \item Mostre que o máximo de concentração no solo ocorre onde
+        $\sigma_z = H/\sqrt2$ e que $C_{max} \propto 1/H^2$.
+  \item Deduza o modelo de caixa e o equilíbrio
+        $C_{eq} = Q_AW/(Uz_i)$; defina o fator de ventilação e
+        calcule-o para um dia ventilado e um episódio.
+  \item Derive $\sigma^2 = 2Kt$ do passeio aleatório e conecte com o
+        teorema de Taylor (regimes balístico e difusivo).
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Varra a altura da chaminé e verifique
+        $C_{max}\propto 1/H^2$ e o deslocamento de $x_{max}$.
+  \item Simule a fumigação da manhã com a pluma noturna capturada
+        pela CL crescente.
+  \item Imponha o ciclo do tráfego na caixa e explique o máximo
+        noturno de concentração.
+  \item Varra $T_L$ no passeio aleatório e confirme
+        $K = \sigma_w^2T_L$; identifique o regime balístico perto da
+        fonte.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 20 --- Capítulo 20 --- Previsão Numérica do Tempo}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Faça a análise de von Neumann do esquema upwind e deduza a
+        condição CFL $0 \le C \le 1$; interprete fisicamente.
+  \item Pela equação modificada, mostre que o upwind embute difusão
+        $K_{num} = U\Delta x(1-C)/2$ e avalie para um modelo de
+        10\,km com $C = 0{,}5$.
+  \item Mostre que o horizonte de previsibilidade é
+        $t_{max} = \lambda^{-1}\ln(E/\epsilon_0)$ e discuta por que
+        melhorar observações rende tão pouco tempo extra.
+  \item Minimize a variância da análise e obtenha
+        $K^* = \sigma_b^2/(\sigma_b^2+\sigma_o^2)$; mostre que as
+        precisões somam.
+  \item Explique a ``resolução efetiva $\simeq 7\Delta x$'' pelos
+        erros de fase das ondas curtas na grade, e conecte com a
+        necessidade de parametrizar convecção.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Meça $K_{num}$ do upwind por ajuste gaussiano e compare com a
+        fórmula do T2.
+  \item Estime o expoente de Lyapunov do Lorenz com 20 pares de
+        gêmeos (média $\pm$ desvio).
+  \item Varra o ganho $K$ no ciclo de assimilação e compare o ótimo
+        empírico com a fórmula do T4.
+  \item Verifique a relação dispersão--erro do ensemble em 50
+        previsões: o ensemble sabe quando vai errar?
+\end{enumerate}
+
+\clearpage
+\section*{Lista 21 --- Capítulo 21 --- Processos Climáticos Naturais}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Monte a álgebra de feedbacks (série geométrica) e classifique
+        vapor d'água, gelo-albedo, Planck e Daisyworld em $f>0$ ou
+        $f<0$.
+  \item Calcule a resposta de Planck
+        $\lambda_0 = 1/(4\varepsilon\sigma T^3)$ e o aquecimento sem
+        feedbacks para $2\times$CO$_2$.
+  \item Explique por que a insolação de verão em 65°N comanda as
+        glaciações e associe cada ciclo orbital a seu período.
+  \item Mostre que o equilíbrio interior do Daisyworld é estável
+        (sinal do feedback via $dA/dT$) e discuta os colapsos de
+        borda.
+  \item Obtenha os autovalores do oscilador de recarga e a condição
+        de oscilação; calcule o período para os parâmetros do
+        Caso~4.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Simule o resgate vulcânico da bola de neve (histerese
+        completa).
+  \item Retifique Milankovitch com gelo lento $+$ limiar e recupere a
+        periodicidade de $\sim$100\,ka.
+  \item Compare o Daisyworld com uma e duas espécies: a diversidade
+        amplia a regulação?
+  \item Varra o acoplamento do ENSO e localize a bifurcação de Hopf;
+        discuta o papel do ruído no regime subcrítico.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 22 --- Capítulo 22 --- Óptica Atmosférica}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Minimize o desvio do raio na gota e mostre que
+        $\cos^2\theta_i = (n^2-1)/3$; calcule os ângulos do arco para
+        o vermelho e o violeta.
+  \item Deduza $\delta_{min} = 2\arcsin(n\sin A/2) - A$ pela simetria
+        do percurso no prisma e avalie para o gelo (60°).
+  \item Obtenha o $\lambda^{-4}$ de Rayleigh pelo argumento do dipolo
+        forçado e explique por que o céu não é violeta e a nuvem é
+        branca.
+  \item Mostre que o raio de curvatura de um raio quase horizontal é
+        $R = n/|dn/dz|$ e calcule o gradiente térmico que iguala $R$
+        ao raio da Terra.
+  \item Explique a polarização do céu a 90° do Sol pelo padrão de
+        radiação do dipolo, e por que o arco-íris também é
+        polarizado.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Com $n(\lambda)$ da água, calcule a largura do arco primário
+        e a posição do secundário.
+  \item Monte Carlo do halo em duas cores: separação angular e a
+        borda vermelha interna.
+  \item Acrescente aerossol vulcânico ao crepúsculo e explique os
+        poentes roxos pós-Pinatubo.
+  \item Inverta o perfil térmico (mar frio) e produza a miragem
+        superior/looming; estime o alcance extra do horizonte.
+\end{enumerate}
+
+\clearpage
+\section*{Lista 23 --- Capítulo 23 (módulo extra) --- Mudança Climática}
+\instrucoes
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Explique a origem do $\ln(C/C_0)$ pela saturação do centro da
+        banda e o avanço das asas; por que CFCs têm forçante linear?
+  \item Obtenha as duas escalas de tempo do modelo de duas caixas e
+        associe-as ao Pinatubo e ao aquecimento comprometido.
+  \item Estime a subida do nível do mar por expansão térmica
+        ($\alpha \simeq 2\times10^{-4}$\,K$^{-1}$) para 1\,K na
+        camada de 700\,m, e compare com os $\sim$3,5\,mm/ano
+        observados.
+  \item Argumente a linearidade do TCRE pelos dois efeitos que se
+        compensam e extraia a consequência ``líquido zero''.
+  \item Explique por que a estratosfera esfria enquanto a superfície
+        aquece, e por que isso descarta o Sol como causa.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook do capítulo)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Recupere o coeficiente $\sim$5,35 de um modelo de banda
+        sintético e ache o regime onde o log falha.
+  \item Mapeie o aquecimento comprometido no plano
+        ($\lambda$, $\gamma$); que parâmetro domina?
+  \item Rode três trajetórias com o mesmo acumulado e compare picos e
+        caminhos de temperatura.
+  \item Trace o ano de emergência do sinal contra a amplitude do
+        ruído interno.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+\end{document}

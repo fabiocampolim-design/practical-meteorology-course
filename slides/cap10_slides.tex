@@ -1,0 +1,259 @@
+% Slides — Capítulo 10: Forças Atmosféricas e Ventos
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap10/}}
+
+\title[Cap. 10 --- Forças e Ventos]{Capítulo 10 --- Forças Atmosféricas e
+Ventos}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{As forças}
+
+\begin{frame}{Newton num planeta que gira}
+  \eqdestaque{$\dfrac{D\vec U_h}{Dt} = -\dfrac{1}{\rho}\nabla_h P
+    \;-\; f\,\hat k\times\vec U_h \;-\; \dfrac{\vec U_h}{\tau}$,\qquad
+    $f = 2\Omega\sin\phi$}
+  \vspace{0.5em}
+  \begin{itemize}
+    \item PGF: a única que \alert{cria} vento — aponta da alta para a
+          baixa.
+    \item Coriolis: só gira (não faz trabalho); HS: desvia à
+          \alert{esquerda}.
+    \item Atrito: só na camada limite ($\sim$1\,km inferior).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{A força de gradiente de pressão na carta}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$F_{PG}/m = \dfrac{1}{\rho}\dfrac{\Delta P}{\Delta d}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Perpendicular às isóbaras, da alta para a baixa.
+      \item Mede-se com régua na carta do Cap.~9 (1° $=$ 111\,km,
+            Cap.~1).
+      \item Isóbaras apertadas $=$ PGF forte.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_10_5.jpg}{0.52\textheight}{Fig.~10.5 --- PGF
+      perpendicular às isóbaras, da alta para a baixa}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Coriolis: quem dura horas sente a rotação}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item $f = 2\Omega\sin\phi$; zero no equador, máximo nos polos.
+      \item Escala $1/|f| \sim 3$--4\,h: a pia \alert{não} é Coriolis.
+      \item Sem PGF: círculos inerciais (período $2\pi/|f|$) — boias
+            oceânicas os desenham (Caso~1).
+    \end{itemize}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_10_7b.jpg}{0.4\textheight}{Fig.~10.7 --- $f_c$
+      em função da latitude}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_10_11a.jpg}{0.4\textheight}{Fig.~10.11 ---
+      oscilação inercial no plano $(U,V)$}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Vento geostrófico}
+
+\begin{frame}{O equilíbrio central da dinâmica}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$\vec U_g = \dfrac{1}{\rho f}\,\hat k\times\nabla_h P$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item PGF $\perp$ isóbaras, Coriolis oposta, vento
+            \alert{paralelo às isóbaras}.
+      \item Buys-Ballot (HS): de costas para o vento, baixa à
+            \alert{direita}.
+      \item Explica o ``apertado $=$ ventoso'' do Cap.~9.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_10_8.jpg}{0.5\textheight}{Fig.~10.8 --- equilíbrio
+      geostrófico: PGF contra Coriolis, vento no meio}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O geostrófico na prática}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item Espaçamento de 4\,hPa em 300\,km a $30°$S:
+            $U_g \simeq 15$\,m/s.
+      \item Nas cartas de altitude (50\,kPa): mesmo equilíbrio com
+            alturas geopotenciais — o vento segue as isoípsas.
+      \item Régua gráfica: velocidade × espaçamento × latitude.
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_10_9.jpg}{0.44\textheight}{Fig.~10.9 --- vento
+      geostrófico paralelo às isóbaras}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_10_10.jpg}{0.44\textheight}{Fig.~10.10 ---
+      $U_g$ vs.\ espaçamento e latitude}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Vento gradiente}
+
+\begin{frame}{Curvas exigem força centrípeta}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \eqdestaque{$\dfrac{V^2}{R} = \mathrm{PGF} \mp |f|V$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Baixas: subgeostrófico (Coriolis ajuda a curvar).
+      \item Altas: supergeostrófico (Coriolis briga).
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_10_11c.jpg}{0.44\textheight}{Fig.~10.11 ---
+      balanço em torno da baixa}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_10_12.jpg}{0.44\textheight}{Fig.~10.12 ---
+      balanço em torno da alta}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Baixas afiadas, altas moles}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Teto de PGF nas altas:
+            $|\partial P/\partial n| \le \rho f^2R/4$ (T3) — centros
+            chatos, calmaria.
+      \item Baixas: sem teto — podem afiar até furacão (Cap.~16).
+      \item $R$ pequeno $+$ $V$ grande: \alert{ciclostrófico}
+            (tornado, qualquer sentido de giro — Cap.~15).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_10_14.jpg}{0.5\textheight}{Fig.~10.14 --- perfil
+      de pressão: baixa pontuda, alta achatada}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Atrito e camada limite}
+
+\begin{frame}{Três forças: o vento cruza as isóbaras}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Atrito freia $\Rightarrow$ Coriolis encolhe $\Rightarrow$
+            PGF vence: vento cruza \alert{para a baixa}
+            ($\sim$15--45°).
+      \item $\tan\alpha = 1/(f\tau)$ (T4).
+      \item Só na camada limite; acima, geostrófico/gradiente.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_10_17.jpg}{0.5\textheight}{Fig.~10.17 ---
+      equilíbrio de 3 forças na camada limite: cruzando as isóbaras}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A consequência que faz o tempo}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Espiral para dentro nas baixas: \alert{convergência} $\to$
+            ar sobe $\to$ nuvem e chuva.
+      \item Espiral para fora nas altas: \alert{divergência} $\to$
+            subsidência $\to$ céu limpo.
+      \item A carta de superfície inteira lida num relance.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_10_19.jpg}{0.52\textheight}{Fig.~10.19 --- ventos
+      espiralando para dentro de uma baixa (HN)}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Espiral de Ekman}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \eqdestaque{$U = U_g[1 - e^{-z/\delta}\cos(z/\delta)]$,\quad
+      $V = U_g e^{-z/\delta}\sin(z/\delta)$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item $\delta = \sqrt{2K/|f|}$; geostrófico recuperado em
+            $z \sim \pi\delta \sim 1$\,km.
+      \item Transporte integrado $\perp$ $\vec U_g$ (T5) — o mesmo
+            Ekman do oceano.
+      \item Numérico com $K(z)$ variável: Caso~3.
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_10_20a.jpg}{0.46\textheight}{Fig.~10.20 --- o
+      vento espiralando com a altura na camada limite}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Continuidade e o vento vertical}
+
+\begin{frame}{Convergência fabrica $w$}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$\partial_x u + \partial_y v + \partial_z w = 0$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Entra mais do que sai na horizontal $\Rightarrow$ sobe
+            pelo topo.
+      \item $10^{-5}$\,s$^{-1}$ em 1\,km $\Rightarrow$
+            $w \simeq 1$\,cm/s: invisível, mas satura o ar em horas
+            (Cap.~4).
+      \item O levantamento das frentes (Cap.~12) e da ciclogênese
+            (Cap.~13) nasce aqui.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_10_27.jpg}{0.5\textheight}{Fig.~10.27 ---
+      convergência no cilindro: o que entra pelos lados sai por cima}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$f = 2\Omega\sin\phi \to \vec U_g =
+    \tfrac{1}{\rho f}\hat k\times\nabla P \to \tfrac{V^2}{R} \to
+    \text{atrito} \Rightarrow \text{convergência} \to w$}
+  \vspace{0.6em}
+  Do equilíbrio geostrófico à chuva da baixa pressão em quatro passos.
+  Próximo capítulo: o mesmo jogo em escala planetária — a circulação
+  geral.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~10}
+  \texttt{notebooks/cap10\_ventos.ipynb}
+  \begin{enumerate}
+    \item Círculos inerciais (\texttt{solve\_ivp}) e cicloides.
+    \item Geostrófico × gradiente num campo de pressão sintético.
+    \item Camada de Ekman numérica.
+    \item Convergência, divergência e o mapa de $w$.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

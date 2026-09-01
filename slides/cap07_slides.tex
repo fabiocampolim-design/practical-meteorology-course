@@ -1,0 +1,276 @@
+% Slides — Capítulo 7: Processos de Precipitação
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap07/}}
+
+\title[Cap. 7 --- Precipitação]{Capítulo 7 --- Processos de Precipitação}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{O problema das seis ordens de grandeza}
+
+\begin{frame}{Da poeira à gota de chuva}
+  \eqdestaque{$\underbrace{0{,}1\,\mu\mathrm{m}}_{\text{CCN}} \to
+    \underbrace{10\,\mu\mathrm{m}}_{\text{gotícula}} \to
+    \underbrace{1\,\mathrm{mm}}_{\text{gota de chuva}}$\qquad
+    volume $\times10^6$ em $\sim$30\,min}
+  \vspace{0.5em}
+  \begin{itemize}
+    \item Condensou (Cap.~6) ainda não é choveu.
+    \item Difusão de vapor constrói a \alert{nuvem}; a \alert{chuva}
+          precisa de colisões (quente) ou gelo (Bergeron).
+    \item No fim: a distribuição de gotas que o radar enxerga (Cap.~8).
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Nucleação: Kelvin e Köhler}
+
+\begin{frame}{Sem aerossol não há nuvem}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$\dfrac{e_s(r)}{e_s(\infty)} = e^{A/r}$ (Kelvin)}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Gota de $0{,}01\,\mu$m exige UR $\simeq112\%$; a atmosfera
+            para em $\sim100{,}5\%$.
+      \item Nucleação homogênea: proibida. Toda nuvem nasceu sobre um
+            grão (CCN).
+    \end{itemize}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_07_4b.jpg}{0.4\textheight}{Fig.~7.4 --- nucleação
+      heterogênea sobre aerossol molhável}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_07_6.jpg}{0.4\textheight}{Fig.~7.6 --- barreira de
+      Kelvin: evaporar × crescer}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Curvas de Köhler: Kelvin × Raoult}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$S(r) = 1 + \dfrac{A}{r} - \dfrac{B r_d^3}{r^3}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Sal reduz $e_s$ (Raoult) e enfrenta a curvatura (Kelvin).
+      \item Máximo $=$ ($r^*$, $S^*$): passou, \alert{ativou} — cresce
+            sozinha.
+      \item Núcleo maior/mais salgado ativa antes.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_07_7a.jpg}{0.52\textheight}{Fig.~7.7 --- curvas de
+      Köhler para vários solutos}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Ativação e o elo aerossol--clima}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Subida mais rápida $\Rightarrow$ $S_{max}$ maior
+            $\Rightarrow$ mais núcleos ativados (\texttt{pyrcel},
+            Caso~2).
+      \item Marítimo limpo: $\sim10^2$ gotas/cm$^3$; continental
+            poluído: $\sim10^3$ — nuvens mais brancas (Cap.~21).
+      \item Gelo: nucleação exige IN raros ($1/10^5$ dos CCN); água
+            super-resfriada até $-38\,°$C.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_07_8a.jpg}{0.52\textheight}{Fig.~7.8 --- o caminho
+      de ativação de uma gota pela sua curva de Köhler}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Crescimento: difusão, coleta, Bergeron}
+
+\begin{frame}{Difusão: a raiz quadrada que não chega lá}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$r\dfrac{dr}{dt} = C \Rightarrow r \propto \sqrt{t}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item 1$\to$10\,$\mu$m: minutos. 10\,$\mu$m$\to$1\,mm:
+            \alert{dias}.
+      \item Cada década de raio custa $100\times$ mais tempo.
+      \item A difusão faz a nuvem; \alert{não} faz a chuva (Caso~3).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_07_12a.jpg}{0.5\textheight}{Fig.~7.12 ---
+      crescimento difusivo: $R(t) \propto \sqrt{t}$}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Colisão--coalescência: a avalanche da chuva quente}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$\dfrac{dr}{dt} = \dfrac{E\,\bar L\,\Delta w_T}{4\rho_L}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Gota grande cai mais rápido e varre as pequenas — cresce
+            \alert{acelerando}.
+      \item Cruzamento difusão$\to$coleta em $\sim20\,\mu$m: o gargalo
+            (N3).
+      \item Nuvem poluída (muitas gotas pequenas) demora a
+            atravessá-lo.
+    \end{itemize}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_07_19.jpg}{0.42\textheight}{Fig.~7.19 ---
+      eficiência de colisão: trajetórias em volta do coletor}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_07_20.jpg}{0.42\textheight}{Fig.~7.20 ---
+      coalescência eficiente × ineficiente}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Bergeron: o gelo rouba das gotículas}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item $e_s^{gelo} < e_s^{agua}$: diferença máxima em
+            $\alert{-12\,°C}$ (Cap.~4).
+      \item O raro cristal vê ambiente supersaturado: cresce às custas
+            das gotículas.
+      \item Depois: agregação (flocos), riming (graupel),
+            fragmentação.
+      \item A chuva de latitudes médias nasce \alert{neve}.
+    \end{itemize}
+    \column{0.28\textwidth}
+    \figlivroslide{fig_07_16.jpg}{0.4\textheight}{Fig.~7.16 ---
+      $e_s^{agua}-e_s^{gelo}$: máximo em $-12\,°$C}
+    \column{0.32\textwidth}
+    \figlivroslide{fig_07_17.jpg}{0.4\textheight}{Fig.~7.17 ---
+      agregação, riming e coalescência}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Hábitos dos cristais}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Agulhas, placas, dendritos, colunas: o hábito depende de
+            $T$ e do excesso de vapor.
+      \item Dendritos ($\sim-15\,°$C): crescimento mais rápido — a zona
+            de Bergeron por excelência.
+      \item Cada floco conta a história térmica da sua queda.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_07_12c.jpg}{0.54\textheight}{Fig.~7.12 --- hábitos
+      de cristal em função de temperatura e vapor}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A fábrica completa dentro da nuvem fria}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Acima de $-40\,°$C: só gelo; $-40$ a $0\,°$C: mistura
+            (Bergeron ativo); abaixo: derretimento.
+      \item A fase que chega ao chão depende do perfil de $T_w$
+            (Cap.~4): chuva, neve, chuva congelante.
+      \item Versão convectiva e violenta: granizo (Cap.~14).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_07_21.jpg}{0.56\textheight}{Fig.~7.21 --- os
+      andares de fase de uma nuvem precipitante fria}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Tamanhos, quedas e a ponte para o radar}
+
+\begin{frame}{Velocidade terminal}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{Stokes ($r<40\,\mu$m): $w_T = k_1 r^2$;\quad gotas de
+      chuva: 4--9\,m/s}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item T4: peso $=$ arrasto viscoso $\Rightarrow$
+            $w_T \propto r^2$.
+      \item Gotas $>$ 3\,mm quebram: teto natural de tamanho.
+      \item $\Delta w_T$ é o motor da coleta.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_07_18.jpg}{0.52\textheight}{Fig.~7.18 ---
+      velocidade terminal vs.\ raio: os três regimes}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Marshall--Palmer e a relação $Z$--$R$}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$N(D) = N_0\,e^{-\Lambda D}$,\quad
+      $\Lambda = 4{,}1\,R^{-0{,}21}$\,mm$^{-1}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Chuva forte $\Rightarrow$ $\Lambda$ menor $\Rightarrow$
+            gotas grandes.
+      \item $R \propto \int N w_T D^3$;\quad
+            $Z \propto \int N D^6$ — o $D^6$ adora gotas grandes.
+      \item N4 verifica $Z = aR^{1{,}4}$: a fórmula do radar (Cap.~8).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_07_23.jpg}{0.52\textheight}{Fig.~7.23 ---
+      distribuição de tamanhos para chuvas de várias intensidades}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Onde chove no planeta}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item ITCZ: a faixa equatorial que veremos nascer no Cap.~11.
+      \item Desertos subtropicais: o ramo que desce de Hadley.
+      \item Trilhas de tempestades das latitudes médias (Cap.~13).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_07_25.jpg}{0.5\textheight}{Fig.~7.25 ---
+      precipitação média anual global}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{CCN $\xrightarrow{\text{Köhler}}$ gotícula
+    $\xrightarrow{\text{difusão }\sqrt{t}}$ $10\,\mu$m
+    $\xrightarrow[\text{ou Bergeron}]{\text{colisões}}$ gota
+    $\xrightarrow{\text{M--P}}$ radar}
+  \vspace{0.6em}
+  Sem aerossol não há nuvem; sem colisões ou gelo não há chuva. A
+  distribuição final é exatamente o que o radar do Cap.~8 mede.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~7}
+  \texttt{notebooks/cap07\_precipitacao.ipynb}
+  \begin{enumerate}
+    \item Curvas de Köhler e ativação.
+    \item Parcela subindo com \texttt{pyrcel}: $S_{max}$ e fração
+          ativada.
+    \item Difusão × coleta: o gargalo dos 20\,$\mu$m.
+    \item Marshall--Palmer $\to$ $R$, $Z$ e a relação $Z$--$R$.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

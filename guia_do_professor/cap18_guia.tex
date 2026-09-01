@@ -1,0 +1,105 @@
+% Guia do professor — Capítulo 18: Camada Limite Atmosférica
+\section{Capítulo 18 --- Camada Limite Atmosférica}
+
+\subsection*{Visão geral e ritmo}
+
+O capítulo em que a turma descobre que mora dentro do objeto de
+estudo. Três argumentos dimensionais (perfil log, orçamento de TKE,
+$-5/3$) fazem a ponte perfeita com a formação em física; o ciclo
+diurno costura tudo. \textbf{Ritmo: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — o ``dia da CLA'' (desenho-mestre),
+        encroachment e $z_i$ (Caso~1), camada superficial e o log
+        (Caso~2, com energia eólica).
+  \item \textbf{Aula 2} — TKE e seus termos, Kolmogorov com o
+        espectro sintético (Caso~3), a noite estável e o jato de
+        Blackadar (Caso~4).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item narrar o ciclo diurno da CLA (mistura, residual, estável) e
+        seus perfis de $\theta_v$;
+  \item prever $z_i(t)$ pelo encroachment a partir de $F_H$ e
+        $\gamma$;
+  \item ajustar o perfil log ($u_*$, $z_0$) a dados de torre e
+        aplicá-lo a energia eólica;
+  \item interpretar o orçamento de TKE e o espectro $-5/3$;
+  \item explicar o jato noturno como oscilação inercial de Blackadar.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Balanço de superfície e Bowen (Cap.~3); perfis de $\theta_v$ e
+estabilidade não local (Cap.~5); círculos inerciais e Ekman
+(Cap.~10); resfriamento radiativo noturno (Caps.~2, 6); $Ri$
+(Cap.~5).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``A CLA é fina, logo irrelevante''}: é onde vive TODO
+        o vapor dos Caps.~4--7, o combustível do Cap.~14 e a poluição
+        do Cap.~19 — e onde o vento vira recurso.
+  \item \textbf{Perfil log como lei universal}: vale na camada
+        superficial neutra; estabilidade curva o perfil
+        (Monin--Obukhov). Não extrapolar o log até $z_i$.
+  \item \textbf{Turbulência como ruído}: tem orçamento, cascata e
+        espectro — é física estatística organizada, não sujeira.
+  \item \textbf{Jato noturno por ``canalização''}: é inércia pura
+        (Blackadar); o hodógrafo circular do Caso~4 desfaz o mito.
+  \item \textbf{Camada residual esquecida}: o ar da tarde de ontem
+        sobrevive à noite em cima — e é o que a térmica de amanhã
+        reencontra (e o que guarda poluição envelhecida, Cap.~19).
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Timelapse de cumulus de bom tempo (o teto plano dos cumulus $=$
+$z_i$); chaleira fumegante ao sol da janela para térmicas;
+anemômetro de celular/ventoinha em alturas diferentes no pátio para o
+gradiente do perfil (qualitativo, mas memorável).
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~18)}
+
+Aquecimento: $z_i$ por encroachment com números dados; $u(z)$ do log.
+Aprofundamento: TKE com fluxos dados; jato noturno com $f$ de
+latitudes diferentes. Síntese: ``por que planadores decolam às 11\,h
+e pousam às 17\,h?''. \emph{Confira a numeração na sua cópia
+(v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap18\_camadalimite.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & crescimento de $z_i$ (EDO vs.\ raiz) & Aula 1 \\
+2 & ajuste do perfil log $+$ potência eólica & Aula 1 \\
+3 & espectro $-5/3$ de sinal sintético (FFT) & Aula 2 \\
+4 & jato de Blackadar (hodógrafo circular) & Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~3 rende discussão de método experimental (taxa de amostragem,
+aliasing — N3): meteorologia como física de laboratório.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap18\_solucoes.ipynb}
+(\emph{não distribuir}): T1 e T4 com \texttt{sympy}; N4 explica por
+que o LLJ é fenômeno subtropical/de latitudes médias. Pares:
+T1$\leftrightarrow$N1, T2$\leftrightarrow$N2, T4$\leftrightarrow$N4,
+T5$\leftrightarrow$N3.
+
+\subsection*{Conexões com o resto do curso}
+
+Balanço de superfície (Cap.~3); perfis e estabilidade (Cap.~5);
+entranhamento (Cap.~14); Ekman e spin-down (Caps.~10, 13); brisas e
+catabáticos como CLAs especiais (Cap.~17); dispersão de poluentes usa
+TUDO deste capítulo (Cap.~19); parametrização de CLA nos modelos
+(Cap.~20).

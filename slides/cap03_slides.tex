@@ -1,0 +1,271 @@
+% Slides — Capítulo 3: Termodinâmica da Atmosfera
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap03/}}
+
+\title[Cap. 3 --- Termodinâmica]{Capítulo 3 --- Termodinâmica da Atmosfera}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Calor, energia interna e a água}
+
+\begin{frame}{A energia da água}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Aquecer, fundir, evaporar: os degraus de energia da água.
+      \item $L_v = 2501$\,kJ/kg: evaporar 1\,g de água ``rouba'' o calor
+            de 2{,}5\,kg de ar por 1\,K.
+      \item A água é a \alert{bateria térmica} da atmosfera — o
+            combustível dos furacões (Cap.~16).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_03_1.jpg}{0.55\textheight}{Fig.~3.1 --- energia
+      para aquecer, fundir e evaporar a água}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Como uma parcela troca energia}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Por fora: radiação (Cap.~2), condução, turbulência
+            (Cap.~18).
+      \item Por dentro: calor latente (Cap.~4), dissipação, expansão
+            adiabática (hoje).
+      \item A parcela viaja por advecção e convecção — e leva a energia
+            junto.
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_03_2g.jpg}{0.55\textheight}{Fig.~3.2 --- processos
+      internos e externos que mudam a temperatura da parcela}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Primeira lei e processo adiabático}
+
+\begin{frame}{Primeira lei no pistão e na atmosfera}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$\Delta q = C_p\,\Delta T - \dfrac{\Delta P}{\rho}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Calor $=$ esquentar $+$ trabalho de expansão.
+      \item $C_p = C_v + \Re_d = 1004$\,J\,kg$^{-1}$K$^{-1}$.
+      \item Coordenada natural: \alert{pressão}, não volume.
+    \end{itemize}
+    \column{0.29\textwidth}
+    \figlivroslide{fig_03_2d.jpg}{0.36\textheight}{Fig.~3.2 --- pistão:
+      volume constante}
+    \column{0.29\textwidth}
+    \figlivroslide{fig_03_2e.jpg}{0.36\textheight}{Fig.~3.2 --- pistão
+      móvel: pressão constante}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A parcela que sobe esfria sozinha}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \eqdestaque{$\delta q = 0\ \Rightarrow\
+      \dfrac{dT}{dz}\Big|_{ad} = -\dfrac{g}{c_p} = -9{,}8$\,K/km}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Sobe $\to$ $P$ cai $\to$ expande $\to$ paga o trabalho com
+            energia interna.
+      \item Ar é péssimo condutor: subida de minutos/horas $=$
+            adiabática.
+      \item \alert{$\Gamma_d$ (parcela) $\neq$ $6{,}5$\,K/km
+            (ambiente)}: comparar os dois é o Cap.~5.
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_03_3.jpg}{0.44\textheight}{Fig.~3.3 --- parcela
+      subindo adiabaticamente no ambiente}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Temperatura potencial}
+
+\begin{frame}{$\theta$: a etiqueta que não muda na subida}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \eqdestaque{$\theta = T\left(\dfrac{P_0}{P}\right)^{0{,}286}$,\quad
+      $P_0 = 100$\,kPa}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Conservada em processo adiabático seco; de bolso:
+            $\theta \simeq T + \Gamma_d z$.
+      \item Comparar ar de alturas diferentes $=$ comparar $\theta$.
+      \item $\theta$ é a entropia disfarçada: $ds = c_p\,d\ln\theta$
+            (T3).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_03_4a.jpg}{0.5\textheight}{Fig.~3.4 --- parcela ×
+      ambiente: o processo adiabático no diagrama $T$--$z$}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O diagrama termodinâmico nasce aqui}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Isóbaras horizontais, isotermas verticais, adiabáticas
+            secas inclinadas ($\theta$ const).
+      \item Exemplo: ar a $(70\ \mathrm{kPa},\ -1\,°\mathrm{C})$ tem
+            $\theta = 28\,°$C.
+      \item Föhn/serra abaixo: desce e chega \alert{quente e seco}
+            (Cap.~17).
+      \item Será o Skew-$T$ completo no Cap.~5.
+    \end{itemize}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_03_4b.jpg}{0.44\textheight}{Fig.~3.4 --- famílias
+      de linhas do diagrama}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_03_5a.jpg}{0.44\textheight}{Fig.~3.5 --- lendo
+      $\theta$ no diagrama}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Balanço euleriano de calor}
+
+\begin{frame}{O cubo fixo: advecção e fontes}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \eqdestaque{$\dfrac{\partial T}{\partial t} =
+      -\vec U\cdot\nabla T
+      - \dfrac{1}{\rho C_p}\dfrac{\Delta F_z}{\Delta z}
+      + \dfrac{L_v}{C_p}\dfrac{\Delta r_{cond}}{\Delta t}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Visão euleriana: a da estação e a do modelo numérico
+            (Cap.~20).
+      \item Advecção: $10$\,m/s $\times$ 5\,K/100\,km $=$
+            \alert{1{,}8\,K/h} — a frente fria (Cap.~12).
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_03_6a.jpg}{0.42\textheight}{Fig.~3.6 --- volume de
+      controle fixo: fluxos que entram e saem}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Advecção em três quadros}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Vento de região quente $\Rightarrow$ aquece o ponto;
+            de região fria $\Rightarrow$ esfria.
+      \item Vento paralelo às isotermas: advecção \alert{nula} — não
+            importa o quão forte.
+      \item Simulação com esquema \emph{upwind} no Caso~3 do notebook
+            (e a difusão numérica que aparece).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_03_6b.jpg}{0.52\textheight}{Fig.~3.6 --- advecção
+      de temperatura: três configurações de vento e gradiente}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Balanço na superfície e razão de Bowen}
+
+\begin{frame}{Para onde vai a energia do Sol}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$F^* = F_H + F_E + F_G$;\qquad $\beta = F_H/F_E$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Radiação líquida (Cap.~2) se reparte em sensível, latente e
+            solo.
+      \item Superfície úmida: $F_E$ domina ($\beta\sim0{,}2$).
+      \item Deserto: $F_H$ domina ($\beta\sim5$) — tardes de 45\,°C.
+    \end{itemize}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_03_9a.jpg}{0.4\textheight}{Fig.~3.9 --- dia,
+      superfície úmida: $F_E$ leva a maior parte}
+    \column{0.3\textwidth}
+    \figlivroslide{fig_03_9b.jpg}{0.4\textheight}{Fig.~3.9 --- dia,
+      deserto: quase tudo em $F_H$}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O ciclo diurno completo}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item De dia $F^*>0$ alimenta $F_H$ e $F_E$; à noite todos trocam
+            de sinal e encolhem.
+      \item Esta partição controla a profundidade da camada limite
+            (Cap.~18) e o combustível de tempestades (Cap.~14).
+      \item Reproduzido no Caso~2 do notebook (superfície continental ×
+            oceânica no N2).
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_03_10.jpg}{0.55\textheight}{Fig.~3.10 --- ciclo
+      diurno dos termos do balanço (superfície úmida)}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Perfis de fluxo na camada limite}
+  \begin{columns}
+    \column{0.44\textwidth}
+    \begin{itemize}
+      \item Fluxo de calor: molecular só nos primeiros milímetros;
+            turbulento acima (Cap.~18).
+      \item $F_H$ decresce com $z$ na camada de mistura — é essa
+            divergência que aquece o ar da manhã.
+      \item Fórmula \emph{bulk}: $F_H = \rho C_p C_H M
+            (\theta_{sfc}-\theta_{ar})$ — já com $\theta$!
+    \end{itemize}
+    \column{0.56\textwidth}
+    \figlivroslide{fig_03_7a.jpg}{0.55\textheight}{Fig.~3.7 --- camadas
+      (molecular, superfície, mistura) e o perfil efetivo de fluxo}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$\delta q = c_pdT - \alpha dP \;\to\; \Gamma_d = g/c_p
+    \;\to\; \theta \;\to\;
+    \partial_t T = -\vec U\cdot\nabla T + \cdots \;\to\;
+    F^* = F_H+F_E+F_G$}
+  \vspace{0.6em}
+  A 1ª lei vira: régua de parcela ($\Gamma_d$), etiqueta conservada
+  ($\theta$), equação de previsão (euleriana) e contabilidade de
+  superfície (Bowen). Falta a água — Cap.~4.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~3}
+  \texttt{notebooks/cap03\_termodinamica.ipynb}
+  \begin{enumerate}
+    \item Subida adiabática como EDO e a conservação de $\theta$.
+    \item Ciclo diurno do balanço de superfície (continental ×
+          oceânico).
+    \item Advecção de uma frente com esquema \emph{upwind}.
+    \item $\theta$ e $\theta_v$ de uma sondagem real (MetPy).
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

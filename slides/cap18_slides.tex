@@ -1,0 +1,209 @@
+% Slides — Capítulo 18: Camada Limite Atmosférica
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap18/}}
+
+\title[Cap. 18 --- Camada Limite]{Capítulo 18 --- Camada Limite
+Atmosférica}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{O ciclo diurno}
+
+\begin{frame}{O sanduíche do dia da CLA}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \begin{itemize}
+      \item Dia: camada de \alert{mistura} funda; noite: camada
+            \alert{estável} rasa $+$ camada \alert{residual} em cima.
+      \item A capping inversion é a tampa (Cap.~5).
+      \item Este desenho organiza o capítulo inteiro.
+    \end{itemize}
+    \column{0.66\textwidth}
+    \figlivroslide{fig_18_14b.jpg}{0.52\textheight}{Fig.~18.14 --- o
+      ciclo diurno completo: ML, RL, SBL}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Os perfis contam a história}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item Dia: $\theta$ constante na ML (bem misturada — o
+            critério do Cap.~5!).
+      \item Noite: inversão de superfície rasa; a RL guarda o ar de
+            ontem.
+      \item Só a CLA sente o ciclo: a atmosfera livre nem percebe.
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_18_11a.jpg}{0.44\textheight}{Fig.~18.11 ---
+      tarde: camada de mistura}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_18_11b.jpg}{0.44\textheight}{Fig.~18.11 ---
+      madrugada: SBL $+$ residual}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Encroachment: a manhã engolindo a estratificação}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$z_i(t) = \sqrt{z_0^2 + \dfrac{2}{\rho C_p\gamma}
+      \displaystyle\int F_H\,dt}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item A área triangular aquecida paga o crescimento (T1;
+            Caso~1).
+      \item Deserto: $z_i\sim$3--4\,km; floresta: $\sim$1\,km (N1) —
+            Bowen decide (Cap.~3).
+      \item $z_i$ $=$ teto dos cumulus, volume da poluição (Cap.~19).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_18_13a.jpg}{0.52\textheight}{Fig.~18.13 --- o
+      perfil de $\theta$ hora a hora: a ML comendo a manhã}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Camada superficial: o perfil log}
+
+\begin{frame}{A reta no papel semilog}
+  \begin{columns}
+    \column{0.34\textwidth}
+    \eqdestaque{$\bar u(z) = \dfrac{u_*}{k}\ln\dfrac{z}{z_0}$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Análise dimensional: perto do chão o único comprimento é
+            $z$ (T2).
+      \item $z_0$: mar 0{,}1\,mm $\to$ cidade 1\,m.
+      \item Potência eólica $\propto u^3$: a altura da torre é
+            dinheiro (N2; Cap.~17).
+    \end{itemize}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_18_21a.jpg}{0.42\textheight}{Fig.~18.21 --- o
+      perfil em eixos lineares\ldots}
+    \column{0.33\textwidth}
+    \figlivroslide{fig_18_21b.jpg}{0.42\textheight}{Fig.~18.21 ---
+      \ldots vira reta no semilog}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Turbulência}
+
+\begin{frame}{Dois motores de turbulência}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item \alert{Mecânica}: cisalhamento fabrica turbilhões
+            (com feedback — eles misturam o próprio cisalhamento).
+      \item \alert{Convectiva}: térmicas do $F_H$ (sem feedback).
+      \item O orçamento de TKE contabiliza os dois (T3) e o $R_f$
+            decide quem vive (Cap.~5).
+    \end{itemize}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_18_22e.jpg}{0.42\textheight}{Fig.~18.22 ---
+      turbulência mecânica (cisalhamento)}
+    \column{0.35\textwidth}
+    \figlivroslide{fig_18_22f.jpg}{0.42\textheight}{Fig.~18.22 ---
+      turbulência convectiva (térmicas)}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O sinal e o espectro}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item $u = \bar u + u'$: média $+$ rajada — a decomposição de
+            Reynolds.
+      \item Espectro $-5/3$ de Kolmogorov: cascata sem escala própria
+            (T5; Caso~3) — como as nuvens fractais (Cap.~6).
+      \item Fluxos $\overline{w'\theta'}$: o que as parametrizações
+            dos modelos precisam representar (Cap.~20).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_18_23.jpg}{0.4\textheight}{Fig.~18.23 --- o
+      anemômetro vê: média e flutuação}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{A noite e o jato de Blackadar}
+
+\begin{frame}{O desacoplamento e o jato noturno}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{período $= \dfrac{2\pi}{|f|}$;\quad pico $= U_g +
+      |\vec V_{18h} - \vec U_g|$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item A turbulência morre, o atrito ``desliga'', o vento gira
+            inercialmente (Cap.~10) em torno de $\vec U_g$ (T4;
+            Caso~4).
+      \item Supergeostrófico de madrugada a 100--500\,m.
+      \item Alimenta as tempestades noturnas do Prata (Cap.~14).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_18_18b.jpg}{0.52\textheight}{Fig.~18.18 --- o
+      jato noturno crescendo sobre a SBL}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A CLA no mapa sinótico}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Altas: subsidência achata a CLA (céu limpo, poluição
+            presa — Caps.~12, 19).
+      \item Baixas: convergência aprofunda e as tempestades
+            \alert{ventilam} a CLA para a troposfera toda.
+      \item O acoplamento CLA--sinótica fecha o ciclo do curso.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_18_5.jpg}{0.48\textheight}{Fig.~18.5 --- CLA
+      rasa sob a alta, funda e ventilada sob a baixa}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{$z_i \propto \sqrt{\int F_H dt}$ \quad
+    $\bar u = \tfrac{u_*}{k}\ln\tfrac{z}{z_0}$ \quad
+    $S \propto \varepsilon^{2/3}\kappa^{-5/3}$ \quad
+    $T_{jato} = \tfrac{2\pi}{|f|}$}
+  \vspace{0.6em}
+  Cresce com o sol, loga perto do chão, cascateia no meio, gira à
+  noite — o quilômetro onde moramos, agora com equações.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~18}
+  \texttt{notebooks/cap18\_camadalimite.ipynb}
+  \begin{enumerate}
+    \item Crescimento de $z_i$: EDO vs.\ raiz do calor acumulado.
+    \item Ajuste do perfil log $+$ potência eólica por altura.
+    \item Espectro $-5/3$ de um sinal sintético (FFT).
+    \item Jato de Blackadar: hodógrafo circular.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

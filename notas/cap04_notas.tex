@@ -1,0 +1,302 @@
+% Notas de aula — Capítulo 4: Vapor d'Água
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap04/}}
+
+\title{Capítulo 4 --- Vapor d'Água\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:cc}--\S\ref{sec:variaveis} (Clausius--Clapeyron e o
+zoológico de variáveis de umidade).
+\emph{Aula 2:} \S\ref{sec:lcl}--\S\ref{sec:balanco} (LCL, bulbo úmido, água
+precipitável e balanço de água).
+
+\section{A molécula que comanda o tempo}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~4 --- Vapor d'água}\\[2pt]
+``N$_2$, O$_2$, Ar: coadjuvantes. O protagonista é o vapor d'água.''\\[2pt]
+por quê:\ (i) carrega $L_v = 2{,}5$\,MJ/kg;\ (ii) maior gás de estufa;\
+(iii) é o único que \emph{muda de fase} aqui.
+\end{noquadro}
+
+Os três papéis já foram anunciados: o calor latente como bateria térmica
+\javimos{3}{calor latente}, o vapor como principal absorvedor de IV
+\javimos{2}{efeito estufa}, e a condensação que fará nuvens
+\veremos{6}{nuvens} e chuva \veremos{7}{precipitação}. Este capítulo é o
+dicionário quantitativo da umidade — e a chave é uma única curva
+exponencial, $e_s(T)$.
+
+\section{Pressão de vapor de saturação: Clausius--Clapeyron}\label{sec:cc}
+
+\quadro{Desenhar recipiente fechado com água: setas de evaporação e
+condensação; equilíbrio dinâmico define $e_s(T)$. Depois desenhar a curva
+$e_s(T)$ — ela fica no quadro a aula inteira.}
+
+Saturação \emph{não} é ``o ar segurar o máximo de água'' (o ar nem
+participa!): é o equilíbrio dinâmico entre a taxa de moléculas que escapam
+do líquido (cresce explosivamente com $T$) e a taxa que retorna
+($\propto e$). A pressão parcial de equilíbrio $e_s$ depende \emph{só} de
+$T$ — e de forma violentamente não linear:
+
+\begin{formadif}[a lei que governa a curva]
+Da termodinâmica de transições de fase (igualdade dos potenciais de Gibbs
+das duas fases na coexistência):
+\[ \frac{de_s}{dT} = \frac{L_v\, e_s}{\Re_v\, T^2},\qquad
+\Re_v = 461\ \mathrm{J\,kg^{-1}K^{-1}}. \]
+Integrando com $L_v$ constante de $(T_0, e_0)$ a $(T, e_s)$:
+\[ e_s = e_0 \exp\!\left[\frac{L_v}{\Re_v}\left(\frac{1}{T_0}-\frac{1}{T}\right)\right]. \]
+No notebook (Caso~1) integramos a EDO numericamente e comparamos com esta
+fórmula e com a do MetPy.
+\end{formadif}
+
+\begin{formalivro}[Stull eq.~4.1]
+\[ e_s = e_0 \exp\!\left[ 5423\ \mathrm{K}\left(\frac{1}{273{,}15}
+ - \frac{1}{T}\right)\right],\qquad e_0 = 0{,}6113\ \mathrm{kPa}, \]
+com $L_v/\Re_v = 5423$\,K sobre água líquida (e $L_d/\Re_v = 6139$\,K sobre
+gelo — a diferença alimenta o processo de Bergeron
+\veremos{7}{processo de Bergeron}).
+\end{formalivro}
+
+\begin{noquadro}[os números da curva]
+$e_s$ \textbf{dobra a cada $\sim$10\,K}\quad ($\simeq 7\%$ por K)\\[2pt]
+$e_s(10\,°$C$) = 1{,}23$\,kPa \quad $e_s(20\,°$C$) = 2{,}34$\,kPa \quad
+$e_s(30\,°$C$) = 4{,}24$\,kPa\\[2pt]
+$\Rightarrow$ trópicos carregam $3$--$4\times$ mais vapor que latitudes
+médias.
+\end{noquadro}
+
+\begin{exemplo}[a não linearidade que faz o clima]
+$e_s(30\,°\mathrm{C})/e_s(10\,°\mathrm{C}) = 4{,}24/1{,}23 \simeq 3{,}5$.
+Ar tropical saturado carrega 3,5$\times$ mais vapor que ar de inverno
+ameno — por isso a chuva tropical é mais violenta, e os 7\,\%/K são a taxa
+que aparece nas projeções de chuvas extremas com aquecimento global
+\veremos{21}{extremos num clima quente}.
+\emph{Verificação: $1{,}07^{20} = 3{,}9$ — ordem certa.}
+\end{exemplo}
+
+Abaixo de 0\,°C há \emph{duas} curvas: sobre água super-resfriada e sobre
+gelo, com $e_s^{gelo} < e_s^{liq}$ (o gelo prende mais as moléculas). Um
+ar pode estar subsaturado para a água e supersaturado para o gelo ao mesmo
+tempo — guardar essa assimetria: ela fará crescer os cristais às custas
+das gotículas \veremos{7}{Bergeron}.
+
+\section{O zoológico de variáveis de umidade}\label{sec:variaveis}
+
+\quadro{Montar a tabela no quadro aos poucos, cada variável com sua
+pergunta-guia. Não despejar tudo de uma vez.}
+
+\begin{noquadro}[o zoológico, com as perguntas-guia]
+\begin{tabular}{lll}
+$e$ & pressão parcial do vapor & quanto vapor há (em kPa)?\\
+$r = \dfrac{\varepsilon e}{P-e}$ & razão de mistura & g de vapor por kg de
+ar seco?\\
+$q \simeq r/(1+r)$ & umidade específica & fração da massa total?\\
+$\rho_v = e/\Re_v T$ & umidade absoluta & g de vapor por m$^3$?\\
+UR $= 100\,e/e_s$ & umidade relativa & quão perto da saturação?\\
+$T_d$: $e_s(T_d)=e$ & ponto de orvalho & até que $T$ esfriar para
+saturar?\\
+$T_w$ & bulbo úmido & quanto a evaporação consegue esfriar?\\
+\end{tabular}
+\end{noquadro}
+
+\begin{formalivro}[razão de mistura, Stull eq.~4.4]
+\[ r = \frac{\varepsilon\, e}{P - e},\qquad
+\varepsilon = \frac{M_{H_2O}}{M_{ar}} = 0{,}622. \]
+$r$ é a variável \emph{conservada} em subidas sem condensação — o CPF da
+umidade da parcela, par do $\theta$ \javimos{3}{temperatura potencial}.
+O $\varepsilon = 0{,}622$ é o mesmo da correção virtual
+\javimos{1}{temperatura virtual} (exercício T3 do Cap.~1).
+\end{formalivro}
+
+\quadro{Insistir na hierarquia: $e$ e $\rho_v$ mudam com $T$ e $P$; $r$ e
+$q$ só mudam se entrar/sair água. UR é a PIOR variável para comparar
+massas de ar — depende de $T$! (O ar da Sibéria a $-40\,°$C com UR
+$=100\%$ é mais seco que o do Saara.)}
+
+O par conservado $(\theta, r)$ é a impressão digital de uma massa de ar —
+é com ele que classificaremos massas polares e tropicais
+\veremos{12}{massas de ar} e diagnosticaremos a camada de mistura
+\veremos{18}{perfis da camada limite}.
+
+\begin{exemplo}[dia úmido de verão em São Paulo]
+$T = 28\,°$C, $T_d = 22\,°$C, $P = 93$\,kPa (altitude da cidade).
+$e = e_s(22\,°\mathrm{C}) = 2{,}64$\,kPa;
+$r = 0{,}622\times2{,}64/(93-2{,}64) = 18{,}2$\,g/kg;
+$\mathrm{UR} = 100\times2{,}64/3{,}78 = 70\,\%$.
+\emph{Verificação: 15--20\,g/kg é típico de ar tropical úmido; com
+$T_v = T(1+0{,}61r)$ do Cap.~1, esse ar ``vale'' $+3{,}3$\,K de
+flutuabilidade.}
+\end{exemplo}
+
+\section{Nível de condensação por levantamento (LCL)}\label{sec:lcl}
+
+\quadro{Desenhar parcela subindo num gráfico $z \times T$: a reta de $T$
+cai a $9{,}8$\,K/km, a de $T_d$ cai a $\sim 1{,}8$\,K/km; onde se cruzam,
+nasce a nuvem. Marcar ``$z_{LCL}$'' no cruzamento.}
+
+\begin{formadif}[por que as retas se cruzam]
+Na subida seca, $T$ cai com $\Gamma_d = 9{,}8$\,K/km
+\javimos{3}{gradiente adiabático seco}. O ponto de orvalho também cai
+($P$ diminui $\Rightarrow$ $e$ diminui com $r$ constante), mas devagar:
+$dT_d/dz \simeq -1{,}8$\,K/km (dedução no T4). As curvas se aproximam a
+$8{,}0$\,K/km:
+\[ z_{LCL} = \frac{T - T_d}{8{,}0\ \mathrm{K/km}}
+ = 0{,}125\ \mathrm{km/K}\times (T - T_d). \]
+\end{formadif}
+
+\begin{formalivro}[Stull eq.~4.16]
+\[ z_{LCL} = a\,(T - T_d),\qquad a = 0{,}125\ \mathrm{km\,°C^{-1}}. \]
+\end{formalivro}
+
+\begin{noquadro}[medir umidade olhando pela janela]
+base plana dos cumulus $=$ LCL\\[2pt]
+$T = 30\,°$C, $T_d = 20\,°$C $\Rightarrow$ base a
+$0{,}125\times10 = 1{,}25$\,km\\[2pt]
+quanto mais seco o ar, mais alta a base.
+\end{noquadro}
+
+No diagrama termodinâmico, o LCL é a regra de Normand: suba a adiabática
+seca por $T$ e a iso-umidade por $T_d$; o cruzamento é o LCL
+\veremos{5}{regra de Normand no Skew-$T$}. No notebook (Caso~3)
+comparamos a regra linear com o cálculo exato do MetPy (diferença
+$<5\%$).
+
+\section{Temperatura de bulbo úmido}
+
+Evaporação forçada esfria o termômetro até $T_w$
+($T_d \le T_w \le T$, com igualdades só na saturação):
+
+\begin{formalivro}[equação psicrométrica]
+\[ r = r_s(T_w) - \gamma\,(T - T_w),\qquad
+\gamma = \frac{C_p}{L_v} \simeq 0{,}40\ \mathrm{g\,kg^{-1}\,K^{-1}}
+\ \ (\text{a } P = 100\ \mathrm{kPa}). \]
+Medir $T$ e $T_w$ com dois termômetros baratos $\Rightarrow$ obter $r$.
+É o balanço do Cap.~3 em miniatura: o calor sensível cedido pelo ar paga o
+calor latente da evaporação \javimos{3}{razão de Bowen}.
+\end{formalivro}
+
+$T_w$ é também o limite fisiológico: bulbo úmido acima de $\sim 35\,°$C
+impede o resfriamento por suor — o limite de habitabilidade em ondas de
+calor úmidas \veremos{21}{extremos de calor}. E é $T_w$ (não $T$!) que
+decide chuva vs.\ neve, porque o floco que cai evapora e se resfria
+\veremos{7}{fase da precipitação}.
+
+\section{Água total e água precipitável}\label{sec:total}
+
+Água total da parcela: $r_T = r + r_L + r_i$ (vapor + líquido + gelo),
+conservada em nuvem fechada sem chuva — a versão úmida da etiqueta
+$(\theta, r)$ \javimos{4}{razão de mistura, \S\ref{sec:variaveis}}.
+
+\begin{formadif}[quanta chuva cabe no céu]
+Somando o vapor de toda a coluna (a mesma integral de massa do Cap.~1
+\javimos{1}{massa da coluna}):
+\[ W = \frac{1}{\rho_{liq}\,g}\int_{0}^{P_{sfc}} r\,dP
+\qquad \text{(altura de água líquida, em mm).} \]
+\end{formadif}
+
+\begin{noquadro}[valores de $W$ para calibrar]
+polar seco: $\sim5$\,mm \quad subtropical: 20--30\,mm \quad tropical
+úmido: 50--70\,mm\\[2pt]
+uma tempestade que ``chove 80\,mm'' importou vapor por
+\emph{convergência} — não esvaziou só a própria coluna.
+\end{noquadro}
+
+``Rios atmosféricos'' — filetes de 400\,km de largura com $W$ alto e vento
+forte — transportam mais água que o Amazonas
+\veremos{13}{rios atmosféricos}. Cálculo de $W$ com MetPy no Caso~4.
+
+\section{Balanço euleriano de água}\label{sec:balanco}
+
+\quadro{Mesmo cubo euleriano do Cap.~3 no quadro, agora contabilizando
+$r_T$: advecção, fluxo turbulento, fontes e sumidouros.}
+
+\begin{formalivro}[balanço de umidade, forma simplificada]
+\[ \frac{\Delta r_T}{\Delta t} \simeq
+ -\,U\frac{\Delta r_T}{\Delta x}
+ \;-\;\frac{\Delta F_{z,turb}}{\Delta z}
+ \;+\;\text{(fontes: evaporação; sumidouros: precipitação)}. \]
+Evaporação de superfície (fórmula \emph{bulk}, par do $F_H$
+\javimos{3}{fórmula bulk}):
+$F_{water} = C_E\,M\,(q_{sfc} - q_{ar})$, $C_E \sim 2\times10^{-3}$.
+\end{formalivro}
+
+Fechamos um ciclo de três capítulos: radiação fornece $F^*$
+\javimos{2}{balanço radiativo}; Bowen decide quanto vira $F_E$
+\javimos{3}{balanço de superfície}; o vapor sobe, condensa no LCL (este
+capítulo) — e o Cap.~5 decide se a nuvem cresce
+\veremos{5}{estabilidade}.
+
+\section{Instrumentos}
+
+Psicrômetro (par seco/úmido), higrômetro capacitivo (estações automáticas
+e celulares), espelho resfriado ($T_d$ direto, padrão de calibração),
+GPS-meteorologia (o atraso úmido do sinal $\propto W$ — cada antena GNSS é
+um pluviômetro de vapor) \veremos{8}{sondagem remota}.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \frac{de_s}{dT} = \frac{L_v e_s}{\Re_v T^2}
+ \;\to\; e_s(T)\ \text{(dobra a cada 10\,K)}
+ \;\to\; r = \frac{\varepsilon e}{P-e} \]
+\[ z_{LCL} = 0{,}125\,(T-T_d) \qquad
+   W = \frac{1}{\rho_{liq}\, g}\!\int\! r\,dP \]
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap04\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item A partir de $de_s/dT = L_v e_s/(\Re_v T^2)$, integre com $L_v$
+        constante e obtenha a fórmula do livro. Estime o erro de assumir
+        $L_v$ constante sabendo que $L_v(T) \simeq 2{,}501 - 0{,}00237\,
+        (T-273{,}15)$\,MJ/kg.
+  \item Mostre que $e_s$ cresce $\sim$7\,\%/K perto de 300\,K
+        (calcule $d\ln e_s/dT$) e conecte com a intensificação de chuvas
+        extremas num clima 2\,K mais quente.
+  \item Deduza $r = \varepsilon e/(P-e)$ a partir das leis de gás ideal
+        para vapor e ar seco.
+  \item Justifique $z_{LCL} = 0{,}125\,(T-T_d)$: mostre que
+        $dT_d/dz \simeq -\Re_v T_d^2\,g/(L_v \Re_d T)$ numa subida com $r$
+        constante e avalie numericamente.
+  \item Derive $W = (1/\rho_{liq}g)\int r\,dP$ a partir da massa de vapor
+        numa coluna (use o resultado T4 do Cap.~1) e calcule $W$ para uma
+        atmosfera idealizada com $r(P) = r_0 (P/P_0)^3$, $r_0 = 20$\,g/kg.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Integre a EDO de Clausius--Clapeyron com $L_v(T)$ variável e
+        compare com a fórmula de $L_v$ constante entre $-40$ e $+40\,°$C;
+        trace o erro relativo.
+  \item Psicrômetro digital: dado $(T, T_w, P)$, resolva a equação
+        psicrométrica para $r$ e UR (com \texttt{scipy.optimize.brentq}) e
+        valide contra o MetPy.
+  \item Para a sondagem tropical do curso, calcule o LCL exato (MetPy) e
+        pela regra dos 125\,m/°C; estime a base de nuvem ao longo de um dia
+        em que $T$ sobe de 24 a 33\,°C com $T_d = 21\,°$C fixo.
+  \item Água precipitável: compare $W$ da sondagem tropical com uma versão
+        resfriada em 10\,K com a mesma UR; verifique a taxa de
+        $\sim$7\,\%/K.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

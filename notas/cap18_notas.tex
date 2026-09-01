@@ -1,0 +1,193 @@
+% Notas de aula — Capítulo 18: Camada Limite Atmosférica
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap18/}}
+
+\title{Capítulo 18 --- Camada Limite Atmosférica\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:ciclo}--\S\ref{sec:sup} (o ciclo diurno, a
+camada de mistura, a camada superficial e o perfil log).
+\emph{Aula 2:} \S\ref{sec:turb}--\S\ref{sec:noturna} (turbulência, TKE,
+espectros, a noite estável e o jato de Blackadar).
+
+\section{Onde vivemos}\label{sec:ciclo}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~18 --- Camada Limite Atmosférica (CLA)}\\[2pt]
+o 1\,km inferior, que responde à superfície em $\lesssim$1\,h
+\javimos{1}{camadas}\\
+DE DIA: convectiva, bem misturada, funda ($\sim$1--3\,km)\\
+DE NOITE: estável, rasa ($\sim$100\,m), com jato em cima\\[2pt]
+o elo entre o chão (Cap.~3) e a atmosfera livre (Caps.~10--13)
+\end{noquadro}
+
+\quadro{Desenhar o ``dia da CLA'' (o sanduíche temporal clássico):
+camada de mistura crescendo de manhã, camada residual à noite, camada
+estável rasa junto ao chão, e recomeço. Este desenho organiza as duas
+aulas.}
+
+O motor é o ciclo do balanço de superfície \javimos{3}{$F_H$, $F_E$}:
+de dia $F_H>0$ produz térmicas; de noite o resfriamento radiativo
+\javimos{2}{noite clara} estabiliza. Todos os perfis do Cap.~5 (o
+$\theta_v$ constante da camada de mistura, a inversão de tampa
+\javimos{5}{estabilidade não local}) ganham aqui sua história de vida.
+
+\section{A camada de mistura e seu crescimento}\label{sec:mistura}
+
+\begin{formadif}[encroachment (T1; Caso~1)]
+O calor da superfície corrói a estratificação $\gamma$ de cima:
+\[ \frac{dz_i}{dt} = \frac{F_H}{\rho C_p\,\gamma\,z_i}
+\quad\Rightarrow\quad
+z_i(t) = \sqrt{z_0^2 + \frac{2}{\rho C_p\gamma}\int_0^t F_H\,dt'}. \]
+Cresce como raiz do calor acumulado: rápido de manhã, saturando à
+tarde. Deserto: $z_i \sim 3$--4\,km; floresta: $\sim$1\,km (N1) — o
+Bowen \javimos{3}{Bowen} decide.
+\end{formadif}
+
+\begin{noquadro}[por que $z_i$ importa]
+teto dos cumulus de bom tempo ($z_i$ encontra o LCL
+\javimos{4}{LCL})\\
+volume de diluição da poluição \veremos{19}{caixa de mistura}\\
+altura das térmicas de planador; profundidade das ruas de nuvens
+\javimos{6}{ruas}
+\end{noquadro}
+
+O topo tem a \textbf{zona de entranhamento}: as térmicas perfuram a
+inversão e engolfam ar da atmosfera livre — o mesmo entranhamento que
+dilui cumulus \javimos{14}{entranhamento}, agora como mecanismo de
+crescimento.
+
+\section{A camada superficial e o perfil log}\label{sec:sup}
+
+\quadro{Deduzir o log no quadro por análise dimensional: perto do chão
+o único comprimento é $z$; anunciar que é o primeiro de três
+argumentos dimensionais da aula (log, TKE, $-5/3$).}
+
+\begin{formadif}[o perfil logarítmico (T2; Caso~2)]
+Tensão constante $\overline{u'w'} = -u_*^2$ e comprimento de mistura
+$\ell = kz$:
+\[ \frac{d\bar u}{dz} = \frac{u_*}{k\,z}
+\quad\Rightarrow\quad
+\bar u(z) = \frac{u_*}{k}\ln\frac{z}{z_0},\qquad k = 0{,}4. \]
+$z_0$ (rugosidade): mar $\sim$0{,}1\,mm; grama $\sim$1\,cm; cidade
+$\sim$1\,m. Estabilidade corrige (Monin--Obukhov); o caso neutro é o
+log puro.
+\end{formadif}
+
+Aplicação que paga salários: potência eólica $\propto \bar u^3$ — o
+perfil log decide a altura da torre (N2), e a fórmula \emph{bulk} dos
+fluxos \javimos{3}{fórmulas bulk} é o log disfarçado.
+
+\section{Turbulência: TKE e o espectro}\label{sec:turb}
+
+\begin{formadif}[o orçamento de TKE (T3)]
+\[ \frac{de}{dt} =
+\underbrace{-\overline{u'w'}\frac{d\bar u}{dz}}_{\text{mecânica}}
++ \underbrace{\frac{g}{\theta_v}\overline{w'\theta_v'}}_{\text{térmica}}
+- \varepsilon + \text{transporte}. \]
+Dia: térmica domina (térmicas largas, convecção); noite: térmica
+NEGATIVA consome — o fluxo de Richardson $R_f$ decide se a turbulência
+sobrevive \javimos{5}{Richardson}.
+\end{formadif}
+
+\begin{formalivro}[Kolmogorov (T5; Caso~3)]
+\[ S(\kappa) = C\,\varepsilon^{2/3}\kappa^{-5/3}
+\qquad(\text{intervalo inercial}). \]
+Energia entra nos turbilhões grandes ($\sim z_i$), cascateia sem
+dissipar pelo $-5/3$ e morre na escala de Kolmogorov ($\sim$1\,mm).
+Análise dimensional pura — e o espectro sintético do Caso~3 confere.
+\end{formalivro}
+
+Sem escala própria entre $z_i$ e 1\,mm: a mesma autossimilaridade das
+nuvens fractais \javimos{6}{fractais}. É por isso que modelos nunca
+resolvem a turbulência — parametrizam seus fluxos
+\veremos{20}{parametrizações}.
+
+\section{A noite: camada estável e o jato de Blackadar}
+\label{sec:noturna}
+
+\quadro{Encenar o pôr do sol: as térmicas morrem, o atrito ``desliga''
+para o ar acima da inversão rasa — e o vento fica livre para girar.}
+
+\begin{formadif}[a oscilação inercial (T4; Caso~4)]
+Sem atrito, o vetor ageostrófico gira:
+\[ \frac{d}{dt}\bigl[(u - U_g) + iv\bigr] = -if\,\bigl[(u-U_g)+iv\bigr]
+\quad\Rightarrow\quad \text{círculo de período } \frac{2\pi}{|f|}. \]
+O déficit diurno vira \emph{excesso} de madrugada: o \textbf{jato
+noturno} supergeostrófico a 100--500\,m — o mesmo círculo inercial do
+Cap.~10 \javimos{10}{círculos inerciais}, agora com utilidade.
+\end{formadif}
+
+\begin{noquadro}[a noite estável em três fenômenos]
+jato noturno: transporta umidade e alimenta tempestades noturnas (os
+MCCs do Prata \javimos{14}{MCC})\\
+turbulência intermitente: $Ri$ oscila em torno do crítico
+\javimos{5}{$Ri$}\\
+piscinas frias de vale e geada \javimos{17}{catabáticos}; poluição
+presa \veremos{19}{inversão e episódios}
+\end{noquadro}
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ z_i \propto \sqrt{\textstyle\int F_H dt} \qquad
+\bar u = \frac{u_*}{k}\ln\frac{z}{z_0} \qquad
+S \propto \varepsilon^{2/3}\kappa^{-5/3} \qquad
+T_{jato} = \frac{2\pi}{|f|} \]
+um dia inteiro da CLA: cresce com o sol, loga perto do chão,
+cascateia no meio e gira à noite
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap18\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Resolva a EDO do encroachment e mostre que
+        $z_i^2 - z_0^2 \propto \int F_H\,dt$; interprete o quadrado
+        geometricamente (área do triângulo de aquecimento).
+  \item Deduza o perfil logarítmico a partir de tensão constante e
+        comprimento de mistura $\ell = kz$, e explique o significado
+        de $z_0$.
+  \item Escreva o orçamento de TKE, identifique produção mecânica e
+        térmica, e explique o papel do fluxo de Richardson na morte da
+        turbulência noturna.
+  \item Resolva a oscilação de Blackadar em variável complexa e mostre
+        que o pico do jato vale $U_g + |{\vec V}_{18h} - \vec U_g|$
+        meia volta inercial depois.
+  \item Obtenha o $-5/3$ de Kolmogorov por análise dimensional com
+        $\varepsilon$ e $\kappa$, e estime a escala dissipativa
+        $\eta = (\nu^3/\varepsilon)^{1/4}$.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Mapeie o $z_i$ do fim da tarde no plano
+        ($F_H^{max}$, $\gamma$) e compare floresta × deserto.
+  \item Calcule a potência eólica relativa a 60/100/150\,m nos três
+        terrenos; quanto rende subir a torre em cada um?
+  \item Reamostre o sinal turbulento (1\,Hz, 0{,}1\,Hz) e mostre o
+        encurtamento do inercial e o aliasing.
+  \item Trace período e hora do pico do jato de Blackadar para 10°,
+        23{,}5°, 45° e 60°S; onde o pico cabe na noite?
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

@@ -1,0 +1,555 @@
+% Notas de aula — Capítulo 1: Fundamentos da Atmosfera
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Roteiro de quadro-negro:
+%   - caixas verdes "Escrever no quadro" = conteúdo literal a escrever no quadro;
+%   - linhas verdes com seta = instruções de encenação (desenhos, perguntas);
+%   - caixas azul/vermelha = as duas formas de cada lei; caixa marrom = exemplos.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap01/}}
+
+\title{Capítulo 1 --- Fundamentos da Atmosfera\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:intro}--\S\ref{sec:estrutura} (convenções, estado termodinâmico, estrutura vertical).
+\emph{Aula 2:} \S\ref{sec:gas}--\S\ref{sec:processos} (lei dos gases, equilíbrio hidrostático, equação hipsométrica, processos).
+
+\section{Introdução}\label{sec:intro}
+
+\begin{noquadro}[abertura da aula]
+\textbf{Cap.~1 --- Fundamentos da Atmosfera}\\[2pt]
+Meteorologia $=$ física de um fluido (o ar) sobre uma esfera em rotação,
+aquecida de forma desigual pelo Sol.\\[4pt]
+Quatro ingredientes governam tudo:
+\begin{enumerate}[itemsep=0pt,topsep=2pt]
+  \item conservação de massa (continuidade);
+  \item conservação de momento (2ª lei de Newton, referencial girante);
+  \item conservação de energia (1ª lei da termodinâmica);
+  \item equação de estado (lei dos gases ideais).
+\end{enumerate}
+\end{noquadro}
+
+Vale gastar cinco minutos nesta lista: ela é o \emph{mapa do curso inteiro}.
+A continuidade aparecerá quando falarmos de convergência e subsidência
+\veremos{10}{divergência}; a 2ª lei de Newton num referencial girante é o
+coração dos ventos \veremos{10}{força de Coriolis}; a 1ª lei da termodinâmica
+governa o aquecimento e a convecção \veremos{3}{balanço de calor}; e a equação
+de estado é usada já hoje. A mensagem: \emph{não há nada de exótico na
+atmosfera} — é a física que os alunos já conhecem, aplicada a um sistema com
+geometria e forçantes particulares.
+
+Quase todo fenômeno meteorológico nasce de um único desequilíbrio: o Sol
+aquece mais o equador que os polos, e a atmosfera (com os oceanos) transporta
+esse excesso de energia \veremos{11}{circulação geral}. No caminho, o vapor
+d'água condensa e libera calor latente \veremos{4}{umidade}
+\veremos{7}{precipitação}, o ar gira por causa da rotação da Terra
+\veremos{10}{ventos} e o resultado organizado chamamos de ``tempo''
+\veremos{12}{massas de ar e frentes}.
+
+A \textbf{composição do ar seco} (frações molares, homogênea até
+$\sim$100\,km pela mistura turbulenta): N$_2$ 78{,}08\,\%, O$_2$ 20{,}95\,\%,
+Ar 0{,}93\,\%, CO$_2$ $\sim$0{,}04\,\% (e crescendo $\sim$2,5\,ppm/ano — tema
+do Cap.~21 \veremos{21}{mudança climática}). O vapor d'água varia de
+$\sim 0$ a $4\,\%$: é o único constituinte que muda de fase nas temperaturas
+terrestres, e por isso será tratado à parte \veremos{4}{vapor d'água}.
+
+\quadro{Enfatizar: o livro do Stull usa formas algébricas (o público original
+não tinha cálculo); nós escreveremos SEMPRE as duas formas lado a lado — a
+algébrica do livro, para leitura e provas, e a diferencial, que conecta com a
+mecânica dos fluidos que vocês conhecem.}
+
+\section{Convenções meteorológicas}\label{sec:conv}
+
+Antes de qualquer física, precisamos falar a língua da área. Dois pontos
+pegam \emph{todo} iniciante: a direção do vento e o sistema de eixos.
+
+\quadro{Desenhar uma rosa dos ventos com $0°=$N, $90°=$E, $180°=$S,
+$270°=$W, e um vetor de vento entrando pela esquerda (vento de oeste).}
+
+\begin{noquadro}[convenções que valem o curso inteiro]
+\textbf{Direção do vento} $=$ direção \emph{de onde} o vento \emph{vem},
+em graus, sentido horário a partir do Norte.\\
+``Vento de oeste'' ($270°$) $\Rightarrow$ sopra de W para E.\\[4pt]
+Eixos e componentes (sempre):\quad $x\to$ leste ($u$),\quad
+$y\to$ norte ($v$),\quad $z\to$ cima ($w$).
+\end{noquadro}
+
+Por que a convenção ``de onde vem''? Herança náutica e prática: o vento que
+\emph{vem} do mar traz umidade; o que vem do continente, ar seco — a origem
+carrega a informação da massa de ar \veremos{12}{massas de ar}. Note o
+contraste com a matemática: um ângulo medido no sentido horário a partir do
+eixo $+y$, não anti-horário a partir de $+x$. A conversão entre as duas
+convenções é fonte inesgotável de erros de código — o Caso~2 do notebook
+existe para vacinar contra isso.
+
+\begin{formalivro}[direção do vento a partir das componentes]
+\[ \alpha = 90° - \frac{360°}{2\pi}\,\arctan\!\left(\frac{v}{u}\right) + \alpha_0,
+\qquad \alpha_0 = 180° \text{ se } u>0,\; \alpha_0=0 \text{ se } u<0. \]
+\end{formalivro}
+
+\begin{formadif}[a mesma conta sem casos especiais]
+Em código, usar sempre a arco-tangente de dois argumentos:
+\[ \alpha = \operatorname{mod}\bigl(270° - \operatorname{atan2}(v,\,u)\cdot 180°/\pi,\ 360°\bigr), \]
+que resolve os quadrantes automaticamente. Velocidade: $M=\sqrt{u^2+v^2}$.
+\end{formadif}
+
+\quadro{Exemplo rápido no quadro: $u=-5$\,m/s, $v=0$ $\Rightarrow$ o ar anda
+para oeste, logo VEM do leste: vento de leste, $\alpha=90°$. Pedir mais dois
+à turma ($u=0,v=5$; $u=v=3$).}
+
+\section{Referenciais terrestres}\label{sec:terra}
+
+Latitude $\phi$, longitude $\lambda$; raio médio da Terra
+$R_T \simeq 6371$\,km. Um grau de latitude corresponde a
+$2\pi R_T/360 \simeq 111$\,km — número que usaremos para converter gradientes
+de pressão de cartas sinóticas em forças \veremos{10}{força do gradiente de
+pressão}. Um grau de \emph{longitude} vale $111\cos\phi$\,km — encolhe até
+zero nos polos.
+
+\quadro{Desenhar observador, objeto no céu (sol, balão, satélite) e marcar os
+três ângulos da caixa abaixo.}
+
+\begin{noquadro}[ângulos locais]
+Azimute $\alpha$: horizontal, horário a partir do Norte, até a projeção do
+objeto no solo.\\
+Elevação $\Psi$: acima do horizonte.\\
+Zênite $\zeta$: a partir da vertical; $\ \zeta = 90° - \Psi$.
+\end{noquadro}
+
+Esses ângulos voltarão em dois papéis centrais: o ângulo zenital do Sol
+comanda quanta radiação chega ao solo \veremos{2}{radiação} e as antenas de
+radar apontam por azimute e elevação \veremos{8}{sensoriamento remoto}.
+
+\textbf{Tempo}: toda observação meteorológica é registrada em UTC (tempo
+universal coordenado) — uma rede mundial só funciona com um relógio só.
+Cartas sinóticas são traçadas em 00, 06, 12 e 18\,UTC
+\veremos{9}{cartas sinóticas}; o Brasil continental fica em UTC$-3$
+(sem horário de verão desde 2019).
+
+\section{Estado termodinâmico}\label{sec:estado}
+
+\begin{noquadro}
+O estado local do ar fica definido por três números: $(P,\ T,\ \rho)$\\
+--- e uma equação de estado liga os três $\Rightarrow$ só dois são
+independentes.
+\end{noquadro}
+
+Este é o mesmo enunciado da termodinâmica de equilíbrio: um gás simples tem
+dois graus de liberdade termodinâmicos. A umidade acrescentará uma quarta
+variável \veremos{4}{razão de mistura}, e a meteorologia inventará dezenas de
+``temperaturas'' derivadas ($T_v$ hoje; potencial $\theta$ no Cap.~3; de
+bulbo úmido, equivalente\ldots\ no Cap.~4) — todas são apenas combinações
+convenientes dessas variáveis básicas.
+
+\subsection{Temperatura}
+
+Temperatura mede o movimento molecular: energia cinética média de
+$\tfrac12 k_B T$ por grau de liberdade. A rigor, portanto, $T$ só está
+definida para um \emph{conjunto} grande de moléculas — o que em 1\,mm$^3$ de
+ar ($\sim 10^{16}$ moléculas) nunca é problema.
+
+\begin{formalivro}[conversões]
+\[ T\,[\mathrm{K}] = T\,[°\mathrm{C}] + 273{,}15, \qquad
+   T\,[°\mathrm{C}] = \tfrac{5}{9}\,(T\,[°\mathrm{F}] - 32). \]
+\end{formalivro}
+
+\quadro{Avisar com ênfase: TODA fórmula física do curso usa kelvin. O erro
+de usar °C numa lei de gases ou numa razão de temperaturas é o erro numérico
+mais comum do semestre.}
+
+Valores para calibrar a intuição: padrão ao nível do mar
+$T=15\,°$C$\,=288{,}15$\,K; recorde de calor $\sim 57\,°$C; de frio
+$\sim -89\,°$C; tropopausa tropical $\sim -80\,°$C
+\javimos{1}{atmosfera padrão, \S\ref{sec:estrutura}}.
+
+\subsection{Pressão}
+
+Pressão é força normal por área, das colisões moleculares. Ponto sutil que o
+Stull destaca (Fig.~1.7 do livro): num fluido em repouso a pressão é
+\emph{isotrópica} — empurra igualmente em todas as direções, inclusive para
+cima. É por isso que a pressão pode sustentar o peso do ar de cima
+(\S\ref{sec:hidro}) e por que não sentimos os $\sim 10^4$\,kg de ar sobre
+cada m$^2$ dos nossos ombros.
+
+\begin{formalivro}[unidades]
+\[ 1\ \mathrm{kPa} = 10\ \mathrm{hPa} = 10\ \mathrm{mb};\qquad
+P_{\text{nível do mar}} = 101{,}325\ \mathrm{kPa} \simeq 1013{,}25\ \mathrm{hPa}. \]
+\end{formalivro}
+
+O livro usa kPa; a prática operacional (METAR, cartas) usa hPa
+\veremos{9}{METAR}. Cobrar fluência nas duas — o fator é só $10\times$, mas
+em prova ele derruba gente.
+
+A pressão decai quase exponencialmente com a altura:
+
+\begin{formalivro}[perfil de pressão, Stull eq.~1.9]
+\[ P \simeq P_0\, e^{-z/H_p}, \qquad H_p = 7{,}29\ \mathrm{km}
+\ \ (\text{escala de altura da pressão}). \]
+\end{formalivro}
+
+\begin{formadif}[de onde vem a exponencial]
+Combinando equilíbrio hidrostático ($dP/dz=-\rho g$, \S\ref{sec:hidro}) com a
+lei dos gases ($\rho = P/\Re_d T$, \S\ref{sec:gas}) numa atmosfera isotérmica:
+\[ \frac{dP}{P} = -\frac{g}{\Re_d T}\,dz
+\quad\Longrightarrow\quad
+P(z) = P_0\, \exp\!\left(-\frac{z}{H}\right),\qquad H = \frac{\Re_d T}{g}. \]
+Com $T\simeq250$\,K (média da troposfera), $H\simeq7{,}3$\,km — o valor
+empírico do livro. A atmosfera real não é isotérmica, por isso a exponencial
+é só uma (excelente) aproximação.
+\end{formadif}
+
+\begin{noquadro}[números para levar de cor]
+$P$ cai à metade a cada $\sim 5{,}5$\,km\quad
+($H_p \ln 2 = 7{,}29\times0{,}693$).\\
+Em $z=5{,}5$\,km: $\sim 50$\,kPa (metade da atmosfera abaixo de você).\\
+Everest ($8{,}8$\,km): $\sim 30$\,kPa. Cruzeiro de avião ($11$\,km):
+$\sim 22$\,kPa.
+\end{noquadro}
+
+\quadro{Desenhar $P(z)$ em escala linear e, ao lado, em escala mono-log — a
+reta no gráfico log é o teste visual da exponencial. (Caso~1 do notebook
+refaz este gráfico com a atmosfera padrão ICAO.)}
+
+\subsection{Densidade}
+
+\begin{formalivro}[perfil de densidade, Stull eq.~1.13]
+\[ \rho \simeq \rho_0\, e^{-z/H_\rho}, \qquad
+\rho_0 = 1{,}2250\ \mathrm{kg/m^3},\quad H_\rho = 8{,}55\ \mathrm{km}. \]
+\end{formalivro}
+
+Pergunta para a turma: por que $H_\rho \neq H_p$? (Resposta: $\rho=P/\Re_d T$;
+como $T$ também cai com a altura na troposfera, $\rho$ cai \emph{mais devagar}
+que $P$. Se $T$ fosse constante, as duas escalas coincidiriam — é exatamente
+o exercício T1.)
+
+A densidade é a variável ``invisível'' — não há densímetro de ar nas
+estações; ela é sempre \emph{calculada} da lei dos gases. Mas é ela que entra
+no empuxo \veremos{5}{estabilidade e flutuabilidade} e na potência extraível
+do vento \veremos{18}{energia eólica}.
+
+\section{Estrutura vertical da atmosfera}\label{sec:estrutura}
+
+\subsection{Atmosfera padrão}
+
+\quadro{Desenhar o perfil $T(z)$ da atmosfera padrão de 0 a 50\,km, com as
+camadas e as pausas nomeadas. Este desenho fica no quadro até o fim da aula —
+tudo que vier depois se pendura nele.}
+
+\figlivro{fig_01_10.jpg}{0.5}{Atmosfera padrão: perfil vertical de
+temperatura com as camadas atmosféricas.}{Fig.~1.10}
+
+A ``atmosfera padrão'' ICAO é uma atmosfera de referência, por convenção
+internacional: útil para calibrar altímetros, projetar aeronaves e — para
+nós — como estado de fundo contra o qual comparar sondagens reais
+\veremos{5}{sondagens e diagramas termodinâmicos}.
+
+\begin{noquadro}[atmosfera padrão ICAO]
+\begin{tabular}{lll}
+Camada & Intervalo & Gradiente \\
+\hline
+Troposfera & 0--11\,km & $-6{,}5$\,K/km (de $288{,}15$\,K) \\
+Tropopausa/estrat.\ inferior & 11--20\,km & isotérmica, $216{,}65$\,K \\
+Estratosfera média & 20--32\,km & $+1{,}0$\,K/km \\
+Estratosfera superior & 32--47\,km & $+2{,}8$\,K/km \\
+Estratopausa & 47--51\,km & isotérmica, $270{,}65$\,K \\
+\end{tabular}
+\end{noquadro}
+
+\begin{formalivro}[troposfera padrão]
+\[ T(z) = T_0 - \gamma\, z, \qquad T_0 = 288{,}15\ \mathrm{K},\quad
+\gamma = 6{,}5\ \mathrm{K/km}\ (0 \le z \le 11\ \mathrm{km}). \]
+\end{formalivro}
+
+Atenção ao sinal: $\gamma$ (\emph{lapse rate}, taxa de decaimento) é definido
+\emph{positivo} quando $T$ cai com a altura. Guardar este $6{,}5$\,K/km: ele
+será comparado com os gradientes adiabáticos seco ($9{,}8$\,K/km) e úmido
+($\sim 4$--$7$\,K/km) para decidir estabilidade \veremos{3}{gradiente
+adiabático} \veremos{5}{estabilidade estática}.
+
+\subsection{Camadas e suas físicas}
+
+O perfil de $T$ não é decorativo: cada mudança de sinal do gradiente denuncia
+\emph{onde a atmosfera absorve energia}.
+
+\begin{itemize}
+  \item \textbf{Troposfera} (0--11\,km): contém $\sim 80\%$ da massa e
+  praticamente todo o ``tempo''. $T$ cai com $z$ porque a fonte de calor é a
+  \emph{superfície} (aquecida pelo Sol) \veremos{2}{balanço radiativo};
+  aquecida por baixo, ela convecta como uma panela no fogo
+  \veremos{3}{convecção}.
+  \item \textbf{Estratosfera} (11--51\,km): $T$ \emph{cresce} com $z$ porque o
+  ozônio absorve UV — uma fonte de calor \emph{no topo}. Aquecida por cima,
+  é estratificada e estável (daí o nome): convecção suprimida, nuvens raras,
+  é onde voam os jatos comerciais fugindo da turbulência
+  \veremos{5}{estabilidade}.
+  \item \textbf{Mesosfera} (51--85\,km): sem absorvedor, $T$ volta a cair.
+  \textbf{Termosfera} (acima): UV extremo, $T$ sobe de novo (mas com
+  densidade tão baixa que ``temperatura'' ali quase não aquece nada).
+  \item \textbf{Camada limite atmosférica} (0--1\,km típico): a porção da
+  troposfera que responde à superfície em $\lesssim 1$\,h, com ciclo diurno
+  forte. É onde vivemos; ganha um capítulo próprio \veremos{18}{camada
+  limite}.
+\end{itemize}
+
+\subsection{Um comentário sobre pesos e medidas}
+
+A coluna inteira de ar pesa $P_0/g \simeq 10^4$\,kg por m$^2$ — dez
+toneladas sobre cada metro quadrado (exercício T4 pede a massa total da
+atmosfera). A metade de baixo cabe nos primeiros $5{,}5$\,km: a atmosfera é
+uma película — espessura de $\sim 0{,}1\%$ do raio terrestre — e é essa
+razão de aspecto extrema que tornará excelentes as aproximações hidrostática
+(\S\ref{sec:hidro}) e ``rasa'' da dinâmica \veremos{10}{aproximações da
+dinâmica}.
+
+\section{Equação de estado --- lei dos gases ideais}\label{sec:gas}
+
+\begin{noquadro}[a equação mais usada do curso]
+\[ \boxed{\,P = \rho\, \Re_d\, T\,}\qquad
+\Re_d = 287\ \mathrm{J\,kg^{-1}\,K^{-1}} =
+0{,}287\ \mathrm{kPa\,K^{-1}\,m^3\,kg^{-1}} \]
+vale para ar seco; para ar úmido, trocar $T \to T_v$ (abaixo).
+\end{noquadro}
+
+\begin{formadif}[conexão com a física estatística]
+Da forma molecular $PV = N k_B T$, dividindo pela massa $M = N\bar m$:
+\[ P = \frac{N k_B T}{V} = \rho\,\frac{k_B}{\bar m}\,T \equiv \rho\,\Re\,T, \]
+ou seja, $\Re = k_B/\bar m = R^*/M_{\text{molar}}$: constante universal
+$R^* = 8{,}314$\,J\,mol$^{-1}$K$^{-1}$ dividida pela massa molar média do ar
+seco ($28{,}97$\,g/mol) $\Rightarrow \Re_d = 287$\,J\,kg$^{-1}$K$^{-1}$.
+A meteorologia prefere a forma com $\rho$ (em vez de $V$) porque o ar não tem
+``recipiente'': trabalhamos com campos locais e intensivos.
+\end{formadif}
+
+Por que podemos tratar o ar como ideal? As correções de gás real (van der
+Waals) escalam com a razão entre o volume das moléculas e o volume
+disponível; nas condições atmosféricas isso dá desvios $<0{,}2\%$ — menor
+que a incerteza dos termômetros operacionais.
+
+\subsection{Temperatura virtual}
+
+Fato contraintuitivo que decide tempestades: ar úmido é \emph{menos} denso
+que ar seco à mesma $(P,T)$, porque a molécula de água (18\,g/mol) é mais
+leve que a média do ar (29\,g/mol) — cada H$_2$O que entra na mistura
+\emph{substitui} um N$_2$ ou O$_2$. Em vez de trocar a constante $\Re$ a cada
+umidade, a meteorologia corrige a temperatura:
+
+\begin{formalivro}[Stull eq.~1.21]
+\[ T_v = T\,\bigl(1 + 0{,}61\, r - r_L - r_I\bigr), \]
+com $r$ = razão de mistura de vapor, $r_L,\ r_I$ = razões de mistura de água
+líquida e gelo (g/g) \veremos{4}{razão de mistura}. Então
+$P=\rho\,\Re_d\,T_v$ vale para ar úmido e até nublado.
+\end{formalivro}
+
+Leitura da fórmula: o vapor ($+0{,}61r$) \emph{alivia} o ar; gotículas e
+cristais em suspensão ($-r_L-r_I$) são lastro que o \emph{pesa}. $T_v$ é a
+temperatura que o ar \emph{seco} precisaria ter para ficar com a densidade do
+ar úmido real.
+
+\quadro{Comentar: a correção é de no máximo 2--3\,K, mas é exatamente essa
+diferença que decide se uma parcela flutua ou afunda — o empuxo será definido
+com $T_v$ no Cap.~5.}\veremos{5}{CAPE e empuxo}
+
+\begin{exemplo}[temperatura virtual]
+Ar a $T=25\,°$C com $r=20$\,g/kg $=0{,}020$\,g/g, sem condensados.
+\[ T_v = (298{,}15\ \mathrm{K})\times(1+0{,}61\times0{,}020)
+       = 298{,}15\times1{,}0122 = 301{,}8\ \mathrm{K} = 28{,}6\,°\mathrm{C}. \]
+Para a dinâmica, esse ar úmido se comporta como ar seco $3{,}6$\,K mais
+quente. \emph{Verificação: $r$ adimensional em g/g; correção de poucos K,
+magnitude típica OK.}
+\end{exemplo}
+
+\section{Equilíbrio hidrostático}\label{sec:hidro}
+
+\quadro{Desenhar uma ``fatia'' de ar de área $A$ e espessura $\Delta z$, com
+as três forças: $P(z)A$ para cima, $P(z+\Delta z)A$ para baixo, peso
+$\rho A\Delta z\,g$ para baixo. A dedução inteira sai deste desenho.}
+
+Por que o ar não cai? Porque a pressão embaixo é maior que em cima
+(justamente porque há mais ar acima comprimindo), e a diferença sustenta o
+peso. Escrever esse balanço é a dedução mais importante da aula:
+
+\begin{formadif}[dedução no quadro]
+\[ \underbrace{P(z)A}_{\text{empurra p/ cima}}
+ - \underbrace{P(z+\Delta z)A}_{\text{empurra p/ baixo}}
+ - \underbrace{\rho A\,\Delta z\, g}_{\text{peso}} = 0
+\quad\Longrightarrow\quad
+\boxed{\ \frac{dP}{dz} = -\rho\, g\ } \]
+com $g=9{,}8$\,m\,s$^{-2}$.
+\end{formadif}
+
+\begin{formalivro}[Stull eq.~1.25]
+\[ \frac{\Delta P}{\Delta z} \simeq -\rho\,g. \]
+Regra prática perto da superfície: $P$ cai $\sim1$\,kPa a cada $\sim84$\,m
+de subida ($\rho\simeq1{,}2$\,kg/m$^3$).
+\end{formalivro}
+
+\begin{noquadro}[para fixar]
+hidrostática $\equiv$ ``a pressão num nível é o peso, por área, de todo o ar
+acima'':\quad $P(z) = g\displaystyle\int_z^\infty \rho\,dz'$.
+\end{noquadro}
+
+\begin{exemplo}[queda de pressão por andar]
+Prédio com $3$\,m por andar, $\rho=1{,}2$\,kg/m$^3$:
+\[ \Delta P = -\rho g\,\Delta z = -(1{,}2)(9{,}8)(3) \simeq -35\ \mathrm{Pa}
+ = -0{,}035\ \mathrm{kPa}. \]
+O barômetro MEMS de um celular resolve $\sim10$\,Pa: dá para ``pesar'' um
+andar em sala de aula — o exercício N3 usa dados reais de elevador.
+\end{exemplo}
+
+\emph{Limite de validade}: a hidrostática assume aceleração vertical
+desprezível. Vale para tudo que é largo e raso (escala sinótica: 1000\,km de
+largura por 10\,km de altura); falha \emph{dentro} de correntes convectivas
+intensas, onde $w$ muda rápido \veremos{14}{tempestades}. Os modelos
+numéricos globais são hidrostáticos; os de tempestade, não
+\veremos{20}{previsão numérica}.
+
+\section{Equação hipsométrica}\label{sec:hipso}
+
+\quadro{Anunciar o objetivo: ``medir altura com um barômetro''. As duas
+equações-mestras já estão no quadro (hidrostática + gases) — a hipsométrica
+é o primeiro fruto do casamento delas.}
+
+\begin{formadif}[dedução]
+\[ \frac{dP}{dz} = -\rho g, \qquad \rho = \frac{P}{\Re_d T_v}
+\quad\Longrightarrow\quad
+\frac{dP}{P} = -\frac{g}{\Re_d T_v}\,dz. \]
+Integrando de $(z_1,P_1)$ a $(z_2,P_2)$ com $\bar T_v$ = média da camada:
+\[ \boxed{\ z_2 - z_1 = \frac{\Re_d\,\bar T_v}{g}\,
+   \ln\!\left(\frac{P_1}{P_2}\right)\ } \]
+\end{formadif}
+
+\begin{formalivro}[Stull eq.~1.26]
+\[ z_2 - z_1 = a\,\bar T_v \ln\!\left(\frac{P_1}{P_2}\right), \qquad
+   a = \frac{\Re_d}{g} = 29{,}3\ \mathrm{m/K}. \]
+\end{formalivro}
+
+\begin{noquadro}[interpretação --- escrever por extenso]
+A espessura de uma camada entre duas isóbaras é proporcional à sua
+temperatura média:\\
+\textbf{camada quente $=$ camada espessa; camada fria $=$ camada rasa.}
+\end{noquadro}
+
+Esta frase simples é uma das mais férteis do curso: dela sairão a carta de
+espessura como termômetro operacional \veremos{9}{análise de cartas}, a
+inclinação das superfícies de pressão com a latitude e, com Coriolis, o vento
+térmico e a existência do jato \veremos{11}{vento térmico e jato}. Também é o
+princípio do altímetro barométrico de qualquer aeronave.
+
+\begin{exemplo}[espessura da camada 100--50 kPa]
+$\bar T_v = 260$\,K entre $P_1=100$\,kPa e $P_2=50$\,kPa:
+\[ \Delta z = (29{,}3\ \mathrm{m/K})(260\ \mathrm{K})\ln 2
+ = 29{,}3\times260\times0{,}693 \simeq 5280\ \mathrm{m}. \]
+A ``espessura 1000--500'' é usada como termômetro da troposfera inferior;
+regra clássica: $5400$\,m separa chuva de neve nas latitudes médias.
+\emph{Verificação: $\ln 2=0{,}693$; resultado coerente com
+$H_p\ln 2\simeq5$\,km.}
+\end{exemplo}
+
+\section{Terminologia de processos}\label{sec:processos}
+
+\quadro{Construir a tabela no quadro de dois em dois, pedindo exemplos à
+turma antes de escrever a coluna da direita.}
+
+\begin{noquadro}[dicionário de processos]
+\begin{tabular}{ll}
+isobárico & $P$ constante \\
+isotérmico & $T$ constante \\
+isostérico & volume específico $1/\rho$ constante \\
+adiabático & sem troca de calor \\
+diabático & com troca de calor \\
+isentrópico & entropia constante (adiabático reversível) \\
+\end{tabular}
+\end{noquadro}
+
+Conceito central para o próximo capítulo: a subida de uma parcela de ar é,
+em excelente aproximação, \emph{adiabática} — o ar é péssimo condutor
+térmico e a mistura com o ambiente é lenta comparada ao tempo de subida
+\veremos{3}{processo adiabático e $\theta$}. ``Diabático'' então é o resto:
+radiação \veremos{2}{aquecimento radiativo} e calor latente
+\veremos{4}{calor latente} \veremos{7}{precipitação}.
+
+\section{Instrumentos de pressão}
+
+Barômetro de mercúrio (referência histórica: $760$\,mm\,Hg
+$=101{,}325$\,kPa; Torricelli, 1643), aneróide (cápsula que deforma) e
+sensores eletrônicos capacitivos/MEMS, hoje em qualquer celular e estação
+automática. As estações reportam a pressão \emph{reduzida ao nível do mar}
+via equação hipsométrica \javimos{1}{eq.\ hipsométrica, \S\ref{sec:hipso}} —
+sem essa redução, um mapa de pressão seria só um mapa de altitude das
+estações \veremos{9}{redução ao nível do mar}.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- deixar num canto do quadro]
+\[ P = \rho\,\Re_d T_v \qquad \frac{dP}{dz} = -\rho g \]
+\[ z_2 - z_1 = a\,\bar T_v\ln\frac{P_1}{P_2} \qquad P \simeq P_0\,e^{-z/H_p} \]
+duas leis (estado, hidrostática) $+$ duas consequências (hipsométrica,
+exponencial).
+\end{noquadro}
+
+No notebook do capítulo os alunos verificam numericamente as quatro contra a
+atmosfera padrão ICAO (pacote \texttt{ambiance}) e contra uma sondagem real
+de Campo de Marte (pacote \texttt{MetPy}) \veremos{5}{sondagens}.
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Complementam os exercícios do livro (seção 1.12). Os teóricos (T) são para
+entrega escrita; os numéricos (N) resolvem-se no notebook
+\texttt{cap01\_fundamentos.ipynb}. Soluções completas (para o professor) em
+\texttt{cap01\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Mostre que numa atmosfera \emph{isotérmica} as escalas de altura de
+        pressão e densidade coincidem, $H_p = H_\rho = \Re_d T/g$, e
+        calcule-as para $T=250$\,K. Explique por que na atmosfera real
+        $H_\rho > H_p$.
+  \item Para uma troposfera com $T(z)=T_0-\gamma z$, deduza o perfil
+        politrópico
+        $P(z)=P_0\,(1-\gamma z/T_0)^{\,g/(\Re_d\gamma)}$
+        e mostre que no limite $\gamma\to0$ ele recupera a exponencial
+        isotérmica.
+  \item A partir da lei de Dalton para a mistura ar seco + vapor, com
+        $\varepsilon = M_v/M_d = 0{,}622$, deduza
+        $T_v \simeq T\,(1+0{,}61\,r)$ em primeira ordem na razão de mistura
+        $r$.
+  \item Mostre, integrando a equação hidrostática, que a massa de ar por
+        unidade de área da superfície é $m = P_0/g$, e estime a massa total
+        da atmosfera terrestre.
+  \item Mostre que a espessura da camada 1000--500\,hPa vale
+        $\Delta z = a\,\bar T_v \ln 2$ e determine o $\bar T_v$
+        correspondente ao limiar operacional de 5400\,m. Discuta o sentido
+        físico da regra chuva/neve.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Integre numericamente $dP/dz = -gP/(\Re_d T)$ com o perfil
+        politrópico do T2 (0 a 11\,km) e compare com a solução analítica;
+        trace o erro relativo.
+  \item Ajuste por mínimos quadrados a melhor escala de altura $H_p$ da
+        atmosfera padrão (0--20\,km) e ache as altitudes em que $P$ vale
+        $\tfrac12$, $\tfrac14$ e $\tfrac1{10}$ de $P_0$.
+  \item Com a série temporal de pressão de um barômetro dentro de um
+        elevador (dados no notebook), reconstrua $z(t)$ pela equação
+        hipsométrica; determine a altura do prédio e a velocidade média.
+  \item Para a sondagem do Caso~4, calcule a espessura 1000--500\,hPa com o
+        MetPy e aplique a regra dos 5400\,m; repita esfriando a sondagem em
+        30\,K.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

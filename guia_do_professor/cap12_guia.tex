@@ -1,0 +1,106 @@
+% Guia do professor — Capítulo 12: Massas de Ar e Frentes
+\section{Capítulo 12 --- Massas de Ar e Frentes}
+
+\subsection*{Visão geral e ritmo}
+
+A ponte entre a circulação geral (Cap.~11) e os ciclones (Cap.~13): onde
+o ar ganha identidade (massas) e onde as identidades colidem (frentes).
+Capítulo muito visual — cortes verticais e meteogramas rendem mais que
+equações, com duas exceções nobres: Margules e a frontogênese
+exponencial. \textbf{Ritmo: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — anticiclones como fábricas, classificação de
+        Bergeron com $(\theta_w, r)$, gênese fria (EDO no quadro),
+        modificação em trânsito. Caso~1 (10\,min).
+  \item \textbf{Aula 2} — anatomia comparada fria × quente, Margules,
+        frontogênese por deformação, oclusões e linha seca. Casos~2--4
+        (20\,min; o meteograma do Caso~4 fecha bem a aula).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item classificar massas de ar por origem e pelo par conservado
+        $(\theta_w, r)$;
+  \item estimar o tempo de gênese fria pela EDO radiativa linearizada;
+  \item calcular a inclinação frontal por Margules e ligá-la à
+        nebulosidade de cada frente;
+  \item explicar a frontogênese por deformação e sua taxa exponencial;
+  \item reconhecer passagens frontais em meteogramas e cartas
+        (isóbaras em ``V'', giro de vento no HS).
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+$\theta_w$ e $r$ como etiquetas conservadas (Cap.~4); fluxos bulk
+(Cap.~3); geostrofia e hidrostática (Caps.~1, 10); Stefan--Boltzmann
+(Cap.~2); leitura de cartas (Cap.~9).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Frente é uma linha''}: é uma \emph{zona} 3-D com
+        $\sim$100\,km de largura e uma cunha quase deitada (1/100!) —
+        o desenho em escala real é chocante e vale fazer.
+  \item \textbf{Giro de vento no HS}: N$\to$SW na fria (não S$\to$NW,
+        que é o espelho do HN dos livros importados). Insistir com a
+        rosa dos ventos no quadro.
+  \item \textbf{``A frente fria é fria''}: o que define é o
+        \emph{avanço} do ar frio; num pós-frontal de céu limpo a tarde
+        pode ser mais quente que a manhã pré-frontal.
+  \item \textbf{Margules sem cisalhamento}: sem $\Delta U$ ao longo da
+        frente não há interface inclinada estacionária — frentes são
+        estruturas dinâmicas, não ``paredes de densidade''.
+  \item \textbf{Oclusão comparando $T$}: compara-se $\theta_w$ das
+        massas frias (T5); com $T$ crua o critério erra sob inversões.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Tanque de água com divisória: água fria tingida de um lado, quente do
+outro; ao remover a divisória a cunha fria avança e a inclinação
+aparece (sem rotação ela desaba — deixe explícito que é Margules SEM o
+$f$, por isso não estaciona). Meteograma real: baixar a série da
+estação do IAG/aeroporto na última friagem e sobrepor ao Caso~4.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~12)}
+
+Aquecimento: classificação de massas para cidades dadas; tempo de
+gênese com números diferentes. Aprofundamento: inclinação frontal com
+dados de sondagem dupla; frontogênese com campo de deformação dado.
+Síntese: ``por que o HS tem frentes mais zonais e menos violentas que o
+HN?''. \emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap12\_frentes.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & gênese cP: EDO radiativa ($T^4$) vs.\ linearizada & Aula 1 \\
+2 & inclinação de Margules: varredura $\Delta T$, $\Delta U$ & Aula 2 \\
+3 & frontogênese por deformação (mini-NWP, exata) & Aula 2 \\
+4 & meteograma sintético da frente fria & fecho da Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~3 é deliberadamente a ``previsão numérica em miniatura'' da vez:
+advecção com solução exata — compare com a versão em grade (upwind) do
+Cap.~3 e anuncie o Cap.~20.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap12\_solucoes.ipynb}
+(\emph{não distribuir}): T1 e T2 verificados com \texttt{sympy}; N3
+responde uma pergunta genuína (rotação não frontogeniza). Pares:
+T2$\leftrightarrow$N1, T1$\leftrightarrow$N2, T3$\leftrightarrow$N3.
+
+\subsection*{Conexões com o resto do curso}
+
+Anticiclones e subsidência (Caps.~10--11); $(\theta_w, r)$ (Cap.~4);
+nuvens frontais (Cap.~6); meteograma e cartas (Cap.~9); a frente que
+ondula e fecha em ciclone é o Cap.~13 inteiro; linha seca e severo
+(Cap.~14); ZCAS e chuvas persistentes (Cap.~21, variabilidade).

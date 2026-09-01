@@ -1,0 +1,106 @@
+% Guia do professor — Capítulo 14: Fundamentos de Tempestades
+\section{Capítulo 14 --- Fundamentos de Tempestades}
+
+\subsection*{Visão geral e ritmo}
+
+O capítulo em que a termodinâmica dos Caps.~3--5 vira drama: CAPE, CIN,
+gatilhos e o papel organizador do cisalhamento. A narrativa dos
+``quatro ingredientes'' segura as duas aulas; o clímax é entender por
+que o hodógrafo — e não o CAPE — decide o tipo de tempestade.
+\textbf{Ritmo: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — receita de 4 ingredientes; Skew-$T$ com CAPE
+        e CIN (Caso~1 ao vivo); $w = \sqrt{2CAPE}$ e o fator
+        $\sim$1/2 real; a tarde que estoura a tampa (N1).
+  \item \textbf{Aula 2} — hodógrafos e os três tipos (Caso~3);
+        supercélula em corte; piscina fria, frente de rajada e RKW
+        (Casos~4); ciclo de vida e MCCs sul-americanos.
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item calcular CAPE/CIN/LCL/LFC/EL de uma sondagem (MetPy e à mão no
+        Skew-$T$);
+  \item converter CAPE em $w_{max}$ e justificar o fator $\sim$1/2
+        observado;
+  \item classificar o regime convectivo pelo cisalhamento 0--6\,km e
+        pelo BRN;
+  \item explicar a auto-propagação via piscina fria (corrente de
+        densidade) e o equilíbrio RKW;
+  \item reconhecer as partes da supercélula (updraft, FFD/RFD,
+        bigorna, overshooting top).
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Skew-$T$ e método da parcela (Cap.~5, essencial!); $T_v$ com carga de
+água (Cap.~1); bulbo úmido e evaporação (Cap.~4); Bowen e o
+combustível da tarde (Cap.~3); gatilhos frontais (Cap.~12).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``CAPE grande $=$ tempestade severa''}: sem
+        cisalhamento, CAPE de 3000 vira um pulso de 30\,min. Martelar
+        o papel do hodógrafo.
+  \item \textbf{CIN como vilão}: o CIN moderado é o que PERMITE a
+        explosão da tarde — sem tampa não há panela de pressão.
+  \item \textbf{Sentidos no HS}: hodógrafo útil curva ANTI-horário com
+        a altura; mesociclones giram horário. Espelhar toda figura
+        importada do HN.
+  \item \textbf{$w = \sqrt{2CAPE}$ como previsão}: é teto teórico;
+        entranhamento e água cobram metade (N2 mostra).
+  \item \textbf{Confundir frente de rajada com frente fria}: mesma
+        física de corrente de densidade (Cap.~12!), escalas e vidas
+        diferentes.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Corrente de densidade caseira: água salgada tingida despejada num
+aquário de água doce — a ``frente de rajada'' com o nariz elevado
+aparece perfeita. Vídeos de timelapse de supercélula (rotação visível
+do updraft) valem 10 minutos de aula.
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~14)}
+
+Aquecimento: CAPE/CIN de sondagens dadas; $w_{max}$ e comparação com
+updrafts típicos. Aprofundamento: BRN e classificação; velocidade de
+frente de rajada. Síntese: ``por que o fim de tarde de verão é a hora
+das tempestades no interior do Brasil?''.
+\emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap14\_tempestades.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & CAPE/CIN com MetPy (Skew-$T$ sombreado) & Aula 1, após parcela \\
+2 & $w_{max}(\mathrm{CAPE})$ e o fator 1/2 & Aula 1 \\
+3 & hodógrafos: única × multi × super & Aula 2, abertura \\
+4 & piscina fria: $c(\Delta\theta_v, H)$ + downdraft & Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~1 é o gancho perfeito para rodar ao vivo com a sondagem do dia
+(Wyoming, SBMT 12\,UTC) e decidir com a turma ``vai ter tempestade
+hoje?''.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap14\_solucoes.ipynb}
+(\emph{não distribuir}): T2 com \texttt{sympy} (CAPE do triângulo);
+N3 implementa SRH com movimento de tempestade do HS. Pares:
+T1$\leftrightarrow$N2, T4$\leftrightarrow$N4, T5$\leftrightarrow$N3.
+
+\subsection*{Conexões com o resto do curso}
+
+Método da parcela e estabilidade (Cap.~5); microfísica da chuva e do
+granizo (Cap.~7); assinaturas de radar (Cap.~8); gatilhos frontais e
+linha seca (Cap.~12); os perigos (Cap.~15); convecção tropical e
+furacões (Cap.~16); parametrização de convecção nos modelos (Cap.~20).

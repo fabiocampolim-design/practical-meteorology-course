@@ -1,0 +1,105 @@
+% Guia do professor — Capítulo 20: Previsão Numérica do Tempo
+\section{Capítulo 20 --- Previsão Numérica do Tempo}
+
+\subsection*{Visão geral e ritmo}
+
+O capítulo-síntese computacional: as 7 equações do curso viram
+código, e as quatro peças (discretizar, parametrizar, inicializar,
+quantificar) organizam tudo. Para físicos é território natal —
+métodos numéricos, caos, inferência — aplicado ao maior problema de
+valor inicial do mundo. \textbf{Ritmo: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — Richardson$\to$ENIAC (10 min de história
+        que valem ouro), grade, esquemas e CFL (Caso~1 ao vivo),
+        parametrizações como física reduzida.
+  \item \textbf{Aula 2} — Lorenz e o horizonte (Caso~2), assimilação
+        (Caso~3), ensembles e probabilidade (Caso~4), a revolução
+        silenciosa.
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item listar as equações primitivas e reconhecê-las como o curso
+        inteiro;
+  \item aplicar CFL e prever os erros característicos de cada
+        esquema;
+  \item explicar o horizonte de ~2 semanas via Lyapunov;
+  \item usar o ganho ótimo da assimilação e explicar por que a
+        análise supera modelo e observação;
+  \item interpretar previsões probabilísticas de ensemble.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+As 7 equações espalhadas (Caps.~1, 3, 4, 10); advecção numérica
+(Cap.~3, N3!); tudo que virou parametrização (Caps.~2, 7, 14, 17,
+18); mínimos quadrados/propagação de erros (laboratório de física).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Mais computador $=$ mais previsão''}: o horizonte é
+        logarítmico no erro inicial (T3) — caos é estrutural, não
+        falta de hardware.
+  \item \textbf{``O modelo de 10\,km resolve 10\,km''}: resolução
+        efetiva $\sim7\Delta x$; cumulus continuam parametrizados.
+  \item \textbf{Assimilação como ``usar os dados''}: é média
+        ponderada por precisões — jogar o modelo fora e usar só
+        observações seria PIOR (T4).
+  \item \textbf{``70\% de chuva'' como enfeite}: é a fração literal
+        do ensemble — probabilidade é a saída primária, não o
+        determinístico.
+  \item \textbf{Caos como ruído}: o atrator é determinístico e
+        estruturado — imprevisível no ponto, previsível na
+        estatística (ponte para o Cap.~21).
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Rodar o Caso~2 ao vivo mudando o 6º decimal — o momento
+``uau'' garantido do semestre. Comparar a previsão de 5 dias do
+ECMWF/GFS de ontem com a carta de hoje; abrir o meteograma de
+ensemble do ECMWF para a cidade (espaguete real).
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~20)}
+
+Aquecimento: CFL para grades/ventos dados; contas de pontos de grade
+e memória. Aprofundamento: von Neumann de outros esquemas; ganho
+ótimo com números. Síntese: ``por que o clima de 2100 é mais
+previsível que o tempo de daqui a 20 dias?''.
+\emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap20\_previsao.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & upwind/Lax--Wendroff/leapfrog $+$ CFL & Aula 1 \\
+2 & Lorenz 63: borboleta e gêmeos & Aula 2, abertura \\
+3 & ciclo de assimilação no Lorenz & Aula 2 \\
+4 & ensemble: espaguete $\to$ probabilidade & Aula 2, fecho \\
+\hline
+\end{tabular}
+\end{center}
+
+O arco dos Casos 2$\to$3$\to$4 é a história intelectual da previsão
+moderna em 30 minutos de aula.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap20\_solucoes.ipynb}
+(\emph{não distribuir}): T1, T2 e T4 com \texttt{sympy} (von Neumann,
+equação modificada e ganho ótimo simbólicos); N4 é a pérola
+(dispersão prevê o erro). Pares: T1/T2$\leftrightarrow$N1,
+T3$\leftrightarrow$N2, T4$\leftrightarrow$N3.
+
+\subsection*{Conexões com o resto do curso}
+
+TODAS: as equações (Caps.~1, 3, 4, 10), as parametrizações
+(Caps.~2, 7, 14, 17, 18), as observações (Caps.~8--9), os fenômenos
+que o modelo deve acertar (Caps.~11--16) e a fronteira com o clima
+(Cap.~21). Este capítulo é o ponto de fuga do curso.

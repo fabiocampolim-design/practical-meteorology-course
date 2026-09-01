@@ -1,0 +1,178 @@
+% Notas de aula — Capítulo 20: Previsão Numérica do Tempo
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap20/}}
+
+\title{Capítulo 20 --- Previsão Numérica do Tempo\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:eqs}--\S\ref{sec:param} (as equações, a
+grade, esquemas, CFL, parametrizações).
+\emph{Aula 2:} \S\ref{sec:caos}--\S\ref{sec:ensemble} (caos e
+previsibilidade, assimilação, ensembles).
+
+\section{O sonho de Richardson}\label{sec:eqs}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~20 --- Previsão Numérica (NWP)}\\[2pt]
+as 7 equações que o curso inteiro montou:\\
+movimento (3) \javimos{10}{Newton girante} $+$ continuidade
+\javimos{10}{massa} $+$ energia \javimos{3}{1ª lei} $+$ água
+\javimos{4}{balanço de $r_T$} $+$ estado \javimos{1}{gases}\\[2pt]
+$=$ um problema de valor inicial: conheça o agora, integre o futuro
+\end{noquadro}
+
+Richardson (1922) tentou à mão e errou por 100$\times$ (faltava
+filtrar ondas rápidas); Charney, Fjørtoft e Von Neumann acertaram no
+ENIAC (1950). Hoje: $\sim$10\,km globais, $10^9$ pontos de grade — e o
+mesmo esqueleto conceitual, que este capítulo desmonta em quatro
+peças: discretizar, parametrizar, inicializar, quantificar incerteza.
+
+\section{A grade e os esquemas}\label{sec:grade}
+
+\quadro{Discretizar no quadro: $\partial\phi/\partial x \to$
+diferenças de vizinhos. Anunciar os dois pecados (difusão e
+dispersão) antes de mostrar o Caso~1.}
+
+\begin{formadif}[CFL (T1) e a difusão escondida (T2)]
+Von Neumann no upwind ($\phi_j^{n+1} = \phi_j - C(\phi_j -
+\phi_{j-1})$, $C = U\Delta t/\Delta x$):
+\[ |g|^2 = 1 - 2C(1-C)(1-\cos\theta) \le 1
+\iff 0 \le C \le 1\ \ \text{(CFL)}. \]
+E a equação modificada revela: o upwind resolve advecção $+$ difusão
+com $K_{num} = U\Delta x(1-C)/2$ — as frentes derretem
+\javimos{12}{frentes} (N1 mede).
+\end{formadif}
+
+\begin{noquadro}[a régua da resolução (T5)]
+resolução efetiva $\simeq 7\Delta x$\\
+modelo de ``10\,km'' enxerga bem $\gtrsim$70\,km: ciclones sim
+\javimos{13}{4000\,km}, cumulus não \javimos{14}{1--10\,km}\\
+$\Rightarrow$ o que a grade não vê precisa de \textbf{parametrização}
+\end{noquadro}
+
+\section{Parametrizações: a física sub-grade}\label{sec:param}
+
+Tudo que o curso viu ``por dentro'' vira caixa estatística no modelo:
+radiação \javimos{2}{Schwarzschild}, microfísica \javimos{7}{gotas e
+gelo}, convecção \javimos{14}{cumulus}, turbulência da CLA
+\javimos{18}{fluxos turbulentos}, arrasto de ondas de montanha
+\javimos{17}{ondas}. Cada uma é um modelo físico reduzido — e a maior
+fonte de erro sistemático dos modelos: entender a física original
+(Caps.~2--18) é entender \emph{onde} a previsão falha.
+
+\section{Caos: o prazo de validade}\label{sec:caos}
+
+\quadro{Contar a história: Lorenz reroda uma simulação com 3 casas
+decimais a menos e o tempo diverge — 1963, o século XX descobre que
+determinismo $\neq$ previsibilidade.}
+
+\begin{formadif}[Lorenz e o horizonte (T3; Caso~2)]
+\[ \epsilon(t) = \epsilon_0 e^{\lambda t}
+\quad\Rightarrow\quad
+t_{max} = \frac{1}{\lambda}\ln\frac{E}{\epsilon_0}. \]
+Logarítmico em $\epsilon_0$: melhorar o estado inicial 10$\times$
+compra só $\sim$2--3 dias. Com erro dobrando a cada $\sim$2 dias, o
+teto é $\sim$2 semanas — limite \emph{estrutural}, não computacional.
+O tempo é imprevisível; a estatística (clima) não
+\veremos{21}{por que o clima é previsível}.
+\end{formadif}
+
+\section{Assimilação de dados}\label{sec:assim}
+
+\quadro{Escrever a média ponderada e declarar: ``esta é a fórmula
+mais valiosa da meteorologia operacional''.}
+
+\begin{formalivro}[o ganho ótimo (T4; Caso~3)]
+\[ x_a = x_b + K(y_o - x_b),\qquad
+K^* = \frac{\sigma_b^2}{\sigma_b^2 + \sigma_o^2},\qquad
+\frac{1}{\sigma_a^2} = \frac{1}{\sigma_b^2} + \frac{1}{\sigma_o^2}. \]
+As precisões \emph{somam}: a análise é melhor que o modelo E que a
+observação. Generalizações: 4D-Var, filtro de Kalman por conjunto —
+mas o coração é esta média ponderada, ciclada a cada 6\,h sobre
+$10^7$ observações \javimos{8}{sondadores} \javimos{9}{rede de
+observação}.
+\end{formalivro}
+
+O Caso~3 põe um Lorenz caótico na linha com observações ruidosas — e
+o N3 encontra o $K$ ótimo empiricamente, batendo com a fórmula.
+
+\section{Ensembles: prever a incerteza}\label{sec:ensemble}
+
+\begin{noquadro}[a mudança filosófica]
+1 rodada $=$ ilusão de certeza\\
+30--50 rodadas perturbadas $=$ \textbf{distribuição} de futuros\\
+dispersão $\approx$ barra de erro; fração de membros $=$
+probabilidade\\[2pt]
+``70\% de chance de chuva'' É a saída do ensemble (Caso~4; N4 mostra
+que o spread prevê o próprio erro)
+\end{noquadro}
+
+Verificação fecha o ciclo: índices de acerto, viés, e o ganho de
+$\sim$1 dia de previsibilidade por década desde 1980 — a ``revolução
+silenciosa'' construída de satélites \javimos{8}{radiâncias},
+assimilação e física melhor.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ C = \frac{U\Delta t}{\Delta x} \le 1 \qquad
+K_{num} = \frac{U\Delta x(1-C)}{2} \qquad
+t_{max} = \frac{1}{\lambda}\ln\frac{E}{\epsilon_0} \]
+\[ x_a = x_b + K(y_o - x_b) \qquad
+\text{ensemble: dispersão} \to \text{probabilidade} \]
+discretizar $\cdot$ parametrizar $\cdot$ inicializar $\cdot$
+quantificar — o curso inteiro dentro de um computador
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap20\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Faça a análise de von Neumann do esquema upwind e deduza a
+        condição CFL $0 \le C \le 1$; interprete fisicamente.
+  \item Pela equação modificada, mostre que o upwind embute difusão
+        $K_{num} = U\Delta x(1-C)/2$ e avalie para um modelo de
+        10\,km com $C = 0{,}5$.
+  \item Mostre que o horizonte de previsibilidade é
+        $t_{max} = \lambda^{-1}\ln(E/\epsilon_0)$ e discuta por que
+        melhorar observações rende tão pouco tempo extra.
+  \item Minimize a variância da análise e obtenha
+        $K^* = \sigma_b^2/(\sigma_b^2+\sigma_o^2)$; mostre que as
+        precisões somam.
+  \item Explique a ``resolução efetiva $\simeq 7\Delta x$'' pelos
+        erros de fase das ondas curtas na grade, e conecte com a
+        necessidade de parametrizar convecção.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Meça $K_{num}$ do upwind por ajuste gaussiano e compare com a
+        fórmula do T2.
+  \item Estime o expoente de Lyapunov do Lorenz com 20 pares de
+        gêmeos (média $\pm$ desvio).
+  \item Varra o ganho $K$ no ciclo de assimilação e compare o ótimo
+        empírico com a fórmula do T4.
+  \item Verifique a relação dispersão--erro do ensemble em 50
+        previsões: o ensemble sabe quando vai errar?
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

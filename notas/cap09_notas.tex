@@ -1,0 +1,198 @@
+% Notas de aula — Capítulo 9: Boletins Meteorológicos e Análise de Cartas
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap09/}}
+
+\title{Capítulo 9 --- Boletins Meteorológicos e Análise de Cartas\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 1 aula de 2\,h $+$ 1 aula prática
+(análise manual de uma carta real).
+\emph{Aula 1:} \S\ref{sec:metar}--\S\ref{sec:plot} (códigos e o modelo
+de estação).
+\emph{Aula 2 (prática):} \S\ref{sec:analise} com carta impressa e lápis.
+
+\section{Por que códigos e cartas ainda importam}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~9 --- Boletins e Cartas}\\[2pt]
+``Antes de confiar no modelo numérico, o meteorologista confere a
+observação — e a observação fala em código.''\\[2pt]
+METAR (horário, aviação) $\to$ modelo de estação (um boletim em
+2\,cm$^2$) $\to$ carta sinótica (o campo)
+\end{noquadro}
+
+Este é o capítulo mais operacional do curso: alfabetização profissional.
+A rede mundial de observação — estações, navios, boias, radiossondas,
+aviões e os satélites do capítulo anterior \javimos{8}{satélites} —
+converge quatro vezes por dia (00/06/12/18\,UTC
+\javimos{1}{tempo em UTC}) para as cartas; a mesma torrente de dados
+alimenta a assimilação dos modelos \veremos{20}{assimilação de dados}.
+
+\section{Redução ao nível do mar}\label{sec:reducao}
+
+\begin{formadif}[a hipsométrica de novo]
+Estações em altitudes diferentes medem pressões incomparáveis (10\,kPa
+a cada $\sim$840\,m! \javimos{1}{hidrostática}). Reduz-se tudo ao nível
+do mar com a hipsométrica \javimos{1}{equação hipsométrica}:
+\[ P_{nm} = P_{est}\,\exp\!\left(\frac{g\,z_{est}}{\Re_d\,\bar T_v}\right), \]
+usando a $\bar T_v$ média da coluna fictícia entre a estação e o nível
+do mar.
+\end{formadif}
+
+\begin{noquadro}[sem redução não há carta]
+sem reduzir: mapa de pressão $=$ mapa de \emph{altitude} das estações\\
+com redução: as diferenças que sobram são \emph{meteorologia}\\[2pt]
+(Caso~4 do notebook mostra o antes/depois com estações do litoral ao
+planalto)
+\end{noquadro}
+
+O ponto fraco: que $\bar T_v$ usar para uma coluna de ar que não existe?
+Numa manhã de inversão \javimos{5}{inversões} a $T$ da estação é fria
+demais e a redução \emph{infla} a pressão — o exercício T1 quantifica.
+
+\section{METAR: o código horário da aviação}\label{sec:metar}
+
+\quadro{Decodificar no quadro, grupo a grupo, um METAR real de
+Guarulhos. Cada grupo aponta para um capítulo anterior do curso.}
+
+\begin{center}
+\texttt{SBGR 221800Z 12008KT 8000 -RA BKN015 OVC080 22/19 Q1016}
+\end{center}
+
+\begin{noquadro}[decodificação]
+\begin{tabular}{ll}
+\texttt{SBGR 221800Z} & estação, dia 22, 18:00 UTC \\
+\texttt{12008KT} & vento \emph{de} $120°$, 8\,kt
+\javimos{1}{direção do vento} \\
+\texttt{8000} & visibilidade 8\,000\,m \\
+\texttt{-RA} & chuva fraca ($-$/$+$; RA, DZ, TS, FG\ldots) \\
+\texttt{BKN015 OVC080} & 5--7 oktas a 1\,500\,ft; 8 a 8\,000\,ft
+\javimos{6}{oktas e teto} \\
+\texttt{22/19} & $T$, $T_d$ $\Rightarrow$ UR, LCL
+\javimos{4}{ponto de orvalho} \\
+\texttt{Q1016} & QNH 1016\,hPa (reduzida ao nível do mar) \\
+\end{tabular}
+\end{noquadro}
+
+Parser em Python no Caso~1 do notebook — decodificar vira uma linha; o
+N1 o estende para rajadas, \texttt{VRB} e \texttt{CAVOK}.
+
+\section{O modelo de estação (station plot)}\label{sec:plot}
+
+\quadro{Desenhar o modelo de estação GIGANTE no quadro (o oficial da
+Fig.~9.14 do livro) e preenchê-lo com o METAR decodificado acima. Os
+alunos copiam — este desenho é ferramenta de prova.}
+
+\begin{noquadro}[o layout oficial]
+centro: círculo de cobertura (oktas)\\
+NW: $T$ \quad SW: $T_d$ \quad W: tempo presente (símbolo)\\
+NE: pressão codificada (3 dígitos $=$ décimos de hPa sem o milhar)\\
+E: tendência de pressão (3\,h) \quad haste: barbela de vento\\[2pt]
+barbela: bandeira $=50$\,kt, traço longo $=10$\,kt, curto $=5$\,kt;
+a haste aponta \emph{de onde} o vento vem
+\end{noquadro}
+
+Decodificação da pressão: 164 $\to$ 1016{,}4\,hPa; 986 $\to$
+998{,}6\,hPa — escolher o que dá valor realista (o T3 discute quando a
+regra falha: furacões intensos \veremos{16}{pressões extremas}).
+O MetPy desenha o modelo oficial (Caso~2 do notebook).
+
+\section{Análise de cartas}\label{sec:analise}
+
+\quadro{Regras de ouro no quadro; depois TODOS analisam a mesma carta
+impressa a lápis. Comparar resultados no fim — as diferenças são a
+lição.}
+
+\begin{formalivro}[regras de análise]
+\begin{enumerate}
+  \item Isóbaras a cada 4\,hPa (\ldots 1008, 1012, 1016\ldots), suaves,
+        nunca se cruzam;
+  \item interpolar entre estações proporcionalmente;
+  \item fechar centros: \textbf{A}(lta) e \textbf{B}(aixa) — H/L em
+        cartas internacionais;
+  \item frentes nas dobras das isóbaras e nos contrastes de
+        $T$/$T_d$/vento \veremos{12}{frentes};
+  \item isóbaras apertadas $=$ vento forte (o porquê é o
+        Cap.~10 \veremos{10}{vento geostrófico}).
+\end{enumerate}
+\end{formalivro}
+
+Também se analisam cartas de altitude (ex.\ 50\,kPa): ali as isolinhas
+são de \emph{altura geopotencial} da superfície isobárica — colinas e
+vales cuja inclinação, veremos, é o próprio vento
+\veremos{10}{aproximação geostrófica}; os cavados de 50\,kPa comandam os
+ciclones de superfície \veremos{13}{ciclogênese}.
+
+À mão isso é treino de olho; em máquina é \emph{análise objetiva} —
+interpolar observações irregulares para uma grade. O método clássico de
+correções sucessivas (Cressman/Barnes) está no Caso~3 do notebook: é o
+ancestral direto da assimilação de dados moderna
+\veremos{20}{assimilação}. O N3 acha o raio de influência ótimo por
+validação cruzada — o dilema viés$\times$variância ao vivo.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \text{METAR} \to \text{modelo de estação} \to
+   \text{redução ao nível do mar} \to \text{isóbaras/análise} \]
+próxima aula: \emph{por que} o vento segue as isóbaras (Cap.~10)
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap09\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Deduza a fórmula de redução ao nível do mar a partir da
+        hipsométrica e calcule a correção para São Paulo ($z = 800$\,m,
+        $P_{est} = 92{,}5$\,kPa, $T = 20\,°$C). Discuta o erro de usar a
+        $T$ da estação numa manhã de inversão.
+  \item Decodifique à mão:
+        \texttt{SBSP 221500Z 33012G25KT 9999 TS FEW030CB 28/21 Q1012} e
+        desenhe o modelo de estação correspondente (com a barbela
+        correta).
+  \item A pressão codificada ``052'' num station plot pode ser 1005{,}2
+        ou 905{,}2\,hPa. Formule a regra de desempate e dê um exemplo em
+        que ela falharia (furacão intenso).
+  \item Mostre que, para espaçamento de isóbaras $\Delta n$ na carta, o
+        vento geostrófico (prévia do Cap.~10) escala como $1/\Delta n$ —
+        e por isso ``apertado $=$ ventoso''.
+  \item No método de Barnes, o peso é $w = e^{-d^2/R^2}$. Mostre que
+        $R$ grande filtra escalas pequenas (média quase uniforme) e $R$
+        pequeno superajusta às observações; relacione com o dilema
+        viés$\times$variância.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Estenda o parser de METAR para rajadas (\texttt{G}), vento
+        variável (\texttt{VRB}), \texttt{CAVOK} e visibilidade em
+        milhas; teste com os 8 METARs fornecidos.
+  \item Plote com o MetPy o modelo de estação dos METARs decodificados
+        no N1, num mini-mapa do estado de São Paulo.
+  \item No Caso~3, varra o raio de influência do Cressman e trace o
+        erro RMS contra observações reservadas (validação cruzada);
+        ache o raio ótimo.
+  \item Reduza ao nível do mar as pressões da lista de estações
+        fornecida (litoral a 800\,m) e trace as isóbaras antes e depois
+        da redução — o mapa ``errado'' vs.\ o mapa sinótico.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

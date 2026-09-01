@@ -1,0 +1,103 @@
+% Guia do professor — Capítulo 16: Ciclones Tropicais
+\section{Capítulo 16 --- Ciclones Tropicais}
+
+\subsection*{Visão geral e ritmo}
+
+O anti-Cap.~13: núcleo quente, sem frentes, movido a calor latente do
+oceano. A joia pedagógica é o furacão como máquina de Carnot — um
+motor térmico desenhado no céu que a turma de física reconhece na
+hora. Fechar com Catarina (2004) traz o tema para casa.
+\textbf{Ritmo: 2 aulas de 2\,h.}
+
+\begin{itemize}
+  \item \textbf{Aula 1} — anatomia (olho, parede, bandas), tabela de
+        contraste com o Cap.~13, condições de gênese, Carnot/MPI e
+        WISHE. Casos~1 e 3 (o \texttt{tcpyPI} impressiona).
+  \item \textbf{Aula 2} — Holland e vento gradiente no limite,
+        trajetórias e deriva beta, perigos com ênfase em surge
+        (Caso~4), Catarina e o clima futuro (N3).
+\end{itemize}
+
+\subsection*{Objetivos de aprendizagem}
+
+\begin{enumerate}
+  \item contrastar ciclones tropicais e extratropicais (energia,
+        núcleo, estrutura);
+  \item enunciar as condições de gênese e usá-las para explicar a
+        climatologia das bacias;
+  \item calcular a intensidade potencial (Carnot simplificado e
+        \texttt{tcpyPI}) e explicar o WISHE;
+  \item obter o perfil de vento do modelo de Holland;
+  \item estimar maré de tempestade (empilhamento $+$ barômetro
+        invertido) e ranquear os perigos.
+\end{enumerate}
+
+\subsection*{Pré-requisitos a reativar}
+
+Clausius--Clapeyron e $\theta_e$ (Cap.~4); fluxos bulk (Cap.~3);
+vento gradiente e Coriolis (Cap.~10); hipsométrica para o núcleo
+quente (Cap.~1); alísios e $\beta$ (Cap.~11); CAPE (Cap.~14).
+
+\subsection*{Armadilhas conceituais frequentes}
+
+\begin{itemize}
+  \item \textbf{``Furacão é tempestade grande''}: é um sistema
+        AXISSIMÉTRICO de núcleo quente — outra classe de objeto; as
+        tempestades do Cap.~14 são os tijolos da parede.
+  \item \textbf{Cisalhamento}: no Cap.~14 organiza; aqui MATA
+        (ventila o núcleo quente). Vale uma linha no quadro.
+  \item \textbf{``26,5\,°C é lei''}: é limiar empírico do $\Delta k$;
+        com topo muito frio, menos serve (subtropicais, medicanes,
+        Catarina).
+  \item \textbf{Olho calmo $=$ fim}: a parede oposta chega em
+        minutos — erro clássico (e fatal) de quem sai do abrigo.
+  \item \textbf{Vento como maior perigo}: a água (surge $+$ chuva)
+        mata mais; dano eólico $\propto v^3$, mas enchente não segue
+        categoria.
+\end{itemize}
+
+\subsection*{Demonstração de baixo custo}
+
+Ciclo de Carnot desenhado sobre o corte do furacão (transparência ou
+quadro em duas cores) — a analogia motor térmico rende. Imagens de
+satélite do Catarina (2004) e discussão: por que surpreendeu?
+(Atlântico Sul ``não tinha'' furacões.)
+
+\subsection*{Problemas sugeridos do livro (exercícios do Cap.~16)}
+
+Aquecimento: MPI para TSMs dadas; queda de pressão de núcleo quente.
+Aprofundamento: vento gradiente de perfis dados; surge com plataforma
+dada. Síntese: ``por que não há furacões no Atlântico Sul — e o que o
+Catarina ensinou?''. \emph{Confira a numeração na sua cópia (v1.02b).}
+
+\subsection*{Uso do notebook \texttt{cap16\_furacoes.ipynb}}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Caso & Conteúdo & Momento sugerido \\
+\hline
+1 & Carnot + Clausius--Clapeyron: MPI(TSM) & Aula 1 \\
+2 & Holland: $P(r)$ e $v(r)$ por categoria & Aula 2 \\
+3 & \texttt{tcpyPI}: MPI de sondagem real & Aula 1, fecho \\
+4 & surge: plataforma rasa × profunda & Aula 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+O Caso~3 usa o pacote de pesquisa real (Bister--Emanuel) — vale
+mostrar que a ferramenta de sala é a mesma dos artigos.
+
+\subsection*{Exercícios complementares e soluções}
+
+Nas notas: T1--T5 e N1--N4. Soluções em \texttt{cap16\_solucoes.ipynb}
+(\emph{não distribuir}): T2 com \texttt{sympy}; N2 ajusta Holland por
+otimização; N3 é a ponte quantitativa para o Cap.~21. Pares:
+T1$\leftrightarrow$N1, T2$\leftrightarrow$N2, T4$\leftrightarrow$N4.
+
+\subsection*{Conexões com o resto do curso}
+
+Clausius--Clapeyron e calor latente (Cap.~4); fluxos ar--mar
+(Cap.~3); vento gradiente (Cap.~10); alísios, $\beta$ e recurvamento
+(Cap.~11); convecção da parede (Cap.~14); MPI num clima quente
+(Cap.~21); previsão de trajetória por ensemble (Cap.~20).

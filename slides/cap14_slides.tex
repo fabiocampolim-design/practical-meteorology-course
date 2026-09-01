@@ -1,0 +1,225 @@
+% Slides — Capítulo 14: Fundamentos de Tempestades
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{../comum/temameteo}
+\graphicspath{{../figuras/cap14/}}
+
+\title[Cap. 14 --- Tempestades]{Capítulo 14 --- Fundamentos de
+Tempestades}
+\subtitle{Meteorologia Prática}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vfill
+  \atribuicao
+\end{frame}
+
+\begin{frame}{Roteiro}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{A receita de quatro ingredientes}
+
+\begin{frame}{O objeto do capítulo}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Cumulonimbus: a máquina térmica de 30--60\,min que
+            concentra a energia de um dia inteiro de sol.
+      \item Receita: \alert{umidade $+$ instabilidade $+$ gatilho $+$
+            cisalhamento}.
+      \item Os três primeiros decidem SE; o quarto decide QUAL.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_14_1.jpg}{0.56\textheight}{Fig.~14.1 ---
+      cumulonimbus com bigorna: o produto final}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{CAPE e CIN}
+
+\begin{frame}{A energia armada no Skew-$T$}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$\mathrm{CAPE} = \displaystyle\int_{LFC}^{EL}
+      g\frac{T_{v,p}-T_{v,e}}{T_{v,e}}dz$}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Área positiva $=$ CAPE; negativa (a tampa) $=$ CIN.
+      \item LCL $\to$ LFC $\to$ EL: as três alturas da parcela
+            (Caps.~4--5).
+      \item $<$500 fraca $\cdot$ 500--1500 moderada $\cdot$
+            $>$2500\,J/kg severa.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_14_25.jpg}{0.56\textheight}{Fig.~14.25 ---
+      sondagem pré-tempestade: CAPE, CIN e a tampa}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Do CAPE ao updraft — e o papel do CIN}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \eqdestaque{$w_{max} = \sqrt{2\,\mathrm{CAPE}}$\quad
+      (real $\approx$ metade)}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item CAPE 2000 $\Rightarrow$ 63\,m/s teórico, $\sim$30 real:
+            entranhamento $+$ peso da água cobram (T1, N2).
+      \item CIN moderado $=$ panela de pressão: acumula o dia e
+            \alert{explode à tarde} (N1).
+      \item Gatilhos: frente, brisa, linha seca, montanha, rajada da
+            vizinha (Caps.~12, 17).
+    \end{itemize}
+    \column{0.5\textwidth}
+    \figlivroslide{fig_14_27a.jpg}{0.52\textheight}{Fig.~14.27 --- a
+      tarde esquenta, a tampa derrete, a convecção dispara}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{O ciclo de vida}
+
+\begin{frame}{Três estágios, meia hora cada}
+  \begin{columns}
+    \column{0.25\textwidth}
+    \begin{itemize}
+      \item Torre (só updraft);
+      \item maduro (up $+$ down, chuva forte);
+      \item dissipante (só downdraft).
+      \item A chuva que cai DENTRO do updraft o mata: célula única
+            se suicida.
+    \end{itemize}
+    \column{0.375\textwidth}
+    \figlivroslide{fig_14_6b.jpg}{0.4\textheight}{Fig.~14.6 --- torre
+      de cumulus e estágio maduro}
+    \column{0.375\textwidth}
+    \figlivroslide{fig_14_6d.jpg}{0.4\textheight}{Fig.~14.6 ---
+      dissipação: o downdraft vence}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A piscina fria e a frente de rajada}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \eqdestaque{$c \simeq \sqrt{2gH\,\Delta\theta_v/\theta_v}
+      \sim 15$--$25$\,m/s}
+    \vspace{0.4em}
+    \begin{itemize}
+      \item Chuva evapora no ar seco sub-nuvem $\to$ ar frio desaba e
+            se espalha (corrente de densidade, T4).
+      \item A frente de rajada ergue o vizinho: célula-filha —
+            multicélulas se auto-propagam.
+      \item Linhas duradouras: RKW $c/\Delta u \approx 1$ (N4).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_14_12.jpg}{0.5\textheight}{Fig.~14.12 --- a
+      frente de rajada avançando sob a tempestade}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Multicélulas e linhas de instabilidade}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Trem de células em estágios diferentes; a rajada comum
+            dispara cada filha.
+      \item Linha de instabilidade: a versão organizada, com jato de
+            retaguarda e \emph{bookend vortices}.
+      \item No radar: eco em arco (bow echo) $=$ rajadas destrutivas.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_14_14.jpg}{0.5\textheight}{Fig.~14.14 --- corte
+      de linha de instabilidade: piscina fria e jato de retaguarda}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Cisalhamento e supercélulas}
+
+\begin{frame}{O hodógrafo decide}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item $<$10\,m/s (0--6\,km): célula única; 10--20: multicélula;
+            $>$20 $+$ curvatura: \alert{supercélula}.
+      \item Cisalhamento inclina o updraft: a chuva cai FORA dele —
+            a tempestade não se afoga.
+      \item Curvatura do hodógrafo $\to$ helicidade $\to$ updraft
+            \alert{rotativo} (mesociclone) — SRH no N3.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_14_64b.jpg}{0.52\textheight}{Fig.~14.64 ---
+      hodógrafo e a helicidade relativa à tempestade (área
+      sombreada)}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A supercélula por dentro}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item Updraft rotativo inclinado (20--40\,m/s), bigorna com
+            \emph{overshooting top} (Cap.~5).
+      \item Downdrafts FFD e RFD; wall cloud sob o mesociclone
+            (Cap.~15: tornadogênese).
+      \item Horas de vida: a estrutura em equilíbrio dinâmico.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_14_4a.jpg}{0.56\textheight}{Fig.~14.4 ---
+      anatomia da supercélula}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{No radar: o eco em gancho}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item O mesociclone enrola a chuva: gancho na refletividade
+            (Cap.~8) $+$ dipolo de velocidade Doppler.
+      \item Região de eco fraco (WER): o updraft tão forte que a
+            chuva não cai dentro.
+      \item BRN $= \mathrm{CAPE}/(\tfrac12\Delta U^2)$ resume:
+            supercélulas em 10--50 (T5).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \figlivroslide{fig_14_18a.jpg}{0.52\textheight}{Fig.~14.18 ---
+      assinatura clássica de supercélula no radar}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Síntese e laboratório}
+
+\begin{frame}{O mapa do capítulo}
+  \eqdestaque{umidade $+$ CAPE $+$ gatilho $+$ cisalhamento;\quad
+    $w = \sqrt{2CAPE}$;\quad $c = \sqrt{2gH\Delta\theta_v/\theta_v}$;
+    \quad BRN}
+  \vspace{0.6em}
+  A energia é térmica (Caps.~3--5), a organização é do vento
+  (Cap.~11): célula única $\to$ multicélula $\to$ supercélula conforme
+  o hodógrafo. Os produtos perigosos: Cap.~15.
+\end{frame}
+
+\begin{frame}{Laboratório numérico --- notebook do Cap.~14}
+  \texttt{notebooks/cap14\_tempestades.ipynb}
+  \begin{enumerate}
+    \item CAPE/CIN com MetPy (Skew-$T$ sombreado).
+    \item $w_{max}(\mathrm{CAPE})$ e o fator 1/2 real.
+    \item Hodógrafos: única × multi × supercélula.
+    \item Piscina fria e a EDO do downdraft.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Exercícios}: T1--T5 e N1--N4 nas notas; células reservadas no
+  notebook. Sugestão: rodar o Caso~1 com a sondagem do dia e
+  ``prever'' a tarde com a turma.
+  \vfill
+  \atribuicao
+\end{frame}
+
+\end{document}

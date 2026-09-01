@@ -1,0 +1,367 @@
+% Notas de aula — Capítulo 2: Radiação Solar e Infravermelha
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap02/}}
+
+\title{Capítulo 2 --- Radiação Solar e Infravermelha\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:orbita}--\S\ref{sec:fluxo} (geometria orbital, ângulos solares, fluxo).
+\emph{Aula 2:} \S\ref{sec:corpo}--\S\ref{sec:balanco} (corpo negro, Beer, balanço radiativo e efeito estufa).
+
+\section{Por que radiação primeiro?}
+
+\begin{noquadro}[abertura]
+\textbf{Cap.~2 --- Radiação}\\[2pt]
+``A atmosfera é uma máquina térmica movida a radiação.''\\[2pt]
+entra: radiação solar (onda curta) \quad sai: infravermelho (onda longa)\\
+motor do tempo $=$ o \emph{desequilíbrio local} entre os dois.
+\end{noquadro}
+
+Praticamente toda a energia da atmosfera entra como radiação solar e sai
+como infravermelho. Trópicos recebem mais do que emitem; polos, o
+contrário — e esse desequilíbrio local é o motor de toda a circulação
+\veremos{11}{circulação geral e transporte de energia}. No Cap.~1 vimos
+\emph{onde} a energia é absorvida (superfície $\to$ troposfera convectiva;
+ozônio $\to$ estratosfera estável) \javimos{1}{estrutura vertical}; agora
+construímos as ferramentas quantitativas: geometria Sol--Terra, leis de
+corpo negro, absorção (Beer) e o balanço na superfície — que alimentará o
+balanço de calor do próximo capítulo \veremos{3}{balanço de calor da
+superfície}.
+
+\section{Fatores orbitais}\label{sec:orbita}
+
+\subsection{Declinação solar}
+
+\quadro{Desenhar a Terra com eixo inclinado $\Phi_r = 23{,}44°$ orbitando o
+Sol; marcar solstícios e equinócios. As estações vêm da INCLINAÇÃO, não da
+distância — a Terra está mais perto do Sol em janeiro!}
+
+\begin{noquadro}[o que causa as estações]
+inclinação do eixo: $\Phi_r = 23{,}44°$ (fixa no espaço durante a órbita)\\
+$\delta_s$ $=$ latitude onde o Sol está a pino ao meio-dia\\
+$\delta_s$: $+23{,}44°$ (jun) $\ \longleftrightarrow\ $ $-23{,}44°$ (dez)
+\end{noquadro}
+
+\begin{formalivro}[declinação, Stull eq.~2.5]
+\[ \delta_s \simeq \Phi_r \cos\!\left[\frac{2\pi\,(d-d_r)}{d_y}\right],
+\qquad \Phi_r = 23{,}44°,\; d_r = 173,\; d_y = 365{,}25, \]
+onde $d$ é o dia juliano ($d_r$ = solstício de junho).
+\end{formalivro}
+
+A órbita é levemente elíptica (periélio em janeiro, $\sim 3{,}4\%$ mais
+radiação que a média) — efeito pequeno hoje, mas as variações seculares
+dessa elipse (ciclos de Milankovitch) marcam o compasso das eras glaciais
+\veremos{21}{ciclos de Milankovitch}.
+
+\subsection{Ângulo de elevação solar}
+
+O quanto o Sol aquece um lugar depende de \emph{que ângulo} ele faz com o
+horizonte — o ângulo de elevação $\Psi$ (ou seu complemento, o ângulo
+zenital $\zeta$) \javimos{1}{ângulos locais}. A fórmula junta três
+informações: onde você está ($\phi$), a época do ano ($\delta_s$) e a hora
+do dia (o termo com $t_{UTC}$):
+
+\begin{formalivro}[elevação local, Stull eq.~2.6]
+\[ \sin\Psi = \sin\phi\,\sin\delta_s
+ - \cos\phi\,\cos\delta_s\,
+   \cos\!\left[\frac{2\pi\, t_{UTC}}{t_d} - \lambda_e\right], \]
+com $\phi$ latitude, $\lambda_e$ longitude (positiva a leste), $t_d = 24$\,h.
+\end{formalivro}
+
+\begin{formadif}[leitura da fórmula]
+Produto escalar entre o versor local ``para cima'' e o versor
+Terra$\to$Sol, escrito em coordenadas esféricas. Ao meio-dia solar o
+cosseno vale 1 e a expressão colapsa para
+$\Psi_{\text{meio-dia}} = 90° - |\phi - \delta_s|$ — forma que resolve
+$90\%$ dos exercícios de cabeça.
+\end{formadif}
+
+\quadro{Fazer o exemplo de São Paulo no quadro com a forma do meio-dia;
+os alunos conferem a fórmula completa no notebook (Caso~2).}
+
+\begin{exemplo}[Sol do meio-dia em São Paulo]
+$\phi = -23{,}55°$. Solstício de dezembro ($\delta_s = -23{,}44°$):
+$\Psi = 90° - |{-23{,}55°}+23{,}44°| = 89{,}9°$ — o Sol passa
+\emph{praticamente no zênite}: São Paulo está sobre o Trópico de
+Capricórnio. Solstício de junho ($\delta_s = +23{,}44°$):
+$\Psi = 90° - 46{,}99° = 43{,}0°$.
+\emph{Verificação: $\sin 43° \simeq 0{,}68$ — no inverno, o mesmo feixe se
+espalha por $1/0{,}68 = 1{,}5\times$ mais área.}
+\end{exemplo}
+
+Nascer e pôr do sol: impondo $\Psi = 0$ obtém-se o ângulo horário
+$\cos H_0 = \tan\phi\,\tan\delta_s$, e daí a duração do dia (Caso~2 do
+notebook; o exercício N2 compara São Paulo com Oslo). Note os casos
+extremos: $|\phi| > 66{,}56°$ dá sol da meia-noite ou noite polar.
+
+\section{Fluxo radiativo}\label{sec:fluxo}
+
+\quadro{Definir com desenho (área atravessada por setas): energia por área
+por tempo. Unidade: W/m$^2$ — a unidade mais usada do curso.}
+
+Fluxo (irradiância): $F$ [W\,m$^{-2}$]. A radiação solar no topo da
+atmosfera:
+
+\begin{formalivro}[constante solar e lei do inverso do quadrado]
+\[ S_0 = 1361\ \mathrm{W\,m^{-2}} \quad(\text{a } R = 1\ \mathrm{UA}),\qquad
+   S = S_0\left(\frac{\bar R}{R}\right)^{2}. \]
+\end{formalivro}
+
+\begin{formadif}[de onde vem o inverso do quadrado]
+Conservação de energia em cascas esféricas: $L_\odot = 4\pi R^2\,S(R)$ é a
+mesma para todo $R$, logo $S \propto R^{-2}$. Com
+$L_\odot = 3{,}85\times10^{26}$\,W e $R = 1{,}496\times10^{11}$\,m:
+$S_0 = L_\odot/4\pi R^2 \simeq 1368$\,W\,m$^{-2}$.
+\end{formadif}
+
+\begin{noquadro}[a linha que explica as estações]
+superfície inclinada: \quad $F_{\text{sup}} = S\,\sin\Psi$\\
+mesma energia, área maior $\Rightarrow$ menos W/m$^2$.\\
+Verão de SP: $\sin 89{,}9°\simeq 1{,}00$;\quad inverno: $\sin 43°\simeq0{,}68$.
+\end{noquadro}
+
+Somando $S\sin\Psi$ ao longo do dia obtém-se a \emph{insolação diária} no
+topo da atmosfera — função só de latitude e época (Fig.~2.11c do livro).
+Duas surpresas dessa figura que valem discussão em aula: no solstício de
+verão o \emph{polo} recebe mais insolação diária que o equador (24\,h de
+sol fraco vencem 12\,h de sol forte); e o equador tem \emph{dois} máximos
+anuais, nos equinócios. Essa curva de insolação é o dado de entrada do
+modelo de balanço de energia que rodaremos no Cap.~11
+\veremos{11}{EBM meridional}.
+
+\section{Emissão: leis de corpo negro}\label{sec:corpo}
+
+\quadro{Desenhar duas curvas de Planck (Sol e Terra) em eixos log--log;
+marcar $\lambda_{max}$ de cada. Este desenho fica no quadro até o fim da
+aula — tudo do capítulo se pendura nele.}
+
+Todo corpo a temperatura $T$ emite radiação térmica; o ``corpo negro'' é o
+emissor perfeito (absortividade 1 em toda $\lambda$), e o espectro dele só
+depende de $T$:
+
+\begin{formalivro}[lei de Planck, Stull eq.~2.13]
+\[ E^*_\lambda = \frac{c_1}{\lambda^5\left[\exp\!\left(\frac{c_2}{\lambda T}\right)-1\right]},
+\qquad c_1 = 3{,}74\times10^{8}\ \mathrm{W\,m^{-2}\,\mu m^{4}},\;
+        c_2 = 1{,}44\times10^{4}\ \mathrm{\mu m\,K}. \]
+\end{formalivro}
+
+\begin{formalivro}[Wien e Stefan--Boltzmann, Stull eqs.~2.14--2.15]
+\[ \lambda_{max} = \frac{a}{T},\ \ a = 2897\ \mathrm{\mu m\,K};
+\qquad E^* = \sigma_{SB}\,T^4,\ \ \sigma_{SB} = 5{,}67\times10^{-8}\ \mathrm{W\,m^{-2}\,K^{-4}}. \]
+\end{formalivro}
+
+\begin{formadif}[as duas leis saem da de Planck]
+Wien: $\partial E^*_\lambda/\partial\lambda = 0$ leva à transcendental
+$x = 5(1-e^{-x})$, $x = c_2/(\lambda_{max}T)$, raiz $x \simeq 4{,}965$
+$\Rightarrow a = c_2/4{,}965$.
+Stefan--Boltzmann: integrando com $x = c_2/(\lambda T)$,
+\[ E^* = \int_0^\infty E^*_\lambda\,d\lambda
+ = \frac{c_1 T^4}{c_2^4}\int_0^\infty\!\frac{x^3}{e^x-1}\,dx
+ = \frac{c_1 T^4}{c_2^4}\cdot\frac{\pi^4}{15} \propto T^4. \]
+(Verificação simbólica com \texttt{sympy} no notebook de soluções.)
+\end{formadif}
+
+\begin{noquadro}[dois corpos negros que importam]
+Sol ($5772$\,K): $\lambda_{max} = 0{,}50\,\mu$m — visível\\
+Terra ($288$\,K): $\lambda_{max} = 10{,}1\,\mu$m — IV térmico\\[2pt]
+bandas quase disjuntas $\Rightarrow$ ``onda curta'' e ``onda longa''
+são contabilidades separadas.
+\end{noquadro}
+
+\begin{exemplo}[Sol vs.\ Terra]
+Sol: $\lambda_{max} = 2897/5772 = 0{,}50\,\mu$m (verde — e a evolução nos
+deu olhos exatamente aí). Terra: $2897/288 = 10{,}1\,\mu$m. A separação
+espectral é o que permite tratar $K$ (solar) e $I$ (terrestre) como fluxos
+independentes no balanço (\S\ref{sec:balanco}) — e é também o que os
+satélites exploram: canal visível de dia, canal IV a qualquer hora
+\veremos{8}{canais de satélite}.
+\end{exemplo}
+
+Lei de Kirchhoff: $a_\lambda = e_\lambda$ — bons absorvedores são bons
+emissores, \emph{no mesmo comprimento de onda}. Um gás pode ser
+transparente no visível e opaco no IV (é o caso do vapor d'água e do
+CO$_2$): essa assimetria espectral é a essência do efeito estufa.
+
+\section{Absorção: lei de Beer}\label{sec:beer}
+
+\quadro{Deduzir no quadro a partir da forma diferencial — mesma matemática
+do decaimento radioativo e da atenuação de RX: cada camada remove uma
+fração fixa.}
+
+\begin{formadif}[dedução]
+Num caminho $ds$ por um meio de densidade $\rho$ e seção de absorção
+específica $k$ [m$^2$\,kg$^{-1}$]:
+\[ \frac{dE}{ds} = -k\,\rho\,E
+\quad\Longrightarrow\quad
+E = E_0\,e^{-\tau},\qquad \tau = \int k\rho\,ds\ \ \text{(profundidade óptica)}. \]
+\end{formadif}
+
+\begin{formalivro}[Stull eq.~2.31c]
+\[ E = E_0\,e^{-k\rho\,\Delta s}\qquad(\text{caminho homogêneo}). \]
+\end{formalivro}
+
+\begin{noquadro}[profundidade óptica]
+$\tau < 1$: meio quase transparente \quad $\tau \sim 1$: absorção
+importante \quad $\tau \gg 1$: opaco\\
+feixe solar inclinado: caminho $\propto 1/\sin\Psi$
+$\Rightarrow E = E_0\,e^{-\tau_z/\sin\Psi}$
+\end{noquadro}
+
+Aplicações imediatas: o pôr do sol é fraco e avermelhado (caminho longo,
+espalhamento maior no azul); visibilidade em nevoeiro
+\javimos{1}{ângulo zenital}; e a mesma exponencial governará a extinção
+do feixe de radar pela chuva \veremos{8}{atenuação em radar}. A
+profundidade óptica das camadas atmosféricas define as ``funções peso''
+com que satélites sondam a atmosfera \veremos{8}{funções peso}.
+Simulação no Caso~3 do notebook; o exercício T5/N3 ajusta $\tau_z$ a
+dados.
+
+\section{Balanço radiativo na superfície}\label{sec:balanco}
+
+\quadro{Desenhar a superfície com 4 setas: $K\!\downarrow$ (solar
+incidente), $K\!\uparrow$ (refletida), $I\!\downarrow$ (IV da atmosfera),
+$I\!\uparrow$ (IV emitida). Nomear cada uma antes de escrever a equação.}
+
+\begin{formalivro}[radiação líquida]
+\[ F^{*} = \underbrace{(1-A)\,K\!\downarrow}_{\text{onda curta líquida}}
+ \;+\; \underbrace{I\!\downarrow - I\!\uparrow}_{\text{onda longa líquida}}, \]
+com $A$ = albedo (oceano $\sim0{,}06$; floresta $\sim0{,}15$; deserto
+$\sim0{,}3$; neve fresca $\sim0{,}85$).
+\end{formalivro}
+
+O ciclo diurno de $F^*$ (positivo de dia, levemente negativo à noite) é o
+que forçará a camada limite convectiva de dia e a inversão noturna
+\veremos{18}{ciclo diurno da camada limite}; o $F^*$ é também o primeiro
+termo do balanço de calor da superfície do próximo capítulo
+\veremos{3}{particionamento em calor sensível e latente}. Note o
+papel duplo das nuvens: aumentam o albedo (esfriam de dia) e aumentam
+$I\!\downarrow$ (aquecem à noite) \veremos{6}{nuvens}.
+
+\subsection{Temperatura efetiva e efeito estufa}
+
+\quadro{Fazer a conta da Terra sem atmosfera no quadro — o resultado mais
+importante da aula. Perguntar antes: ``quanto deveria dar?''}
+
+\begin{exemplo}[temperatura efetiva da Terra]
+Equilíbrio global: absorvida $= \pi R_T^2\,(1-A)\,S_0$; emitida
+$= 4\pi R_T^2\,\sigma T_e^4$. Com $A = 0{,}30$:
+\[ T_e = \left[\frac{(1-A)\,S_0}{4\sigma}\right]^{1/4}
+ = \left[\frac{0{,}70\times1361}{4\times5{,}67\times10^{-8}}\right]^{1/4}
+ \simeq 255\ \mathrm{K} = -18\,°\mathrm{C}. \]
+\emph{Verificação: o fator 4 é a razão (área da esfera)/(área do disco
+iluminado).}
+\end{exemplo}
+
+\begin{noquadro}[o resultado mais importante da aula]
+Terra sem atmosfera: $T_e \simeq 255$\,K $= -18\,°$C\\
+Terra real na superfície: $+15\,°$C\\[2pt]
+diferença de \textbf{33\,K} $=$ \textbf{efeito estufa}: a atmosfera é
+quase transparente ao solar, mas absorve o IV da superfície e devolve
+$I\!\downarrow$.
+\end{noquadro}
+
+Quem absorve o IV? Vapor d'água (o maior contribuinte
+\veremos{4}{vapor d'água}), CO$_2$, CH$_4$, O$_3$, nuvens. Entre
+$\sim 8$ e $12\,\mu$m há uma ``janela atmosférica'' quase transparente —
+é por ela que os satélites IV enxergam a superfície
+\veremos{8}{janelas atmosféricas} e é ela que o CO$_2$ adicional vai
+estreitando \veremos{21}{forçante radiativa}. O modelo de 1 camada
+(exercício T4) dá $T_s = 2^{1/4}T_e = 303$\,K — já qualitativamente certo;
+o notebook (Caso~4) roda o modelo cinza contínuo com \texttt{climlab}.
+
+\begin{formadif}[transferência radiativa em uma linha]
+A lei de Beer com emissão é a equação de Schwarzschild:
+\[ \frac{dI}{ds} = -k\rho\,\bigl(I - B(T)\bigr), \]
+absorção puxa $I$ para baixo, emissão térmica $B(T)$ empurra para cima.
+É a equação que os códigos de radiação dos modelos de clima resolvem
+\veremos{20}{parametrizações}; o Caso~4 do notebook resolve uma versão
+cinza dela.
+\end{formadif}
+
+\section{Actinômetros}
+
+Os instrumentos de radiação (Stull \S2.5) medem cada seta do balanço:
+\textbf{piranômetro} ($K\!\downarrow$ hemisférico, termopilha sob
+cúpula de vidro), \textbf{pireliômetro} (feixe solar direto, montado
+em rastreador), \textbf{pirgeômetro} (IV, cúpula de silício — a
+``janela'' da Fig.~2.15!) e \textbf{saldo-radiômetro} ($F^*$
+diretamente, um par de faces). A escolha das cúpulas é a lei de
+Kirchhoff aplicada: cada sensor enxerga só a banda que seu material
+transmite.
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \delta_s(d),\ \sin\Psi \;\to\; S\sin\Psi \;\to\;
+   E^*_\lambda(T),\ \sigma T^4 \;\to\; e^{-\tau} \;\to\;
+   F^* = (1-A)K\!\downarrow + I\!\downarrow - I\!\uparrow \]
+geometria (quanto chega) $\to$ Planck (quem emite o quê) $\to$ Beer
+(quanto atravessa) $\to$ balanço — e 33\,K de estufa.
+\end{noquadro}
+
+O que fica para o resto do curso: $F^*$ alimenta o balanço de calor
+\veremos{3}{balanço de calor}; o gradiente equador--polo de
+$S\sin\Psi$ move a circulação \veremos{11}{circulação geral}; Planck e
+Beer são os olhos dos satélites e radares \veremos{8}{sensoriamento
+remoto}; e a estufa é o pano de fundo do Cap.~21.
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Complementam a seção 2.9 do livro. Soluções (professor) em
+\texttt{cap02\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item A partir da lei de Planck, deduza a lei de Wien: mostre que
+        $\lambda_{max}T = c_2/x^*$ onde $x^*$ resolve $x = 5(1-e^{-x})$, e
+        obtenha $a \simeq 2897\,\mu$m\,K.
+  \item Integre a lei de Planck em $\lambda$ e mostre que
+        $E^* = \sigma T^4$ com $\sigma = \pi^4 c_1/(15\,c_2^4)$; confira o
+        valor numérico de $\sigma$.
+  \item Deduza a temperatura efetiva $T_e = [(1-A)S_0/4\sigma]^{1/4}$
+        explicando a origem do fator 4, e calcule $T_e$ para Vênus
+        ($S = 2601$\,W\,m$^{-2}$, $A = 0{,}77$) e Marte
+        ($S = 586$\,W\,m$^{-2}$, $A = 0{,}25$).
+  \item Modelo de estufa de 1 camada: uma camada atmosférica transparente
+        ao solar e opaca ao IV, em equilíbrio. Mostre que
+        $T_s = 2^{1/4}\,T_e$ e compare com os 288\,K observados.
+  \item Mostre que, para o feixe solar direto, a ``massa de ar''
+        atravessada varia como $1/\sin\Psi$ e que, portanto,
+        $E(\Psi) = E_0\exp(-\tau_z/\sin\Psi)$, com $\tau_z$ a profundidade
+        óptica vertical.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Verifique numericamente Wien e Stefan--Boltzmann: ache o máximo da
+        curva de Planck e a integral para $T = 5772$ e $288$\,K; compare
+        com as fórmulas.
+  \item Trace a elevação solar ao meio-dia e a duração do dia ao longo do
+        ano para São Paulo, e compare com uma cidade de latitude alta
+        (ex.: Oslo, $60°$N).
+  \item Com a lei de Beer, ajuste a profundidade óptica $\tau_z$ a partir
+        dos dados fornecidos de irradiância vs.\ ângulo zenital e estime a
+        transmissividade da atmosfera limpa.
+  \item Generalize o modelo de estufa para $N$ camadas
+        ($T_s = (N{+}1)^{1/4}T_e$) e compare com o modelo cinza do
+        \texttt{climlab} do Caso~4.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

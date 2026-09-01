@@ -1,0 +1,261 @@
+% Notas de aula — Capítulo 7: Processos de Precipitação
+% Curso: Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
+% Caixas verdes = conteúdo literal do quadro; linhas verdes = encenação.
+\documentclass[11pt]{article}
+\usepackage{../comum/preambulo}
+\graphicspath{{../figuras/cap07/}}
+
+\title{Capítulo 7 --- Processos de Precipitação\\
+{\large Notas de aula (roteiro de quadro-negro)}}
+\author{Curso de Meteorologia Prática}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\noindent\textbf{Plano sugerido:} 2 aulas de 2\,h.
+\emph{Aula 1:} \S\ref{sec:problema}--\S\ref{sec:kohler} (o problema das
+escalas, Kelvin e Köhler, nucleação).
+\emph{Aula 2:} \S\ref{sec:crescimento}--\S\ref{sec:distribuicao}
+(crescimento por difusão e por coleta, Bergeron, distribuição de
+tamanhos).
+
+\section{O problema central: 6 ordens de grandeza}\label{sec:problema}
+
+\begin{noquadro}[a escada que organiza a aula]
+\[ \underbrace{0{,}1\,\mu\text{m}}_{\text{CCN}} \to
+   \underbrace{10\,\mu\text{m}}_{\text{gotícula de nuvem}} \to
+   \underbrace{1\,\text{mm}}_{\text{gota de chuva}} \]
+gotícula $\to$ gota: volume cresce $\mathbf{10^6}\times$\quad
+— e a nuvem faz isso em $\sim$30\,min.
+\end{noquadro}
+
+O Cap.~6 terminou com o ar saturado e condensando
+\javimos{6}{caminhos para a saturação}; mas ``condensou'' ainda não é
+``choveu''. Explicar como a atmosfera sobe essa escada em meia hora é o
+objetivo de hoje. Spoiler para manter a turma orientada: difusão de
+vapor constrói a nuvem mas \emph{não} constrói a chuva; a chuva precisa
+de colisões (nuvens quentes) ou de gelo (Bergeron). No fim, a
+distribuição de gotas resultante é exatamente o que o radar enxerga
+\veremos{8}{refletividade de radar}.
+
+\section{Efeito de curvatura: barreira de Kelvin}\label{sec:kelvin}
+
+\quadro{Desenhar gota minúscula com moléculas escapando fácil da
+superfície muito curva; ao lado, superfície plana segurando melhor as
+moléculas.}
+
+\begin{formadif}[equação de Kelvin]
+A tensão superficial $\sigma$ torna mais fácil evaporar de uma
+superfície curva. Minimizando a energia livre (superfície vs.\ volume):
+\[ \frac{e_s(r)}{e_s(\infty)} =
+\exp\!\left(\frac{2\sigma}{\rho_L \Re_v T\, r}\right)
+ \equiv \exp\!\left(\frac{A}{r}\right),\qquad
+A \simeq 1{,}2\times10^{-3}\ \mu\mathrm{m}\ \ (\text{a }273\ \mathrm{K}). \]
+\end{formadif}
+
+\begin{noquadro}[a consequência brutal]
+gota de $0{,}01\,\mu$m exige UR $\simeq 112\%$ para sobreviver;\\
+a atmosfera raramente passa de $100{,}5\%$\\[2pt]
+$\Rightarrow$ \textbf{nuvens não nascem do ar puro}: nascem sobre
+núcleos de condensação (CCN)\\
+poeira, sal marinho, sulfatos, fumaça — sem aerossol, sem nuvem.
+\end{noquadro}
+
+É um dos raros lugares onde a microfísica de superfícies decide o clima
+do planeta: a nucleação homogênea é proibida pela exponencial de Kelvin,
+então \emph{todo} o céu nublado que existe passou por um grão de
+aerossol \veremos{21}{efeitos do aerossol no clima}.
+
+\section{Efeito de soluto e curvas de Köhler}\label{sec:kohler}
+
+\quadro{Construir a curva de Köhler somando os dois efeitos no quadro:
+Kelvin ($+A/r$) empurra para cima, Raoult ($-B/r^3$) para baixo; marcar
+$r^*$ e $S^*$ no máximo.}
+
+Sais dissolvidos \emph{reduzem} $e_s$ (efeito Raoult — as moléculas de
+sal ocupam lugar na superfície), competindo com Kelvin:
+
+\begin{formalivro}[curva de Köhler, Stull \S7.2]
+\[ S(r) \simeq 1 + \frac{A}{r} - \frac{B\,r_d^3}{r^3}, \]
+com $r_d$ o raio seco do núcleo e $B$ dependente da higroscopicidade
+(parametrizada hoje pelo $\kappa$ de Petters--Kreidenweis).
+\end{formalivro}
+
+\begin{noquadro}[ativação]
+máximo da curva $\Rightarrow$ supersaturação crítica $S^*$ e raio
+crítico $r^*$\\
+passou de $r^*$: gota \textbf{ativada}, cresce sozinha\\
+núcleo maior/mais salgado $\Rightarrow$ $S^*$ menor $\Rightarrow$ ativa
+primeiro
+\end{noquadro}
+
+Daqui sai o elo aerossol--clima: ar marítimo limpo ativa
+$\sim$100\,gotas/cm$^3$; ar continental poluído, $\sim$1000/cm$^3$ —
+mais gotas menores, nuvens mais brancas e duradouras (efeito indireto do
+aerossol \veremos{21}{forçante de aerossol}) e chuva quente mais lenta
+(gotículas pequenas demais para colidir, \S\ref{sec:crescimento}).
+Simulação com o pacote \texttt{pyrcel} no Caso~2 do notebook: quem sobe
+mais rápido gera $S_{max}$ maior e ativa mais núcleos (exercício N2).
+
+\textbf{Gelo}: nucleação homogênea só abaixo de $-38\,°$C; entre 0 e
+$-38\,°$C exige núcleos de gelo (IN) — raríssimos ($1/10^5$ dos CCN),
+tipicamente poeiras minerais. Por isso nuvens até $-20\,°$C são
+majoritariamente de água \emph{super-resfriada}
+\javimos{4}{$e_s$ água × gelo} — fato central para o Bergeron adiante e
+para o congelamento de aeronaves.
+
+\section{Crescimento por difusão: rápido no início, lento demais no fim}
+\label{sec:crescimento}
+
+\begin{formadif}[difusão de vapor para a gota]
+O fluxo difusivo de vapor sobre a gota dá
+\[ r\,\frac{dr}{dt} = D\,\frac{\rho_{v,\infty} - \rho_{v,s}}{\rho_L}
+\quad\Longrightarrow\quad r(t) = \sqrt{r_0^2 + 2Ct},\qquad
+r \propto \sqrt{t}. \]
+A raiz quadrada é a assinatura de todo crescimento limitado por difusão
+(mesma matemática da camada de difusão em eletroquímica).
+\end{formadif}
+
+\begin{exemplo}[o gargalo da chuva quente]
+Com supersaturação típica de nuvem ($S - 1 \simeq 0{,}5$\,\%), a
+gotícula vai de 1 a 10\,$\mu$m em minutos — mas de 10\,$\mu$m a 1\,mm
+levaria \emph{dias} (o $\sqrt{t}$ mata: cada década de raio custa 100
+vezes mais tempo). A difusão constrói a nuvem, mas \textbf{não} constrói
+a chuva. \emph{Verificação no Caso~3 do notebook.}
+\end{exemplo}
+
+\subsection{Colisão--coalescência (chuva quente)}
+
+\quadro{Desenhar a gota grande caindo e varrendo as pequenas no
+caminho — o ``coletor'' cresce como bola de neve.}
+
+Gotas maiores caem mais rápido e varrem as menores:
+
+\begin{formalivro}[crescimento por coleta]
+\[ \frac{dr}{dt} = \frac{E\,\bar{L}\,\Delta w_T}{4\rho_L}, \]
+com $E$ eficiência de coleta, $\bar L$ conteúdo de água líquida e
+$\Delta w_T$ a diferença de velocidades terminais. Crescimento
+\emph{acelera} com $r$ — é a avalanche que faltava: de 20\,$\mu$m a
+1\,mm em $\sim$20--30\,min em nuvens tropicais.
+\end{formalivro}
+
+Note a inversão de regime: difusão desacelera, coleta acelera; o
+cruzamento (por volta de 20\,$\mu$m) é o gargalo que decide se a nuvem
+chove — e é onde o número de gotas (Köhler!) entra: nuvem poluída, com
+muitas gotas pequenas, demora a atravessá-lo. O exercício N3 acha esse
+raio de cruzamento.
+
+\subsection{Processo de Bergeron (nuvens frias)}
+
+\quadro{Retomar a figura das duas curvas $e_s$ do Cap.~4; marcar o
+máximo da diferença em $-12\,°$C.}
+
+Num mar de gotículas super-resfriadas, o raro cristal de gelo vê o
+ambiente \emph{supersaturado} (porque $e_{s,\text{gelo}} <
+e_{s,\text{água}}$ \javimos{4}{as duas curvas}): cresce por difusão às
+custas das gotículas — que evaporam para alimentá-lo —, depois agrega
+(flocos) e frag\-menta (multiplicação de gelo). É o mecanismo dominante
+da precipitação de latitudes médias: a maior parte da ``chuva'' nasce
+neve e derrete ao cair. A fase em que chega ao chão depende do perfil de
+$T_w$ \javimos{4}{bulbo úmido} — chuva, neve, ou a temida chuva
+congelante \veremos{14}{granizo, o primo convectivo}.
+
+\section{Velocidade terminal e distribuição de tamanhos}
+\label{sec:distribuicao}
+
+\begin{formalivro}[velocidades terminais]
+Gotículas (Stokes, $r < 40\,\mu$m): $w_T = k_1 r^2$,
+$k_1 = 1{,}19\times10^{8}$\,m$^{-1}$s$^{-1}$;
+gotas de chuva ($\sim$0{,}6--2\,mm): $w_T \simeq$ 4--9\,m/s (regime
+turbulento; o T4 deduz Stokes igualando peso e arrasto viscoso).
+\end{formalivro}
+
+\begin{formalivro}[Marshall--Palmer]
+\[ N(D) = N_0\,e^{-\Lambda D},\qquad N_0 = 8\times10^{6}\ \mathrm{m^{-4}},
+\quad \Lambda = 4{,}1\,R^{-0{,}21}\ \mathrm{mm^{-1}}\ (R\ \text{em mm/h}). \]
+Chuva mais intensa $\Rightarrow$ $\Lambda$ menor $\Rightarrow$ gotas
+grandes mais prováveis.
+\end{formalivro}
+
+\begin{noquadro}[a ponte para o radar]
+da Marshall--Palmer saem:\\
+taxa de chuva $R \propto \int N\,w_T\,D^3\,dD$ \qquad refletividade
+$Z \propto \int N\,D^6\,dD$\\[2pt]
+o $D^6$ favorece brutalmente as gotas grandes $\Rightarrow$ relação
+$Z$--$R$ do Cap.~8 (N4).
+\end{noquadro}
+
+\section{Medindo a precipitação}
+
+Fecho instrumental (Stull \S7.8): \textbf{pluviômetro} (o padrão-ouro
+pontual; o de báscula dá a série temporal), \textbf{disdrômetro}
+(mede a distribuição $N(D)$ — a Marshall--Palmer observada
+diretamente!), medida de neve (relação $\sim$10\,mm de neve por 1\,mm
+de água, muito variável), e as estimativas de área por radar
+($Z$--$R$ \veremos{8}{radar}) e satélite — que precisam dos
+pluviômetros para calibrar. A intensidade classifica-se como fraca
+($<2{,}5$), moderada (2,5--7,6) e forte ($>7{,}6$\,mm/h).
+
+\section{Síntese da aula}
+
+\begin{noquadro}[mapa final --- canto do quadro]
+\[ \text{CCN} \xrightarrow{\text{Köhler}} \text{gotícula}
+   \xrightarrow{\text{difusão } \sqrt{t}} 10\,\mu\text{m}
+   \xrightarrow[\text{ou Bergeron}]{\text{colisões}} \text{gota}
+   \xrightarrow{\text{Marshall--Palmer}} \text{radar (Cap.~8)} \]
+sem aerossol não há nuvem; sem colisões ou gelo não há chuva.
+\end{noquadro}
+
+\section{Exercícios complementares}\label{sec:exercicios}
+
+Soluções (professor) em \texttt{cap07\_solucoes.ipynb}.
+
+\subsection*{Teóricos}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},itemsep=4pt]
+  \item Derive a equação de Kelvin minimizando a energia livre
+        $G = -n\,\Delta\mu\,\tfrac43\pi r^3/v_m + 4\pi r^2\sigma$ e
+        calcule a UR de equilíbrio para gotas de 0{,}01, 0{,}1 e
+        1\,$\mu$m.
+  \item Para a curva de Köhler $S = 1 + A/r - Br_d^3/r^3$, mostre que
+        $r^* = \sqrt{3Br_d^3/A}$ e $S^* = 1 + \sqrt{4A^3/(27Br_d^3)}$;
+        interprete a dependência com $r_d$.
+  \item Integre $r\,dr/dt = C$ e mostre que o tempo para ir de $r_1$ a
+        $r_2$ por difusão é $t = (r_2^2 - r_1^2)/2C$; com o $C$ típico
+        de nuvem, estime os tempos 1$\to$10\,$\mu$m e
+        10\,$\mu$m$\to$1\,mm.
+  \item Derive a velocidade de Stokes
+        $w_T = \tfrac{2}{9}\,g r^2(\rho_L-\rho)/\mu$ igualando peso e
+        arrasto viscoso, e verifique o $k_1$ do livro.
+  \item Da Marshall--Palmer, mostre que o conteúdo de água da chuva é
+        $M = \pi\rho_L N_0/(6\Lambda^4)\cdot\Gamma(4)$ e que o diâmetro
+        médio ponderado por massa é $D_m = 4/\Lambda$.
+\end{enumerate}
+
+\subsection*{Numéricos (no notebook)}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},itemsep=4pt]
+  \item Trace famílias de curvas de Köhler variando $\kappa$ (0{,}1 a
+        1{,}3) e $r_d$; ache numericamente $S^*(r_d)$ e compare com a
+        fórmula do T2.
+  \item Com o \texttt{pyrcel} (ou o modelo simplificado do notebook),
+        varra a velocidade de subida $W$ de 0{,}1 a 5\,m/s e trace a
+        fração de aerossol ativada e o pico de supersaturação
+        $S_{max}(W)$.
+  \item Integre o crescimento combinado difusão + coleta e ache o tempo
+        total gotícula$\to$gota para $\bar L$ = 0{,}3, 1{,}0 e 3{,}0
+        g/m$^3$; identifique o raio em que a coleta assume o comando.
+  \item Da Marshall--Palmer, calcule numericamente $R$ (integral de
+        $N\,w_T\,D^3$) e $Z$ ($\int N D^6$) para $\Lambda$ de chuvas
+        fraca, moderada e forte, e verifique a relação $Z$--$R$ tipo
+        $Z = a R^{1.4}$ que o Cap.~8 usará.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}\\
+{\scriptsize Material derivado de R.~Stull, \emph{Practical Meteorology}
+(CC BY-NC-SA 4.0); este documento herda a mesma licença.}
+
+\end{document}

@@ -1,0 +1,42 @@
+% temameteo.sty — tema Beamer comum dos slides de Meteorologia Prática
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{temameteo}[2026/08/22 Tema Beamer Meteorologia Pratica]
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[brazil]{babel}
+\RequirePackage{amsmath,amssymb,bm}
+\RequirePackage{graphicx}
+\RequirePackage{siunitx}
+\sisetup{locale=FR, per-mode=symbol}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+\definecolor{meteoazul}{RGB}{0,70,130}
+\definecolor{meteovermelho}{RGB}{150,40,40}
+\setbeamercolor{structure}{fg=meteoazul}
+\setbeamercolor{palette primary}{bg=meteoazul,fg=white}
+\setbeamercolor{palette secondary}{bg=meteoazul!80,fg=white}
+\setbeamercolor{palette tertiary}{bg=meteoazul!60,fg=white}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% caixa de equação destacada
+\newcommand{\eqdestaque}[1]{\begin{beamercolorbox}[rounded=true,sep=6pt]{block body}
+  \centering #1 \end{beamercolorbox}}
+
+% figura do livro com atribuição
+% \figlivroslide{arquivo}{altura}{legenda curta}
+\newcommand{\figlivroslide}[3]{%
+  \begin{center}\includegraphics[height=#2,width=\linewidth,keepaspectratio]{#1}\\[-2pt]
+  {\tiny #3 --- R.~Stull, \emph{Practical Meteorology}, CC BY-NC-SA 4.0}\end{center}}
+
+% espaço para figura a inserir
+\newcommand{\figplaceholderslide}[1]{%
+  \begin{center}\fbox{\parbox[c][0.45\textheight][c]{0.8\linewidth}{\centering
+  \textbf{[ INSERIR FIGURA ]}\\ \small #1}}\end{center}}
+
+% rodapé de atribuição geral no slide de título
+\newcommand{\atribuicao}{{\tiny Material didático derivado de R.~Stull,
+  \emph{Practical Meteorology: An Algebra-based Survey of Atmospheric Science},
+  UBC, licença CC BY-NC-SA 4.0. Este material herda a mesma licença.}}
