@@ -4,6 +4,22 @@ All notable changes to this project are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] — 2026-09-02
+
+Post-release independent code review of 1.0.0 (two defects, both in the
+manual builder's fallback path).
+
+### Fixed
+- `docs/build_manual.py`: the built-in Markdown converter left a list open
+  when a table or heading followed it without a blank line (malformed HTML);
+  a pandoc failure now falls back to the built-in converter instead of
+  aborting with a traceback, as the docstring promised.
+- `ferramentas/audita.py`: error cells counted once per notebook, not twice.
+- `ferramentas/map_figs.py`: help text says why the chapter range is 1–22.
+
+### Added
+- Suite check for the fallback converter (22 checks).
+
 ## [1.0.0] — 2026-09-02
 
 First public release. The course itself has been complete since 2026-08-28

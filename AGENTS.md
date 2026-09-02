@@ -126,7 +126,7 @@ Every script exposes `build_parser()` and `main(argv) -> int`.
   `git tag -a vX.Y.Z` → push with tags → GitHub release from the changelog
   section.
 
-## What the suite guards (`tests/test_course.py`, 21 checks)
+## What the suite guards (`tests/test_course.py`, 22 checks)
 
 Licence texts and README disclaimer; SPDX headers; VERSION = CITATION =
 CHANGELOG; banned figures absent from `figuras/` and from every `.tex`;

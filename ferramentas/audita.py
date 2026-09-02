@@ -107,8 +107,9 @@ def auditar(root: str) -> list[str]:
             P(f"{os.path.basename(f)}: {ncasos} casos (esperado 4)")
         if n_ex != 4:
             P(f"{os.path.basename(f)}: {n_ex} enunciados N (esperado 4)")
-        if _erros(nb):
-            P(f"{os.path.basename(f)}: {_erros(nb)} celulas com ERRO")
+        n_err = _erros(nb)
+        if n_err:
+            P(f"{os.path.basename(f)}: {n_err} celulas com ERRO")
     for nn, f in sorted(sols.items()):
         nb = json.loads(_ler(f))
         txt = "\n".join("".join(c.get("source", [])) for c in nb["cells"])
@@ -116,8 +117,9 @@ def auditar(root: str) -> list[str]:
         nN = len(re.findall(r"## N\d", txt))
         if nT != 5 or nN != 4:
             P(f"{os.path.basename(f)}: {nT} solucoes T (esp. 5), {nN} N (esp. 4)")
-        if _erros(nb):
-            P(f"{os.path.basename(f)}: {_erros(nb)} celulas com ERRO")
+        n_err = _erros(nb)
+        if n_err:
+            P(f"{os.path.basename(f)}: {n_err} celulas com ERRO")
 
     # 6. exercícios nas notas: 5 T e 4 N por capítulo
     for f in sorted(glob.glob(os.path.join(root, "notas", "cap*_notas.tex"))):

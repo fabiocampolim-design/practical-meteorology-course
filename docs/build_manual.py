@@ -36,6 +36,10 @@ def md_to_html_minimal(text):
         if in_code:
             out.append(html.escape(line))
             continue
+        # a table or heading ends an open list even without a blank line
+        if in_list and (line.startswith("|") or re.match(r"^#{1,6}\s", line)):
+            out.append("</ul>")
+            in_list = False
         if line.startswith("|"):
             cells = [c.strip() for c in line.strip().strip("|").split("|")]
             if all(re.fullmatch(r":?-+:?", c) for c in cells):
@@ -100,11 +104,17 @@ def main(argv=None):
     pdf_out = os.path.join(args.outdir, "USER_MANUAL.pdf")
     pandoc = shutil.which("pandoc")
 
+    html_done = False
     if pandoc:
-        subprocess.run([pandoc, SRC, "-s", "--toc", "-o", html_out, "--metadata",
-                        f"title={TITLE}"], check=True)
-        print(f"wrote {html_out} (pandoc)")
-    else:
+        proc = subprocess.run([pandoc, SRC, "-s", "--toc", "-o", html_out, "--metadata",
+                               f"title={TITLE}"], capture_output=True, text=True)
+        if proc.returncode == 0:
+            print(f"wrote {html_out} (pandoc)")
+            html_done = True
+        else:
+            print(f"pandoc failed (rc={proc.returncode}); using the built-in converter:",
+                  proc.stderr.strip()[-300:])
+    if not html_done:
         with open(SRC, encoding="utf-8") as f:
             body = md_to_html_minimal(f.read())
         with open(html_out, "w", encoding="utf-8") as f:

@@ -272,6 +272,15 @@ class ReadBack(unittest.TestCase):
 
 
 class Tools(unittest.TestCase):
+    def test_manual_fallback_converter_closes_lists_before_tables_and_headings(self):
+        # 1.0.1: a table or heading right after a list landed inside an unclosed <ul>
+        bm = importlib.import_module("build_manual")
+        out = bm.md_to_html_minimal("- item\n| a | b |\n|---|---|\n| 1 | 2 |\n- x\n## H\n")
+        self.assertLess(out.index("</ul>"), out.index("<table>"))
+        self.assertEqual(out.count("<ul>"), out.count("</ul>"))
+        self.assertLess(out.rindex("</ul>"), out.index("<h2>"))
+        self.assertNotIn("<ul>\n<li>x</li>\n<h2>", out)
+
     def test_gera_listas_runs_and_logs(self):
         gera = importlib.import_module("gera_listas")
         with tempfile.TemporaryDirectory() as tmp:

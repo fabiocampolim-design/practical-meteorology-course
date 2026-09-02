@@ -29,7 +29,7 @@ FIG_RE = re.compile(r"^#*\s*Figure\s+(\d+)\.(\d+[a-z]?)", re.IGNORECASE)
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Mapeia recortes do extrator para figuras/capNN/.")
-    p.add_argument("capitulo", help="número do capítulo (1-22)")
+    p.add_argument("capitulo", help="número do capítulo do livro (1-22; o módulo 23 não tem figuras de livro)")
     p.add_argument("--extracted", default=os.path.join(registro.ROOT, "extracted"), metavar="PASTA",
                    help="saída do extrator: capNN*.md + capNN*_assets/ (padrão: extracted/)")
     p.add_argument("--figuras", default=os.path.join(registro.ROOT, "figuras"), metavar="PASTA",

@@ -141,7 +141,7 @@ Each item is a guarantee the test suite or the course audit enforces:
 - **Tooling with logs**: every maintenance script has a complete
   command-line interface and writes a run log with the command, versions
   and outcome.
-- **Static check + suite on three operating systems** in CI (the 21-check
+- **Static check + suite on three operating systems** in CI (the 22-check
   suite plus a vendored publication-conformance checker).
 
 ## Honest comparison with neighbours
