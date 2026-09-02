@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If this course material helped your teaching, please cite it, and cite Stull's book, which it is built on."
+title: "practical-meteorology-course: Portuguese undergraduate course material (notes, slides, teacher guide, notebooks) on Stull's Practical Meteorology"
+type: dataset
+version: "1.0.0"
+date-released: "2026-09-02"
+license:
+  - Apache-2.0
+  - CC-BY-NC-SA-4.0
+repository-code: "https://github.com/fabiocampolim-design/practical-meteorology-course"
+authors:
+  - family-names: Campolim
+    given-names: Fabio
+keywords:
+  - meteorology
+  - atmospheric science
+  - teaching material
+  - Portuguese
+  - Jupyter notebooks
+  - LaTeX Beamer
+  - MetPy
+  - climlab
+references:
+  - type: book
+    title: "Practical Meteorology: An Algebra-based Survey of Atmospheric Science"
+    authors:
+      - family-names: Stull
+        given-names: Roland
+    year: 2017
+    version: "1.02b"
+    publisher:
+      name: University of British Columbia
+    url: "https://www.eoas.ubc.ca/books/Practical_Meteorology/"
+    license: CC-BY-NC-SA-4.0
+abstract: >-
+  Complete Portuguese teaching material for a two-semester undergraduate course
+  on Roland Stull's open textbook Practical Meteorology: for each of the 22
+  chapters plus an extra module on climate change, LaTeX lecture notes, Beamer
+  slides, a teacher's-guide section, an executed student notebook (four worked
+  cases and numerical exercises with MetPy, climlab, SciPy and friends) and a
+  solutions notebook (theory checked with SymPy); printable exercise lists, a
+  two-semester schedule and a course index. Code is Apache-2.0; the teaching
+  content inherits the book's CC BY-NC-SA 4.0.

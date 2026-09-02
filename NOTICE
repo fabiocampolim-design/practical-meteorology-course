@@ -1,0 +1,25 @@
+practical-meteorology-course
+Copyright 2026 Fabio Campolim
+
+Code in this repository (ferramentas/, comum/*.py, comum/*.sty, docs/*.py,
+tests/, the code cells of the notebooks) is licensed under the
+Apache License, Version 2.0 (the "License"); you may not use those files
+except in compliance with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Teaching content in this repository (notas/, slides/, guia_do_professor/,
+listas/, indice.*, figuras/, the text cells of the notebooks) is derived
+from Roland Stull, "Practical Meteorology: An Algebra-based Survey of
+Atmospheric Science", v1.02b, University of British Columbia,
+https://www.eoas.ubc.ca/books/Practical_Meteorology/ , licensed
+CC BY-NC-SA 4.0, and is distributed under the same licence
+(LICENSES/CC-BY-NC-SA-4.0.txt): attribution, non-commercial use,
+share-alike. Figures the book credits to third parties ("courtesy of",
+"used with permission", a copyright line) are not redistributed here.

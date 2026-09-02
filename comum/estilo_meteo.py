@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Fabio Campolim
 # estilo_meteo.py — estilo gráfico comum dos notebooks do curso
 # Meteorologia Prática (baseado em R. Stull, Practical Meteorology, CC BY-NC-SA 4.0)
 """
@@ -8,8 +10,6 @@ Uso nos notebooks:
     aplicar_estilo()
 """
 import matplotlib as mpl
-import matplotlib.pyplot as plt
-import numpy as np
 
 # paleta do curso ------------------------------------------------------------
 CORES = {

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10.2" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>practical-meteorology-course — User Manual</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">practical-meteorology-course — User Manual</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#practical-meteorology-course-user-manual"
+id="toc-practical-meteorology-course-user-manual">practical-meteorology-course
+— User Manual</a>
+<ul>
+<li><a href="#what-this-is" id="toc-what-this-is">1. What this
+is</a></li>
+<li><a href="#setup" id="toc-setup">2. Setup</a>
+<ul>
+<li><a href="#reading-and-teaching-no-tooling"
+id="toc-reading-and-teaching-no-tooling">2.1 Reading and teaching (no
+tooling)</a></li>
+<li><a href="#running-the-notebooks" id="toc-running-the-notebooks">2.2
+Running the notebooks</a></li>
+<li><a href="#compiling-the-latex" id="toc-compiling-the-latex">2.3
+Compiling the LaTeX</a></li>
+<li><a href="#rebuilding-figures-from-the-book-maintainers-only"
+id="toc-rebuilding-figures-from-the-book-maintainers-only">2.4
+Rebuilding figures from the book (maintainers only)</a></li>
+</ul></li>
+<li><a href="#using-the-material" id="toc-using-the-material">3. Using
+the material</a></li>
+<li><a href="#tools-reference-ferramentas"
+id="toc-tools-reference-ferramentas">4. Tools reference
+(<code>ferramentas/</code>)</a></li>
+<li><a href="#quality-checks" id="toc-quality-checks">5. Quality
+checks</a></li>
+<li><a href="#every-feature-and-every-known-limitation"
+id="toc-every-feature-and-every-known-limitation">6. Every feature and
+every known limitation</a></li>
+<li><a href="#licence-and-figure-policy"
+id="toc-licence-and-figure-policy">7. Licence and figure policy</a></li>
+<li><a href="#layout" id="toc-layout">8. Layout</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="practical-meteorology-course-user-manual">practical-meteorology-course
+— User Manual</h1>
+<p>Version 1.0.0 (2026-09-02). Source of truth: this Markdown file; the
+HTML and PDF beside it are built by
+<code>python docs/build_manual.py</code>. Machine-oriented instructions
+for AI agents are in <a
+href="../AGENTS.md"><code>AGENTS.md</code></a>.</p>
+<p>The material itself is in <strong>Portuguese (pt-BR)</strong>; this
+manual is in English so that the tooling and the licence conditions are
+clear to everyone.</p>
+<h2 id="what-this-is">1. What this is</h2>
+<p>Complete teaching material for a two-semester undergraduate course on
+Roland Stull’s open textbook <em>Practical Meteorology: An Algebra-based
+Survey of Atmospheric Science</em> (v1.02b, UBC, CC BY-NC-SA 4.0). For
+each of the book’s 22 chapters, plus an extra module 23 on climate
+change (which is not a chapter of the book), it ships five pieces:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Piece</th>
+<th>Where</th>
+<th>Form</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lecture notes — a blackboard script with <code>noquadro</code>
+boxes, cross-references <code>\javimos</code>/<code>\veremos</code>, and
+the chapter’s complementary exercises (T1–T5 theory, N1–N4
+numerical)</td>
+<td><code>notas/capNN_notas.tex</code> + <code>.pdf</code></td>
+<td>LaTeX article</td>
+</tr>
+<tr>
+<td>Slides — one deck per chapter, every book figure that may be
+redistributed, plus notebook figures</td>
+<td><code>slides/capNN_slides.tex</code> + <code>.pdf</code></td>
+<td>Beamer</td>
+</tr>
+<tr>
+<td>Teacher’s guide — one section per chapter (<code>guia.pdf</code>, 47
+pages) and the two-semester schedule (<code>cronograma.pdf</code>)</td>
+<td><code>guia_do_professor/</code></td>
+<td>LaTeX</td>
+</tr>
+<tr>
+<td>Student notebook — four worked cases and the N1–N4 exercise cells,
+executed</td>
+<td><code>notebooks/capNN_&lt;tema&gt;.ipynb</code></td>
+<td>Jupyter</td>
+</tr>
+<tr>
+<td>Solutions notebook — T1–T5 checked with SymPy, N1–N4 solved in full,
+executed</td>
+<td><code>notebooks/capNN_solucoes.ipynb</code></td>
+<td>Jupyter</td>
+</tr>
+</tbody>
+</table>
+<p>Across the course: <code>listas/listas_exercicios.pdf</code> (24
+pages, one printable list per chapter, generated from the notes),
+<code>indice.pdf</code> (the course map: overview, the five pieces,
+chapter table, quick start, licence), and <code>figuras/capNN/</code>
+(the book’s figures as JPEG crops plus the PNGs the notebooks generate
+for the slides).</p>
+<p><strong>Start with <code>indice.pdf</code>.</strong></p>
+<h2 id="setup">2. Setup</h2>
+<h3 id="reading-and-teaching-no-tooling">2.1 Reading and teaching (no
+tooling)</h3>
+<p>Every deliverable is committed as a PDF or an executed notebook:
+clone (or download the release archive) and open them. Nothing to
+install.</p>
+<h3 id="running-the-notebooks">2.2 Running the notebooks</h3>
+<pre><code>conda env create -f environment.yml
+conda activate meteo
+jupyter lab</code></pre>
+<p>The <code>meteo</code> environment (Python 3.11) carries NumPy,
+SciPy, SymPy, pandas, xarray, MetPy, Py-ART, Satpy, Cartopy, pint,
+ipywidgets and, from pip, ambiance, pyrcel, tcpyPI and climlab ≥ 0.9.2.
+<code>environment.yml</code> explains the two pins that matter
+(matplotlib &lt; 3.11 for MetPy’s <code>StationPlot</code>; climlab from
+pip because the conda-forge build breaks with NumPy 2).</p>
+<p>Each notebook begins with</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys<span class="op">;</span> sys.path.append(<span class="st">&#39;../comum&#39;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> estilo_meteo <span class="im">import</span> aplicar_estilo, CORES</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>aplicar_estilo()</span></code></pre></div>
+<p>so run it from <code>notebooks/</code> (Jupyter does this when you
+open the file there).</p>
+<h3 id="compiling-the-latex">2.3 Compiling the LaTeX</h3>
+<p>TeX Live (2026 used here) with <code>pdflatex</code>. Every document
+compiles from its own folder; the shared preamble and Beamer theme live
+in <code>comum/</code> and are found by relative path:</p>
+<pre><code>cd slides &amp;&amp; pdflatex cap05_slides.tex &amp;&amp; pdflatex cap05_slides.tex
+cd notas  &amp;&amp; pdflatex cap05_notas.tex
+cd guia_do_professor &amp;&amp; pdflatex guia.tex &amp;&amp; pdflatex guia.tex</code></pre>
+<p>Two passes for anything with a table of contents or
+cross-references.</p>
+<h3 id="rebuilding-figures-from-the-book-maintainers-only">2.4
+Rebuilding figures from the book (maintainers only)</h3>
+<p>The book is <strong>not</strong> in the repository. Download the
+whole-book PDF from <a
+href="https://www.eoas.ubc.ca/books/Practical_Meteorology/"
+class="uri">https://www.eoas.ubc.ca/books/Practical_Meteorology/</a>
+into <code>book/</code> (gitignored), then slice → extract → map
+(section 4). The extractor used was a local MinerU-based pipeline; any
+extractor that writes <code>capNN.md</code> +
+<code>capNN_assets/images/&lt;hash&gt;.jpg</code> works with
+<code>map_figs.py</code>.</p>
+<h2 id="using-the-material">3. Using the material</h2>
+<ul>
+<li><strong>A chapter in class</strong>: notes as the lecturer’s script,
+slides projected, the student notebook opened live for the four cases;
+the guide section lists the book exercises to assign and the
+timing.</li>
+<li><strong>Exercises</strong>: the printable list
+(<code>listas/</code>) states T1–T5 and N1–N4; the students solve T on
+paper and N in the empty cells at the end of their notebook; the
+solutions notebook is for the teacher.</li>
+<li><strong>Schedule</strong>:
+<code>guia_do_professor/cronograma.pdf</code> — semester I chapters
+1–11, semester II chapters 12–23, 15 weeks each, 2 × 2 h per week, lists
+due the following week, two exams per semester, and a compact
+one-semester track.</li>
+<li><strong>Editing exercises</strong>: edit the notes
+(<code>notas/capNN_notas.tex</code>, section “Exercícios
+complementares”) and regenerate the list with
+<code>gera_listas.py</code> — never edit
+<code>listas/listas_exercicios.tex</code> by hand.</li>
+<li><strong>Adding a figure to a slide</strong>:
+<code>\figlivroslide{fig_NN_X.jpg}{height}{caption}</code> for a book
+figure (adds the CC attribution line);
+<code>\figlivroref{Fig.~N.M}{caption}{holder}</code> for a figure that
+is <em>not</em> redistributed (a boxed pointer to the book).</li>
+</ul>
+<h2 id="tools-reference-ferramentas">4. Tools reference
+(<code>ferramentas/</code>)</h2>
+<p>Every script has <code>--help</code>, <code>--version</code>, and the
+common options <code>-v</code>/<code>--verbose</code>,
+<code>-q</code>/<code>--quiet</code>, <code>--log-dir PASTA</code>. Each
+run writes a log under
+<code>&lt;output folder&gt;/logs/&lt;script&gt;-&lt;UTC&gt;.log</code>
+with the command line, the versions and the outcome
+(<code>RESULTADO: ok|FALHA</code>). Exit code 0 = success. Run them from
+anywhere; paths default to this repository.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Script</th>
+<th>What</th>
+<th>Options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>audita.py</code></td>
+<td>Consistency audit of the whole course (figures cited exist, no
+placeholders, cross-references, notebook pairs, 4 cases + 4 N per
+student notebook, 5 T + 4 N in solutions and notes, no error cells,
+guide complete). Exit 1 on any problem not in its accepted list.</td>
+<td><code>--root PASTA</code>, <code>--json ARQUIVO</code></td>
+</tr>
+<tr>
+<td><code>gera_listas.py</code></td>
+<td>Generate <code>listas/listas_exercicios.tex</code> from the notes;
+<code>--pdf</code> also compiles it (two <code>pdflatex</code>
+passes).</td>
+<td><code>--notas PASTA</code>, <code>--outdir PASTA</code>,
+<code>--pdf</code></td>
+</tr>
+<tr>
+<td><code>extract_plots.py</code></td>
+<td>Dump the <code>image/png</code> outputs of executed notebooks as PNG
+files (<code>&lt;notebook&gt;_plotNN.png</code>).</td>
+<td><code>--notebooks NOME ...</code>,
+<code>--pasta-notebooks PASTA</code>, <code>--outdir PASTA</code></td>
+</tr>
+<tr>
+<td><code>contact_sheet.py NN</code></td>
+<td>Labelled thumbnail grid of <code>figuras/capNN/</code> to check the
+figure mapping by eye.</td>
+<td><code>--figuras PASTA</code>, <code>--out PNG</code>,
+<code>--cols N</code>, <code>--dpi N</code></td>
+</tr>
+<tr>
+<td><code>render_qa.py</code></td>
+<td>Render sample pages of the compiled PDFs to PNG for visual QA
+(<code>--fase 1</code>: chapters 1–11 decks; <code>2</code>: chapters
+12–14, notes, guide; <code>all</code>). Needs PyMuPDF.</td>
+<td><code>--root PASTA</code>, <code>--outdir PASTA</code>,
+<code>--fase {1,2,all}</code>, <code>--dpi N</code></td>
+</tr>
+<tr>
+<td><code>slice.py PRIMEIRA ULTIMA NOME</code></td>
+<td>Cut a page range of the book PDF into <code>NOME.pdf</code> for the
+extractor (PDF page = book page + 16). Needs PyMuPDF and the book.</td>
+<td><code>--book PDF</code>, <code>--outdir PASTA</code></td>
+</tr>
+<tr>
+<td><code>map_figs.py NN</code></td>
+<td>Map the extractor’s crops for chapter NN to
+<code>figuras/capNN/fig_NN_X.jpg</code> (one caption, one figure;
+several images → suffixes a, b, c). Needs the extraction.</td>
+<td><code>--extracted PASTA</code>, <code>--figuras PASTA</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>docs/build_manual.py</code> builds this manual
+(<code>--outdir PASTA</code>, <code>--no-pdf</code>,
+<code>--verbose</code>); it uses pandoc + xelatex/lualatex when present
+and a built-in converter otherwise.</p>
+<h2 id="quality-checks">5. Quality checks</h2>
+<ul>
+<li><code>python ferramentas/audita.py</code> — the course-level audit
+above.</li>
+<li><code>python -m unittest discover -s tests -v</code> — the 21-check
+suite: licence and disclaimer guards, SPDX headers, version consistency,
+the figure policy (section 7), notebook QA (46 notebooks, 23 pairs, no
+error or stderr output, every code cell executed, ≤ 1.5 MB each), the
+docs guard (every script flag appears in this manual and in
+<code>AGENTS.md</code>, README counts match the tree), read-back of
+every committed PDF with PyMuPDF (page counts and text), run logs, and
+the vendored publication-conformance checker.</li>
+<li><code>python -m pyflakes ferramentas comum docs tests</code> —
+static check, also the first CI step. CI runs both on Linux, Windows and
+macOS (Python 3.11 and 3.13). CI has no TeX: it reads the committed
+PDFs, it does not rebuild them.</li>
+<li>After executing a notebook, scan its JSON for
+<code>output_type: error</code> <strong>and</strong> <code>stderr</code>
+streams — a clean exit code is not enough (the suite does this).</li>
+</ul>
+<h2 id="every-feature-and-every-known-limitation">6. Every feature and
+every known limitation</h2>
+<p>Features (each one is verified by the suite or by the audit):</p>
+<ol type="1">
+<li>23 chapters × 5 pieces, all present, all compiled/executed (46
+notebooks).</li>
+<li>Every book figure used on a slide exists in <code>figuras/</code>
+and carries the CC BY-NC-SA attribution line; non-redistributable
+figures are replaced by a boxed pointer to the book.</li>
+<li>Exercise lists are generated from the notes, never hand-edited.</li>
+<li>Both math forms side by side: the book’s algebraic form and the
+differential form, in every chapter’s notes.</li>
+<li>Every chapter has at least one small numerical simulation (“previsão
+numérica em miniatura”) and four worked cases with the full Python
+stack.</li>
+<li>Solutions notebooks verify the theory exercises with SymPy.</li>
+<li>Consistent plotting style (<code>comum/estilo_meteo.py</code>):
+course palette, shaded atmospheric layers, decimal commas in
+annotations.</li>
+<li>Maintenance tools with complete command-line parameters and run
+logs.</li>
+</ol>
+<p>Known limitations:</p>
+<ol type="1">
+<li><strong>Language</strong>: everything a student sees is in
+Portuguese; only this manual, <code>AGENTS.md</code>, the README and the
+licence files are in English.</li>
+<li><strong>Non-commercial only</strong> for the teaching content (CC
+BY-NC-SA 4.0, inherited from the book); the code is Apache-2.0. See
+section 7.</li>
+<li><strong>13 book figures are not included</strong> (24 crops: figs.
+8.11, 8.16a/d, 9.20, 14.1, 14.3, 14.5, 15.3, 15.18, 16.19, 17.6, 20.15,
+20.19, and 7.13 was never included) because the book credits them to
+third parties; six slides show the boxed pointer instead of the
+image.</li>
+<li><strong>The book is not redistributed</strong>; rebuilding figures
+needs your own download and an extractor. The shipped crops are as good
+as the extractor made them (vector figures rasterised at page
+resolution).</li>
+<li><strong>Chapter 23 (climate change) is not a chapter of Stull’s
+book</strong>: its slides use notebook figures only; its content follows
+the notes.</li>
+<li><strong>Schedule dates are placeholders</strong> until the academic
+calendar is known.</li>
+<li><strong>Deliberate omissions</strong> at curiosity level (recorded
+in the audit of 2026-08-28): the diagram-identification quick guide
+(§5.4), SYNOP codes in detail (§9.2), MOS (§20.5), crepuscular rays
+(§22).</li>
+<li><strong><code>audita.py</code> has two accepted findings</strong>:
+chapter 1 has five cases and states its N exercises in the notes rather
+than in the notebook (the approved template) — both are listed in the
+script’s <code>EXCECOES</code>.</li>
+<li><strong>Notebook execution is not part of CI</strong> (the
+<code>meteo</code> environment is heavy); the committed notebooks are
+executed locally and the suite checks the committed outputs.</li>
+<li><strong>Windows LaTeX trap</strong>: a PDF open in a viewer locks
+<code>pdflatex</code>’s output; close the viewer or compile with
+<code>-jobname</code>.</li>
+<li><strong>Unicode in LaTeX</strong>: Greek letters, the
+approximately-equal sign or a check mark typed directly break
+<code>pdflatex</code>; use the LaTeX commands.</li>
+<li><strong>Third-party cross-checks are numerical, not
+refereed</strong>: values in the notebooks follow the book and standard
+references; teachers remain responsible for what they teach.</li>
+</ol>
+<h2 id="licence-and-figure-policy">7. Licence and figure policy</h2>
+<ul>
+<li><strong>Code</strong> (<code>ferramentas/</code>,
+<code>comum/*.py</code>, <code>comum/*.sty</code>,
+<code>docs/*.py</code>, <code>tests/</code>, the code cells of the
+notebooks): Apache License 2.0 (<code>LICENSE</code>,
+<code>NOTICE</code>).</li>
+<li><strong>Teaching content</strong> (notes, slides, guide, lists,
+index, figures, the text cells of the notebooks): derived from Stull’s
+CC BY-NC-SA 4.0 book, therefore CC BY-NC-SA 4.0
+(<code>LICENSES/CC-BY-NC-SA-4.0.txt</code>): credit the book and this
+project, no commercial use, share adaptations under the same
+licence.</li>
+<li><strong>Figures</strong>: a figure the book credits to a third party
+(“courtesy of”, “used with permission”, a copyright line) is covered by
+<em>that</em> holder’s permission to the book, not by the book’s
+licence, and is not redistributed here.
+<code>tests/test_course.py</code> carries the banned list and fails if
+any of them reappears in <code>figuras/</code> or in a <code>.tex</code>
+file. US-government images (NOAA, NWS, NASA) are public domain and stay,
+with their credit in the slide caption.</li>
+<li>The warranty disclaimer and limitation of liability are in
+<code>LICENSE</code> (Apache §7–8), in the CC text (section 5) and in
+the README.</li>
+</ul>
+<h2 id="layout">8. Layout</h2>
+<pre><code>indice.tex/.pdf          course map — start here
+notas/                   capNN_notas.tex/.pdf
+slides/                  capNN_slides.tex/.pdf
+guia_do_professor/       guia.tex (+ capNN_guia.tex), guia.pdf, cronograma.tex/.pdf
+notebooks/               capNN_&lt;tema&gt;.ipynb, capNN_solucoes.ipynb
+listas/                  listas_exercicios.tex/.pdf (generated)
+figuras/capNN/           fig_NN_X.jpg (book), notebook_*.png (ours)
+comum/                   preambulo.sty, temameteo.sty, estilo_meteo.py
+ferramentas/             the tools of section 4 (+ registro.py, shared logging)
+docs/                    this manual (+ html/pdf), build_manual.py, DEVLOG.md, AUDIT-*.md
+tests/                   the suite + vendored conformance checker
+book/, extracted/        your local copy of the book and its extraction (gitignored)</code></pre>
+</body>
+</html>

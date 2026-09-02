@@ -1,3 +1,5 @@
+% SPDX-License-Identifier: Apache-2.0
+% Copyright 2026 Fabio Campolim
 % temameteo.sty — tema Beamer comum dos slides de Meteorologia Prática
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{temameteo}[2026/08/22 Tema Beamer Meteorologia Pratica]
@@ -30,6 +32,17 @@
 \newcommand{\figlivroslide}[3]{%
   \begin{center}\includegraphics[height=#2,width=\linewidth,keepaspectratio]{#1}\\[-2pt]
   {\tiny #3 --- R.~Stull, \emph{Practical Meteorology}, CC BY-NC-SA 4.0}\end{center}}
+
+% figura do livro NAO redistribuida (imagem de terceiros, usada no livro com
+% permissao do detentor): o slide indica onde ve-la no livro.
+% \figlivroref{Fig.~N.M}{legenda curta}{detentor}
+\newcommand{\figlivroref}[3]{%
+  \begin{center}\fbox{\parbox[c][0.38\textheight][c]{0.86\linewidth}{\centering
+  \textbf{#1 do livro} --- #2\\[4pt]
+  {\small Imagem \copyright~#3, reproduzida no livro com permissão do detentor;
+  não redistribuída neste material.\\
+  Ver em R.~Stull, \emph{Practical Meteorology} (v1.02b), acesso livre em\\
+  \texttt{eoas.ubc.ca/books/Practical\_Meteorology/}}}}\end{center}}
 
 % espaço para figura a inserir
 \newcommand{\figplaceholderslide}[1]{%

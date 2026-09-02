@@ -33,3 +33,7 @@ ferramentas/*_plot[0-9][0-9].png
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# run logs of the ferramentas/ scripts and QA renders
+logs/
+qa/

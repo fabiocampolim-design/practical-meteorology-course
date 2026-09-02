@@ -1,0 +1,44 @@
+# Changelog
+
+All notable changes to this project are recorded here. The format follows
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
+[Semantic Versioning](https://semver.org/).
+
+## [1.0.0] — 2026-09-02
+
+First public release. The course itself has been complete since 2026-08-28
+(22 chapters of Stull's *Practical Meteorology* plus an extra module on
+climate change, each with lecture notes, Beamer slides, a teacher's-guide
+section, a student notebook and a solutions notebook; printable exercise
+lists; a two-semester schedule; a course index).
+
+### Added
+- `LICENSE` (Apache-2.0, code) + `NOTICE`, `LICENSES/CC-BY-NC-SA-4.0.txt`
+  (teaching content), README licence section with disclaimer and
+  non-affiliation note; SPDX headers on every code file.
+- `VERSION`, `CITATION.cff`, `AGENTS.md`, `docs/USER_MANUAL.md` (built to
+  HTML and PDF by `docs/build_manual.py`).
+- `tests/`: 21 checks (licence guards, notebook QA, figure policy, docs
+  guard, PDF read-back, run logs) plus the vendored publication-conformance
+  checker; GitHub Actions on Linux, Windows and macOS with `pyflakes`
+  before the suite.
+- `ferramentas/registro.py`: every maintenance script now has `--help`,
+  `--verbose` / `--quiet` and writes a run log under `<outdir>/logs/`.
+- `\figlivroref` macro (`comum/temameteo.sty`): a boxed "see the book"
+  note for figures that are not redistributed.
+
+### Changed
+- Maintenance scripts take every input and output from the command line
+  (`--outdir`, `--notebooks`, `--book`, …); no hard-coded paths.
+- `render_qa2.py` folded into `render_qa.py --fase 2`.
+- `comum/estilo_meteo.py` no longer imports what it does not use.
+- The working handoff `CONTINUAR.md` moved to `docs/DEVLOG.md`.
+
+### Removed
+- 24 figure crops the book credits to third parties (EUMETSAT, SSEC/CIMSS,
+  Environment Canada, Gene Rhoden, Gene Moore, NCAR, ECMWF): figs. 8.11,
+  8.16a/d, 9.20, 14.1, 14.3, 14.5, 15.3, 15.18, 16.19, 17.6, 20.15, 20.19.
+  The six slides that used them now carry the note above; fig. 7.13
+  (K. Libbrecht) was never included. A test keeps them out.
+- The source book, its page slices and the extractor output are not part of
+  the repository (download the book from UBC).

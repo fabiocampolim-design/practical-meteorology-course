@@ -1,0 +1,27 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.11", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Static check (pyflakes) over the whole tree
+        run: |
+          python -m pip install --quiet pyflakes
+          python -m pyflakes ferramentas comum docs tests
+      - name: Test dependencies (PDF read-back needs PyMuPDF)
+        run: python -m pip install --quiet pymupdf
+      - name: Run the suite (stdlib + PyMuPDF, no TeX, no network)
+        run: python -m unittest discover -s tests -v
