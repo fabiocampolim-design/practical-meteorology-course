@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If this course material helped your teaching, please cite it, and cite Stull's book, which it is built on."
 title: "practical-meteorology-course: Portuguese undergraduate course material (notes, slides, teacher guide, notebooks) on Stull's Practical Meteorology"
 type: dataset
-version: "1.0.1"
-date-released: "2026-09-02"
+version: "1.0.2"
+date-released: "2026-09-04"
 license:
   - Apache-2.0
   - CC-BY-NC-SA-4.0

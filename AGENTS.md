@@ -126,7 +126,7 @@ Every script exposes `build_parser()` and `main(argv) -> int`.
   `git tag -a vX.Y.Z` → push with tags → GitHub release from the changelog
   section.
 
-## What the suite guards (`tests/test_course.py`, 22 checks)
+## What the suite guards (`tests/test_course.py`, 25 checks)
 
 Licence texts and README disclaimer; SPDX headers; VERSION = CITATION =
 CHANGELOG; banned figures absent from `figuras/` and from every `.tex`;
@@ -136,4 +136,7 @@ CHANGELOG; banned figures absent from `figuras/` and from every `.tex`;
 and manual counts match the tree; no personal paths or codenames in sources;
 every committed PDF opens, has the expected page count and text
 (PyMuPDF, skipped if absent); `gera_listas.py` and `extract_plots.py` run
-and write their logs; the vendored conformance checker runs.
+and write their logs; `audita.py` lists a missing guide instead of raising
+and numbers chapters from the file name, not the path; `CONTRIBUTING.md`,
+`CODE_OF_CONDUCT.md` and `docs/DESIGN.md` exist and the README links them;
+the vendored conformance checker runs.

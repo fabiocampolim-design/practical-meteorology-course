@@ -4,6 +4,28 @@ All notable changes to this project are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [1.0.2] — 2026-09-04
+
+Independent review of the public repository (every tool read line by line)
+and the publishing playbook's community-files rule.
+
+### Added
+- `CONTRIBUTING.md` (what is welcome, the ground rules, how the material is
+  checked), `CODE_OF_CONDUCT.md` (Contributor Covenant 2.1) and
+  `docs/DESIGN.md` (the design decisions and their trade-offs, with who
+  decided what); the README links to them. A suite check keeps them present.
+
+### Fixed
+- `ferramentas/audita.py`: a missing `guia_do_professor/guia.tex` is a listed
+  problem, not a traceback; the chapter number is read from the file name,
+  never from the path (a folder named `cap99` anywhere above the material
+  renumbered every chapter).
+
+### Changed
+- Vendored publication-conformance checker 1.6.1 (was 1.4.1): rules 25–27
+  and the citation-version check; the byte-identity test is green again.
+- Suite: 25 checks (was 22): missing guide, chapter numbering, community files.
+
 ## [1.0.1] — 2026-09-02
 
 Post-release independent code review of 1.0.0 (two defects, both in the

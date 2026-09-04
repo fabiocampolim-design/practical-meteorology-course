@@ -39,6 +39,12 @@ def _ler(p):
         return fh.read()
 
 
+def _cap(f: str) -> str:
+    """Número do capítulo lido do NOME do arquivo, nunca do caminho: uma pasta
+    chamada cap99 no caminho renumerava todos os capítulos (1.0.1)."""
+    return re.search(r"cap(\d+)", os.path.basename(f)).group(1)
+
+
 def auditar(root: str) -> list[str]:
     """Devolve a lista de problemas encontrados (vazia = tudo certo)."""
     problemas: list[str] = []
@@ -46,7 +52,7 @@ def auditar(root: str) -> list[str]:
 
     # 1. figuras citadas nos slides existem?
     for f in sorted(glob.glob(os.path.join(root, "slides", "cap*_slides.tex"))):
-        nn = re.search(r"cap(\d+)", f).group(1)
+        nn = _cap(f)
         src = _ler(f)
         figdir = os.path.join(root, "figuras", f"cap{nn}")
         usados = re.findall(r"\\figlivroslide\{([^}]+)\}", src)
@@ -63,7 +69,7 @@ def auditar(root: str) -> list[str]:
 
     # 3. \javimos/\veremos: alvo 1..23 e direção certa
     for f in sorted(glob.glob(os.path.join(root, "notas", "cap*_notas.tex"))):
-        nn = int(re.search(r"cap(\d+)", f).group(1))
+        nn = int(_cap(f))
         src = _ler(f)
         for m in re.finditer(r"\\(javimos|veremos)\{(\d+)\}", src):
             alvo = int(m.group(2))
@@ -76,7 +82,7 @@ def auditar(root: str) -> list[str]:
 
     # 4. "Caso N" citado nas notas: notebooks têm 4 casos
     for f in sorted(glob.glob(os.path.join(root, "notas", "cap*_notas.tex"))):
-        nn = int(re.search(r"cap(\d+)", f).group(1))
+        nn = int(_cap(f))
         for m in re.finditer(r"Caso~(\d+)", _ler(f)):
             if int(m.group(1)) > 4:
                 P(f"notas cap{nn:02d}: cita Caso~{m.group(1)} (>4)")
@@ -123,7 +129,7 @@ def auditar(root: str) -> list[str]:
 
     # 6. exercícios nas notas: 5 T e 4 N por capítulo
     for f in sorted(glob.glob(os.path.join(root, "notas", "cap*_notas.tex"))):
-        nn = int(re.search(r"cap(\d+)", f).group(1))
+        nn = int(_cap(f))
         src = _ler(f)
         m = re.search(r"\\subsection\*\{Te[óo]ricos\}(.*?)\\subsection\*\{Num", src, re.DOTALL)
         m2 = re.search(r"\\subsection\*\{Num[ée]ricos[^}]*\}(.*?)\\vspace\{1em\}", src, re.DOTALL)
@@ -142,11 +148,16 @@ def auditar(root: str) -> list[str]:
         if "cap22_mudanca" in src or "cap22\\_mudanca" in src:
             P(f"{os.path.basename(f)}: cita cap22_mudanca (renomeado p/ 23)")
 
-    # 8. guia: todos os capítulos incluídos
-    gsrc = _ler(os.path.join(root, "guia_do_professor", "guia.tex"))
-    for nn in range(1, 24):
-        if f"cap{nn:02d}_guia" not in gsrc:
-            P(f"guia.tex: falta \\input de cap{nn:02d}_guia")
+    # 8. guia: todos os capítulos incluídos (guia ausente é um problema
+    # listado, não um traceback -- 1.0.1)
+    guia = os.path.join(root, "guia_do_professor", "guia.tex")
+    if not os.path.isfile(guia):
+        P("guia.tex: ausente em guia_do_professor/")
+    else:
+        gsrc = _ler(guia)
+        for nn in range(1, 24):
+            if f"cap{nn:02d}_guia" not in gsrc:
+                P(f"guia.tex: falta \\input de cap{nn:02d}_guia")
     return problemas
 
 

@@ -41,7 +41,11 @@ mais um módulo extra sobre mudança climática. **Comece por [`indice.pdf`](ind
 > for a wrong number in a solution, a slide that does not match the book, a
 > notebook that fails in a fresh `meteo` environment, a figure whose credit
 > we missed, or a translation that reads badly. Reports from teachers who
-> ran a chapter in class are the most useful of all.
+> ran a chapter in class are the most useful of all. Pull requests are
+> welcome too — see [`CONTRIBUTING.md`](CONTRIBUTING.md) (what is welcome,
+> the ground rules, how the material is checked) and the
+> [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md); the design decisions and
+> their trade-offs are in [`docs/DESIGN.md`](docs/DESIGN.md).
 
 ## Why this exists
 
@@ -141,7 +145,7 @@ Each item is a guarantee the test suite or the course audit enforces:
 - **Tooling with logs**: every maintenance script has a complete
   command-line interface and writes a run log with the command, versions
   and outcome.
-- **Static check + suite on three operating systems** in CI (the 22-check
+- **Static check + suite on three operating systems** in CI (the 25-check
   suite plus a vendored publication-conformance checker).
 
 ## Honest comparison with neighbours

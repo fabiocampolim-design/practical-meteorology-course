@@ -308,6 +308,47 @@ class Tools(unittest.TestCase):
             # a missing notebook is reported, not silently skipped
             self.assertEqual(ep.main(["--notebooks", "nao_existe", "--outdir", tmp, "-q"]), 1)
 
+    def test_audita_reports_a_missing_guide_instead_of_raising(self):
+        # 1.0.2: check 8 opened guia.tex directly, so a tree without it was a
+        # traceback rather than a listed problem
+        audita = importlib.import_module("audita")
+        with tempfile.TemporaryDirectory() as tmp:
+            for d in ("notas", "slides", "notebooks", "guia_do_professor", "figuras"):
+                os.makedirs(os.path.join(tmp, d))
+            problemas = audita.auditar(tmp)
+        self.assertTrue(any("guia.tex" in p and "ausente" in p for p in problemas), problemas)
+
+    def test_audita_numbers_chapters_from_the_file_name_not_the_path(self):
+        # 1.0.2: the chapter number was taken from the first "capNN" in the
+        # full path, so a root folder named cap99 renumbered every chapter
+        audita = importlib.import_module("audita")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = os.path.join(tmp, "cap99")
+            for d in ("notas", "slides", "notebooks", "guia_do_professor", "figuras"):
+                os.makedirs(os.path.join(root, d))
+            with open(os.path.join(root, "notas", "cap01_notas.tex"), "w", encoding="utf-8") as fh:
+                fh.write("\\veremos{0}\n")
+            with open(os.path.join(root, "slides", "cap01_slides.tex"), "w", encoding="utf-8") as fh:
+                fh.write("\\figlivroslide{fig_01_1.jpg}\n")
+            problemas = audita.auditar(root)
+        self.assertIn("notas cap01: \\veremos{0} fora de 1..23", problemas)
+        self.assertIn("slides cap01: figura ausente: fig_01_1.jpg", problemas)
+        self.assertFalse([p for p in problemas if "cap99" in p], problemas)
+
+
+class Community(unittest.TestCase):
+    def test_community_files_present_and_linked(self):
+        # publishing playbook rule 26: a public repository carries its
+        # contribution guide, code of conduct and design account, and the
+        # README points at the first two
+        for rel in ("CONTRIBUTING.md", "CODE_OF_CONDUCT.md", os.path.join("docs", "DESIGN.md")):
+            self.assertTrue(os.path.isfile(os.path.join(ROOT, rel)), rel)
+        self.assertGreater(os.path.getsize(os.path.join(ROOT, "docs", "DESIGN.md")), 400)
+        self.assertIn("Contributor Covenant", _read("CODE_OF_CONDUCT.md"))
+        readme = _read("README.md")
+        self.assertIn("CONTRIBUTING.md", readme)
+        self.assertIn("CODE_OF_CONDUCT.md", readme)
+
 
 if __name__ == "__main__":
     unittest.main()
