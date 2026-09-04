@@ -335,6 +335,22 @@ class Tools(unittest.TestCase):
         self.assertIn("slides cap01: figura ausente: fig_01_1.jpg", problemas)
         self.assertFalse([p for p in problemas if "cap99" in p], problemas)
 
+    def test_audita_lists_a_chapter_file_without_a_number_instead_of_raising(self):
+        # 1.0.3 (post-review): capitulo_notas.tex matches the glob cap*_notas.tex
+        # but carries no chapter number; that is a listed problem, not a traceback
+        audita = importlib.import_module("audita")
+        with tempfile.TemporaryDirectory() as tmp:
+            for d in ("notas", "slides", "notebooks", "guia_do_professor", "figuras"):
+                os.makedirs(os.path.join(tmp, d))
+            for rel in (("notas", "capitulo_notas.tex"), ("slides", "capitulo_slides.tex")):
+                with open(os.path.join(tmp, *rel), "w", encoding="utf-8") as fh:
+                    fh.write("\\veremos{1}\n")
+            with open(os.path.join(tmp, "notebooks", "capitulo_x.ipynb"), "w", encoding="utf-8") as fh:
+                fh.write('{"cells": []}')
+            problemas = audita.auditar(tmp)
+        sem_numero = [p for p in problemas if "sem numero de capitulo" in p]
+        self.assertEqual(len(sem_numero), 3, problemas)
+
 
 class Community(unittest.TestCase):
     def test_community_files_present_and_linked(self):

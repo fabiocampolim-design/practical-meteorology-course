@@ -4,6 +4,20 @@ All notable changes to this project are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [1.0.3] — 2026-09-04
+
+The independent review of 1.0.2 (one defect of the class 1.0.2 fixed).
+
+### Fixed
+- `ferramentas/audita.py`: a chapter file whose name carries no number
+  (`capitulo_notas.tex` matches the glob `cap*_notas.tex`) is a listed
+  problem, "sem numero de capitulo no nome", in every check that reads one;
+  1.0.2 raised on it. Check 5 (the notebook pairs) now uses the same
+  chapter-number rule as the other checks.
+
+### Changed
+- Suite: 26 checks (was 25).
+
 ## [1.0.2] — 2026-09-04
 
 Independent review of the public repository (every tool read line by line)

@@ -1,6 +1,6 @@
 # practical-meteorology-course — User Manual
 
-Version 1.0.2 (2026-09-04). Source of truth: this Markdown file; the HTML and
+Version 1.0.3 (2026-09-04). Source of truth: this Markdown file; the HTML and
 PDF beside it are built by `python docs/build_manual.py`. Machine-oriented
 instructions for AI agents are in [`AGENTS.md`](../AGENTS.md).
 
@@ -128,7 +128,7 @@ converter otherwise.
 ## 5. Quality checks
 
 - `python ferramentas/audita.py` — the course-level audit above.
-- `python -m unittest discover -s tests -v` — the 25-check suite: licence and
+- `python -m unittest discover -s tests -v` — the 26-check suite: licence and
   disclaimer guards, SPDX headers, version consistency, the figure policy
   (section 7), notebook QA (46 notebooks, 23 pairs, no error or stderr
   output, every code cell executed, ≤ 1.5 MB each), the docs guard (every
